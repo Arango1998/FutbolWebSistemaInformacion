@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
     @NamedQuery(name = "Categoria.findByIdCategoria", query = "SELECT c FROM Categoria c WHERE c.idCategoria = :idCategoria"),
     @NamedQuery(name = "Categoria.findByNombreCategoria", query = "SELECT c FROM Categoria c WHERE c.nombreCategoria = :nombreCategoria")})
-public class Categoria implements Serializable {
+public class Categoria implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,6 +111,11 @@ public class Categoria implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.Categoria[ idCategoria=" + idCategoria + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+    return idCategoria.toString();
     }
     
 }

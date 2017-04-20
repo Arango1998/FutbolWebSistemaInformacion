@@ -1,0 +1,17 @@
+
+*{
+	box-sizing: border-box;
+}
+body {
+  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+  color: #404040;
+  background: #0ca3d2 ;
+}
+section {
+	background: #fff;
+}
+#fondo{
+	background: rgba(255,255,255,0.8);
+	height:100px;
+}
+
