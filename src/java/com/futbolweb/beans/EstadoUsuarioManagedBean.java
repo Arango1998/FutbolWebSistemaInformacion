@@ -48,7 +48,7 @@ public class EstadoUsuarioManagedBean implements Serializable, InterfaceControll
         this.estadoUsuario = estadoUsuario;
     }
 
-    public List<EstadoUsuario> listarUsuarios() {
+    public List<EstadoUsuario> listarEstadoUsuario() {
         return ef.findAll();
     }
 

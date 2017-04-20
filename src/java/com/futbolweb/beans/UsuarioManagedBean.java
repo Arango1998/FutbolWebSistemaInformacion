@@ -76,6 +76,16 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         return usuarioRFacade.findAll();
     }
        
+             
+    public void creaUsuarioGeneral() {
+        try {
+          
+            usuarioRFacade.create(usuario);
+        } catch (Exception e) {
+        }
+
+    }
+       
        
     public void creaUsuarioInvitado() {
         try {
