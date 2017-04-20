@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pago.findByFechaPago", query = "SELECT p FROM Pago p WHERE p.fechaPago = :fechaPago"),
     @NamedQuery(name = "Pago.findByMonto", query = "SELECT p FROM Pago p WHERE p.monto = :monto"),
     @NamedQuery(name = "Pago.findByEstado", query = "SELECT p FROM Pago p WHERE p.estado = :estado")})
-public class Pago implements Serializable {
+public class Pago implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -157,6 +157,11 @@ public class Pago implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.Pago[ idPago=" + idPago + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idPago.toString();
     }
     
 }
