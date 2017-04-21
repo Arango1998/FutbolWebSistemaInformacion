@@ -51,7 +51,7 @@
                                         <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
                                         <br/>
                                         <br/>
-                                        <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
+                                        <p:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
 
 
                                     </div>

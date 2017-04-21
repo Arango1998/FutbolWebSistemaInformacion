@@ -60,6 +60,13 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
         }
 
     }
+    public void redireccionar(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("registrar_torneo.xhtml");
+        } catch (Exception e) {
+        }
+    }
 
     
 }
