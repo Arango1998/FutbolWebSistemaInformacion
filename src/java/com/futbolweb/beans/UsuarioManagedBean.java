@@ -90,9 +90,9 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     public void creaUsuarioInvitado() {
         try {
             EstadoUsuario e = new EstadoUsuario();
-            e.setIdEstado(1);
+            e.setIdEstado(2);
             Rol r = new Rol();
-            r.setIdTipoRol(5);
+            r.setIdTipoRol(1);
             usuario.setIdEstado(e);
             usuario.setIdTipoRol(r);
             usuarioRFacade.create(usuario);
