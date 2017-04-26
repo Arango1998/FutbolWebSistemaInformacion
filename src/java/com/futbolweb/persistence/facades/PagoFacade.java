@@ -6,9 +6,11 @@
 package com.futbolweb.persistence.facades;
 
 import com.futbolweb.persistence.entities.Pago;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,10 @@ public class PagoFacade extends AbstractFacade<Pago> {
         super(Pago.class);
     }
     
+    public List<Pago> listarPagoEspecifico(){
+     List<Pago> lista;
+    Query query = em.createQuery ("SELECT p FROM Pago p WHERE p.fkIdJugador = ?");
+    lista = query.getResultList();
+    return lista;
+    }
 }

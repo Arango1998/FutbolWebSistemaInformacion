@@ -24,12 +24,14 @@ public class PagoManagedBean implements InterfaceController<Pago> {
 
     private Pago pago;
     @EJB 
+    List<Pago>lista;
     private PagoFacade pagof;
     
     
     @PostConstruct
     public void init(){
     pago = new Pago();
+    lista=pagof.listarPagoEspecifico();
     }
 
     public Pago getPago() {
@@ -44,8 +46,14 @@ public class PagoManagedBean implements InterfaceController<Pago> {
 
         return pagof.findAll();
         
+        
     }
     
+    public void recorroPagos(){
+        for (Pago a : lista) {
+           
+        }
+    }
     public String actualizarPago(Pago pa){
         pago = pa;
         return "";
