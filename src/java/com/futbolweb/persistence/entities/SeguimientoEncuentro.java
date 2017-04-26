@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SeguimientoEncuentro.findAll", query = "SELECT s FROM SeguimientoEncuentro s"),
     @NamedQuery(name = "SeguimientoEncuentro.findByIdSeguimientoEncuentro", query = "SELECT s FROM SeguimientoEncuentro s WHERE s.idSeguimientoEncuentro = :idSeguimientoEncuentro"),
     @NamedQuery(name = "SeguimientoEncuentro.findByCalificacion", query = "SELECT s FROM SeguimientoEncuentro s WHERE s.calificacion = :calificacion")})
-public class SeguimientoEncuentro implements Serializable {
+public class SeguimientoEncuentro implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -147,6 +147,11 @@ public class SeguimientoEncuentro implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.SeguimientoEncuentro[ idSeguimientoEncuentro=" + idSeguimientoEncuentro + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idSeguimientoEncuentro.toString();
     }
     
 }

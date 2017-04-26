@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Valoracion.findAll", query = "SELECT v FROM Valoracion v"),
     @NamedQuery(name = "Valoracion.findByIdValoracion", query = "SELECT v FROM Valoracion v WHERE v.idValoracion = :idValoracion"),
     @NamedQuery(name = "Valoracion.findByNota", query = "SELECT v FROM Valoracion v WHERE v.nota = :nota")})
-public class Valoracion implements Serializable {
+public class Valoracion implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -118,6 +118,11 @@ public class Valoracion implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.Valoracion[ idValoracion=" + idValoracion + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idValoracion.toString();
     }
     
 }
