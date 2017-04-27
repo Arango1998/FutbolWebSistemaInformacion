@@ -16,12 +16,12 @@
 
 
                     <h:form>
-                        <h:commandLink title="Descargar tabla en pdf" style="padding-top: 10px; padding-left: 1100px; position: absolute;">
+                        <h:commandLink title="Descargar tabla en pdf">
                             <p:graphicImage url="Resources/img/pdf.png" width="30"/>
                             <p:dataExporter type="pdf" target="tablaBarrios" fileName="ListadoDeBarrios"/>
                         </h:commandLink>
 
-                        <h:commandLink title="Descargar tabla en Excel" style= "padding-left: 1130px; position: static;">
+                        <h:commandLink title="Descargar tabla en Excel">
                             <p:graphicImage url="Resources/img/xls.png" width="30"/>
                             <p:dataExporter type="xls" target="tablaBarrios" fileName="ListadoDeBarrios"/>
                         </h:commandLink>
@@ -46,7 +46,7 @@
                 </f:view>
 
 
-
+                <h:form>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -63,9 +63,8 @@
 
                                         </div>
                                         <div class="modal-body">
-
                                             <h:form>
-
+                                                <p:growl id="growl" sticky="true" showSummary="true" showDetail="true" /> 
                                                 <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
 
                                                 <br/>
@@ -74,14 +73,14 @@
 
                                                     <h:outputLabel  value="Localidad"/>
 
-                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
                                                         <!-- TODO: update below reference to list of available items-->
                                                         <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
                                                     </h:selectOneMenu>
 
                                                     <h:outputLabel value="Nombre del barrio"/>
 
-                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="The Organizador field is required.">
+                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido">
 
 
                                                     </h:inputText>
@@ -108,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-
+                </h:form>
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
                 <script src="js/scripts.js"></script>
