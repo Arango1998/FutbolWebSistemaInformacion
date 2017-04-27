@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.login.controller;
+package co.expochick.business.login.controller;
 
 
 import com.futbolweb.persistence.entities.Rol;
@@ -64,7 +64,7 @@ public class LoginManagedBean implements Serializable {
                 System.out.println(usuario.getIdTipoRol());
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", usuario);
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("rol", rol); //Objeto de la sesion ROL!
-                return "/faces/protegido/inicio.xhtml?faces-redirect=true";
+                return "/protegido/iniciousuario.xhtml?faces-redirect=true";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario y/o Contraseña Incorrectos"));
                 usuario = new Usuario();

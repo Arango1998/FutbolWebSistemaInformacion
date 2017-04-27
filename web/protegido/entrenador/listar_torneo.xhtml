@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+    </h:head>
+    <h:body>
+       <f:view>
+
+
+                    <h:form style="padding-top: 100px;">
+                        <h:commandLink title="Descargar tabla en pdf" style="padding-top: 10px; padding-left: 1100px; position: absolute;">
+                            <p:graphicImage url="../../resources/images/formulario/pdf.png" width="30"/>
+                            <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                        </h:commandLink>
+
+                        <h:commandLink title="Descargar tabla en Excel" style= "padding-left: 1130px; position: static;">
+                            <p:graphicImage url="../../resources/images/formulario/xls.png" width="30"/>
+                            <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                        </h:commandLink>
+
+                        <center><h1><h:outputText value="Torneos programados"/></h1></center>
+                        <p:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre del torneo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreTorneo}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Organizador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.organizador}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Datos del organizador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datosContactoOrganizador}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Inicio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicio}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Finalización"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFin}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+    </h:body>
 </html>
