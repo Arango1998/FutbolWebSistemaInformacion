@@ -32,7 +32,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     }
     
     
-    public Usuario iniciarSesion(Usuario user) {
+  public Usuario iniciarSesion(Usuario user) {
         Usuario usuario = null;
         String rta;
         try {
@@ -49,8 +49,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         }
         return usuario;
     }
-    
-    public Usuario capturarUsuario(Usuario usu){
+ 
+ public Usuario capturarUsuario(Usuario usu){
         return getEntityManager().createNamedQuery("Usuario.findByDocumento",Usuario.class).setParameter("documento", usu.getDocumento()).getSingleResult();
     }
 }
