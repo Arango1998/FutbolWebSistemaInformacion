@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -55,6 +56,15 @@ private BarrioFacade bf;
         bf.create(barrio);
         
     }
+       
+           public void redireccionar(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("listar_barrio.xhtml");
+        } catch (Exception e) {
+        }
+    }
+
     
     
 }

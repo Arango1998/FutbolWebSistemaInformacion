@@ -11,13 +11,23 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                
+
                 <f:view>
 
 
                     <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <p:dataTable value="#{barrioManagedBean.listar()}" var="item">
+                        <h:commandLink title="Descargar tabla en pdf" style="padding-top: 10px; padding-left: 1100px; position: absolute;">
+                            <p:graphicImage url="Resources/img/pdf.png" width="30"/>
+                            <p:dataExporter type="pdf" target="tablaBarrios" fileName="ListadoDeBarrios"/>
+                        </h:commandLink>
+
+                        <h:commandLink title="Descargar tabla en Excel" style= "padding-left: 1130px; position: static;">
+                            <p:graphicImage url="Resources/img/xls.png" width="30"/>
+                            <p:dataExporter type="xls" target="tablaBarrios" fileName="ListadoDeBarrios"/>
+                        </h:commandLink>
+
+                        <h1><h:outputText value="Barrios registrados"/></h1>
+                        <p:dataTable id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Localidad"/>
@@ -26,17 +36,17 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="NombreBarrio"/>
+                                    <h:outputText value="Barrio"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nombreBarrio}"/>
                             </p:column>
-                           
+
                         </p:dataTable>
                     </h:form>
                 </f:view>
 
-                
-                
+
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -50,11 +60,12 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                                 ×
                                             </button>
-                                          
+
                                         </div>
                                         <div class="modal-body">
-                                           
+
                                             <h:form>
+
                                                 <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
 
                                                 <br/>
@@ -63,23 +74,21 @@
 
                                                     <h:outputLabel  value="Localidad"/>
 
-                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="FkIdLocalidad" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="The FkIdLocalidad field is required.">
                                                         <!-- TODO: update below reference to list of available items-->
                                                         <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
                                                     </h:selectOneMenu>
-                                                    
+
                                                     <h:outputLabel value="Nombre del barrio"/>
 
-                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Organizador" required="true" requiredMessage="The Organizador field is required.">
+                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="The Organizador field is required.">
 
 
                                                     </h:inputText>
 
                                                     <br/>
                                                     <br/>
-                                                    <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{barrioManagedBean.crearBarrio()}" />
-
-
+                                                    <p:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
                                                 </div>
                                             </h:form>
                                         </div>
@@ -88,7 +97,7 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                                 Cerrar
                                             </button> 
-                                            
+
                                         </div>
                                     </div>
 
