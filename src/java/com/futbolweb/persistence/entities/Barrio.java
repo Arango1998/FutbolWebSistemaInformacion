@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Barrio.findAll", query = "SELECT b FROM Barrio b"),
     @NamedQuery(name = "Barrio.findByIdBarrio", query = "SELECT b FROM Barrio b WHERE b.idBarrio = :idBarrio"),
     @NamedQuery(name = "Barrio.findByNombreBarrio", query = "SELECT b FROM Barrio b WHERE b.nombreBarrio = :nombreBarrio")})
-public class Barrio implements Serializable {
+public class Barrio implements Serializable, IDTO{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -124,6 +124,11 @@ public class Barrio implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.Barrio[ idBarrio=" + idBarrio + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+     return idBarrio.toString();
     }
     
 }

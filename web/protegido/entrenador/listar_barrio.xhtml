@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{barrioManagedBean.listar()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Localidad"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkIdLocalidad.nombreLocalidad}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="NombreBarrio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombreBarrio}"/>
+                            </p:column>
+                           
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+                
+                
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Barrio</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+                                          
+                                        </div>
+                                        <div class="modal-body">
+                                           
+                                            <h:form>
+                                                <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
+
+                                                <br/>
+                                                <div class="rowContainer">
+
+
+                                                    <h:outputLabel  value="Localidad"/>
+
+                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="FkIdLocalidad" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
+                                                    </h:selectOneMenu>
+                                                    
+                                                    <h:outputLabel value="Nombre del barrio"/>
+
+                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Organizador" required="true" requiredMessage="The Organizador field is required.">
+
+
+                                                    </h:inputText>
+
+                                                    <br/>
+                                                    <br/>
+                                                    <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{barrioManagedBean.crearBarrio()}" />
+
+
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <script src="js/jquery.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/scripts.js"></script>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
