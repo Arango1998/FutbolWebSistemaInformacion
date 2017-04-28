@@ -15,44 +15,25 @@
 
 
                     <h:form>
-                        <h1><h:outputText value="Listado de Pagos"/></h1>
-                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimiento()}" var="item">
-                            
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Motivo de pago"/>
-                                </f:facet>
-                                <h:outputText value="#{item.motivoPago}">
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value=""/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaPago}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Monto"/>
-                                </f:facet>
-                                <h:outputText value="#{item.monto}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Estado"/>
-                                </f:facet>
-                                <h:outputText value="#{item.estado}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Jugador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdJugador}"/>
-                            </p:column>
-                            
-                        </p:dataTable>
+                        <h1><h:outputText value="Registro de pago"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Motivo de Pago:" for="motivoPago" />
+                            <p:inputText id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}" title="Motivo de Pago" required="true" requiredMessage="The MotivoPago field is required."/>
+                            <p:outputLabel value="Monto:" for="monto" />
+                            <p:inputText id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="The Monto field is required."/>
+                            <p:outputLabel value="Estado del pago:" for="estado" />
+                            <p:inputText id="estado" value="#{registroPagoManagedBean.pago.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                            <p:outputLabel value="Jugador:" for="fkIdJugador" />
+                            <p:selectOneMenu id="fkIdJugador" value="#{registroPagoManagedBean.pago.fkIdJugador}" required="true" requiredMessage="The FkIdJugador field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{jugadorManagedBean.listarJugador()}" var="jugador" itemValue="#{jugador.idJugador}"  itemLabel="#{jugador.usuario.documento} #{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}" />
+                            </p:selectOneMenu>
+                            <p:commandButton value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></p:commandButton>
+                        </p:panelGrid>
+                        
                     </h:form>
                 </f:view>
+
             </ui:define>
 
         </ui:composition>

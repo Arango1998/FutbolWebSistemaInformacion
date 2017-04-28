@@ -15,9 +15,14 @@
 
 
                     <h:form>
-                        <h1><h:outputText value="Listado de jugadores"/></h1>
+                        <h1><h:outputText value="Lista de jugadores"/></h1>
                         <p:dataTable value="#{jugadorManagedBean.listarJugador()}" var="item">
-                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Jugador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.usuario.documento} #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                            </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Posicion"/>
@@ -26,22 +31,65 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Equipo"/>
+                                    <h:outputText value="FkIdEquipo"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
                             </p:column>
                             <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
-                                </f:facet>
-                                <h:outputText value="#{item.usuario.primerNombre}"/>
-                            </p:column>
-                            <p:column>
-                                <p:commandButton value="Informe de pagos"/>
+                                <p:commandButton value="Detalle de Pagos" actionListener="#{pagoManagedBean.solicitarJugador(item.idJugador)}" update=":Pagos" ></p:commandButton>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
+                
+                <f:view>
+
+
+                    <h:form id="Pagos">
+                        <h1><h:outputText value="Lista de pagos"/></h1>
+                        <p:dataTable value="#{pagoManagedBean.lista}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id de Pago"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPago}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Motivo de Pago"/>
+                                </f:facet>
+                                <h:outputText value="#{item.motivoPago}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Fecha de Pago"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaPago}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Monto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.monto}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Estado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.estado}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Jugador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkIdJugador.usuario.documento}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
 
             </ui:define>
 
