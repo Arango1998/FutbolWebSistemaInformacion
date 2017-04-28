@@ -18,17 +18,28 @@
                         <h1><h:outputText value="Registro de pago"/></h1>
                         <p:panelGrid columns="2">
                             <p:outputLabel value="Motivo de Pago:" for="motivoPago" />
-                            <p:inputText id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}" title="Motivo de Pago" required="true" requiredMessage="The MotivoPago field is required."/>
+                            <p:selectOneMenu id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}"  required="true" requiredMessage="The MotivoPago field is required.">
+                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                            <f:selectItem  itemValue="Matricula" itemLabel="Matricula"/>
+                            <f:selectItem  itemValue="Mensualidad" itemLabel="Mensualidad"/>
+                            <f:selectItem itemValue="Pago de Liga" itemLabel="Pago de Liga"/>
+                            
+                            </p:selectOneMenu>
                             <p:outputLabel value="Monto:" for="monto" />
                             <p:inputText id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="The Monto field is required."/>
                             <p:outputLabel value="Estado del pago:" for="estado" />
-                            <p:inputText id="estado" value="#{registroPagoManagedBean.pago.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                            <p:selectOneMenu id="estado" value="#{registroPagoManagedBean.pago.estado}"  required="true" requiredMessage="The MotivoPago field is required.">
+                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                            <f:selectItem  itemValue="Pendiente" itemLabel="Pendiente"/>
+                            <f:selectItem  itemValue="Pagado" itemLabel="Pagado"/>
+                            
+                            </p:selectOneMenu>
                             <p:outputLabel value="Jugador:" for="fkIdJugador" />
-                            <p:selectOneMenu id="fkIdJugador" value="#{registroPagoManagedBean.pago.fkIdJugador}" required="true" requiredMessage="The FkIdJugador field is required.">
+                            <p:selectOneMenu id="fkIdJugador" value="#{idJugador}" required="true" requiredMessage="The FkIdJugador field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{jugadorManagedBean.listarJugador()}" var="jugador" itemValue="#{jugador.idJugador}"  itemLabel="#{jugador.usuario.documento} #{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}" />
                             </p:selectOneMenu>
-                            <p:commandButton value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></p:commandButton>
+                            <p:commandButton value="Registrar" action="#{registroPagoManagedBean.registrarPago(idJugador)}"></p:commandButton>
                         </p:panelGrid>
                         
                     </h:form>

@@ -7,7 +7,9 @@ package com.futbolweb.pagos.beans;
 
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Pago;
+import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.PagoFacade;
 import com.futboweb.correocontacto.email.Email;
 import java.util.Date;
@@ -28,6 +30,8 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
     private Pago pago;
      @EJB 
     private PagoFacade pagof;
+     @EJB
+     private JugadorFacade jugadorf;
    
     
     @PostConstruct
@@ -49,17 +53,22 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
 
     
     
-    public void registrarPago(){
+    public void registrarPago(int idJugador){
         try {
-    Date fecha= new Date();    
+            Jugador j=jugadorf.find(idJugador);
+    Date fecha= new Date();
+    
+    pago.setFkIdJugador(j);
     Email envioC;
     envioC = new Email("Novedad de pago Expreso Rojo", "Se le notifíca que se le ha generado un nuevo registro de pago en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema :", pago.getFkIdJugador().getUsuario().getCorreo());
+            System.out.println(envioC.toString());
     envioC.enviarEmail();
     pago.setFechaPago(fecha);
     pagof.create(pago);
     } catch(Exception e){
-      
+            System.out.println(e.getMessage());
     }}
+    // nota: para P calendar poner pattern al final con el formato de fecha
     /**
      * Creates a new instance of RegistroPagoManagedBean
      */
