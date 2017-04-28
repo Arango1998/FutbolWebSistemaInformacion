@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Listado de jugadores"/></h1>
+                        <p:dataTable value="#{jugadorManagedBean.listarJugador()}" var="item">
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Posicion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.posicion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Equipo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Usuario"/>
+                                </f:facet>
+                                <h:outputText value="#{item.usuario.primerNombre}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="Informe de pagos"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

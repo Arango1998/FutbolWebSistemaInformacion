@@ -6,6 +6,7 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.facades.PagoFacade;
 import java.util.List;
@@ -26,12 +27,12 @@ public class PagoManagedBean implements InterfaceController<Pago> {
     @EJB 
     List<Pago>lista;
     private PagoFacade pagof;
-    
+    private Jugador jugador;
     
     @PostConstruct
     public void init(){
     pago = new Pago();
-    lista=pagof.listarPagoEspecifico();
+    lista=pagof.listarPagoEspecifico(jugador);
     }
 
     public Pago getPago() {
