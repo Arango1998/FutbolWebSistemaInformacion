@@ -16,7 +16,7 @@
 
                     <h:form>
                         <h1><h:outputText value="Listado seguimiento jugadores"/></h1>
-                        <p:dataTable value="#{jugadorManagedBean.listarJugador()}" var="item">
+                        <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
                             
                             <p:column>
                                 <f:facet name="header">
@@ -37,16 +37,17 @@
                                 <h:outputText value="#{item.usuario.primerNombre}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Seguimiento" />
+                                <p:commandButton value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
                             </p:column>
                         </p:dataTable>
+                        
                     </h:form>
                 </f:view>
 
          
             </ui:define>
             
-
+            
         </ui:composition>
 
     </body>

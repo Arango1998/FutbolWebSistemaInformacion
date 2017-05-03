@@ -5,10 +5,13 @@
  */
 package com.futbolweb.persistence.facades;
 
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Seguimiento;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +31,7 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> {
     public SeguimientoFacade() {
         super(Seguimiento.class);
     }
+    
+   
     
 }
