@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -58,6 +59,17 @@ public class JugadorManagedBean implements Serializable, InterfaceController<Jug
         } catch (Exception e) {
         }
     }
+    
+    
+               
+                public void redireccionarJugador(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("registro_jugador.xhtml");
+        } catch (Exception e) {
+        }
+    }
+
 
 
  

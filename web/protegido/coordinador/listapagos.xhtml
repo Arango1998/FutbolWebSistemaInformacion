@@ -37,7 +37,7 @@
                             <p:outputLabel value="Jugador:" for="fkIdJugador" />
                             <p:selectOneMenu id="fkIdJugador" value="#{registroPagoManagedBean.pago.fkIdJugador}" required="true" requiredMessage="The FkIdJugador field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="jugador"   itemLabel="#{jugador.usuario.documento} #{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}" />
+                                <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="jugador"   itemLabel="#{jugador.usuario.documento}, #{jugador.usuario.primerNombre}" />
                             </p:selectOneMenu>
                             <p:commandButton value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></p:commandButton>
                         </p:panelGrid>

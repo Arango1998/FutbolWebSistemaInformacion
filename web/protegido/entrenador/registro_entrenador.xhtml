@@ -22,12 +22,9 @@
                             <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{entrenadorManagedBean.entrenador.experiencia}" title="Experiencia" />
                             <h:outputLabel value="Diploma:" for="diploma" />
                             <h:inputTextarea rows="4" cols="30" id="diploma" value="#{entrenadorManagedBean.entrenador.diploma}" title="Diploma" />
-                            <h:outputLabel value="Usuario:" for="usuario" />
-                            <h:selectOneMenu id="usuario" value="#{entrenadorManagedBean.entrenador.usuario}" title="Usuario" required="true" requiredMessage="The Usuario field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </h:selectOneMenu>
+                            
                         </h:panelGrid>
+                        <h:commandButton value="Registrar Usuario Entrenador" action="#{entrenadorManagedBean.registrarEntrenador()}"/>
                     </h:form>
                 </f:view>
 

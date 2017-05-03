@@ -27,7 +27,7 @@
                             <h:outputLabel value="IdEntrenador:" for="idEntrenador" />
                             <h:selectOneMenu id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
                                 <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.obtenerLlavePrimaria()}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
                         
