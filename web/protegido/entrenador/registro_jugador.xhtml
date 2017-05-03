@@ -19,12 +19,7 @@
                     <h:form>
                         <h1><h:outputText value="List"/></h1>
                         <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdJugador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idJugador}"/>
-                            </p:column>
+                        
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Posicion"/>
@@ -35,13 +30,13 @@
                                 <f:facet name="header">
                                     <h:outputText value="FkIdEquipo"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fkIdEquipo}"/>
+                                <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
+                                    <h:outputText value="Acudiente"/>
                                 </f:facet>
-                                <h:outputText value="#{item.usuario}"/>
+                                <h:outputText value="#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
@@ -93,14 +88,13 @@
                                 <f:selectItems value="#{usuarioManagedBean.listarUsuario()}" var="usuario" itemLabel="#{usuario.documento}, #{usuario.primerNombre} #{usuario.idTipoRol.nombreRol}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
-                        <h:commandButton value="Registrar Jugador" action="#{jugadorManagedBean.creaJugador()}"/>
                     </h:form>
                 </f:view>
 
 
                                                     <br/>
                                                     <br/>
-                                                    <p:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
+                                                    <p:commandButton actionListener="#{jugadorManagedBean.redireccionarJugador()}" class="btn btn-outline btn-success" value="Registrar" action="#{jugadorManagedBean.creaJugador()}" />
 
                                                  
                                                 </div>
