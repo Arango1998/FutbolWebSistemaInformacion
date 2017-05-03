@@ -56,11 +56,16 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
     public void registrarPago(){
         try {
     Date fecha= new Date();
-    
-    Email envioC;
-    envioC = new Email("Novedad de pago Expreso Rojo", "Se le notifíca que se le ha generado un nuevo registro de pago "+pago.getMotivoPago()+" con estado '"+pago.getEstado()+"' y un monto de '"+pago.getMonto()+"' en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema.",pago.getFkIdJugador().getUsuario().getCorreo() +","+pago.getFkIdJugador().getUsuario().getIdAcudiente().getCorreo());
-            System.out.println(envioC.toString());
-    envioC.enviarEmail2();
+            if (pago.getFkIdJugador().getUsuario().getIdAcudiente()!= null) {
+              Email envioA;
+    envioA = new Email("Novedad de pago Expreso Rojo", "Señor/a "+pago.getFkIdJugador().getUsuario().getIdAcudiente().getPrimerNombre()+" "+pago.getFkIdJugador().getUsuario().getIdAcudiente().getPrimerApellido()+", Se le notifíca que se  ha generado un nuevo registro de pago '"+pago.getMotivoPago()+"' con estado '"+pago.getEstado()+"' y un monto de '"+pago.getMonto()+"' en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema.",pago.getFkIdJugador().getUsuario().getIdAcudiente().getCorreo());
+            System.out.println(envioA.toString());
+    envioA.enviarEmail2();  
+            }
+    Email envioJ;
+    envioJ = new Email("Novedad de pago Expreso Rojo", "Señor/a "+pago.getFkIdJugador().getUsuario().getPrimerNombre()+" "+pago.getFkIdJugador().getUsuario().getPrimerApellido()+", Se le notifíca que se  ha generado un nuevo registro de pago '"+pago.getMotivoPago()+"' con estado '"+pago.getEstado()+"' y un monto de '"+pago.getMonto()+"' en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema.",pago.getFkIdJugador().getUsuario().getCorreo());
+            System.out.println(envioJ.toString());
+    envioJ.enviarEmail2();
     pago.setFechaPago(fecha);
     pagof.create(pago);
     } catch(Exception e){
