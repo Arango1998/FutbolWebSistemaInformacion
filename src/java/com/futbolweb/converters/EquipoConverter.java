@@ -5,16 +5,20 @@
  */
 package com.futbolweb.converters;
 
-import com.futbolweb.persistence.entities.Jugador;
+import com.futbolweb.persistence.entities.Equipo;
 import javax.faces.convert.FacesConverter;
 
 /**
  *
- * @author Iesua
+ * @author Cristian Suesca
  */
-@FacesConverter (forClass = Jugador.class)
-public class JugadorConverter extends AbstractConverter{
-    public JugadorConverter(){
-    this.nameManagedBean = "jugadorManagedBean";
+
+@FacesConverter (forClass = Equipo.class)
+public class EquipoConverter extends AbstractConverter{
+    
+    public EquipoConverter(){
+    this.nameManagedBean = "equipoManagedBean";
     }
+    
 }
+

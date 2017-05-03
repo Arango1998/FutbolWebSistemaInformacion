@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HorarioClub.findByIdHorario", query = "SELECT h FROM HorarioClub h WHERE h.idHorario = :idHorario"),
     @NamedQuery(name = "HorarioClub.findByHoraInicio", query = "SELECT h FROM HorarioClub h WHERE h.horaInicio = :horaInicio"),
     @NamedQuery(name = "HorarioClub.findByHoraFin", query = "SELECT h FROM HorarioClub h WHERE h.horaFin = :horaFin")})
-public class HorarioClub implements Serializable {
+public class HorarioClub implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -126,6 +126,12 @@ public class HorarioClub implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.HorarioClub[ idHorario=" + idHorario + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idHorario.toString();
+        
     }
     
 }

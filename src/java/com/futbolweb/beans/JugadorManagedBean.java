@@ -22,12 +22,21 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "jugadorManagedBean")
 @RequestScoped
 public class JugadorManagedBean implements Serializable, InterfaceController<Jugador>{
-
-    private Jugador jugador;
-    @EJB
-    private JugadorFacade juf;
     
+     private Jugador jugador;
+  @EJB
+  private JugadorFacade jugadorEJB;
     public JugadorManagedBean() {
+    }
+    
+       @PostConstruct
+    public void init(){
+        jugador = new Jugador();
+    }
+
+     @Override
+    public Jugador getObjectByKey(Integer key) {
+    return jugadorEJB.find(key);
     }
 
     public Jugador getJugador() {
@@ -38,38 +47,20 @@ public class JugadorManagedBean implements Serializable, InterfaceController<Jug
         this.jugador = jugador;
     }
     
-    
-    @PostConstruct
-    public void init(){
-        jugador = new Jugador();
+    public List<Jugador> listarJugadores(){
+        return jugadorEJB.findAll();
     }
-    
-    
-    public void registrarJugador(){
-        juf.create(jugador);
-    }
-    
-    public void eliminarJugador(){
-        juf.remove(jugador);
-    }
-    
-    public void modificarJugador(Jugador j){
-        juf.edit(j);
-    }
-    
-    public List<Jugador> listarJugador(){
-        return juf.findAll();
-    }
-    
-    public String actualizarJugador(Jugador ju){
-        ju = jugador;
-        return "";
+      
+       
+    public void creaJugador(){
+        try {
+            jugadorEJB.create(jugador);
+        } catch (Exception e) {
+        }
     }
 
-    @Override
-    public Jugador getObjectByKey(Integer key) {
-        return juf.find(key);
-    }
+
+ 
     
     
     

@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ciudad.findAll", query = "SELECT c FROM Ciudad c"),
     @NamedQuery(name = "Ciudad.findByIdCiudad", query = "SELECT c FROM Ciudad c WHERE c.idCiudad = :idCiudad"),
     @NamedQuery(name = "Ciudad.findByNombreCiudad", query = "SELECT c FROM Ciudad c WHERE c.nombreCiudad = :nombreCiudad")})
-public class Ciudad implements Serializable {
+public class Ciudad implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -111,6 +111,11 @@ public class Ciudad implements Serializable {
     @Override
     public String toString() {
         return "com.futbolweb.persistence.entities.Ciudad[ idCiudad=" + idCiudad + " ]";
+    }
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idCiudad.toString();
     }
     
 }

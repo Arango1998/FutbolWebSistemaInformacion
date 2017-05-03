@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+               
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Crear Euipo"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="NombreEquipo:" for="nombreEquipo" />
+                            <h:inputText id="nombreEquipo" value="#{equipoManagedBean.equipo.nombreEquipo}" title="NombreEquipo" required="true" requiredMessage="The NombreEquipo field is required."/>
+                            <h:outputLabel value="FkIdCategoria:" for="fkIdCategoria" />
+                            <h:selectOneMenu id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categpria" itemLabel="#{categpria.nombreCategoria}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="IdEntrenador:" for="idEntrenador" />
+                            <h:selectOneMenu id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                        
+                        <h:commandButton value="Registrar Equipo" action="#{equipoManagedBean.createEquipo()}"/>
+                    </h:form>
+                </f:view>
+
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

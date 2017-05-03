@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdJugador:" for="idJugador" />
+                            <h:inputText id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required."/>
+                            
+                            
+                            
+                            <h:outputLabel value="Posicion:" for="posicion" />
+                            <h:inputText id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
+                            <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
+                            <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="eqipo" itemLabel="#{eqipo.nombreEquipo}"/>
+                            </h:selectOneMenu>
+<!--                            <h:outputLabel value="Usuario:" for="usuario" />
+                            <h:selectOneMenu id="usuario" value="#{jugadorManagedBean.jugador.usuario}" title="Usuario" required="true" requiredMessage="The Usuario field is required.">
+                                 TODO: update below reference to list of available items
+                                <f:selectItems value="#{fixme}"/>
+                            </h:selectOneMenu>-->
+                        </h:panelGrid>
+                        <h:commandButton value="Registrar Jugador" action="#{jugadorManagedBean.creaJugador()}"/>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
