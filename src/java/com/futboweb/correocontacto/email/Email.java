@@ -77,6 +77,28 @@ public class Email {
             msj.setFrom(new InternetAddress(REMITENTE));
             msj.setSubject(this.asusto);
             msj.setText(this.mensaje);
+            msj.setRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+            Transport.send(msj);
+        } catch (AddressException ex) {
+            System.out.println("la direccion se envio");
+        } catch (MessagingException ex) {
+            System.out.println("se  producio un error");
+            ex.printStackTrace();
+        }
+
+    }
+    
+    
+    
+        public void enviarEmailContacto() {
+        try {
+            Session session = getSession();
+
+            Message msj = new MimeMessage(session);
+
+            msj.setFrom(new InternetAddress(REMITENTE));
+            msj.setSubject(this.asusto);
+            msj.setText(this.mensaje);
             msj.setRecipient(Message.RecipientType.TO, new InternetAddress(REMITENTE));
             Transport.send(msj);
         } catch (AddressException ex) {

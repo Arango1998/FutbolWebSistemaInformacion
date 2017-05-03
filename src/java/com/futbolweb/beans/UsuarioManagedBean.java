@@ -9,6 +9,7 @@ import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futbolweb.persistence.facades.UsuarioFacade;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -27,6 +28,7 @@ import javax.inject.Inject;
 public class UsuarioManagedBean implements Serializable, InterfaceController<Usuario> {
 
     private Usuario usuario;
+    private List<Usuario> listaInvitado;
     @EJB
     private UsuarioFacade uf;
      @Inject
@@ -40,11 +42,20 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     @PostConstruct
     public void init() {
         usuario = new Usuario();
+        listaInvitado= new LinkedList<>();
     }
 
     @Override
     public Usuario getObjectByKey(Integer key) {
         return uf.find(key);
+    }
+
+    public List<Usuario> getListaInvitado() {
+        return listaInvitado;
+    }
+
+    public void setListaInvitado(List<Usuario> listaInvitado) {
+        this.listaInvitado = listaInvitado;
     }
 
     public Usuario getUsuario() {
@@ -77,6 +88,17 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         return uf.findAll();
     }
           
+          public List<Usuario> solicitarInvitado(){
+          List<Usuario> lUsuario = uf.listarUsuariosInvitados();
+          return listaInvitado=lUsuario;
+          
+          
+          }
+          public void recorroUsuarioInvitado(){
+        for (Usuario a : listaInvitado) {
+           
+        }
+          }
              public void creaUsuario() {
         try {
 

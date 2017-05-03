@@ -5,6 +5,7 @@
  */
 package com.futbolweb.persistence.facades;
 
+import com.futbolweb.persistence.entities.Rol;
 import com.futbolweb.persistence.entities.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -30,6 +31,16 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
+    
+    
+    
+    public List<Usuario>listarUsuariosInvitados(){
+    List<Usuario> listaInvitado;
+    Query query = em.createQuery("SELECT u FROM usuario u WHERE u.IdTipoRol=1");
+    listaInvitado = query.getResultList();
+    return listaInvitado;
+    }
+    
     
  public Usuario iniciarSesion(Usuario user) {
         Usuario usuario = null;

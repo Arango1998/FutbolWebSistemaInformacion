@@ -65,9 +65,11 @@ public class PagoManagedBean implements InterfaceController<Pago> {
         
     }
     public List<Pago> solicitarJugador(int idJugador){
+        
         Jugador j = jugadorF.find(idJugador);
         List<Pago> lpago = pagof.listarPagoEspecifico(j);
         return lista= lpago;
+        
     }
     public void recorroPagos(){
         for (Pago a : lista) {
