@@ -13,29 +13,31 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.Dependent;
 
 /**
  *
  * @author Cristian Suesca
  */
 @Named(value = "estadoUsuarioManagedBean")
-@RequestScoped
-public class EstadoUsuarioManagedBean implements Serializable, InterfaceController<EstadoUsuario> {
+@Dependent
+public class EstadoUsuarioManagedBean implements Serializable, InterfaceController<EstadoUsuario>{
 
     private EstadoUsuario estadoUsuario;
     @EJB
     private EstadoUsuarioFacade ef;
-
-    @PostConstruct
+    
+   
+    
+    public EstadoUsuarioManagedBean() {
+    }
+    
+      @PostConstruct
     public void init() {
         estadoUsuario = new EstadoUsuario();
     }
 
-    public EstadoUsuarioManagedBean() {
-    }
-
-    @Override
+     @Override
     public EstadoUsuario getObjectByKey(Integer key) {
         return ef.find(key);
     }
@@ -47,8 +49,8 @@ public class EstadoUsuarioManagedBean implements Serializable, InterfaceControll
     public void setEstadoUsuario(EstadoUsuario estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
-
-    public List<EstadoUsuario> listarEstadoUsuario() {
+    
+         public List<EstadoUsuario> listarEstadoUsuario() {
         return ef.findAll();
     }
 

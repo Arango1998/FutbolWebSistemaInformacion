@@ -27,20 +27,11 @@ public class RolManagedBean implements Serializable, InterfaceController<Rol> {
     @EJB
     private RolFacade rf;
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
     public RolManagedBean() {
     }
 
     @PostConstruct
     public void init() {
-
         rol = new Rol();
     }
 
@@ -49,8 +40,15 @@ public class RolManagedBean implements Serializable, InterfaceController<Rol> {
         return rf.find(key);
     }
 
-    public List<Rol> listar() {
+    public Rol getRol() {
+        return rol;
+    }
 
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public List<Rol> listarRolUsuario() {
         return rf.findAll();
     }
 

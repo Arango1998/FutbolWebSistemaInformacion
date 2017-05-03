@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -48,6 +49,15 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
     
         try {
             categoriaEJB.create(categoria);
+        } catch (Exception e) {
+        }
+    }
+    
+    
+      public void redireccionar(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("crear_categoria.xhtml");
         } catch (Exception e) {
         }
     }

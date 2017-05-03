@@ -31,8 +31,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
     
-    
-  public Usuario iniciarSesion(Usuario user) {
+ public Usuario iniciarSesion(Usuario user) {
         Usuario usuario = null;
         String rta;
         try {

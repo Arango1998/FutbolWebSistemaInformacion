@@ -6,8 +6,6 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
-import com.futbolweb.persistence.entities.EstadoUsuario;
-import com.futbolweb.persistence.entities.Rol;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futbolweb.persistence.facades.UsuarioFacade;
 import java.io.Serializable;
@@ -16,6 +14,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -24,12 +24,12 @@ import javax.inject.Inject;
  */
 @Named(value = "usuarioManagedBean")
 @RequestScoped
-public class UsuarioManagedBean implements Serializable, InterfaceController<Usuario>{
+public class UsuarioManagedBean implements Serializable, InterfaceController<Usuario> {
 
-     private Usuario usuario;
+    private Usuario usuario;
     @EJB
-    private UsuarioFacade usuarioRFacade;
-    @Inject
+    private UsuarioFacade uf;
+     @Inject
     private EstadoUsuarioManagedBean estadoUsuarioManagedBean;
     @Inject
     private RolManagedBean rolManagedBean;
@@ -37,7 +37,6 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     public UsuarioManagedBean() {
     }
 
-   
     @PostConstruct
     public void init() {
         usuario = new Usuario();
@@ -45,7 +44,7 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
 
     @Override
     public Usuario getObjectByKey(Integer key) {
-        return usuarioRFacade.find(key);
+        return uf.find(key);
     }
 
     public Usuario getUsuario() {
@@ -72,32 +71,31 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         this.rolManagedBean = rolManagedBean;
     }
     
-       public List<Usuario> listarRegistroUsuarios(){
-        return usuarioRFacade.findAll();
+    
+    
+          public List<Usuario> listarUsuario() {
+        return uf.findAll();
     }
-       
-             
-    public void creaUsuarioGeneral() {
-        try {
           
-            usuarioRFacade.create(usuario);
-        } catch (Exception e) {
-        }
-
-    }
-       
-       
-    public void creaUsuarioInvitado() {
+             public void creaUsuario() {
         try {
-            EstadoUsuario e = new EstadoUsuario();
-            e.setIdEstado(2);
-            Rol r = new Rol();
-            r.setIdTipoRol(1);
-            usuario.setIdEstado(e);
-            usuario.setIdTipoRol(r);
-            usuarioRFacade.create(usuario);
+
+            uf.create(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario registrado con éxito"));
+
         } catch (Exception e) {
+
         }
 
     }
+             
+             
+                public void redireccionar(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("registrar_usuario.xhtml");
+        } catch (Exception e) {
+        }
+    }
+
 }

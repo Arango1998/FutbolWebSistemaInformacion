@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+
+
+
+
+
+                <h:form>
+                    <h1><h:outputText value="List"/></h1>
+
+                    <h:commandLink title="Descargar tabla en pdf">
+                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                        <p:dataExporter type="pdf" target="listaUsuarios" fileName="ListadoDeUsuarios"/>
+                    </h:commandLink>
+                    <h:commandLink title="Descargar tabla en Excel">
+                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                        <p:dataExporter type="xls" target="listaUsuarios" fileName="ListadoDeUsuarios"/>
+                    </h:commandLink>
+                    <p:dataTable value="#{usuarioManagedBean.listarUsuario()}" var="item" id="listaUsuarios" >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Documento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PrimerNombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerNombre}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PrimerApellido"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerApellido}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Clave"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clave}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="FechaDeNacimento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaDeNacimento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Correo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="IdTipoRol"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoRol.nombreRol}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="IdEstado"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Usuario</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-body">
+                                             <center>
+                                            <h:form>
+
+                                                <center><h1><h:outputText value="Registro de Usuarios"/></h1></center>
+
+                                                <br/>
+                                                
+                                              
+
+                                                <h:panelGrid columns="2">
+                                                    <h:outputLabel value="Documento:" for="documento" />
+                                                    <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                                    <h:outputLabel value="PrimerNombre:" for="primerNombre" />
+                                                    <h:inputText  id="primerNombre" class="form-control" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                                                    <h:outputLabel value="PrimerApellido:" for="primerApellido" />
+                                                    <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                                                    <h:outputLabel value="Clave:" for="clave" />
+                                                    <h:inputSecret id="clave" class="form-control" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                                    <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                                                    <h:inputText id="fechaDeNacimento" class="form-control" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </h:inputText>
+                                                    <h:outputLabel value="Correo:" for="correo" />
+                                                    <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+                                                    <h:outputLabel value="IdTipoRol:" for="idTipoRol" />
+                                                    <h:selectOneMenu  class="form-control" id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" title="IdTipoRol" required="true" requiredMessage="The IdTipoRol field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rolUsuario" itemLabel="#{rolUsuario.nombreRol}"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputLabel value="IdEstado:" for="idEstado" />
+                                                    <h:selectOneMenu class="form-control" id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" title="IdEstado" required="true" requiredMessage="The IdEstado field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estadoUsuario" itemLabel="#{estadoUsuario.nombreEstado}"/>
+                                                    </h:selectOneMenu>
+
+                                                </h:panelGrid>
+                                                <br></br>
+                                                
+                                                <p:commandButton actionListener="#{usuarioManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.creaUsuario()}" />
+                                                
+                                            </h:form>
+                                            
+                                            </center>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <script src="js/jquery.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <script src="js/scripts.js"></script>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
