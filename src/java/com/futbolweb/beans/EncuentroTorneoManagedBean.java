@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
@@ -54,7 +55,12 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
     }
 
     public void crearEncuentro() {
-        etf.create(encuentroTorneo);
+        try {
+            etf.create(encuentroTorneo);
+        } catch (Exception e) {
+
+        }
+
     }
 
     public void redireccionar() {
