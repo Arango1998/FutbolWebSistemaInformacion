@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -21,21 +22,23 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "encuentroTorneoManagedBean")
 @RequestScoped
-public class EncuentroTorneoManagedBean implements Serializable, InterfaceController<EncuentroTorneo>{
+public class EncuentroTorneoManagedBean implements Serializable, InterfaceController<EncuentroTorneo> {
 
     private EncuentroTorneo encuentroTorneo;
     @EJB
     private EncuentroTorneoFacade etf;
+
     public EncuentroTorneoManagedBean() {
     }
-      @PostConstruct
-    public void init(){
+
+    @PostConstruct
+    public void init() {
         encuentroTorneo = new EncuentroTorneo();
     }
 
     @Override
     public EncuentroTorneo getObjectByKey(Integer key) {
-    return etf.find(key);
+        return etf.find(key);
     }
 
     public EncuentroTorneo getEncuentroTorneo() {
@@ -45,12 +48,20 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
     public void setEncuentroTorneo(EncuentroTorneo encuentroTorneo) {
         this.encuentroTorneo = encuentroTorneo;
     }
-    
-     public List<EncuentroTorneo> listar(){
+
+    public List<EncuentroTorneo> listar() {
         return etf.findAll();
     }
-      public void crearEncuentro(){
+
+    public void crearEncuentro() {
         etf.create(encuentroTorneo);
     }
-    
+
+    public void redireccionar() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_encuentro.xhtml");
+        } catch (Exception e) {
+        }
+    }
 }

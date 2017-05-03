@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -22,22 +22,18 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "barrioManagedBean")
 @RequestScoped
-public class BarrioManagedBean implements Serializable, InterfaceController<Barrio>{
-private Barrio barrio;
-@EJB
-private BarrioFacade bf;
-  
+public class BarrioManagedBean implements Serializable, InterfaceController<Barrio> {
+
+    private Barrio barrio;
+    @EJB
+    private BarrioFacade bf;
+
     public BarrioManagedBean() {
     }
-    
-      @PostConstruct
-    public void init(){
-        barrio = new Barrio();
-    }
 
-    @Override
-    public Barrio getObjectByKey(Integer key) {
-    return bf.find(key);
+    @PostConstruct
+    public void init() {
+        barrio = new Barrio();
     }
 
     public Barrio getBarrio() {
@@ -47,24 +43,27 @@ private BarrioFacade bf;
     public void setBarrio(Barrio barrio) {
         this.barrio = barrio;
     }
-    
-      public List<Barrio> listar(){
+
+    public List<Barrio> listar() {
         return bf.findAll();
     }
-      
-       public void crearBarrio(){
+
+    public void crearBarrio() {
         bf.create(barrio);
-        
+
     }
-       
-           public void redireccionar(){
-    
+
+    public void redireccionar() {
+
         try {
-              FacesContext.getCurrentInstance().getExternalContext().redirect("listar_barrio.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_barrio.xhtml");
         } catch (Exception e) {
         }
     }
 
-    
-    
+    @Override
+    public Barrio getObjectByKey(Integer key) {
+        return bf.find(key);
+    }
+
 }

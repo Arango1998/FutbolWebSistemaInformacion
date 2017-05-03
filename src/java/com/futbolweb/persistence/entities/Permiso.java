@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permiso.findByNombrePermiso", query = "SELECT p FROM Permiso p WHERE p.nombrePermiso = :nombrePermiso"),
     @NamedQuery(name = "Permiso.findByUrl", query = "SELECT p FROM Permiso p WHERE p.url = :url"),
     @NamedQuery(name = "Permiso.findByIcon", query = "SELECT p FROM Permiso p WHERE p.icon = :icon")})
-public class Permiso implements Serializable {
+public class Permiso implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,4 +173,8 @@ public class Permiso implements Serializable {
 //
 //    }
 //    
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idPermiso.toString();
+    }
 }

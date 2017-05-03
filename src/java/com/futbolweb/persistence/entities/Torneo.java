@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Torneo.findByOrganizador", query = "SELECT t FROM Torneo t WHERE t.organizador = :organizador"),
     @NamedQuery(name = "Torneo.findByFechaInicio", query = "SELECT t FROM Torneo t WHERE t.fechaInicio = :fechaInicio"),
     @NamedQuery(name = "Torneo.findByFechaFin", query = "SELECT t FROM Torneo t WHERE t.fechaFin = :fechaFin")})
-public class Torneo implements Serializable {
+public class Torneo implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -188,5 +188,10 @@ public class Torneo implements Serializable {
     public String toString() {
         return "com.futbolweb.persistence.entities.Torneo[ idTorneo=" + idTorneo + " ]";
     }
-    
+
+    @Override
+    public String obtenerLlavePrimaria() {
+        return idTorneo.toString();
+    }
+
 }

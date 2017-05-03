@@ -16,19 +16,16 @@
 
 
                     <h:form>
-                       
-
-                      
 
                         <center ><h1><h:outputText value="Torneos programados"/></h1></center>
                         <br></br>
-                          
-                         <h:commandLink title="Descargar tabla en pdf">
+
+                        <h:commandLink title="Descargar tabla en pdf">
                             <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
                             <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
                         <h:commandLink title="Descargar tabla en Excel">
-                              <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                            <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                             <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
                         <p:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
@@ -54,6 +51,7 @@
                                 <h:outputText value="#{item.datosContactoOrganizador}"/>
                             </p:column>
 
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Inicio de Torneo"/>
@@ -62,6 +60,7 @@
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Finalización de Torneo"/>
@@ -111,7 +110,11 @@
 
                                                     <h:outputLabel value="Inicio"/>
                                                     <br/>
-                                                    <p:calendar id="popup" value="#{torneoManagedBean.torneo.fechaInicio}"/>
+
+                                                    <p:calendar id="button" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </p:calendar>
+
                                                     <br/>
                                                     <h:outputLabel value="Finalización"/>
                                                     <br/>
@@ -120,7 +123,7 @@
                                                     <br/>
                                                     <p:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
 
-
+                                                 
                                                 </div>
                                             </h:form>
                                         </div>
@@ -144,9 +147,9 @@
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
                 <script src="js/scripts.js"></script>
-                
-                
-               
+
+
+
 
             </ui:define>
 
