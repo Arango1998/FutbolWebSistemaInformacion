@@ -58,9 +58,9 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
     Date fecha= new Date();
     
     Email envioC;
-    envioC = new Email("Novedad de pago Expreso Rojo", "Se le notifíca que se le ha generado un nuevo registro de pago en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema :", pago.getFkIdJugador().getUsuario().getCorreo());
+    envioC = new Email("Novedad de pago Expreso Rojo", "Se le notifíca que se le ha generado un nuevo registro de pago "+pago.getMotivoPago()+" con estado '"+pago.getEstado()+"' y un monto de '"+pago.getMonto()+"' en el club Expreso Rojo, para mas información consultar el control de pagos en nuestro sistema.",pago.getFkIdJugador().getUsuario().getCorreo() +","+pago.getFkIdJugador().getUsuario().getIdAcudiente().getCorreo());
             System.out.println(envioC.toString());
-    envioC.enviarEmail();
+    envioC.enviarEmail2();
     pago.setFechaPago(fecha);
     pagof.create(pago);
     } catch(Exception e){
