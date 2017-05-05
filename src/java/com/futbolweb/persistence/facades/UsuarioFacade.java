@@ -60,6 +60,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return usuario;
     }
  
+ 
  public Usuario capturarUsuario(Usuario usu){
         return getEntityManager().createNamedQuery("Usuario.findByDocumento",Usuario.class).setParameter("documento", usu.getDocumento()).getSingleResult();
     }

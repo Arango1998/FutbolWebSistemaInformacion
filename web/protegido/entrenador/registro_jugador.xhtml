@@ -19,7 +19,7 @@
                     <h:form>
                         <h1><h:outputText value="List"/></h1>
                         <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
-                        
+                         
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Posicion"/>
@@ -30,17 +30,21 @@
                                 <f:facet name="header">
                                     <h:outputText value="FkIdEquipo"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                                <h:outputText value="#{item.fkIdEquipo}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Acudiente"/>
+                                    <h:outputText value="Usuario"/>
                                 </f:facet>
-                                <h:outputText value="#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                                <h:outputText value="#{item.usuario}"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
+
+
+
+                  
                 
                  <div class="container-fluid">
                     <div class="row">
@@ -58,47 +62,45 @@
 
                                         </div>
                                         <div class="modal-body">
-                                            <h:form>
+                                            
                                                 <center><h1><h:outputText value="Registro de Jugadores"/></h1></center>
 
                                                 <br/>
                                                 <div class="rowContainer">
-                                                        <f:view>
+                                                    <f:view>
 
 
-                    <h:form>
-                      
-                        <h:panelGrid columns="2">
-                            <h:outputLabel value="IdJugador:" for="idJugador" />
-                            <h:inputText id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required."/>
-                            
-                            
-                             
-                            
-                            
-                            <h:outputLabel value="Posicion:" for="posicion" />
-                            <h:inputText id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
-                            <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
-                            <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="eqipo" itemLabel="#{eqipo.nombreEquipo}"/>
-                            </h:selectOneMenu>
-                            <h:outputLabel value="Usuario:" for="usuario" />
-                            <h:selectOneMenu id="usuario" value="#{jugadorManagedBean.jugador.usuario}" title="Usuario" required="true" requiredMessage="The Usuario field is required.">
-                                <f:selectItems value="#{usuarioManagedBean.listarUsuario()}" var="usuario" itemLabel="#{usuario.documento}, #{usuario.primerNombre} #{usuario.idTipoRol.nombreRol}"/>
-                            </h:selectOneMenu>
-                        </h:panelGrid>
-                    </h:form>
-                </f:view>
+                                                        <h:form>
+                                                            <h1><h:outputText value="Create/Edit"/></h1>
+                                                            <h:panelGrid columns="2">
+                                                                <h:outputLabel value="Usuario:" for="usuario" />
+                                                                <h:selectOneMenu id="usuario" value="#{jugadorManagedBean.jugador.idJugador}" title="Usuario" required="true" requiredMessage="The Usuario field is required.">
+                                                                    <!-- TODO: update below reference to list of available items-->
+                                                                    <f:selectItems value="#{usuarioManagedBean.listarUsuario()}"/>
+                                                                </h:selectOneMenu>
+                                                                <h:outputLabel value="Posicion:" for="posicion" />
+                                                                <h:inputText id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
+                                                                <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
+                                                                <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
+                                                                    <!-- TODO: update below reference to list of available items-->
+                                                                    <f:selectItems value="#{equipoManagedBean.listarEquipos()}"/>
+                                                                </h:selectOneMenu>
+                                                                
+                                                            </h:panelGrid>
+                                                            <p:commandButton actionListener="#{jugadorManagedBean.redireccionarJugador()}" class="btn btn-outline btn-success" value="Registrar" action="#{jugadorManagedBean.creaJugador()}" />
+
+                                                        </h:form>
+                                                    </f:view>
+
+             
 
 
                                                     <br/>
                                                     <br/>
-                                                    <p:commandButton actionListener="#{jugadorManagedBean.redireccionarJugador()}" class="btn btn-outline btn-success" value="Registrar" action="#{jugadorManagedBean.creaJugador()}" />
 
                                                  
                                                 </div>
-                                            </h:form>
+                                            
                                         </div>
                                         <div class="modal-footer">
 
