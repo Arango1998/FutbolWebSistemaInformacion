@@ -6,6 +6,7 @@
 package com.futbolweb.pagos.beans;
 
 
+import com.futbolweb.beans.PagoManagedBean;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Pago;
@@ -18,6 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -32,8 +34,8 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
     private PagoFacade pagof;
      @EJB
      private JugadorFacade jugadorf;
-   
-    
+     
+     
     @PostConstruct
     public void init(){
     pago = new Pago();
@@ -67,6 +69,8 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
             System.out.println(envioJ.toString());
     envioJ.enviarEmail2();
     pago.setFechaPago(fecha);
+    Jugador j = (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jugadorPago");
+    pago.setFkIdJugador(j);
     pagof.create(pago);
     } catch(Exception e){
             System.out.println(e.getMessage());

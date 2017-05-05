@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Pago;
+import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.PagoFacade;
 import java.util.LinkedList;
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -27,19 +29,19 @@ import javax.inject.Inject;
 public class PagoManagedBean implements InterfaceController<Pago> {
 
     private Pago pago;
-    List<Pago>lista;
-    @EJB 
+    List<Pago> lista;
+    @EJB
     private PagoFacade pagof;
-   
+
     private Jugador jugador;
     @EJB
     private JugadorFacade jugadorF;
-    
+
     @PostConstruct
-    public void init(){
-    pago = new Pago();
-    lista= new LinkedList<>();
-    
+    public void init() {
+        pago = new Pago();
+        lista = new LinkedList<>();
+
     }
 
     public Pago getPago() {
@@ -57,40 +59,51 @@ public class PagoManagedBean implements InterfaceController<Pago> {
     public void setLista(List<Pago> lista) {
         this.lista = lista;
     }
-    
-    public List<Pago> listarPago() {
 
-        return pagof.findAll();
-        
-        
+    public List<Pago> listarPago() {
+        return (List<Pago>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pagos");
     }
-    public List<Pago> solicitarJugador(int idJugador){
-        
+
+    public String solicitarJugador(int idJugador) {
+
         Jugador j = jugadorF.find(idJugador);
         List<Pago> lpago = pagof.listarPagoEspecifico(j);
-        return lista= lpago;
-        
+        lista = lpago;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("pagos", lista);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jugadorPago", j);
+        return "/protegido/coordinador/listapagos.xhtml?faces-redirect=true";
+
     }
-    public void recorroPagos(){
+
+    public void recorroPagos() {
         for (Pago a : lista) {
-           
+
         }
     }
-    public String actualizarPago(Pago pa){
+
+    public String actualizarPago(Pago pa) {
         pago = pa;
         return "";
     }
+
     /**
      * Creates a new instance of PagoManagedBean
      */
     public PagoManagedBean() {
-    
+
+    }
+
+    public void redireccionar() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listapagos.xhtml");
+        } catch (Exception e) {
+        }
     }
 
     @Override
     public Pago getObjectByKey(Integer key) {
         return pagof.find(key);
     }
-    
-}
 
+}
