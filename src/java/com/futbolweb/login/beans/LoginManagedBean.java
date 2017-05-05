@@ -5,6 +5,7 @@
  */
 package com.futbolweb.login.beans;
 
+import com.futbolweb.persistence.entities.Rol;
 import com.futbolweb.persistence.entities.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -24,6 +25,8 @@ public class LoginManagedBean implements Serializable {
 
     private String documento;
     private String clave;
+     private Usuario usuario;
+    private Rol rol;
     
     @EJB 
     private UsuarioSessionBean usuarioSessionBean;
@@ -43,11 +46,31 @@ public class LoginManagedBean implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
     
     @PostConstruct
     public void init() {
         clave = "";
         documento = "";
+         rol = new Rol();
+        usuario = new Usuario();
     }
     
     
@@ -72,6 +95,7 @@ public class LoginManagedBean implements Serializable {
                         break;
                 }
             } else if (object instanceof Usuario) {
+                rol = ((Usuario)object).getIdTipoRol();
                 context.getExternalContext().getSessionMap().put("usuario", object);
                 return "/protegido/iniciousuario.xhtml?faces-redirect=true";
             }

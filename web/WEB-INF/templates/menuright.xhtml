@@ -18,27 +18,62 @@
 
                     <li class="sidebar-brand">
                         <a href="#">
-                            
-                           
-                          
-                            
+
+                            <span>Usuario: #{loginManagedBean.documento}</span>
+
+
+
                         </a>
-                        
-                        
+
+
                     </li>
                     
                     
+
+
                     <ul>
                         <input type="text" id="buscador" placeholder="Buscar"/>
                     </ul>
-                    
-                    
+
+
                     <br/>
                     
-                   
-                 
+                       <ul class="nav">
+                           <c:forEach items="#{loginManagedBean.rol.permisoList}" var="permiso">
+                               <c:if test="#{empty permiso.permisoPadre and empty permiso.permisoList}">
+                                   <li><h:link outcome="#{permiso.url}"><i class="#{permiso.icon}"/><p>#{permiso.nombrePermiso}</p></h:link></li>
+                        </c:if>
+                               <c:if test="#{empty permiso.permisoPadre and not empty permiso.permisoList}">
+                            <li class="dropdown">
+                                <a class="dropdown" data-toggle="dropdown" href="#{permiso.url}"><i class="#{permiso.icon}"/> <p>#{permiso.nombrePermiso}</p></a>
+                                <ul class="dropdown-menu">
+                                    <c:forEach items="#{permiso.permisoList}" var="subItem">
+                                        <c:forEach items="#{loginManagedBean.rol.permisoList}" var="p">
+                                            <c:if test="#{subItem.equals(p)}">
+                                                <li><h:link outcome="#{subItem.url}"><p>#{subItem.nombrePermiso}</p></h:link></li>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </c:if>
+                    </c:forEach>
 
-                 
+                </ul>
+                    
+                    
+                    <ul>
+                        <li><p:commandLink actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
+                      
+                    </ul>
+                    
+                    
+                    
+
+
+
+
+
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->

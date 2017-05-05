@@ -99,6 +99,22 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
            
         }
           }
+          
+          
+          
+            public void creaUsuarioInvitado() {
+        try {
+            usuario.setIdEstado(getEstadoUsuarioManagedBean().getObjectByKey(1));
+            usuario.setIdTipoRol(getRolManagedBean().getObjectByKey(5));
+            uf.create(usuario);
+        } catch (Exception e) {
+        }
+
+    }
+          
+          
+          
+          
              public void creaUsuario() {
         try {
 
@@ -110,6 +126,10 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         }
 
     }
+             
+             
+             
+    
              
              
                 public void redireccionar(){
