@@ -14,12 +14,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Cristian Suesca
+ * @author camila
  */
 @Named(value = "encuentroTorneoManagedBean")
 @RequestScoped
@@ -27,19 +26,20 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
 
     private EncuentroTorneo encuentroTorneo;
     @EJB
-    private EncuentroTorneoFacade etf;
+    private EncuentroTorneoFacade encuentroejb;
 
     public EncuentroTorneoManagedBean() {
     }
 
     @PostConstruct
     public void init() {
+
         encuentroTorneo = new EncuentroTorneo();
     }
 
     @Override
     public EncuentroTorneo getObjectByKey(Integer key) {
-        return etf.find(key);
+        return encuentroejb.find(key);
     }
 
     public EncuentroTorneo getEncuentroTorneo() {
@@ -50,17 +50,15 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
         this.encuentroTorneo = encuentroTorneo;
     }
 
-    public List<EncuentroTorneo> listar() {
-        return etf.findAll();
+    public void crear() {
+
+        encuentroejb.create(encuentroTorneo);
+
     }
 
-    public void crearEncuentro() {
-        try {
-            etf.create(encuentroTorneo);
-        } catch (Exception e) {
+    public List<EncuentroTorneo> listarEncuentro() {
 
-        }
-
+        return encuentroejb.findAll();
     }
 
     public void redireccionar() {

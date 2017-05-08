@@ -18,7 +18,7 @@
                         <p:growl id="growl" sticky="true" showSummary="true" showDetail="true" /> 
 
                         <h1><h:outputText value="List"/></h1>
-                        <p:dataTable value="#{encuentroTorneoManagedBean.listar()}" var="item">
+                        <p:dataTable value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item">
 
                             <p:column>
                                 <f:facet name="header">
@@ -83,7 +83,7 @@
 
                                                     <h:outputLabel  value="Fecha del encuentro"/>
                                                     <br/>
-                                                    <p:calendar id="button" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
+                                                    <p:calendar id="button" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" showOn="button">
                                                         <f:convertDateTime pattern="MM/dd/yyyy" />
                                                     </p:calendar>
 
@@ -112,7 +112,7 @@
                                                     </h:selectOneMenu>
 
 
-                                                    <p:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crearEncuentro()}" />
+                                                    <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" />
 
 
                                                 </div>

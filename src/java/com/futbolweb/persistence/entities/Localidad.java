@@ -128,7 +128,7 @@ public class Localidad implements Serializable, IDTO {
 
     @Override
     public String obtenerLlavePrimaria() {
-    return idLocalidad.toString();
+        return idLocalidad.toString();
     }
-    
+
 }
