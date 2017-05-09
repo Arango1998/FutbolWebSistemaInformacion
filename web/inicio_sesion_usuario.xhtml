@@ -7,24 +7,70 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <f:view>
-            <h:form>
-                
-                <h:inputText  id="documento" value="#{loginManagedBean.documento}"/>
-                <h:inputSecret id="clave" value="#{loginManagedBean.clave}"/>
-                
-                <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
-                
-                
-            </h:form>
-        </f:view>
- <p><a href="faces/pagina_principal.xhtml" class="btn btn-outline  btn-danger">Pagina</a></p>
-	
+        <div class="main" style="padding:2%;margin-top:5%;">        	
+            <div class="col-lg-12">
+                <div class="container">
+
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <div class="row grids text-center">
+                            <div class="view view-tenth">
+                                <!--  <a href="single.html">-->
+                                <div class="inner_content clearfix">
+                                    <div class="product_image">
+                                        <img src="resources/images/paginainicio/Logo.png" class="img-responsive" alt="" style="margin:0% auto;"/>
+                                    </div>
+                                    <div class="label-product">
+
+                                    </div>
+                                    <div class="mask" style="width:100% !important; ">
+                                        <h2>Bienvenido Señor Usuario</h2>
+                                        <div class="main">
+                                            <h:form>
+
+                                                <h:inputText  id="documento" value="#{loginManagedBean.documento}"/>
+                                                <h:inputSecret id="clave" value="#{loginManagedBean.clave}"/>
+
+                                                <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
+
+
+                                            </h:form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--  </a> -->
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+        <br></br>   
+        <a href="pagina_principal.xhtml" class="btn btn-outline btn-success"><span class="fa fa-home"></span>Página principal</a>
+
+
+
+
+
+
+
+
     </body>
 </html>

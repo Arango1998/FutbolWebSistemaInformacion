@@ -91,7 +91,7 @@ public class LoginManagedBean implements Serializable {
                         context.addMessage(null, new FacesMessage("Contraseña incorrecta"));
                         break;
                     case 4:
-                        context.addMessage(null, new FacesMessage("Usuario De estado  inactivo"));
+                        context.addMessage(null, new FacesMessage("Usuario en estado ´Inactivo´"));
                         break;
                 }
             } else if (object instanceof Usuario) {
