@@ -56,9 +56,18 @@ public class SeguridadManagedBean {
     }
       
       
-          public void cerrarSesion() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+         public String cerrarSesion(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getSessionMap().remove("usuario");
+        context.getExternalContext().invalidateSession();
+        return "/paginaprincipal.xhtml?faces-redirect=true";
     }
+      
+      
+      
+//          public void cerrarSesion() {
+//        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+//    }
     
     
 }
