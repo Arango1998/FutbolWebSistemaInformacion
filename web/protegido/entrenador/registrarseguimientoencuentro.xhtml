@@ -4,6 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -11,15 +13,15 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                
-                
+
+
                 <f:view>
 
 
                     <h:form>
                         <h1><h:outputText value="Listado seguimiento encuentros"/></h1>
                         <p:dataTable value="#{seguimientoEncuentroManagedBean.listarSeguimientoEncuentro()}" var="item">
-                            
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Observacion"/>
@@ -50,62 +52,106 @@
                                 </f:facet>
                                 <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
                             </p:column>
+                            <p:column>
+                                <h:commandButton class="btn btn-outline btn-danger" value="Eliminar" actionListener="#{seguimientoEncuentroManagedBean.eliminarSeguimientoEncuentro(segui)}" />
+                            </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
 
-                
-                <f:view>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar seguimiento encuentro</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+
+                                        </div>
+                                        <h1><h:outputText value="Registro seguimiento encuentro"/></h1>
+                                        <div class="modal-body">
+                                            <center>
+                                                
+                                            <f:view>
 
 
-                    <h:form>
-                        <h1><h:outputText value="Registro seguimiento encuentro"/></h1>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Observacion:" for="observacion" />
-                            <p:inputTextarea rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
-                            <p:outputLabel value="Calificacion:" for="calificacion" />
-                            
-                            
-                              <h:selectOneMenu class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}"  required="true" requiredMessage="El campo 'Estado' es requerido">
-                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                            <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
-                            <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
-                            <f:selectItem  itemValue="Regular" itemLabel="Regular"/>
-                            <f:selectItem  itemValue="Deficiente" itemLabel="Deficiente"/>
-                            </h:selectOneMenu>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            <p:outputLabel value="IdEncuentro:" for="idEncuentro" />
-                            <p:selectOneMenu id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" required="true" requiredMessage="The IdEncuentro field is required.">
-                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                  
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="encuentro" itemLabel="#{encuentro.obtenerLlavePrimaria()}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="IdJugador:" for="idJugador" />
-                            <p:selectOneMenu id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" required="true" requiredMessage="The IdJugador field is required.">
-                                 <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                  
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="jugador" itemLabel="#{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}, #{jugador.posicion}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="IdEntrenador:" for="idEntrenador" />
-                            <p:selectOneMenu id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" required="true" requiredMessage="The IdEntrenador field is required.">
-                                 <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                  
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
-                            </p:selectOneMenu>
-                        </p:panelGrid>
-                        <h:commandButton value="registrar seguimiento" action="#{seguimientoEncuentroManagedBean.registrarSeguimientoEncuentro()}"/>
-                    </h:form>
-                </f:view>
+                                                <h:form>
+                                                    
+                                                    <h:panelGrid columns="2">
+                                                        <h:outputLabel value="Observacion:" for="observacion" />
+                                                        <h:inputTextarea class="form-control" rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
+                                                        <h:outputLabel value="Calificacion:" for="calificacion" />
+
+                                                        <h:selectOneMenu class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}"  required="true" requiredMessage="El campo 'Estado' es requerido">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
+                                                            <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
+                                                            <f:selectItem  itemValue="Regular" itemLabel="Regular"/>
+                                                            <f:selectItem  itemValue="Deficiente" itemLabel="Deficiente"/>
+                                                        </h:selectOneMenu>
+
+
+
+                                                        <h:outputLabel value="IdEncuentro:" for="Encuentro" />
+                                                        <h:selectOneMenu class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="encuentro" itemLabel="#{encuentro.obtenerLlavePrimaria()}"/>
+                                                    
+                                                        </h:selectOneMenu>
+                                                        <h:outputLabel value="IdJugador:" for="Jugador" />
+                                                        <h:selectOneMenu class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
+                                                             <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="jugador" itemLabel="#{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}, #{jugador.posicion}"/>
+                                                    
+                                                        </h:selectOneMenu>
+                                                        <h:outputLabel value="IdEntrenador:" for="Entrenador" />
+                                                        <h:selectOneMenu class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                                             <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+                                             
+                                                        </h:selectOneMenu>
+                                                    </h:panelGrid>
+                                                    <br></br>
+                                                    <p:commandButton actionListener="#{seguimientoEncuentroManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{seguimientoEncuentroManagedBean.registrarSeguimientoEncuentro()}" />
+                                                </h:form>
+                                            </f:view>
+                                            </center>
+
+                                        
+
+
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
 
             </ui:define>
 

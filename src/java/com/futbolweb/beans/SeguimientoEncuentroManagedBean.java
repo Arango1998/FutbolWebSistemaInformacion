@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -51,8 +52,8 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
         segef.create(seguimientoencuentro);
     }
     
-    public void eliminarSeguimientoEncuentro(){
-        segef.remove(seguimientoencuentro);
+    public void eliminarSeguimientoEncuentro(SeguimientoEncuentro segui){
+        segef.remove(segui);
     }
     
     public void modificarSeguimientoEncuentro(SeguimientoEncuentro se){
@@ -72,6 +73,16 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
     public SeguimientoEncuentro getObjectByKey(Integer key) {
         return segef.find(key);
     }
+
+  
+      public void redireccionar(){
+    
+        try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("registrarseguimientoencuentro.xhtml");
+        } catch (Exception e) {
+        }
+    }
+
 }
     
 
