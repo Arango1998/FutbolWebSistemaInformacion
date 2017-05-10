@@ -25,10 +25,10 @@ public class LoginManagedBean implements Serializable {
 
     private String documento;
     private String clave;
-     private Usuario usuario;
+    private Usuario usuario;
     private Rol rol;
-    
-    @EJB 
+
+    @EJB
     private UsuarioSessionBean usuarioSessionBean;
 
     public String getDocumento() {
@@ -62,20 +62,16 @@ public class LoginManagedBean implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
-    
-    
+
     @PostConstruct
     public void init() {
         clave = "";
         documento = "";
-         rol = new Rol();
+        rol = new Rol();
         usuario = new Usuario();
     }
-    
-    
-    
-        public String iniciarSesion() {
+
+    public String iniciarSesion() {
         try {
             Object object = usuarioSessionBean.autenticarSesionUsuario(documento, clave);
             FacesContext context = FacesContext.getCurrentInstance();
@@ -95,20 +91,16 @@ public class LoginManagedBean implements Serializable {
                         break;
                 }
             } else if (object instanceof Usuario) {
-                rol = ((Usuario)object).getIdTipoRol();
+                rol = ((Usuario) object).getIdTipoRol();
                 context.getExternalContext().getSessionMap().put("usuario", object);
                 return "/protegido/iniciousuario.xhtml?faces-redirect=true";
             }
         } catch (Exception e) {
         }
-        return null;        
+        return null;
     }
-    
-    
-    
-    
-    
+
     public LoginManagedBean() {
     }
-    
+
 }

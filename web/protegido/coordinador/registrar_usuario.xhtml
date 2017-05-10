@@ -11,14 +11,18 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+                
+                <center>
+                     <h1><h:outputText value="Lista Usuarios"/></h1>
+
+                </center>
 
 
 
 
 
                 <h:form>
-                    <h1><h:outputText value="List"/></h1>
-
+                   
                     <h:commandLink title="Descargar tabla en pdf">
                         <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
                         <p:dataExporter type="pdf" target="listaUsuarios" fileName="ListadoDeUsuarios"/>
@@ -27,6 +31,7 @@
                         <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                         <p:dataExporter type="xls" target="listaUsuarios" fileName="ListadoDeUsuarios"/>
                     </h:commandLink>
+                    
                     <p:dataTable value="#{usuarioManagedBean.listarUsuario()}" var="item" id="listaUsuarios" >
 
                         <p:column>
@@ -37,27 +42,22 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="PrimerNombre"/>
+                                <h:outputText value="Primer Nombre"/>
                             </f:facet>
                             <h:outputText value="#{item.primerNombre}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="PrimerApellido"/>
+                                <h:outputText value="Primer Apellido"/>
                             </f:facet>
                             <h:outputText value="#{item.primerApellido}"/>
                         </p:column>
 
+                       
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Clave"/>
-                            </f:facet>
-                            <h:outputText value="#{item.clave}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="FechaDeNacimento"/>
+                                <h:outputText value="Fecha Nacimento"/>
                             </f:facet>
                             <h:outputText value="#{item.fechaDeNacimento}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -75,13 +75,13 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="IdTipoRol"/>
+                                <h:outputText value="Rol"/>
                             </f:facet>
                             <h:outputText value="#{item.idTipoRol.nombreRol}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="IdEstado"/>
+                                <h:outputText value="Estado"/>
                             </f:facet>
                             <h:outputText value="#{item.idEstado.nombreEstado}"/>
                         </p:column>

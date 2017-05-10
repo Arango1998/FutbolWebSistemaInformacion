@@ -16,23 +16,23 @@ import javax.persistence.PersistenceContext;
  */
 @Stateful
 public class UsuarioSessionBean {
-    
-     @PersistenceContext(unitName = "web_futbol_sistema_informacionPU")
+
+    @PersistenceContext(unitName = "web_futbol_sistema_informacionPU")
     private EntityManager em;
-       protected EntityManager getEntityManager() {
+
+    protected EntityManager getEntityManager() {
         return em;
     }
-       
-          public UsuarioSessionBean() {
+
+    public UsuarioSessionBean() {
     }
-          
-          
-           public Object autenticarSesionUsuario(String documento, String clave) {
+
+    public Object autenticarSesionUsuario(String documento, String clave) {
         try {
             Usuario usuario = getEntityManager().createNamedQuery("Usuario.findByDocumento", Usuario.class).setParameter("documento", documento).getSingleResult();
             if (usuario != null) {
                 if (usuario.getClave().equals(clave)) {
-                  //falta captura usuario
+                    //falta captura usuario
                     if (!usuario.getIdEstado().getIdEstado().equals(1)) {
                         System.out.println("Activo");
                         return usuario;
@@ -41,16 +41,17 @@ public class UsuarioSessionBean {
                         System.out.println("Estado de Usuario 'Inactivo'");
                         return 4;
                     }
-                }else {
+                } else {
                     return 3;
                 }
-            }else{
+            } else {
                 return 2;
             }
         } catch (Exception e) {
+            System.out.println(e.getCause());
             System.out.println("Error!");
             return 1;
         }
     }
-    
+
 }

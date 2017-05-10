@@ -11,35 +11,50 @@ and open the template in the editor.
     <head>
         <title>Registrar Usuario</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        
+        
     </head>
     <body>
         
-        <f:view>
+        <center>
+             
 
 
             <h:form>
-                <h1><h:outputText value="Crar Usuario"/></h1>
-                <h:panelGrid columns="2">
+                <h1><h:outputText value="Registro Nuevo Usuario"/></h1>
+                 <br/>
+                <h:panelGrid columns="3">
                     <h:outputLabel value="Documento:" for="documento" />
-                    <h:inputText id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                    <h:outputLabel value="PrimerNombre:" for="primerNombre" />
-                    <h:inputText id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                    <h:outputLabel value="PrimerApellido:" for="primerApellido" />
-                    <h:inputText id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                    <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                     <br/>
+                    <h:outputLabel value="Primer Nombre:" for="primerNombre" />
+                    <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                     <br/>
+                    <h:outputLabel value="Primer Apellido:" for="primerApellido" />
+                    <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                    <br/>
                     <h:outputLabel value="Clave:" for="clave" />
-                    <h:inputSecret id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                    <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
-                    <h:inputText id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                    <h:inputSecret class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" maxlength="30" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                     <br/>
+                    <h:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
+                    <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
+                     <br/>
                     <h:outputLabel value="Correo:" for="correo" />
-                    <h:inputText id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                    <h:inputText class="form-control"  id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
                    
                 </h:panelGrid>
-                <h:commandButton value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuarioInvitado()}"/>
+                <br/>
+                <h:commandButton class="btn-success " value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuarioInvitado()}"/>
             </h:form>
-        </f:view>
+       
         
+        </center>
+        
+      
         
 		
         

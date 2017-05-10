@@ -13,26 +13,36 @@ and open the template in the editor.
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        
       
     </head>
     <body>
+   <br/>
+      <br/>
+         <br/>
+            <br/>
+       
 
-
-
-        <f:view>
-
-
-            <h:form>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Documento:" for="documento" />
-                    <p:inputText id="documento" value="#{loginManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                    <p:outputLabel value="Clave:" for="clave" />
-                    <p:password id="clave" value="#{loginManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                </p:panelGrid>
-                <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
+        <center>
+             <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Documento :" for="documento" />
+                    <h:inputText maxlength="17" class="form-control" id="documento" value="#{loginManagedBean.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                    <br/>
+                    <h:outputLabel value="Clave :" for="clave" />
+                    <h:inputSecret maxlength="20" class="form-control" id="clave" value="#{loginManagedBean.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                </h:panelGrid>
+                    <br/>
+                    <h:commandButton class="btn-group-lg btn-success" value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
             </h:form>
-        </f:view>
+      
+        </center>
+           
 
+
+    
 
     </body>
 </html>
