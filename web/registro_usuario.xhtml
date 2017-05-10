@@ -27,7 +27,7 @@ and open the template in the editor.
                     <h:outputLabel value="PrimerApellido:" for="primerApellido" />
                     <h:inputText id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
                     <h:outputLabel value="Clave:" for="clave" />
-                    <h:inputText id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                    <h:inputSecret id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
                     <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
                     <h:inputText id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
