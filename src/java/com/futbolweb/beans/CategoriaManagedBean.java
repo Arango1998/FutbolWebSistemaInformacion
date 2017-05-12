@@ -14,7 +14,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -22,9 +25,9 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "categoriaManagedBean")
 @RequestScoped
-public class CategoriaManagedBean implements Serializable, InterfaceController<Categoria>{
+public class CategoriaManagedBean implements Serializable, InterfaceController<Categoria> {
 
-     @EJB
+    @EJB
     private CategoriaFacade categoriaEJB;
     private Categoria categoria;
 
@@ -35,7 +38,7 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
     @PostConstruct
     public void init() {
         categoria = new Categoria();
@@ -44,30 +47,52 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
     public List<Categoria> listCategorias() {
         return categoriaEJB.findAll();
     }
-    
-    public void crearCatagoria(){
-    
+
+    public void crearCatagoria() {
+
         try {
             categoriaEJB.create(categoria);
         } catch (Exception e) {
         }
     }
-    
-    
-      public void redireccionar(){
-    
+
+    public void redireccionar() {
+
         try {
-              FacesContext.getCurrentInstance().getExternalContext().redirect("crear_categoria.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("crear_categoria.xhtml");
         } catch (Exception e) {
+        }
+    }
+   
+    
+    
+    
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited", ((Categoria) event.getObject()).getNombreCategoria());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Categoria) event.getObject()).obtenerLlavePrimaria());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
     public CategoriaManagedBean() {
     }
 
-   @Override
+    @Override
     public Categoria getObjectByKey(Integer key) {
-    return categoriaEJB.find(key);
+        return categoriaEJB.find(key);
     }
-    
+
 }

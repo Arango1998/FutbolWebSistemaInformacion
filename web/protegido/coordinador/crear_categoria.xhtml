@@ -14,27 +14,31 @@
                 <f:view>
 
 
-                    <h:form>
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true"/>
+
                         <h1><h:outputText value="Lista Categoria"/></h1>
-                        <p:dataTable value="#{categoriaManagedBean.listCategorias()}" var="item">
+                        <p:dataTable editable="true" value="#{categoriaManagedBean.listCategorias()}" var="item">
+                            
+                            <p:ajax event="rowEdit" listener="#{categoriaManagedBean.onRowEdit}" update=":form:msgs" />
+                            <p:ajax event="rowEditCancel" listener="#{categoriaManagedBean.onRowCancel}" update=":form:msgs" />
 
                             <p:column>
-                                <center>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre Categoria"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.nombreCategoria}"/>
-                                </center>
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{item.nombreCategoria}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="modelInput" value="#{item.nombreCategoria}" style="width:100%"/></f:facet>
+                                </p:cellEditor>
                             </p:column>
+
+                            <p:column style="width:32px">
+                                <p:rowEditor/>
+                            </p:column>
+
                         </p:dataTable>
-
-
-
-
-
 
                     </h:form>
                 </f:view>
+
 
                 <div class="container-fluid">
                     <div class="row">

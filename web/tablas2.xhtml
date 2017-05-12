@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="resources/css/bootstrap-table.css"/>
+        <link href="resources/css/sidebar.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="resources/css/buscarpaginausuarios.css"/>
+        <link rel="stylesheet" href="resources/css/font-awesome.css"/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Sidebar -->
+
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p><a href="#menu-toggle" class="btn btn-outline  btn-danger" id="menu-toggle">Cerrar/Mostrar</a></p>
+                            <div class="container">
+                                <header>
+                                    <h1 class="page-header text-center">Usuarios: "Entrenadores"</h1>
+                                </header>
+                                <h2>Base datos entrenadores</h2>
+                                <p>Todos los usuarios "Entrenadores" registrados hasta el momento en el sistema.</p>
+<!--                                
+                                <h:form>
+                                    <h:dataTable value="#{categoriaManagedBean.listCategorias()}" var="item"    p:id="table-transform" p:data-toggle="table" p:data-short-name="fechaRegistro" p:data-short-order="desc" p:data-show-toogle="true" p:data-show-columns="true" p:data-side-pagination="client" p:data-page-list="[5, 10, 20, 50, 100, 200]" p:data-row-style="rowStyle" p:data-pagination="true" p:data-search="true">
+
+                                        <thead>
+
+                                            <tr>
+                                                <th> 
+                                                    <h:outputText value="IdCategoria"/>
+                                                </th>
+                                                <th>Nombres</th>
+
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            <tr>
+                                                <td> <h:column>
+
+                                                        <h:outputText value="#{item.idCategoria}"/>
+                                                    </h:column></td>
+                                                <td>
+                                                    <h:column>
+
+                                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                                    </h:column>
+                                                </td>
+
+                                            </tr>
+
+
+
+                                        </tbody>
+
+
+
+
+
+
+
+                                    </h:dataTable>
+                                </h:form>-->
+
+
+
+
+                                <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                    <thead>
+
+                                        <tr>
+                                            <th>Boton Editar</th>
+                                            <th>Documento identidad</th>
+                                            <th>Nombres</th>
+                                            <th>Boton Eliminar</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>101854596</td>
+                                            <td>Salomon Ramon</td>
+                                            <td>101854596</td>
+                                            <td>Salomon Ramon</td>
+
+
+                                        </tr>
+
+
+
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="resources/js/jquery.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/bootstrap-table.js"></script>
+
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>

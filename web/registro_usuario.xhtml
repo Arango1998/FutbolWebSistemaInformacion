@@ -1,64 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>Registrar Usuario</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registrar usuario</title>
+         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        
-        
-    </head>
-    <body>
-        
-        <center>
-             
+
+    </h:head>
+    <h:body>
+
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <center>
+                            <h3 class="page-header">Registrar Usuario Nuevo</h3>
 
 
-            <h:form>
-                <h1><h:outputText value="Registro Nuevo Usuario"/></h1>
-                 <br/>
-                <h:panelGrid columns="3">
-                    <h:outputLabel value="Documento:" for="documento" />
-                    <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                     <br/>
-                    <h:outputLabel value="Primer Nombre:" for="primerNombre" />
-                    <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                     <br/>
-                    <h:outputLabel value="Primer Apellido:" for="primerApellido" />
-                    <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                        </center>
+                        <f:view>
+                            <h:form>
+                                <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+                                  
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="Documento:" for="documento" />
+                                    <h:inputText  class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="PrimerNombre:" for="primerNombre" />
+                                    <h:inputText  class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="PrimerApellido:" for="primerApellido" />
+                                    <h:inputText  class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="Clave:" for="clave" />
+                                    <h:inputText  class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                </div>
+                                 <div class="form-group float-label-control">
+                                    <h:outputLabel value="Confirmar Clave:" for="clave2" />
+                                    <h:inputText  class="form-control" id="clave2"  title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                </div>
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                                    <h:inputText  class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                </div>
+
+
+                                <div class="form-group float-label-control">
+                                    <h:outputLabel value="Correo:" for="correo" />
+                                    <h:inputText  class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+
+                                </div>
+                                <p:commandButton class="btn btn-success btn-lg btn-block"    value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuarioInvitado()}" update="growl" />
+
+
+
+                            </h:form>
+                        </f:view>
+                    </div>
                     <br/>
-                    <h:outputLabel value="Clave:" for="clave" />
-                    <h:inputSecret class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" maxlength="30" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                     <br/>
-                    <h:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
-                    <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                     <br/>
-                    <h:outputLabel value="Correo:" for="correo" />
-                    <h:inputText class="form-control"  id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                   
-                </h:panelGrid>
-                <br/>
-                <h:commandButton class="btn-success " value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuarioInvitado()}"/>
-            </h:form>
-       
-        
-        </center>
-        
-      
-        
-		
-        
-        
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Recuerde al Registrar...
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>1: Tener los nombres del nuevo usuario. </li>
+                                    <hr />
+                                    <li>2: Tener los apellidos del nuevo usuario. </li>
+                                    <hr />
+                                    <li>3: Tener el teléfono del nuevo usuario. </li>
+                                    <hr />
+                                    <li>4: Tener los Documento del nuevo usuario. </li>
+                                    <hr />
+                                    <li>5: Tener el correo del nuevo usuario. </li>
+                                    <hr />
+                                    <li>6: Finalmente registrar al nuevo usuario. </li>
+                                    <hr />
+                                    <hr />
+                                    <hr />
+                                    <hr />
+                                    <hr />
 
-    </body>
+                                </ul>
+                            </div>
+                            
+                            <p><a href="pagina_principal.xhtml" class="btn btn-info btn-lg btn-block" >Pagina Principal</a></p>
+                             
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <script src="../resources/inicio.js" type="text/javascript"></script>
+    </h:body>
 </html>
+

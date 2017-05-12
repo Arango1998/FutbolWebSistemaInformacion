@@ -8,7 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    >
     <head>
         <title>Sistema Futbol Web</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -26,11 +26,7 @@ and open the template in the editor.
         <link href="resources/css/carrousel.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
         <div id="fh5co-page">
-
-
-
             <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
                 <div class="container">
                     <div class="col-md-2 col-sm-2 col-xs-12 fh5co-logo">
@@ -39,9 +35,9 @@ and open the template in the editor.
                     </div>
                     <div class="col-md-8 col-sm-8 text-center fh5co-link-wrap">
                         <ul data-offcanvass="yes">
-                            <li class="active"><a href="#">Torneos</a></li>
+                            <li><a href="#">Torneos</a></li>
                             <li><a href="#">Convocatorias</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#jumbotronTorneo">Contácto</a></li>
                             <li><a href="inicio_sesion_usuario.xhtml">Uniformes</a></li>
                             <li><a href="faces/registro_usuario.xhtml">Registrar</a></li>
                         </ul>
@@ -49,7 +45,7 @@ and open the template in the editor.
                     <div class="col-md-2 col-sm-2 text-right fh5co-link-wrap">
                         <ul class="fh5co-special" data-offcanvass="yes">
 
-                            <li><a href="faces/inicio_sesion_usuario.xhtml">Ingrear</a></li>
+                            <li class="active"><a href="faces/inicio_sesion_usuario.xhtml">Ingresar</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,24 +61,26 @@ and open the template in the editor.
                 <div class="fh5co-cover-text">
                     <div class="container">
                         <div class="row">
+                            <div class="col-lg-1 col-md-3 full-height js-full-height">
+                                <div class="fh5co-cover-intro">
+                                    <img style="width: 330px; height: 330px;" src="resources/images/paginainicio/Logo.png" alt=""/>
+                                </div>
+                            </div>
 
-                            <div style="height: 918px;" class="col-md-push-6 col-md-6 full-height js-full-height">
+                            <div  class="col-md-push-3 col-md-5 full-height js-full-height">
                                 <div class="fh5co-cover-intro">
                                     <h1 class="cover-text-lead">Objetivo Fútbol Web</h1>
                                     <h2 class="cover-text-sublead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</h2>
-                                    <p><a href="#" class="btn btn-outline btn-lg">Contáctenos</a></p>
+                                    <p><a href="#" class="btn btn-outline btn-lg">Demo</a></p>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>   
                 </div>
             </div>
-            
-            
             <br/>
-            
-            
-                 <div class="fh5co-subscribe" style="background-image: url(resources/images/paginainicio/marquez_normal.jpg);">
+            <div class="fh5co-subscribe" style="background-image: url(resources/images/paginainicio/marquez_normal.jpg);">
                 <div class="fh5co-overlay"></div>
                 <div class="container form">
                     <div class="row p-b">
@@ -93,40 +91,22 @@ and open the template in the editor.
                     </div>
                     <div class="row text-center">
                         <div class="col-md-12">
-                            
-                            
-                            
-                            
-
-
-                       
-
-                        
-
-
                             <h:messages globalOnly="true" showSummary="true"/>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
-
             <div class="fh5co-subscribe" style="background-image: url(resources/images/paginainicio/nosotros.jpg);">
                 <div class="fh5co-overlay"></div>
                 <div class="container form">
                     <div class="row p-b">
                         <div class="col-md-6 col-md-offset-3 text-center">
                             <h2 style="color: #FFFFFF;">Noticias Recientes</h2>
-                            <p>En este espacio encontrar todas las ultimas novedades en:Categoris. torneos y resultados de estos </p>
+                            <p>En este espacio encontrar todas las ultimas novedades en:Categorias. torneos y resultados de estos </p>
                         </div>
                     </div>
                     <div class="row text-center">
                         <div class="col-md-12">
-
-
                             <div class="col-md-3 col-sm-6">
                                 <div class="card-container">
                                     <div class="card">
@@ -141,7 +121,6 @@ and open the template in the editor.
                                                 <div class="main">
                                                     <h3 class="name">Nuestras Categorias: </h3>
                                                     <p class="profession">Estas son nuestras categorias</p>
-
                                                     <p class="text-center">1</p>
                                                 </div>
                                                 <div class="footer">
@@ -153,33 +132,10 @@ and open the template in the editor.
                                         </div> <!-- end front panel -->
                                         <div class="back">
                                             <div class="header">
-                                                 <h5 class="motto">Categorias Disponibles</h5>
+                                                <h5 class="motto">Categorias Disponibles</h5>
                                             </div>
                                             <div class="content">
-
                                                 <div class="main">
-<!--
-                                                    <f:view>
-
-
-                                                                <h:form>
-                                                                    <center>
-                                                                        <h:dataTable value="#{categoriaManagedBean.listCategorias()}" var="item">
-
-                                                                            <h:column>
-                                                                                <center>
-
-                                                                                    <h:outputText value="#{item.nombreCategoria}"/>
-                                                                                </center>
-                                                                            </h:column>
-
-
-                                                                        </h:dataTable>
-                                                                    </center>
-                                                                </h:form>
-                                                            </f:view>
--->
-
                                                 </div>
                                             </div>
                                             <div class="footer">
@@ -225,39 +181,39 @@ and open the template in the editor.
                                             <div class="content">
 
                                                 <div class="main">
-<!--                                                    <center>-->
+                                                    <!--                                                    <center>-->
 
 
 
-<!--                                                    <h:form>
-                                                        <h:dataTable value="#{torneoManagedBean.listar()}" var="item">
-                                                          
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="NombreTorneo"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.nombreTorneo}"/>
-                                                            </h:column>
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="Organizador"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.organizador}"/>
-                                                            </h:column>
-                                                           
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="FechaInicio"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.fechaInicio}">
-                                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                                </h:outputText>
-                                                            </h:column>
-                                                          
-                                                        </h:dataTable>
-                                                    </h:form>
-                                                    
-                                                    </center>-->
+                                                    <!--                                                    <h:form>
+                                                                                                            <h:dataTable value="# {torneoManagedBean.listar()}" var="item">
+                                                                                                              
+                                                                                                                <h:column>
+                                                                                                                    <f:facet name="header">
+                                                                                                                        <h:outputText value="NombreTorneo"/>
+                                                                                                                    </f:facet>
+                                                                                                                    <h:outputText value="# {item.nombreTorneo}"/>
+                                                                                                                </h:column>
+                                                                                                                <h:column>
+                                                                                                                    <f:facet name="header">
+                                                                                                                        <h:outputText value="Organizador"/>
+                                                                                                                    </f:facet>
+                                                                                                                    <h:outputText value="# {item.organizador}"/>
+                                                                                                                </h:column>
+                                                                                                               
+                                                                                                                <h:column>
+                                                                                                                    <f:facet name="header">
+                                                                                                                        <h:outputText value="FechaInicio"/>
+                                                                                                                    </f:facet>
+                                                                                                                    <h:outputText value="# {item.fechaInicio}">
+                                                                                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                                                                                    </h:outputText>
+                                                                                                                </h:column>
+                                                                                                              
+                                                                                                            </h:dataTable>
+                                                                                                        </h:form>
+                                                                                                        
+                                                                                                        </center>-->
 
 
 
@@ -308,39 +264,39 @@ and open the template in the editor.
 
                                                 <div class="main">
 
-<!--                                                    <f:view>
-
-
-                                                        <h:form>
-
-                                                            <h:dataTable value="#{torneoManagedBean.listar()}" var="item">
-
-                                                                <h:column>
-                                                                    <f:facet name="header">
-                                                                        <h:outputText value="Nombre Torneo"/>
-                                                                    </f:facet>
-                                                                    <h:outputText value="#{item.nombreTorneo}"/>
-                                                                </h:column>
-
-
-
-
-
-
-
-                                                                <h:column>
-                                                                    <f:facet name="header">
-                                                                        <h:outputText value="Fecha Inicio"/>
-                                                                    </f:facet>
-                                                                    <h:outputText value="#{item.fechaInicio}">
-                                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                                    </h:outputText>
-                                                                </h:column>
-
-
-                                                            </h:dataTable>
-                                                        </h:form>
-                                                    </f:view>-->
+                                                    <!--                                                    <f:view>
+                                                    
+                                                    
+                                                                                                            <h:form>
+                                                    
+                                                                                                                <h:dataTable value="# {torneoManagedBean.listar()}" var="item">
+                                                    
+                                                                                                                    <h:column>
+                                                                                                                        <f:facet name="header">
+                                                                                                                            <h:outputText value="Nombre Torneo"/>
+                                                                                                                        </f:facet>
+                                                                                                                        <h:outputText value="# {item.nombreTorneo}"/>
+                                                                                                                    </h:column>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                                                                                    <h:column>
+                                                                                                                        <f:facet name="header">
+                                                                                                                            <h:outputText value="Fecha Inicio"/>
+                                                                                                                        </f:facet>
+                                                                                                                        <h:outputText value="# {item.fechaInicio}">
+                                                                                                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                                                                                        </h:outputText>
+                                                                                                                    </h:column>
+                                                    
+                                                    
+                                                                                                                </h:dataTable>
+                                                                                                            </h:form>
+                                                                                                        </f:view>-->
 
 
 
@@ -448,7 +404,7 @@ and open the template in the editor.
                             <p><a href="#" class="btn btn-outline">Learn More</a></p>
                         </div>
 
-                       
+
 
 
 
@@ -529,28 +485,21 @@ and open the template in the editor.
                             <div class="row">
                                 <div class="col-md-4 col-sm-4">
                                     <ul class="links">
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Our Story</a></li>
-                                        <li><a href="#">Services</a></li>
-                                        <li><a href="#">Terms</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="#">Contacto</a></li>
+                                        <li><a href="faces/registro_usuario.xhtml">Regitrar</a></li>
+
                                     </ul>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                     <ul class="links">
                                         <li><a href="#">Careeers</a></li>
-                                        <li><a href="#">Team</a></li>
-                                        <li><a href="#">Testimonials</a></li>
-                                        <li><a href="#">Blog</a></li>
+
                                     </ul>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                     <ul class="links">
                                         <li><a href="#">Get Support</a></li>
-                                        <li><a href="#">Community</a></li>
-                                        <li><a href="#">Forum</a></li>
-                                        <li><a href="#">Advertise</a></li>
-                                        <li><a href="#">Affiliate</a></li>
+
                                     </ul>
                                 </div>
                             </div>

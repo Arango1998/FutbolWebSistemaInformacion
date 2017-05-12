@@ -31,7 +31,7 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     private List<Usuario> listaInvitado;
     @EJB
     private UsuarioFacade uf;
-     @Inject
+    @Inject
     private EstadoUsuarioManagedBean estadoUsuarioManagedBean;
     @Inject
     private RolManagedBean rolManagedBean;
@@ -42,7 +42,7 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     @PostConstruct
     public void init() {
         usuario = new Usuario();
-        listaInvitado= new LinkedList<>();
+        listaInvitado = new LinkedList<>();
     }
 
     @Override
@@ -81,41 +81,37 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     public void setRolManagedBean(RolManagedBean rolManagedBean) {
         this.rolManagedBean = rolManagedBean;
     }
-    
-    
-    
-          public List<Usuario> listarUsuario() {
+
+    public List<Usuario> listarUsuario() {
         return uf.findAll();
     }
-          
-          public List<Usuario> solicitarInvitado(){
-          List<Usuario> lUsuario = uf.listarUsuariosInvitados();
-          return listaInvitado=lUsuario;
-          
-          
-          }
-          public void recorroUsuarioInvitado(){
+
+    public List<Usuario> solicitarInvitado() {
+        List<Usuario> lUsuario = uf.listarUsuariosInvitados();
+        return listaInvitado = lUsuario;
+
+    }
+
+    public void recorroUsuarioInvitado() {
         for (Usuario a : listaInvitado) {
-           
+
         }
-          }
-          
-          
-          
-            public void creaUsuarioInvitado() {
+    }
+
+    public void creaUsuarioInvitado() {
         try {
+            
             usuario.setIdEstado(getEstadoUsuarioManagedBean().getObjectByKey(1));
             usuario.setIdTipoRol(getRolManagedBean().getObjectByKey(5));
             uf.create(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario registrado con éxito"));
+
         } catch (Exception e) {
         }
 
     }
-          
-          
-          
-          
-             public void creaUsuario() {
+
+    public void creaUsuario() {
         try {
 
             uf.create(usuario);
@@ -126,16 +122,19 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         }
 
     }
-             
-             
-             
-    
-             
-             
-                public void redireccionar(){
-    
+
+    public void redireccionar() {
+
         try {
-              FacesContext.getCurrentInstance().getExternalContext().redirect("registrar_usuario.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registrar_usuario.xhtml");
+        } catch (Exception e) {
+        }
+    }
+    
+     public void redireccionarRegistro() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registro_usuario.xhtml");
         } catch (Exception e) {
         }
     }
