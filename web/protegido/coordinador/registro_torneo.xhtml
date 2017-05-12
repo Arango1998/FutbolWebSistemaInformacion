@@ -28,7 +28,8 @@
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                             <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
-                        <p:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
+                     
+                        <p:dataTable class="table table-striped table-bordered table-list" value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
 
                             <p:column>
                                 <f:facet name="header">
