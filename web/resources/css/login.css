@@ -71,19 +71,19 @@ body a{
    -o-transform: scaleY(1);
    -ms-transform: scaleY(1);
    transform: scaleY(1);
-   -webkit-transition: all 0.7s ease-in-out;
-   -moz-transition: all 0.7s ease-in-out;
-   -o-transition: all 0.7s ease-in-out;
-   -ms-transition: all 0.7s ease-in-out;
-   transition: all 0.7s ease-in-out;
+   -webkit-transition: all 3s ease-in-out;
+   -moz-transition: all 3s ease-in-out;
+   -o-transition: all 3s ease-in-out;
+   -ms-transition: all 3s ease-in-out;
+   transition: all 3s ease-in-out;
 }
 .view-tenth .mask {
 /*   background-color:#dcbc86;*/
-   -webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-   -o-transition: all 0.5s linear;
-   -ms-transition: all 0.5s linear;
-   transition: all 0.5s linear;
+   -webkit-transition: all 1.5s linear;
+   -moz-transition: all 1.5s linear;
+   -o-transition: all 1.5s linear;
+   -ms-transition: all 1.5s linear;
+   transition: all 1.5s linear;
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
    filter: alpha(opacity=0);
    opacity: 0;
@@ -98,11 +98,11 @@ body a{
    -ms-transform: scale(0);
    transform: scale(0);
    color: #fff;
-   -webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-   -o-transition: all 0.5s linear;
-   -ms-transition: all 0.5s linear;
-   transition: all 0.5s linear;
+   -webkit-transition: all 3.5s linear;
+   -moz-transition: all 3.5s linear;
+   -o-transition: all 3.5s linear;
+   -ms-transition: all 3.5s linear;
+   transition: all 3.5s linear;
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
    filter: alpha(opacity=0);
    opacity: 0;
@@ -132,11 +132,11 @@ body a{
    -o-transform: scale(0);
    -ms-transform: scale(0);
    transform: scale(0);
-   -webkit-transition: all 0.5s linear;
-   -moz-transition: all 0.5s linear;
-   -o-transition: all 0.5s linear;
-   -ms-transition: all 0.5s linear;
-   transition: all 0.5s linear;
+   -webkit-transition: all 3.5s linear;
+   -moz-transition: all 3.5s linear;
+   -o-transition: all 3.5s linear;
+   -ms-transition: all 3.5s linear;
+   transition: all 3.5s linear;
 
 }
 .view-tenth:hover img {

@@ -36,6 +36,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SeguimientoEncuentro.findByCalificacion", query = "SELECT s FROM SeguimientoEncuentro s WHERE s.calificacion = :calificacion")})
 public class SeguimientoEncuentro implements Serializable, IDTO {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "goles")
+    private int goles;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -152,6 +157,14 @@ public class SeguimientoEncuentro implements Serializable, IDTO {
     @Override
     public String obtenerLlavePrimaria() {
         return idSeguimientoEncuentro.toString();
+    }
+
+    public int getGoles() {
+        return goles;
+    }
+
+    public void setGoles(int goles) {
+        this.goles = goles;
     }
     
 }

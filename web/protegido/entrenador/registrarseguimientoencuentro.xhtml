@@ -19,45 +19,49 @@
 
 
                     <h:form>
-                        <h1><h:outputText value="Listado seguimiento encuentros"/></h1>
+                        <h1><h:outputText value="List"/></h1>
                         <p:dataTable value="#{seguimientoEncuentroManagedBean.listarSeguimientoEncuentro()}" var="item">
-
+                           
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Observacion"/>
+                                    <h:outputText value="Observación"/>
                                 </f:facet>
                                 <h:outputText value="#{item.observacion}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Calificacion"/>
+                                    <h:outputText value="Calificación"/>
                                 </f:facet>
                                 <h:outputText value="#{item.calificacion}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Encuentro"/>
+                                    <h:outputText value="Torneo"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idEncuentro}"/>
+                                <h:outputText value="#{item.idEncuentro.fkIdTorneo.nombreTorneo}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Jugador"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
+                                <h:outputText value="#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Entrenador"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
+                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
                             </p:column>
                             <p:column>
-                                <h:commandButton class="btn btn-outline btn-danger" value="Eliminar" actionListener="#{seguimientoEncuentroManagedBean.eliminarSeguimientoEncuentro(segui)}" />
+                                <f:facet name="header">
+                                    <h:outputText value="Goles"/>
+                                </f:facet>
+                                <h:outputText value="#{item.goles}"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
+
 
                 <div class="container-fluid">
                     <div class="row">
@@ -122,6 +126,8 @@
                                                         <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
                                              
                                                         </h:selectOneMenu>
+                                                        <h:outputLabel value="goles" for="idGoles"/>
+                                                        <h:inputText id="idGoles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}"/>
                                                     </h:panelGrid>
                                                     <br></br>
                                                     <p:commandButton actionListener="#{seguimientoEncuentroManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{seguimientoEncuentroManagedBean.registrarSeguimientoEncuentro()}" />
