@@ -69,8 +69,8 @@ public class RegistroPagoManagedBean implements InterfaceController<Pago> {
             System.out.println(envioJ.toString());
     envioJ.enviarEmail2();
     pago.setFechaPago(fecha);
-    Jugador j = (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jugadorPago");
-    pago.setFkIdJugador(j);
+    //Jugador j = (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jugadorpago");
+   // pago.setFkIdJugador(j);
     pagof.create(pago);
     } catch(Exception e){
             System.out.println(e.getMessage());

@@ -81,6 +81,9 @@ public class PagoManagedBean implements InterfaceController<Pago> {
         }
     }
 
+    public List<Pago> listarPagoPropio(){
+        return (List<Pago>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+    }
     public String actualizarPago(Pago pa) {
         pago = pa;
         return "";
