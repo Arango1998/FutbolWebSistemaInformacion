@@ -30,16 +30,11 @@
                         </h:commandLink>
 
                
-                <p:dataTable value="#{torneoManagedBean.listar()}" var="item">
+                        <p:dataTable id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
+                   
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdTorneo"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idTorneo}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="NombreTorneo"/>
+                            <h:outputText value="Nombre"/>
                         </f:facet>
                         <h:outputText value="#{item.nombreTorneo}"/>
                     </p:column>
@@ -51,13 +46,13 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="DatosContactoOrganizador"/>
+                            <h:outputText value="Datos del organizador"/>
                         </f:facet>
                         <h:outputText value="#{item.datosContactoOrganizador}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="FechaInicio"/>
+                            <h:outputText value="Inicio"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaInicio}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -65,7 +60,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="FechaFin"/>
+                            <h:outputText value="Finalización"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaFin}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
