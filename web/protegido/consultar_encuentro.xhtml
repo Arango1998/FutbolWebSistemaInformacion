@@ -2,62 +2,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:p="http://primefaces.org/ui">
+
 
     <body>
 
-        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+          <ui:composition template="./../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
                 <f:view>
 
-                    <h:form id="Pagos">
+
+                    <h:form>
+
+
+                        <center ><h1><h:outputText value="Encuentros programados"/></h1></center>
+                        <br></br>
+
                         <h:commandLink title="Descargar tabla en pdf">
                             <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="listaPagos" fileName="ListaDePagos"/>
+                            <p:dataExporter type="pdf" target="ListaEncuentros" fileName="ListadoDeEncuentros"/>
                         </h:commandLink>
                         <h:commandLink title="Descargar tabla en Excel">
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="listaPagos" fileName="ListaDePagos"/>
+                            <p:dataExporter type="xls" target="ListaEncuentros" fileName="ListadoDeEncuentros"/>
                         </h:commandLink>
-                        <h1><h:outputText value="Lista de pagos"/></h1>
-                        <p:dataTable value="#{pagoManagedBean.listarPago()}" var="item" id="listaPagos">
+                        <p:dataTable id="ListaEncuentros" value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item">
+
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Id de Pago"/>
+                                    <h:outputText value="Fecha de encuentro"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idPago}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Motivo de Pago"/>
-                                </f:facet>
-                                <h:outputText value="#{item.motivoPago}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Fecha de Pago"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaPago}">
+                                <h:outputText value="#{item.fechaInicio}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Monto"/>
+                                    <h:outputText value="Descripción"/>
                                 </f:facet>
-                                <h:outputText value="#{item.monto}"/>
+                                <h:outputText value="#{item.descripcion}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Estado"/>
+                                    <h:outputText value="Resultado"/>
                                 </f:facet>
-                                <h:outputText value="#{item.estado}"/>
+                                <h:outputText value="#{item.resultado}"/>
                             </p:column>
-
-                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FkIdTorneo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkIdTorneo.nombreTorneo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FkIdBarrio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fkIdBarrio.nombreBarrio}"/>
+                            </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
