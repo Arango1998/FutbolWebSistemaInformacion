@@ -39,10 +39,6 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return listaInvitado;
     }
     
-    public List<Usuario>listarInvitados(){
-    
-    
-    }
 
     public Usuario iniciarSesion(Usuario user) {
         Usuario usuario = null;
