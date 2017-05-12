@@ -100,7 +100,7 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
 
     public void creaUsuarioInvitado() {
         try {
-            
+
             usuario.setIdEstado(getEstadoUsuarioManagedBean().getObjectByKey(1));
             usuario.setIdTipoRol(getRolManagedBean().getObjectByKey(5));
             uf.create(usuario);
@@ -123,6 +123,28 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
 
     }
 
+    public List<Usuario> getInvitado() {
+
+        return this.uf.listaInvitados();
+
+    }
+
+    public List<Usuario> getActivos() {
+        return this.uf.listaActivos();
+    }
+    
+     public List<Usuario> getJugadores() {
+        return this.uf.listaJugadores();
+    }
+       public List<Usuario> getEntrenador() {
+        return this.uf.listaEntrenadores();
+    }
+       
+          public List<Usuario> getCoordinadores() {
+        return this.uf.listaCoordinadores();
+    }
+    
+
     public void redireccionar() {
 
         try {
@@ -130,8 +152,8 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         } catch (Exception e) {
         }
     }
-    
-     public void redireccionarRegistro() {
+
+    public void redireccionarRegistro() {
 
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("registro_usuario.xhtml");

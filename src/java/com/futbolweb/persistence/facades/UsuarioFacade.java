@@ -38,7 +38,26 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         listaInvitado = query.getResultList();
         return listaInvitado;
     }
-    
+
+    public List<Usuario> listaInvitados() {
+        return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 5).getResultList();
+    }
+
+    public List<Usuario> listaActivos() {
+        return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 4).getResultList();
+    }
+
+    public List<Usuario> listaJugadores() {
+        return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 3).getResultList();
+    }
+
+    public List<Usuario> listaEntrenadores() {
+        return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 2).getResultList();
+    }
+
+    public List<Usuario> listaCoordinadores() {
+        return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 1).getResultList();
+    }
 
     public Usuario iniciarSesion(Usuario user) {
         Usuario usuario = null;
