@@ -16,15 +16,19 @@
 
 
                     <h:form>
+
+                        <center ><h1><h:outputText value="Barrios registrados"/></h1></center>
+                        <br></br>
+
                         <h:commandLink title="Descargar tabla en pdf">
-                            <p:graphicImage url="Resources/img/pdf.png" width="30"/>
-                            <p:dataExporter type="pdf" target="tablaBarrios" fileName="ListadoDeBarrios"/>
+                            <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                            <p:dataExporter type="pdf" target="listaBarrios" fileName="ListadoDeBarrios"/>
+                        </h:commandLink>
+                        <h:commandLink title="Descargar tabla en Excel">
+                            <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                            <p:dataExporter type="xls" target="listaBarrios" fileName="ListadoDeBarrios"/>
                         </h:commandLink>
 
-                        <h:commandLink title="Descargar tabla en Excel">
-                            <p:graphicImage url="Resources/img/xls.png" width="30"/>
-                            <p:dataExporter type="xls" target="tablaBarrios" fileName="ListadoDeBarrios"/>
-                        </h:commandLink>
 
                         <h1><h:outputText value="Barrios registrados"/></h1>
                         <p:dataTable id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
@@ -55,16 +59,9 @@
                             <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <div class="modal-header">
 
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                ×
-                                            </button>
-
-                                        </div>
                                         <div class="modal-body">
                                             <h:form>
-                                                <p:growl id="growl" sticky="true" showSummary="true" showDetail="true" /> 
                                                 <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
 
                                                 <br/>
@@ -80,24 +77,19 @@
 
                                                     <h:outputLabel value="Nombre del barrio"/>
 
-                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido">
+                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
 
 
-                                                    </h:inputText>
-
-                                                    <br/>
-                                                    <br/>
-                                                    <p:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
-                                                </div>
+                                                </div> 
+                                                <br/>
+                                                <br/>
+                                                <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    Cerrar
+                                                </button> 
                                             </h:form>
                                         </div>
-                                        <div class="modal-footer">
 
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                Cerrar
-                                            </button> 
-
-                                        </div>
                                     </div>
 
                                 </div>

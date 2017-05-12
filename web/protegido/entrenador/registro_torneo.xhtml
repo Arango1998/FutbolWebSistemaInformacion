@@ -12,17 +12,11 @@
 
             <ui:define name="content">
 
-
-
                 <div class="panel-body">
-
-
-
 
                 </div>
 
                 <f:view>
-
 
                     <h:form>
 
@@ -38,44 +32,49 @@
                             <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
 
-
-                        <h:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos" class="table table-striped table-bordered table-list">
-
-                            <h:column>
+                        <p:dataTable id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTorneo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTorneo}"/>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="NombreTorneo"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nombreTorneo}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Organizador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.organizador}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="DatosContactoOrganizador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.datosContactoOrganizador}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaInicio"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaInicio}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaFin"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaFin}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
-                            </h:column>
-                        </h:dataTable>
+                            </p:column>
+                        </p:dataTable>
+
                     </h:form>
                 </f:view>
 
@@ -156,3 +155,5 @@
 
     </body>
 </html>
+
+
