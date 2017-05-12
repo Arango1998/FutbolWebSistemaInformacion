@@ -14,9 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -63,12 +61,6 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
         }
     }
 
-   public void modificar(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Car Edited", ((Barrio) event.getObject()).obtenerLlavePrimaria());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-            
     @Override
     public Barrio getObjectByKey(Integer key) {
         return bf.find(key);

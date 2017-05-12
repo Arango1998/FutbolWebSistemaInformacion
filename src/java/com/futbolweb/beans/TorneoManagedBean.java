@@ -11,7 +11,6 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -24,7 +23,6 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
     private Torneo torneo;
     @EJB
     private TorneoFacade tf;
-   
 
     public TorneoManagedBean() {
     }
@@ -47,8 +45,6 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
         this.torneo = torneo;
     }
 
-    
-    
     public List<Torneo> listar() {
         return tf.findAll();
     }
@@ -64,25 +60,6 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
         }
 
     }
-    public void editarTorneo(){
-    
-        tf.edit(torneo);
-    
-    }
-    
-    public String actualizar(Torneo t){
-    
-      torneo = t;
-     
-        return "/protegido/entrenador/editar_torneo.xhtml?faces-redirect=true"; 
-        
-    }
-    
-    public void cancelar(){
-    
-      FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cancelado"));
-    }
-    
     public void redireccionar(){
     
         try {

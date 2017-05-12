@@ -15,8 +15,8 @@
                 <f:view>
 
 
-                    <h:form id="form">
-                        <p:growl id="msg"/>
+                    <h:form>
+
                         <center ><h1><h:outputText value="Torneos programados"/></h1></center>
                         <br></br>
 
@@ -28,28 +28,13 @@
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                             <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
-                        
-                        <p:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos" editable="true">
-                           
-                            <p:ajax event="rowEdit" listener="#{torneoManagedBean.actualizar}" update=":form:msg"/>
-                            <p:ajax event="rowEditCancel" listener="#{torneoManagedBean.cancelar}" update=":form:msg"/>
-                            
+                        <p:dataTable value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Nombre del torneo"/>
                                 </f:facet>
-                                
-                                <p:cellEditor>
-                                    <f:facet name="output">
                                 <h:outputText value="#{item.nombreTorneo}"/>
-                                    </f:facet>
-                                    
-                                    <f:facet name="input">
-                                        <p:inputText value="#{item.nombreTorneo}"/>
-                                    </f:facet>
-                                    
-                                </p:cellEditor>
-                                
                             </p:column>
 
                             <p:column>
@@ -84,12 +69,6 @@
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
-                            
-                            <p:column>
-                                <h:commandButton value="Editar" action="#{torneoManagedBean.actualizar(item)}"/>
-                            </p:column>
-                            
-                            
                         </p:dataTable>
                     </h:form>
                 </f:view>
