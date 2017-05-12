@@ -5,10 +5,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <ui:include src="../templates/header.xhtml"/>
+        <f:event type="preRenderView" listener="#{plantillaController.verificarSession()}"/>
     </h:head>
+    
+    
 
     <div id="wrapper">
         <div id="right">

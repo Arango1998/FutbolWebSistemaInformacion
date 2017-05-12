@@ -93,6 +93,7 @@ public class LoginManagedBean implements Serializable {
             } else if (object instanceof Usuario) {
                 rol = ((Usuario) object).getIdTipoRol();
                 context.getExternalContext().getSessionMap().put("usuario", object);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", object);
                 return "/protegido/iniciousuario.xhtml?faces-redirect=true";
             }
         } catch (Exception e) {
