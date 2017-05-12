@@ -15,7 +15,7 @@ public class PlantillaController implements Serializable{
             FacesContext context = FacesContext.getCurrentInstance();
            Usuario us = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
             if (us == null) {
-                context.getExternalContext().redirect("./../permisos.xhtml");
+                context.getExternalContext().redirect("../../permisos.xhtml");
             }
         } catch (Exception e) {
         }
