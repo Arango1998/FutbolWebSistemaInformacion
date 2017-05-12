@@ -11,11 +11,20 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+                
+                
+                
+                 <div class="panel-body">
+       
+        
 
-                <f:view>
+            
+            </div>
+
+                 <f:view>
 
 
-                    <h:form>
+                            <h:form>
 
                         <center ><h1><h:outputText value="Torneos programados"/></h1></center>
                         <br></br>
@@ -29,50 +38,52 @@
                             <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
                         </h:commandLink>
                      
-                        <p:dataTable class="table table-striped table-bordered table-list" value="#{torneoManagedBean.listar()}" var="item" id="listaTorneos">
+                       
+                                <h:dataTable value="#{torneoManagedBean.listar()}" var="item"  class="table table-striped table-bordered table-list">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="IdTorneo"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idTorneo}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="NombreTorneo"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreTorneo}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Organizador"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.organizador}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="DatosContactoOrganizador"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.datosContactoOrganizador}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FechaInicio"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fechaInicio}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="FechaFin"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fechaFin}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </f:view>
 
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nombre del torneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreTorneo}"/>
-                            </p:column>
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Organizador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.organizador}"/>
-                            </p:column>
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Datos del organizador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.datosContactoOrganizador}"/>
-                            </p:column>
-
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Inicio de Torneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaInicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Finalización de Torneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
 
                 <div class="container-fluid">
                     <div class="row">
