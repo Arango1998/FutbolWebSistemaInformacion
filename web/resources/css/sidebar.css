@@ -25,10 +25,10 @@
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    right: 250px;
+    right: 270px;
     width: 0;
     height: 100%;
-    margin-right: -250px;
+    margin-right: -270px;
     overflow-y: auto;
     background: #000;
     -webkit-transition: all 0.5s ease;
@@ -220,7 +220,7 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-right: 250px;
+        padding-right: 270px;
     }
 
     #wrapper.toggled {
@@ -228,7 +228,7 @@
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        width: 270px;
     }
 
     #wrapper.toggled #sidebar-wrapper {

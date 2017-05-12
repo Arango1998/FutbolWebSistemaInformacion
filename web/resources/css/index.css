@@ -102,14 +102,17 @@ p.tituloJumbo{
 	
 }
 #nosotro {
-    background-image:url(../images/paginainicio/imageninicio.jpg) ;
+    background-image:url(../images/paginainicio/sjdsa.jpg) ;
 	width: 100%;
+         background-attachment: fixed; 
+	background-size: 100% 1000px; 
 	height:auto;
 }
 .nosotros {
 	width: 100%;
 	height: auto;
-	background-color:#00bff3;
+	
+         background-image:url(../images/paginainicio/imageninicio.jpg) ;
 	padding: 20px;
 }
 #torneos {
