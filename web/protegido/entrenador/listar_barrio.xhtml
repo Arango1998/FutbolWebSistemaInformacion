@@ -29,8 +29,6 @@
                             <p:dataExporter type="xls" target="listaBarrios" fileName="ListadoDeBarrios"/>
                         </h:commandLink>
 
-
-                        <h1><h:outputText value="Barrios registrados"/></h1>
                         <p:dataTable id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
                             <p:column>
                                 <f:facet name="header">
@@ -48,7 +46,6 @@
                         </p:dataTable>
                     </h:form>
                 </f:view>
-
 
 
                 <div class="container-fluid">
@@ -84,7 +81,7 @@
                                                 <br/>
                                                 <br/>
                                                 <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">
                                                     Cerrar
                                                 </button> 
                                             </h:form>
