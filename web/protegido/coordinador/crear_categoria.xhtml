@@ -17,7 +17,7 @@
                 <!-- /#sidebar-wrapper -->
 
                 <!-- Page Content -->
-                <div id="page-content-wrapper">
+                <div >
                     <div class="container-fluid">
                         <div class="row">
                             <div class=" col-md-10 col-lg-12">
@@ -38,7 +38,9 @@
                                         <thead>
 
                                             <tr>
-                                                <th>Nombre Categoria</th>
+                                                <th><center>Editar Categoria</center></th>
+                                                <th><center>Nombre Categoria</center></th>
+                                                 <th><center>Eliminar Categoria</center></th>
 
 
                                             </tr>
@@ -49,7 +51,9 @@
 
                                                 <center>
                                                     <tr>
+                                                        <td>Editar</td>
                                                         <td>#{item.nombreCategoria}</td>
+                                                        <td>Eliminar</td>
 
 
 
@@ -59,64 +63,64 @@
                                             </ui:repeat>
 
                                         </tbody>
-
+                                        
                                     </table>
+                                    
+                                    
+                                          <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h:form>
+                                                <center><h1><h:outputText value="Registro de Categoria"/></h1></center>
+
+                                                <br/>
+                                                <div class="rowContainer">
 
 
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
+                                                    <h:outputLabel value="Nombre Categoría:" for="nombreCategoria" />
+                                                    <h:inputText id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="Nombre Categoria" required="true" requiredMessage="The NombreCategoria field is required."/>
 
-                                                <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
+                                                    <br></br>
+                                                    <center>
+                                                         <p:commandButton actionListener="#{categoriaManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar Categoria" action="#{categoriaManagedBean.crearCatagoria()}" />
 
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                                    ×
-                                                                </button>
-
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h:form>
-                                                                    <center><h1><h:outputText value="Registro de Categoria"/></h1></center>
-
-                                                                    <br/>
-                                                                    <div class="rowContainer">
-
-
-                                                                        <h:outputLabel value="Nombre Categoría:" for="nombreCategoria" />
-                                                                        <h:inputText id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="Nombre Categoria" required="true" requiredMessage="The NombreCategoria field is required."/>
-
-                                                                        <br></br>
-                                                                        <center>
-                                                                            <p:commandButton actionListener="#{categoriaManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar Categoria" action="#{categoriaManagedBean.crearCatagoria()}" />
-
-                                                                        </center>
-
-
-                                                                    </div>
-                                                                </h:form>
-                                                            </div>
-                                                            <div class="modal-footer">
-
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                                    Cerrar
-                                                                </button> 
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
+                                                    </center>
+                                                   
 
                                                 </div>
+                                            </h:form>
+                                        </div>
+                                        <div class="modal-footer">
 
-                                            </div>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+
                                         </div>
                                     </div>
 
+                                </div>
 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                                    
+                                    
 
                                 </div>
                             </div>

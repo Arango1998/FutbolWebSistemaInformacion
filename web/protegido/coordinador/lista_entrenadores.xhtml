@@ -11,126 +11,49 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <f:view>
+                
+                
+                
+                                    <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                        <thead>
+
+                                            <tr>
+                                                <th><center>Editar Usuario Invitado</center></th>
+                                                  <th><center>Documento</center></th>
+                                                    <th><center>Primer Nombre</center></th>
+                                                <th><center>Primer Apellido</center></th>
+                                                <th><center>Rol</center></th>
+                                                 <th><center>Eliminar Usuario</center></th>
 
 
-                    <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <h:dataTable value="#{usuarioManagedBean.entrenador}" var="item">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdUsuario"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idUsuario}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Documento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.documento}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="PrimerNombre"/>
-                                </f:facet>
-                                <h:outputText value="#{item.primerNombre}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="SegundoNombre"/>
-                                </f:facet>
-                                <h:outputText value="#{item.segundoNombre}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="PrimerApellido"/>
-                                </f:facet>
-                                <h:outputText value="#{item.primerApellido}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="SegundoApellido"/>
-                                </f:facet>
-                                <h:outputText value="#{item.segundoApellido}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Clave"/>
-                                </f:facet>
-                                <h:outputText value="#{item.clave}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="FechaDeNacimento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaDeNacimento}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Genero"/>
-                                </f:facet>
-                                <h:outputText value="#{item.genero}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Rh"/>
-                                </f:facet>
-                                <h:outputText value="#{item.rh}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Eps"/>
-                                </f:facet>
-                                <h:outputText value="#{item.eps}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Telefono"/>
-                                </f:facet>
-                                <h:outputText value="#{item.telefono}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Correo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.correo}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Jugador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.jugador}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdTipoRol"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idTipoRol}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdEstado"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEstado}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdAcudiente"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idAcudiente}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Entrenador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.entrenador}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
-                </f:view>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
+                                            <ui:repeat  value="#{usuarioManagedBean.entrenador}" var="item">
+
+                                                <center>
+                                                    <tr>
+                                                        <td>Editar</td>
+                                                        <td>#{item.documento}</td>
+                                                        <td>#{item.primerNombre}</td>
+                                                        <td>#{item.primerApellido}</td>
+                                                        <td>#{item.idTipoRol.nombreRol}</td>
+                                                        
+                                                        <td>Eliminar Usuario</td>
+
+
+
+                                                    </tr>
+                                                </center>
+
+                                            </ui:repeat>
+
+                                        </tbody>
+                                        
+                                    </table>
+                
+             
 
             </ui:define>
 
