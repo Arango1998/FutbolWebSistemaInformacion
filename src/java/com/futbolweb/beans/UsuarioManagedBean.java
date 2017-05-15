@@ -140,10 +140,10 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         return this.uf.listaEntrenadores();
     }
        
-          public List<Usuario> getCoordinadores() {
-        return this.uf.listaCoordinadores();
-    }
-    
+//          public List<Usuario> getCoordinadores() {
+//        return this.uf.listaCoordinadores();
+//    }
+//    
 
     public void redireccionar() {
 
