@@ -12,34 +12,44 @@
 
             <ui:define name="content">
                 
-                <f:view>
+           
+                
+                
+                                    <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                        <thead>
+
+                                            <tr>
+                                                <th><center>Editar Equipo</center></th>
+                                                <th><center>Nombre Categoria</center></th>
+                                                 <th><center>Nombre Equipo</center></th>
+                                                  <th><center>Entrenador</center></th>
+                                                 <th><center>Eliminar Equipo</center></th>
 
 
-                    <h:form>
-                        <h1><h:outputText value="Equipos"/></h1>
-                        <p:dataTable value="#{equipoManagedBean.listarEquipos()}" var="item">
-                           
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nombre Equipo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreEquipo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Categoria"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Entrenador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEntrenador.obtenerLlavePrimaria()}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <ui:repeat  value="#{equipoManagedBean.listarEquipos()}" var="item">
+
+                                                <center>
+                                                    <tr>
+                                                        <td>Editar</td>
+                                                        <td>#{item.fkIdCategoria.nombreCategoria}</td>
+                                                        <td>#{item.nombreEquipo}</td>
+                                                        <td>#{item.idEntrenador.usuario.documento}, #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}</td>
+                                                        <td>Eliminar</td>
+
+
+
+                                                    </tr>
+                                                </center>
+
+                                            </ui:repeat>
+
+                                        </tbody>
+                                        
+                                    </table>
 
                 
                 
@@ -51,7 +61,7 @@
                      <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Equipo</a>
 
                             <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -87,7 +97,7 @@
                             <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
                                 <!-- TODO: update below reference to list of available items-->
                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                   <f:selectItems class="form-control" value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.obtenerLlavePrimaria()}"/>
+                                   <f:selectItems class="form-control" value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
                             </h:selectOneMenu>
                         </h:panelGrid>
                         
