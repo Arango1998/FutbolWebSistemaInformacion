@@ -9,56 +9,62 @@
         <ui:composition template="./../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                 <div id="fh5co-page">
+                <div id="fh5co-page">
 
-   
 
-      <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
-         <div class="container">
-            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
-               <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
-               <a href="#"></a>
-            </div>
-            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
-               <ul data-offcanvass="yes">
-                  <li class="active"><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                 
-               </ul>
-            </div> 
-           
-         </div>
-      </nav>
 
-      <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/imageninicio.jpg); height: auto;">
-      
-         <div class="fh5co-overlay"></div>
-         <div class="fh5co-cover-text">
-            <div class="container">
-               <div class="row">
-                  <div  class="col-md-push-4 col-md-6 full-height js-full-height">
-                     <div class="fh5co-cover-intro">
-                         <h1 class="cover-text-lead">Bienvenido: #{loginManagedBean.rol.nombreRol}</h1>
-                       
-                        <h1 class="cover-text-lead">#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}  </h1>
-                        
-                        <center> <h2 class="cover-text-sublead">En el apartado derecho encontrara todas las opciones que puede ejecutar con su rol.</h2>
-                       </center>
-                        <p><a href="#" class="btn btn-outline btn-lg">See Our Work</a></p>
-                     </div>
-                  </div>
-               </div>
-            </div>   
-         </div>
-      </div></div>
-             
+                    <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
+                        <div class="container">
+                            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
+                                <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
+                                <a href="#"></a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
+                                <ul data-offcanvass="yes">
+                                    <li class="active"><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
 
-   
+                                </ul>
+                            </div> 
 
-     
-        </ui:define>
+                        </div>
+                    </nav>
 
-    </ui:composition>
+                    <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-color: #ce3635;">
 
-</body>
+                        <div class="fh5co-overlay"></div>
+                        <div class="fh5co-cover-text">
+                            <div class="container">
+                                <div class="row">
+                                    <div  class="col-md-push-4 col-md-6 full-height js-full-height">
+                                        <div class="fh5co-cover-intro">
+                                            <center>
+
+
+                                                <h1>
+                                                    <a style="color:#FFF ;" class="typewrite" data-period="2000" data-type='[ "Bienvenido Señor: #{loginManagedBean.rol.nombreRol}.", "#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}.", "¿Cómo se encuentra el día de hoy?", "Esperemos tenga un buen día y disfrute de nuestro sistema.", "Atentamente: Sistema Futbol Web." ]'>
+                                                        <span class="wrap"></span>
+                                                    </a>
+
+
+
+                                                </h1>
+                                            </center>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div></div>
+
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
 </html>

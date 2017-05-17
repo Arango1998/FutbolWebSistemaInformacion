@@ -105,6 +105,9 @@ html { height: 100%;}
 .sidebar-nav li:nth-child(3):before {
     background-color: #314190;   
 }
+.sidebar-nav li:nth-child(4):before {
+    background-color: #35acdf;   
+}
 .sidebar-nav li:nth-child(5):before {
     background-color: #279636;   
 }

@@ -9,29 +9,19 @@
     <h:body>
         <ui:composition>
             <!-- Sidebar -->
-            <div id="sidebar-wrapper">
+            <center>
+                
+           
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
                 <ul class="sidebar-nav">
                     <br/>
-                   
-                    <center>  <img  src="#{request.contextPath}/resources/images/usuario/avatar.png" class="img-circle img-responsive"  style="height: 80px;" alt=""/> </center>
-                   
-              
-
-
+                    <center>  <img  src="#{request.contextPath}/resources/images/usuario/usuario3.jpg" class="img-circle img-responsive"  style="height: 80px;" alt=""/> </center>
+                    <br/>
                     <center><h3 style="color: white;">
-                                <span>#{sessionManagedBean.usuarioSesion.primerNombre}</span>
-                                <span>#{sessionManagedBean.usuarioSesion.primerApellido}</span>
-                            </h3>
-                        </center>
-
-
-
-
-               
-
-
-
-
+                            <span>#{sessionManagedBean.usuarioSesion.primerNombre}</span>
+                            <span>#{sessionManagedBean.usuarioSesion.primerApellido}</span>
+                        </h3>
+                    </center>
                     <ul>
                         <input type="text" id="buscador" placeholder="Buscar"/>
                     </ul>
@@ -43,11 +33,13 @@
                         <c:forEach items="#{loginManagedBean.rol.permisoList}" var="permiso">
                             <c:if test="#{empty permiso.permisoPadre and empty permiso.permisoList}">
                                 <li><h:link outcome="#{permiso.url}"><i class="#{permiso.icon}"/><p>#{permiso.nombrePermiso}</p></h:link></li>
+
                             </c:if>
+
                             <c:if test="#{empty permiso.permisoPadre and not empty permiso.permisoList}">
                                 <li class="dropdown">
-                                    <a class="dropdown" data-toggle="dropdown" href="#{permiso.url}"><i class="#{permiso.icon}"/> <p>#{permiso.nombrePermiso}</p></a>
-                                    <ul class="dropdown-menu">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#{permiso.url}"><i class="#{permiso.icon}"/> <p>#{permiso.nombrePermiso}</p></a>
+                                    <ul  class="dropdown-menu" role="menu">
                                         <c:forEach items="#{permiso.permisoList}" var="subItem">
                                             <c:forEach items="#{loginManagedBean.rol.permisoList}" var="p">
                                                 <c:if test="#{subItem.equals(p)}">
@@ -57,28 +49,20 @@
                                         </c:forEach>
                                     </ul>
                                 </li>
+
                             </c:if>
                         </c:forEach>
+                        <li ><p:commandLink actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
+
 
                     </ul>
-
-
-                    <ul>
-                        <li><p:commandLink actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
-
-                    </ul>
-
-
-
-
-
 
 
 
                 </ul>
-            </div>
+            </nav>
             <!-- /#sidebar-wrapper -->
-
+ </center>
         </ui:composition>
     </h:body>
 </html>
