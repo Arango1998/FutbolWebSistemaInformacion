@@ -15,56 +15,55 @@
                 <f:view>
 
 
-                    <h:form id="seguimiento">
-                        <h1><h:outputText value="Listado segumientos"/></h1>
-                       
-                        <p:dataTable value="#{listaSeguimientosJugador.listaSeguimientoJugador}" var="item">
-                            
-                            <p:column>
+                    <h:form>
+                        <h1><h:outputText value="Listado Seguimiento"/></h1>
+                        <h:dataTable value="#{listaSeguimientosJugador.listaSeguimientoJugador}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idSeguimiento}"/>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaSeguimiento"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaSeguimiento}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
-                            </p:column>
-                            <p:column>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="ResultadoSeguimiento"/>
                                 </f:facet>
                                 <h:outputText value="#{item.resultadoSeguimiento}"/>
-                            </p:column>
-                            <p:column>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Observacion"/>
                                 </f:facet>
                                 <h:outputText value="#{item.observacion}"/>
-                            </p:column>
-                            <p:column>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdJugador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idJugador}"/>
-                            </p:column>
-                            <p:column>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdEntrenador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idEntrenador}"/>
-                            </p:column>
-                            <p:column>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdPosicionSeguimiento"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idPosicionSeguimiento}"/>
-                            </p:column>
-                          
-                            <p:column>
-                                <h:link outcome="desempeniosseguimiento">seguimiento</h:link>
-                            </p:column>
-                            
-                        </p:dataTable>
-                        <p:commandButton value="Registrar seguimiento"/>
+                            </h:column>
+                        </h:dataTable>
+                        <p:commandButton value="Registrar seguimiento" />
                     </h:form>
                 </f:view>
 

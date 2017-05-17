@@ -60,6 +60,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         Usuario usuario = null;
         String rta;
         try {
+            getEntityManager().getEntityManagerFactory().getCache().evictAll();
             rta = "FROM Usuario u WHERE u.documento = ?1 and u.clave = ?2";
             Query query = em.createQuery(rta);
             query.setParameter(1, user.getDocumento());
