@@ -11,11 +11,17 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+                <br></br>
+
+                <header>
+                    <h1 class="page-header text-center">Lista de Jugadores</h1>
+                </header>
+                <p>Elija al jugador al que desee consultar sus registros de pagos </p>
+
                 <f:view>
 
 
                     <h:form>
-                        <h1><h:outputText value="Lista de jugadores"/></h1>
                         <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
                             <p:column>
                                 <f:facet name="header">

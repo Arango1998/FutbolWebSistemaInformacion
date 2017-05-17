@@ -6,11 +6,13 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.PagoFacade;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -36,6 +38,8 @@ public class PagoManagedBean implements InterfaceController<Pago> {
     private Jugador jugador;
     @EJB
     private JugadorFacade jugadorF;
+    @Inject
+    private SessionManagedBean sesionM;
 
     @PostConstruct
     public void init() {
@@ -60,6 +64,15 @@ public class PagoManagedBean implements InterfaceController<Pago> {
         this.lista = lista;
     }
 
+    public SessionManagedBean getSesionM() {
+        return sesionM;
+    }
+
+    public void setSesionM(SessionManagedBean sesionM) {
+        this.sesionM = sesionM;
+    }
+
+    
     public List<Pago> listarPago() {
         return (List<Pago>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pagos");
     }
@@ -81,9 +94,25 @@ public class PagoManagedBean implements InterfaceController<Pago> {
         }
     }
 
-    public List<Pago> listarPagoPropio(){
-        return (List<Pago>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        
+    
+    
+    public List<Pago> listarTodo(){
+        return pagof.findAll();
     }
+    
+    public List<Pago> listarPagoPropio(){
+    List<Pago> lp = new ArrayList<>();
+        for (Pago pa : listarTodo()) {
+            if (!pa.getFkIdJugador().getUsuario().getIdUsuario().equals(sesionM.getUsuarioSesion().getIdUsuario())) {
+                lp.add(pa);
+               
+            }
+            
+        }
+        return lp;
+    }
+    
     public String actualizarPago(Pago pa) {
         pago = pa;
         return "";
