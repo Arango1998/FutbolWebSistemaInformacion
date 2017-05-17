@@ -9,11 +9,13 @@ import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Entrenador;
 import com.futbolweb.persistence.facades.EntrenadorFacade;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -24,6 +26,7 @@ import javax.enterprise.context.RequestScoped;
 public class EntrenadorManagedBean implements Serializable, InterfaceController<Entrenador>{
 
     private Entrenador entrenador;
+    List<Entrenador> lista;
     @EJB
     private EntrenadorFacade enf;
     
@@ -37,11 +40,22 @@ public class EntrenadorManagedBean implements Serializable, InterfaceController<
     public void setEntrenador(Entrenador entrenador) {
         this.entrenador = entrenador;
     }
+
+    public List<Entrenador> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Entrenador> lista) {
+        this.lista = lista;
+    }
+    
+    
     
     
     @PostConstruct
     public void init(){
         entrenador = new Entrenador();
+        lista = new LinkedList<>();
     }
     
     
@@ -65,6 +79,19 @@ public class EntrenadorManagedBean implements Serializable, InterfaceController<
         en = entrenador;
         return "";
     }
+    
+    public String seleccionarEntrenadorEspecifico(int idEntrenador){
+    Entrenador e = enf.find(idEntrenador);
+    List<Entrenador> lentrenador = enf.listarEntenadorEspecifico(e);
+    lista = lentrenador;
+    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("entrenador", lista);
+    return "/protegido/coordinador/entrenador_especifico.xhtml";
+    }
+    
+    public List<Entrenador>listarEntrenadorEspecifico(){
+    return (List<Entrenador>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("entrenador");
+    }
+    
 
     @Override
     public Entrenador getObjectByKey(Integer key) {

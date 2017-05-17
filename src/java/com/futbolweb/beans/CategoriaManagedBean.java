@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Categoria;
 import com.futbolweb.persistence.facades.CategoriaFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -63,6 +64,22 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
         } catch (Exception e) {
         }
     }
+    
+       public void guardarCambiosCategoria(Categoria ca) throws IOException{
+   
+        try {
+             categoriaEJB.edit(categoria);
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Categoria"));
+        } catch (Exception e) {
+        }
+    
+    }
+    
+    public String redireccionarCategoria(Categoria ca) {
+
+    categoria=ca;
+    return "crear_categoria.xhtml";
+    }
    
     
     
@@ -86,6 +103,12 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
+    
+    
+    
+    
+    
+    
 
     public CategoriaManagedBean() {
     }
