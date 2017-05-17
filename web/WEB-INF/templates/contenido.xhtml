@@ -11,27 +11,35 @@
         <ui:composition>
             <!-- Page Content -->
 
-            <div id="page-content-wrapper" >
-                
-                <div class="container-fluid" >
-                    <div class="row" >
-                        <div class="col-lg-12" >
+            <!--            <div id="page-content-wrapper" >
+            
+                            <div class="container-fluid" >
+                                <div class="row" >
+                                    <div class="col-lg-12" >-->
 
-                            <h:form >
-                                <a  href="#menu-toggle" class="btn btn-outline  btn-danger" id="menu-toggle">Abrir / cerrar</a>
-                            </h:form>
+            <h:form >
+                <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
+            </h:form>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--                        </div>
+                                </div>
+                            </div>
+                        </div>-->
             <!-- /#page-content-wrapper -->
             <!-- Bootstrap Core JavaScript -->
 
-            
+
+
             <script src="#{request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
+            <script src="#{request.contextPath}/resources/js/sidebarusuario.js" type="text/javascript"></script>
+
             <script src="#{request.contextPath}/resources/js/bootstrap-table.js" type="text/javascript"></script>
-            
+            <script src="#{request.contextPath}/resources/js/iniciop.js" type="text/javascript"></script>
+
             <!-- Menu Toggle Script -->
             <script>
                 $("#menu-toggle").click(function (e) {

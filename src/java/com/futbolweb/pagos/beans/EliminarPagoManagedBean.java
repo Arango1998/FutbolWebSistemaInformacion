@@ -5,6 +5,7 @@
  */
 package com.futbolweb.pagos.beans;
 
+import com.futbolweb.beans.PagoManagedBean;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.facades.PagoFacade;
@@ -13,6 +14,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -25,7 +27,8 @@ public class EliminarPagoManagedBean implements InterfaceController<Pago>{
      private Pago pago;
     @EJB 
     private PagoFacade pagof;
-    
+    @Inject
+    private PagoManagedBean pagoM;
     
     @PostConstruct
     public void init(){
@@ -40,8 +43,10 @@ public class EliminarPagoManagedBean implements InterfaceController<Pago>{
         this.pago = pago;
     }
     
-    public void eliminarPago(Pago p){
+    public String eliminarPago(Pago p){
     pagof.remove(p);
+    
+    return pagoM.solicitarJugador(p.getFkIdJugador().getIdJugador());
     }
     /**
      * Creates a new instance of EliminarPagoManagedBean

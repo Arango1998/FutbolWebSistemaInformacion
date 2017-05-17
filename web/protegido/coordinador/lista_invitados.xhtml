@@ -10,49 +10,53 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-          
+
+
+                <header>
+                    <h1 class="page-header text-center">Usuarios 'Invitados' Actuales.</h1>
+                </header>
                 
-                
-                
-                                    <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
-                                        <thead>
-
-                                            <tr>
-                                                <th><center>Editar Usuario Invitado</center></th>
-                                                  <th><center>Documento</center></th>
-                                                    <th><center>Primer Nombre</center></th>
-                                                <th><center>Primer Apellido</center></th>
-                                                <th><center>Rol</center></th>
-                                                 <th><center>Eliminar Usuario</center></th>
 
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                    <thead>
 
-                                            <ui:repeat  value="#{usuarioManagedBean.invitado}" var="item">
-
-                                                <center>
-                                                    <tr>
-                                                        <td>Editar</td>
-                                                        <td>#{item.documento}</td>
-                                                        <td>#{item.primerNombre}</td>
-                                                        <td>#{item.primerApellido}</td>
-                                                        <td>#{item.idTipoRol.nombreRol}</td>
-                                                        
-                                                        <td>Eliminar Usuario</td>
+                        <tr>
+                            <th><center>Editar Usuario Invitado</center></th>
+                            <th><center>Documento</center></th>
+                            <th><center>Primer Nombre</center></th>
+                            <th><center>Primer Apellido</center></th>
+                            <th><center>Rol</center></th>
+                            <th><center>Eliminar Usuario</center></th>
 
 
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                                                    </tr>
-                                                </center>
+                        <ui:repeat  value="#{usuarioManagedBean.invitado}" var="item">
 
-                                            </ui:repeat>
+                            <center>
+                                <tr>
+                                    <td>Editar</td>
+                                    <td>#{item.documento}</td>
+                                    <td>#{item.primerNombre}</td>
+                                    <td>#{item.primerApellido}</td>
+                                    <td>#{item.idTipoRol.nombreRol}</td>
 
-                                        </tbody>
-                                        
-                                    </table>
-                
+                                    <td>Eliminar Usuario</td>
+
+
+
+                                </tr>
+                            </center>
+
+                        </ui:repeat>
+
+                    </tbody>
+
+                </table>
+
 
             </ui:define>
 
