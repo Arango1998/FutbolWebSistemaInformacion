@@ -19,54 +19,66 @@ import javax.faces.context.FacesContext;
 @Named(value = "torneoManagedBean")
 @RequestScoped
 public class TorneoManagedBean implements Serializable, InterfaceController<Torneo> {
-
+    
     private Torneo torneo;
     @EJB
     private TorneoFacade tf;
-
+    
     public TorneoManagedBean() {
     }
-
+    
     @PostConstruct
     public void init() {
         torneo = new Torneo();
     }
-
+    
     @Override
     public Torneo getObjectByKey(Integer key) {
         return tf.find(key);
     }
-
+    
     public Torneo getTorneo() {
         return torneo;
     }
-
+    
     public void setTorneo(Torneo torneo) {
         this.torneo = torneo;
     }
-
+    
     public List<Torneo> listar() {
         return tf.findAll();
     }
-
+    
     public void create() {
         try {
-
+            
             tf.create(torneo);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Torneo registrado con éxito"));
-
+            
         } catch (Exception e) {
-
+            
         }
-
+        
     }
-    public void redireccionar(){
-    
+
+    public void redireccionar() {
+        
         try {
-              FacesContext.getCurrentInstance().getExternalContext().redirect("registro_torneo.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registro_torneo.xhtml");
         } catch (Exception e) {
         }
     }
-
     
+    public void editar() {
+        
+        tf.edit(torneo);
+    }
+    
+    public void actualizar(Torneo t){
+        
+    torneo = t;
+   
+    
+    
+    }
 }

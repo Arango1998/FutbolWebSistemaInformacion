@@ -52,15 +52,18 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="FkIdTorneo"/>
+                                    <h:outputText value="Torneo"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fkIdTorneo.nombreTorneo}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="FkIdBarrio"/>
+                                    <h:outputText value="Barrio"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fkIdBarrio.nombreBarrio}"/>
+                            </p:column>
+                            <p:column>
+                                <h:commandButton value="Editar"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
