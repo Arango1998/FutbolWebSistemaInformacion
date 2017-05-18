@@ -57,6 +57,12 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
         }
     }
 
+    public void eliminarCategoria(Categoria c) {
+        categoriaEJB.remove(c);
+    
+    }
+    
+
     public void redireccionar() {
 
         try {
@@ -64,26 +70,23 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
         } catch (Exception e) {
         }
     }
-    
-       public void guardarCambiosCategoria(Categoria ca) throws IOException{
-   
+
+    public void guardarCambiosCategoria(Categoria ca) throws IOException {
+
         try {
-             categoriaEJB.edit(categoria);
-             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Categoria"));
+            categoriaEJB.edit(categoria);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Categoria"));
         } catch (Exception e) {
         }
-    
+
     }
-    
+
     public String redireccionarCategoria(Categoria ca) {
 
-    categoria=ca;
-    return "crear_categoria.xhtml";
+        categoria = ca;
+        return "crear_categoria.xhtml";
     }
-   
-    
-    
-    
+
     public void onRowEdit(RowEditEvent event) {
         FacesMessage msg = new FacesMessage("Car Edited", ((Categoria) event.getObject()).getNombreCategoria());
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -103,12 +106,6 @@ public class CategoriaManagedBean implements Serializable, InterfaceController<C
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
-    
-    
-    
-    
-    
-    
 
     public CategoriaManagedBean() {
     }

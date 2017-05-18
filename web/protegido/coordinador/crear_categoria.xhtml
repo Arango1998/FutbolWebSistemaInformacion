@@ -17,72 +17,83 @@
                 <!-- /#sidebar-wrapper -->
 
                 <!-- Page Content -->
-                <br></br>
 
-                <header>
-                    <h1 class="page-header text-center">Categorías Actuales.</h1>
-                </header>
-                <h2>Contamos con ‘contador’ Categorías.</h2>
-                <p>Recuerde que antes de registrar un ‘Equipo de futbol’ debe crear una categoría. </p>
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
 
+                        <header>
+                            <h1 class="page-header text-center">Categorías Actuales.</h1>
+                        </header>
+                        <h2>Contamos con ‘contador’ Categorías.</h2>
+                        <p>Recuerde que antes de registrar un ‘Equipo de futbol’ debe crear una categoría. </p>        
 
-
-
-
-
-
-
-                <f:view>
-
-
-                    <h:form id="dqw">
-                        <p:dataTable id="tabCat" value="#{categoriaManagedBean.listCategorias()}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdCategoria"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idCategoria}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="NombreCategoria"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreCategoria}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Editar"/>
-                                </f:facet>
-                                <p:commandButton value="editar" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
-
-                <br/>
-                <div aria-hidden="true">
-                    <p:dialog widgetVar="formEdit"
-                              modal="true"
-                              position="top"
-                              resizable="false">
 
                         <f:view>
 
 
-                            <h:form id="fEdit">
-                                <p:panelGrid columns="2">
-                                    <p:outputLabel value="IdCategoria:" for="idCategoria" />
-                                    <p:inputText id="idCategoria" value="#{categoriaManagedBean.categoria.idCategoria}" title="IdCategoria" required="true" requiredMessage="The IdCategoria field is required."/>
-                                    <p:outputLabel value="NombreCategoria:" for="nombreCategoria" />
-                                    <p:inputText id="nombreCategoria" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
-                                </p:panelGrid>
-                                <p:commandButton value="Editar" action="#{categoriaManagedBean.guardarCambiosCategoria(categoriaManagedBean.categoria)}" onclick="PF('formEdit').hide()" update=":dqw"/>
+                            <h:form id="dqw">
+                                <p:dataTable id="tabCat" value="#{categoriaManagedBean.listCategorias()}" var="item">
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre"/>
+                                        </f:facet>
+                                        <center><h:outputText value="#{item.nombreCategoria}"/></center>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                        <center><p:commandButton class="btn-outline" value="editar" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
+                                    </p:column>
+                                     <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Eliminar"/>
+                                        </f:facet>
+                                         <center><p:commandButton ajax="false" class="btn-outline" value="eliminar" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/></center>
+                                    </p:column>
+                                </p:dataTable>
                             </h:form>
                         </f:view>
-                    </p:dialog>
 
+                        <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
+
+
+                                <div class="modal-header">
+                                    <center><h2>Edición de categorías</h2></center>
+
+                                    <h:form id="fEdit">
+
+                                        <p:outputLabel value="IdCategoria:" for="idCategoria" style="visibility:hidden"/>
+                                        <p:inputText id="idCategoria" style="visibility:hidden" value="#{categoriaManagedBean.categoria.idCategoria}" title="IdCategoria" required="true" requiredMessage="The IdCategoria field is required."/>
+                                        <br/>
+                                        <p:outputLabel value="Nombre:"/>
+                                        <p:inputText class="form-control" id="nombreCategoria" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                        <br/>
+                                        <br/>  
+                                        <br/>
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{categoriaManagedBean.guardarCambiosCategoria(categoriaManagedBean.categoria)}" onclick="PF('formEdit').hide()"/></center>
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
                 </div>
-
             </ui:define>
 
         </ui:composition>
