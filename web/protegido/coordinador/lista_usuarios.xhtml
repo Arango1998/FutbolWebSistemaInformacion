@@ -12,7 +12,202 @@
 
             <ui:define name="content">
 
-        fsdhfsjdhdf
+                <br></br>
+
+                <header>
+                    <h1 class="page-header text-center">Lista Usuarios</h1>
+                </header>
+
+
+
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lista Invitados</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista Jugadores</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Lista Acudientes</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Lista Entrenador</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+
+                            <header>
+                                <h1 class="page-header text-center">Usuarios 'Invitados' Actuales.</h1>
+                            </header>
+
+
+
+                            <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Editar Usuario Invitado</center></th>
+                                        <th><center>Documento</center></th>
+                                        <th><center>Primer Nombre</center></th>
+                                        <th><center>Primer Apellido</center></th>
+                                        <th><center>Rol</center></th>
+                                        <th><center>Eliminar Usuario</center></th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{usuarioManagedBean.invitado}" var="item">
+
+                                        <center>
+                                            <tr>
+                                                <td>Editar</td>
+                                                <td>#{item.documento}</td>
+                                                <td>#{item.primerNombre}</td>
+                                                <td>#{item.primerApellido}</td>
+                                                <td>#{item.idTipoRol.nombreRol}</td>
+
+                                                <td>Eliminar Usuario</td>
+
+
+
+                                            </tr>
+                                        </center>
+
+                                    </ui:repeat>
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <br></br>
+
+                            <header>
+                                <h1 class="page-header text-center">Equipos Actuales.</h1>
+                            </header>
+                            <h2>Contamos con ‘contador’ Categorías.</h2>
+                            <p>Recuerde que antes de registrar un ‘Equipo de futbol’ debe crear una categoría. </p>
+
+
+
+                            <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr>
+                                        <th><center>Editar Usuario Invitado</center></th>
+                                        <th><center>Documento</center></th>
+                                        <th><center>Primer Nombre</center></th>
+                                        <th><center>Primer Apellido</center></th>
+                                        <th><center>Rol</center></th>
+                                        <th><center>Posicion</center></th>
+                                        <th><center>Eliminar Usuario</center></th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{usuarioManagedBean.jugadores}" var="item">
+
+                                        <center>
+                                            <tr>
+                                                <td>Editar</td>
+                                                <td>#{item.documento}</td>
+                                                <td>#{item.primerNombre}</td>
+                                                <td>#{item.primerApellido}</td>
+                                                <td>#{item.idTipoRol.nombreRol}</td>
+                                                <td>#{item.jugador.posicion}</td>
+
+                                                <td>Eliminar Usuario</td>
+
+
+
+                                            </tr>
+                                        </center>
+
+                                    </ui:repeat>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">dsjfsdkj</div>
+                        <div role="tabpanel" class="tab-pane" id="settings">
+                             
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{usuarioManagedBean.entrenador}" var="item">
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.documento}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerNombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerNombre}"/>
+                            </p:column>
+                           
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerApellido"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerApellido}"/>
+                            </p:column>
+                           
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaDeNacimento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaDeNacimento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                           
+                        
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Correo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.correo}"/>
+                            </p:column>
+                     
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTipoRol"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoRol.nombreRol}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEstado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                            </p:column>
+                            
+                               <p:column>
+                                   <p:commandButton ajax="false" value="Ver informe de pagos" action="#{entrenadorManagedBean.seleccionarEntrenadorEspecifico(item.idUsuario)}" ></p:commandButton>
+                            </p:column>
+                     
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+
+                
+                        </div>
+                    </div>
+
+                </div>
 
 
             </ui:define>

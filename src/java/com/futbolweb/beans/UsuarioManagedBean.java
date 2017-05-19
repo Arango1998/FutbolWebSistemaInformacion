@@ -91,6 +91,9 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         return listaInvitado = lUsuario;
 
     }
+    
+    
+    
 
     public void recorroUsuarioInvitado() {
         for (Usuario a : listaInvitado) {
@@ -110,6 +113,29 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         }
 
     }
+    
+    
+    public void verInvitado(Usuario u){
+    
+    this.usuario=u;
+    }
+    public void editarInvitados(){
+        try {
+            usuario.getIdUsuario();
+            uf.edit(usuario);
+        } catch (Exception e) {
+        }
+    }
+    
+    
+      public void redireccionarUsuarioInvitado() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_invitados.xhtml");
+        } catch (Exception e) {
+        }
+    }
+    
 
     public void creaUsuario() {
         try {

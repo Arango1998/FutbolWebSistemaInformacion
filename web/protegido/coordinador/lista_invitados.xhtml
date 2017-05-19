@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -18,44 +19,123 @@
                 
 
 
-                <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
-                    <thead>
-
-                        <tr>
-                            <th><center>Editar Usuario Invitado</center></th>
-                            <th><center>Documento</center></th>
-                            <th><center>Primer Nombre</center></th>
-                            <th><center>Primer Apellido</center></th>
-                            <th><center>Rol</center></th>
-                            <th><center>Eliminar Usuario</center></th>
+                
+                
+                
+              
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                <h:form id="initadi">
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{usuarioManagedBean.invitado}" var="item">
+                         
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.documento}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerNombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerNombre}"/>
+                            </p:column>
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerApellido"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerApellido}"/>
+                            </p:column>
+                           
+                           
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaDeNacimento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaDeNacimento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                          
+                         
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Correo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.correo}"/>
+                            </p:column>
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTipoRol"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoRol.nombreRol}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEstado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                            </p:column>
+                           
+                             <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Editar"/>
+                                </f:facet>
+                                 <p:commandButton onclick="PF('insertar').show()" update=":editinvi" actionListener="#{usuarioManagedBean.verInvitado(item)}" value="Editar"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                
+                <p:dialog widgetVar="insertar">
+                  
 
-                        <ui:repeat  value="#{usuarioManagedBean.invitado}" var="item">
 
-                            <center>
-                                <tr>
-                                    <td>Editar</td>
-                                    <td>#{item.documento}</td>
-                                    <td>#{item.primerNombre}</td>
-                                    <td>#{item.primerApellido}</td>
-                                    <td>#{item.idTipoRol.nombreRol}</td>
+                        <h:form id="editinvi">
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="IdUsuario:" for="idUsuario" />
+                                <p:inputText id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                                <p:outputLabel value="Documento:" for="documento" />
+                                <p:inputText id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                <p:outputLabel value="PrimerNombre:" for="primerNombre" />
+                                <p:inputText id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                                <p:outputLabel value="SegundoNombre:" for="segundoNombre" />
+                                <p:inputText id="segundoNombre" value="#{usuarioManagedBean.usuario.segundoNombre}" title="SegundoNombre" />
+                                <p:outputLabel value="PrimerApellido:" for="primerApellido" />
+                                <p:inputText id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                                <p:outputLabel value="SegundoApellido:" for="segundoApellido" />
+                                <p:inputText id="segundoApellido" value="#{usuarioManagedBean.usuario.segundoApellido}" title="SegundoApellido" />
+                                <p:outputLabel value="Clave:" for="clave" />
+                                <p:inputText id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                <p:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                                <p:inputText id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </p:inputText>
+                              <p:outputLabel value="Correo:" for="correo" />
+                                <p:inputText id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                               
+                                <p:outputLabel value="IdTipoRol:" for="idTipoRol" />
+                                <p:selectOneMenu id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="IdEstado:" for="idEstado" />
+                                <p:selectOneMenu id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
+                                </p:selectOneMenu>
+                              
+                            </p:panelGrid>
+                            <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
+                        </h:form>
+                    
 
-                                    <td>Eliminar Usuario</td>
+                </p:dialog>
+             
 
-
-
-                                </tr>
-                            </center>
-
-                        </ui:repeat>
-
-                    </tbody>
-
-                </table>
 
 
             </ui:define>

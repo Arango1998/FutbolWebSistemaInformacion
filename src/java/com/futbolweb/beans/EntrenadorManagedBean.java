@@ -85,7 +85,7 @@ public class EntrenadorManagedBean implements Serializable, InterfaceController<
     List<Entrenador> lentrenador = enf.listarEntenadorEspecifico(e);
     lista = lentrenador;
     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("entrenador", lista);
-    return "/protegido/coordinador/entrenador_especifico.xhtml";
+    return "/faces/protegido/coordinador/entrenador_especifico.xhtml";
     }
     
     public List<Entrenador>listarEntrenadorEspecifico(){
