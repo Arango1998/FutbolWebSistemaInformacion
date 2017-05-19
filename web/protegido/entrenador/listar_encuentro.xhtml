@@ -11,6 +11,7 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+
                 <f:view>
 
 
@@ -63,74 +64,142 @@
                                 <h:outputText value="#{item.fkIdBarrio.nombreBarrio}"/>
                             </p:column>
                             <p:column>
-                                <h:commandButton value="Editar"/>
+                                <f:facet name="header">
+                                    <h:outputText value="Editar"/>
+                                </f:facet>
+                                <center><p:commandButton class="btn-outline" value="editar" action="#{encuentroTorneoManagedBean.redireccionarEncuentroTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
+                <div aria-hidden="true">
+                    <p:dialog class="form-control" widgetVar="formEdit"
+                              modal="true"
+                              position="top"
+                              resizable="false"
+                              draggable="true"
+                              closable="true">
 
-               <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Encuentro</a>
 
-                                <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+                        <div class="modal-header">
+                            <center><h2>Edición de encuentros</h2></center>
 
-                                            <div class="modal-body">
 
-                                               
-                                                <h:form>
-                                                    <center><h1><h:outputText value="Registro de Encuentros"/></h1></center>
+                            <h:form id="fEdit">
+
+
+                                <br/>
+                                <div class="rowContainer">
+
+                                    <p:outputLabel value="IdEncuentro:" style="visibility:hidden"  for="idEncuentro" />
+                                    <p:inputText id="idEncuentro" style="visibility:hidden"  value="#{encuentroTorneoManagedBean.encuentroTorneo.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required."/>
+                                    <br/>
+                                    <h:outputLabel  value="Fecha del encuentro"/>
+                                    <br/>
+                                    <p:calendar id="button" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" showOn="button">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </p:calendar>
+
+                                    <br/>
+
+                                    <h:outputLabel value="Descripción"/>
+
+                                    <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+
+                                    <h:outputLabel value="Resultado"/>
+
+                                    <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
+
+                                    <h:outputLabel value="Torneo"/>
+
+                                    <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
+                                    </h:selectOneMenu>
+
+                                    <h:outputLabel value="Barrio"/>
+
+                                    <h:selectOneMenu class="form-control" id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio" required="true" requiredMessage="The FkIdBarrio field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{barrioManagedBean.listar()}" var="lisbar" itemLabel="#{lisbar.nombreBarrio}"/>
+                                    </h:selectOneMenu>
+                                    <br/>
+                                    <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{encuentroTorneoManagedBean.guardarCambiosEncuentroTorneo(encuentroTorneoManagedBean.encuentroTorneo)}" onclick="PF('formEdit').hide()"/></center>    
+
+
+
+                                </div>
+                                <br/>
+                                <br/>
+
+                            </h:form>
+                        </div>
+
+                    </p:dialog>
+
+
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Encuentro</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-body">
+
+
+                                            <h:form>
+                                                <center><h1><h:outputText value="Registro de Encuentros"/></h1></center>
+
+                                                <br/>
+                                                <div class="rowContainer">
+
+                                                    <h:outputLabel  value="Fecha del encuentro"/>
+                                                    <br/>
+                                                    <p:calendar id="button" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" showOn="button">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </p:calendar>
 
                                                     <br/>
-                                                    <div class="rowContainer">
 
-                                                        <h:outputLabel  value="Fecha del encuentro"/>
-                                                        <br/>
-                                                        <p:calendar id="button" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" showOn="button">
-                                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                        </p:calendar>
+                                                    <h:outputLabel value="Descripción"/>
 
-                                                        <br/>
+                                                    <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
 
-                                                        <h:outputLabel value="Descripción"/>
+                                                    <h:outputLabel value="Resultado"/>
 
-                                                        <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                                                    <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
 
-                                                        <h:outputLabel value="Resultado"/>
+                                                    <h:outputLabel value="Torneo"/>
 
-                                                        <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
+                                                    <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
+                                                    </h:selectOneMenu>
 
-                                                        <h:outputLabel value="Torneo"/>
+                                                    <h:outputLabel value="Barrio"/>
 
-                                                        <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
-                                                            <!-- TODO: update below reference to list of available items-->
-                                                            <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
-                                                        </h:selectOneMenu>
-
-                                                        <h:outputLabel value="Barrio"/>
-
-                                                        <h:selectOneMenu class="form-control" id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio" required="true" requiredMessage="The FkIdBarrio field is required.">
-                                                            <!-- TODO: update below reference to list of available items-->
-                                                            <f:selectItems value="#{barrioManagedBean.listar()}" var="lisbar" itemLabel="#{lisbar.nombreBarrio}"/>
-                                                        </h:selectOneMenu>
+                                                    <h:selectOneMenu class="form-control" id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio" required="true" requiredMessage="The FkIdBarrio field is required.">
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{barrioManagedBean.listar()}" var="lisbar" itemLabel="#{lisbar.nombreBarrio}"/>
+                                                    </h:selectOneMenu>
 
 
 
 
-                                                    </div>
-                                                    <br/>
-                                                    <br/>
-                                                    <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" />
+                                                </div>
+                                                <br/>
+                                                <br/>
+                                                <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" />
 
-                                                    <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">
-                                                        Cerrar
-                                                    </button> 
-                                                </h:form>
-                                            </div>
-
+                                                <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">
+                                                    Cerrar
+                                                </button> 
+                                            </h:form>
                                         </div>
 
                                     </div>
@@ -138,8 +207,10 @@
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
+                </div>
 
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
@@ -151,3 +222,4 @@
 
     </body>
 </html>
+

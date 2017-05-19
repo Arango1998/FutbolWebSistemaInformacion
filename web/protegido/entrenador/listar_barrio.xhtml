@@ -11,91 +11,145 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-
-                <f:view>
-
-
-                    <h:form>
-
-                        <center ><h1><h:outputText value="Barrios registrados"/></h1></center>
-                        <br></br>
-
-                        <h:commandLink title="Descargar tabla en pdf">
-                            <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="listaBarrios" fileName="ListadoDeBarrios"/>
-                        </h:commandLink>
-                        <h:commandLink title="Descargar tabla en Excel">
-                            <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="listaBarrios" fileName="ListadoDeBarrios"/>
-                        </h:commandLink>
-
-                        <p:dataTable id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Localidad"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdLocalidad.nombreLocalidad}" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Barrio"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreBarrio}"/>
-                            </p:column>
-
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <f:view>
 
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Barrio</a>
+                            <h:form>
 
-                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                                <center ><h1><h:outputText value="Barrios registrados"/></h1></center>
+                                <br></br>
 
-                                        <div class="modal-body">
-                                            <h:form>
-                                                <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
+                                <h:commandLink title="Descargar tabla en pdf">
+                                    <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                    <p:dataExporter type="pdf" target="listaBarrios" fileName="ListadoDeBarrios"/>
+                                </h:commandLink>
+                                <h:commandLink title="Descargar tabla en Excel">
+                                    <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                    <p:dataExporter type="xls" target="listaBarrios" fileName="ListadoDeBarrios"/>
+                                </h:commandLink>
 
-                                                <br/>
-                                                <div class="rowContainer">
+                                <p:dataTable id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Localidad"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fkIdLocalidad.nombreLocalidad}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Barrio"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreBarrio}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                        <center><p:commandButton class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </f:view>
+
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
 
 
-                                                    <h:outputLabel  value="Localidad"/>
+                                <div class="modal-header">
+                                    <center><h2>Edición de barrios</h2></center>
 
-                                                    <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
-                                                        <!-- TODO: update below reference to list of available items-->
-                                                        <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
-                                                    </h:selectOneMenu>
-
-                                                    <h:outputLabel value="Nombre del barrio"/>
-
-                                                    <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
+                                    <h:form id="fEdit">
 
 
-                                                </div> 
-                                                <br/>
-                                                <br/>
-                                                <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
-                                                <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">
-                                                    Cerrar
-                                                </button> 
-                                            </h:form>
+                                        <h:outputLabel style="visibility:hidden" value="IdBarrio:"/>
+
+                                        <h:inputText id="idBarrio" style="visibility:hidden" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>
+
+                                        <h:outputLabel  value="Localidad"/>
+
+                                        <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
+                                        </h:selectOneMenu>
+
+                                        <h:outputLabel value="Nombre del barrio"/>
+
+                                        <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
+
+                                        <br/>
+                                        <br/>
+
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{barrioManagedBean.guardarCambiosBarrio(barrioManagedBean.barrio)}" onclick="PF('formEdit').hide()"/></center>    
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
+
+
+                        </div>
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Barrio</a>
+
+                                    <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body">
+                                                    <h:form>
+                                                        <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
+
+                                                        <br/>
+                                                        <div class="rowContainer">
+
+
+                                                            <h:outputLabel  value="Localidad"/>
+
+                                                            <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                                                <!-- TODO: update below reference to list of available items-->
+                                                                <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
+                                                            </h:selectOneMenu>
+
+                                                            <h:outputLabel value="Nombre del barrio"/>
+
+                                                            <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
+
+
+                                                        </div> 
+                                                        <br/>
+                                                        <br/>
+                                                        <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
+                                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
+                                                    </h:form>
+                                                </div>
+
+                                            </div>
+
                                         </div>
 
                                     </div>
 
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
+                    <div class="col-lg-1"></div>
                 </div>
+
 
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
@@ -107,6 +161,7 @@
 
     </body>
 </html>
+
 
 
 

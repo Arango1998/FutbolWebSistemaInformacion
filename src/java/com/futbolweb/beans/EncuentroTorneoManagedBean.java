@@ -8,12 +8,14 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.EncuentroTorneo;
 import com.futbolweb.persistence.facades.EncuentroTorneoFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
@@ -67,5 +69,21 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
             FacesContext.getCurrentInstance().getExternalContext().redirect("listar_encuentro.xhtml");
         } catch (Exception e) {
         }
+    }
+    
+     public String redireccionarEncuentroTorneo(EncuentroTorneo e) {
+
+        encuentroTorneo = e;
+        return "listar_encuentro.xhtml";
+    }
+     
+      public void guardarCambiosEncuentroTorneo(EncuentroTorneo e) throws IOException {
+
+        try {
+            encuentroejb.edit(encuentroTorneo);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+        } catch (Exception o) {
+        }
+
     }
 }

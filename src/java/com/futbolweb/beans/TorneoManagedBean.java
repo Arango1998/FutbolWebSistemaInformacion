@@ -3,6 +3,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Torneo;
 import com.futbolweb.persistence.facades.TorneoFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -69,16 +70,23 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
         }
     }
     
-    public void editar() {
-        
-        tf.edit(torneo);
+    public void guardarCambiosTorneo(Torneo t) throws IOException {
+
+        try {
+            tf.edit(torneo);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+        } catch (Exception e) {
+        }
+
     }
-    
-    public void actualizar(Torneo t){
-        
-    torneo = t;
+
+    public String redireccionarTorneo(Torneo t) {
+
+        torneo = t;
+        return "registro_torneo.xhtml";
+    }
    
     
     
     }
-}
+

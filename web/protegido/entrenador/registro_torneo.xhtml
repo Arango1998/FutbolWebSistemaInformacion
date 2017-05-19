@@ -33,15 +33,10 @@
                         </h:commandLink>
 
                         <p:dataTable id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
+                           
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdTorneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idTorneo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="NombreTorneo"/>
+                                    <h:outputText value="Nombre"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nombreTorneo}"/>
                             </p:column>
@@ -53,13 +48,13 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="DatosContactoOrganizador"/>
+                                    <h:outputText value="Datos de contacto"/>
                                 </f:facet>
                                 <h:outputText value="#{item.datosContactoOrganizador}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="FechaInicio"/>
+                                    <h:outputText value="Inicio"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaInicio}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -67,17 +62,79 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="FechaFin"/>
+                                    <h:outputText value="Finalización"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaFin}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Editar"/>
+                                </f:facet>
+                                <center><p:commandButton class="btn-outline" value="editar" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
                             </p:column>
                         </p:dataTable>
 
                     </h:form>
                 </f:view>
 
+                <div aria-hidden="true">
+                    <p:dialog class="form-control" widgetVar="formEdit"
+                              modal="true"
+                              position="top"
+                              resizable="false"
+                              draggable="true"
+                              closable="true">
+
+
+                        <div class="modal-header">
+                            <center><h2>Edición de torneos</h2></center>
+
+                            <h:form id="fEdit">
+
+                                <h:outputLabel style="visibility:hidden" value="IdTorneo:" for="idTorneo" />
+
+                                <h:inputText style="visibility:hidden" id="idTorneo" value="#{torneoManagedBean.torneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                <br/>
+                                <h:outputLabel  value="Nombre del Torneo"/>
+
+                                <h:inputText  class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+
+                                <h:outputLabel value="Organizador"/>
+
+                                <h:inputText class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+
+                                <h:outputLabel value="Contacto del organizador"/>
+
+                                <h:inputTextarea class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
+
+                                <h:outputLabel value="Inicio"/>
+                                <br/>
+
+                                <p:calendar id="button" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </p:calendar>
+
+                                <br/>
+                                <h:outputLabel value="Finalización"/>
+                                <br/>
+                                <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
+
+
+                                <br/>
+                                <br/>
+
+                                <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{torneoManagedBean.guardarCambiosTorneo(torneoManagedBean.torneo)}" onclick="PF('formEdit').hide()"/></center>    
+
+                            </h:form>
+
+                        </div>
+
+                    </p:dialog>
+
+
+                </div>
 
                 <div class="container-fluid">
                     <div class="row">

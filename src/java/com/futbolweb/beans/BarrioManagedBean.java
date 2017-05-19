@@ -8,12 +8,14 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Barrio;
 import com.futbolweb.persistence.facades.BarrioFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
@@ -59,6 +61,22 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
             FacesContext.getCurrentInstance().getExternalContext().redirect("listar_barrio.xhtml");
         } catch (Exception e) {
         }
+    }
+    
+     public void guardarCambiosBarrio(Barrio b) throws IOException {
+
+        try {
+            bf.edit(barrio);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+        } catch (Exception e) {
+        }
+
+    }
+
+    public String redireccionarBarrio(Barrio b) {
+
+        barrio = b;
+        return "listar_barrio.xhtml";
     }
 
     @Override

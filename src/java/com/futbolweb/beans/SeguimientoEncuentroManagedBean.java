@@ -9,12 +9,14 @@ import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.SeguimientoEncuentro;
 import com.futbolweb.persistence.facades.SeguimientoEncuentroFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -124,5 +126,22 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
         } catch (Exception e) {
         }
     }
+    
+     public void guardarCambiosEncuentro(SeguimientoEncuentro s) throws IOException {
+
+        try {
+            segef.edit(seguimientoencuentro);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+        } catch (Exception e) {
+        }
+
+    }
+
+    public String redireccionarEncuentro(SeguimientoEncuentro s) {
+
+        seguimientoencuentro = s;
+        return "registrarseguimientoencuentro.xhtml";
+    }
+
 
 }
