@@ -67,16 +67,19 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
         lista= new LinkedList<>();
     }
     
-    public String solicitarJugador(List<Seguimiento> lseguimiento){
-        try{
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seg", lseguimiento);
-        
-        return "/protegido/entrenador/listadoseguimiento.xhtml?faces-redirect=true";
-        }catch(Exception e){
-        }
-        
-        return "";
-        
+    public List<Seguimiento> listarSeguimientoo() {
+        return (List<Seguimiento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("seguimientos");
+    }
+    
+    public String solicitarJugador(int idJugador) {
+
+        Jugador j = jugadorF.find(idJugador);
+        List<Seguimiento> lseguimiento = segf.listarSeguimientoEspecifico(j);
+        lista = lseguimiento;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jugadorSeguimiento", j);
+        return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
+
     }
     
     public void registrarSeguimiento(){

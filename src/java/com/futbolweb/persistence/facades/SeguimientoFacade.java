@@ -32,6 +32,13 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> {
         super(Seguimiento.class);
     }
     
+    public List<Seguimiento> listarSeguimientoEspecifico(Jugador j){
+     List<Seguimiento> lista;
+    Query query = em.createQuery("SELECT s FROM Seguimiento s WHERE s.idJugador = ?1");
+    query.setParameter(1, j);
+    lista = query.getResultList();
+    return lista;
+    }
+}
    
     
-}

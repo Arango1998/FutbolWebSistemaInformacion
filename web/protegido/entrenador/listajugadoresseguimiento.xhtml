@@ -15,40 +15,56 @@
 
 
                     <h:form>
-                        <h1><h:outputText value="Listado seguimiento jugadores"/></h1>
-                        <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
-                            
+                        <h1><center><h:outputText value="Listado seguimiento jugadores"/></center></h1>
+                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoo()}" var="item">
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Posicion"/>
+                                    <h:outputText value="IdSeguimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.posicion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Equipo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                                <h:outputText value="#{item.idSeguimiento}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
+                                    <h:outputText value="FechaSeguimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.usuario.primerNombre}"/>
+                                <h:outputText value="#{item.fechaSeguimiento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
+                                <f:facet name="header">
+                                    <h:outputText value="ResultadoSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.resultadoSeguimiento}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Editar" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
+                                <f:facet name="header">
+                                    <h:outputText value="Observacion"/>
+                                </f:facet>
+                                <h:outputText value="#{item.observacion}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Eliminar" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
+                                <f:facet name="header">
+                                    <h:outputText value="IdJugador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idJugador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEntrenador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEntrenador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPosicionSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPosicionSeguimiento}"/>
                             </p:column>
                         </p:dataTable>
-                        
                     </h:form>
                 </f:view>
+
 
          
             </ui:define>

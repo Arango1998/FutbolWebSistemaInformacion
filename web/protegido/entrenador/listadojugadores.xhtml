@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -12,14 +13,20 @@
 
             <ui:define name="content">
                 
-            </ui:define>
-            <f:view>
+
+                
+                <f:view>
 
 
-                <h:form>
-                        <h1><h:outputText value="Listado seguimiento jugadores"/></h1>
+                    <h:form>
+                        <h1><center><h:outputText value="Listado jugadores"/></center></h1>
                         <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
-                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Jugador"/>
+                                </f:facet>
+                                <h:outputText value="Doc:#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                            </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Posicion"/>
@@ -33,19 +40,18 @@
                                 <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
                             </p:column>
                             <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
-                                </f:facet>
-                                <h:outputText value="#{item.usuario.primerNombre}"/>
-                            </p:column>
-                            <p:column>
-                                <p:commandButton value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
+                                <p:commandButton ajax="false" value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.idJugador)}" ></p:commandButton>
                             </p:column>
                            
                         </p:dataTable>
-                        
                     </h:form>
-            </f:view>
+                </f:view>
+
+
+                    
+                
+
+            </ui:define>
 
         </ui:composition>
 

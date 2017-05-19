@@ -94,6 +94,51 @@
                     </div>
                     <div class="col-lg-1"></div>
                 </div>
+                
+                
+                
+                
+                
+                  <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoría</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-body">
+                                            <f:view>
+
+
+                                                <h:form>
+                                                    <h1><h:outputText value="Create/Edit"/></h1>
+                                                  
+                                                        <h:outputLabel value="Nombre de la Categoria:" for="nombreCategoria" />
+                                                        <h:inputText class="form-control" id="nombreCategoria" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                                   
+                                                        <br></br>
+                                                        <h:commandButton actionListener="#{categoriaManagedBean.redireccionar()}"  class="btn btn-outline btn-success" value="Registrar" action="#{categoriaManagedBean.crearCatagoria()}" />
+                                               
+                                                </h:form>
+                                            </f:view>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
             </ui:define>
 
         </ui:composition>
