@@ -18,12 +18,7 @@
                     <h:form>
                         <h1><h:outputText value="Listado Seguimiento"/></h1>
                         <h:dataTable value="#{listaSeguimientosJugador.listaSeguimientoJugador}" var="item">
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idSeguimiento}"/>
-                            </h:column>
+                           
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaSeguimiento"/>
@@ -46,24 +41,26 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdJugador"/>
+                                    <h:outputText value="Jugador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idJugador}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdEntrenador"/>
+                                    <h:outputText value="Entrenador"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idEntrenador}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdPosicionSeguimiento"/>
+                                    <h:outputText value="PosicionSeguimiento"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idPosicionSeguimiento}"/>
                             </h:column>
                         </h:dataTable>
-                        <p:commandButton value="Registrar seguimiento" />
+                        <h:column>
+                            <h:commandButton value="Seguimiento" actionListener=
+                        </h:column>
                     </h:form>
                 </f:view>
 

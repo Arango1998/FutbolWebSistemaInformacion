@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                
+            </ui:define>
+            <f:view>
+
+
+                <h:form>
+                    <h1><h:outputText value="Listado seguimiento jugador"/></h1>
+                    <h:dataTable value="#{listaSeguimientosJugador.listaSeguimientoJugador}" var="item">
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="FechaSeguimiento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaSeguimiento}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ResultadoSeguimiento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resultadoSeguimiento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Observacion"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Jugador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idJugador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Entrenador"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEntrenador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="PosicionSeguimiento"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPosicionSeguimiento}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:column>
+                        <h:commandButton value="Seguimiento" action=""/>
+                    </h:column>
+                </h:form>
+            </f:view>
+
+        </ui:composition>
+
+    </body>
+</html>
