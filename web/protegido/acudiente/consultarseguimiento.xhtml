@@ -15,14 +15,9 @@
 
 
                     <h:form>
-                        <h1><h:outputText value="List"/></h1>
+                        <h1><center><h:outputText value="Listado seguimiento jugador"/></center></h1>
                         <p:dataTable value="#{seguimientoManagedBean.listarSeguimiento()}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idSeguimiento}"/>
-                            </p:column>
+                            
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="FechaSeguimiento"/>
@@ -45,21 +40,24 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdJugador"/>
+                                    <h:outputText value="Jugador"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idJugador}"/>
+                                <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdEntrenador"/>
+                                    <h:outputText value="Entrenador"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idEntrenador}"/>
+                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="IdPosicionSeguimiento"/>
+                                    <h:outputText value="PosicionSeguimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idPosicionSeguimiento}"/>
+                                <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton ajax="false" value="Ver seguimiento" ></p:commandButton>
                             </p:column>
                         </p:dataTable>
                     </h:form>

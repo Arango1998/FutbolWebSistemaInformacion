@@ -86,8 +86,8 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
         segf.create(seguimiento);
     }
     
-    public void eliminarSeguimiento(){
-        segf.remove(seguimiento);
+    public void eliminarSeguimiento(Seguimiento ser){
+        segf.remove(ser);
     }
     
     public void modificarSeguimiento(Seguimiento s){
@@ -100,7 +100,7 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
     
     public String actualizarSeguimiento(Seguimiento se){
         se = seguimiento;
-        return "";
+        return "listajugadoresseguimiento.xhtml";
     }
 
     @Override

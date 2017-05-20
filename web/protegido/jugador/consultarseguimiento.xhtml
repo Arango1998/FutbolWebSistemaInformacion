@@ -11,41 +11,60 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                
-            </ui:define>
-            <f:view>
+                <f:view>
 
 
-                <h:form>
-                        <h1><h:outputText value="Listado seguimiento jugadores"/></h1>
-                        <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
+                    <h:form>
+                        <h1><center><h:outputText value="Listado seguimiento jugador"/></center></h1>
+                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimiento()}" var="item">
                             
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Posicion"/>
+                                    <h:outputText value="FechaSeguimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.posicion}"/>
+                                <h:outputText value="#{item.fechaSeguimiento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Equipo"/>
+                                    <h:outputText value="ResultadoSeguimiento"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                                <h:outputText value="#{item.resultadoSeguimiento}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Usuario"/>
+                                    <h:outputText value="Observacion"/>
                                 </f:facet>
-                                <h:outputText value="#{item.usuario.primerNombre}"/>
+                                <h:outputText value="#{item.observacion}"/>
                             </p:column>
                             <p:column>
-                                <p:commandButton value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.seguimientoList)}" />
+                                <f:facet name="header">
+                                    <h:outputText value="Jugador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
                             </p:column>
-                           
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Entrenador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PosicionSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="Ver seguimiento"></p:commandButton>
+                            </p:column>
                         </p:dataTable>
-                        
                     </h:form>
-            </f:view>
+                </f:view>
+
+            </ui:define>
+            
 
         </ui:composition>
 
