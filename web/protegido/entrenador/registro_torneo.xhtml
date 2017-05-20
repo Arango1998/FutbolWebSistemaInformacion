@@ -12,193 +12,190 @@
 
             <ui:define name="content">
 
-                <div class="panel-body">
-
-                </div>
-
-                <f:view>
-
-                    <h:form>
-
-                        <center ><h1><h:outputText value="Torneos programados"/></h1></center>
-                        <br></br>
-
-                        <h:commandLink title="Descargar tabla en pdf">
-                            <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
-                        </h:commandLink>
-                        <h:commandLink title="Descargar tabla en Excel">
-                            <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
-                        </h:commandLink>
-
-                        <p:dataTable id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
-                           
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreTorneo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Organizador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.organizador}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Datos de contacto"/>
-                                </f:facet>
-                                <h:outputText value="#{item.datosContactoOrganizador}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Inicio"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaInicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Finalización"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Editar"/>
-                                </f:facet>
-                                <center><p:commandButton class="btn-outline" value="editar" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
-                            </p:column>
-                        </p:dataTable>
-
-                    </h:form>
-                </f:view>
-
-                <div aria-hidden="true">
-                    <p:dialog class="form-control" widgetVar="formEdit"
-                              modal="true"
-                              position="top"
-                              resizable="false"
-                              draggable="true"
-                              closable="true">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
 
 
-                        <div class="modal-header">
-                            <center><h2>Edición de torneos</h2></center>
+                 
 
-                            <h:form id="fEdit">
+                  
+                            <f:view>
 
-                                <h:outputLabel style="visibility:hidden" value="IdTorneo:" for="idTorneo" />
+                                <h:form style="padding-top: 150px;">
 
-                                <h:inputText style="visibility:hidden" id="idTorneo" value="#{torneoManagedBean.torneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
-                                <br/>
-                                <h:outputLabel  value="Nombre del Torneo"/>
+                                    <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="TORNEOS PROGRAMADOS"/></h1>
+                                    <br/>
 
-                                <h:inputText  class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                    <h:commandLink title="Descargar tabla en pdf">
+                                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                                    </h:commandLink>
+                                    <h:commandLink title="Descargar tabla en Excel">
+                                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                                    </h:commandLink>
 
-                                <h:outputLabel value="Organizador"/>
+                                    <p:dataTable style="font-family: fantasy;" id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
 
-                                <h:inputText class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.nombreTorneo}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Organizador"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.organizador}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Datos de contacto"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.datosContactoOrganizador}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Inicio"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fechaInicio}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Finalización"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fechaFin}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Editar"/>
+                                            </f:facet>
+                                            <center><a class="btn-outline" value="editar" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit">Editar</a></center>
+                                        </p:column>
+                                    </p:dataTable>
 
-                                <h:outputLabel value="Contacto del organizador"/>
+                                </h:form>
+                            </f:view>
 
-                                <h:inputTextarea class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
-
-                                <h:outputLabel value="Inicio"/>
-                                <br/>
-
-                                <p:calendar id="button" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </p:calendar>
-
-                                <br/>
-                                <h:outputLabel value="Finalización"/>
-                                <br/>
-                                <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
-
-
-                                <br/>
-                                <br/>
-
-                                <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{torneoManagedBean.guardarCambiosTorneo(torneoManagedBean.torneo)}" onclick="PF('formEdit').hide()"/></center>    
-
-                            </h:form>
-
-                        </div>
-
-                    </p:dialog>
-
-
-                </div>
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Torneo</a>
-
-                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <div class="modal-body">
-                                            <h:form>
-                                                <center><h1><h:outputText value="Registro de Torneos"/></h1></center>
-
-                                                <br/>
-                                                <div class="rowContainer">
-
-
-                                                    <h:outputLabel  value="Nombre del Torneo"/>
-
-                                                    <h:inputText  class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
-
-                                                    <h:outputLabel value="Organizador"/>
-
-                                                    <h:inputText class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
-
-                                                    <h:outputLabel value="Contacto del organizador"/>
-
-                                                    <h:inputTextarea class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
-
-                                                    <h:outputLabel value="Inicio"/>
-                                                    <br/>
-
-                                                    <p:calendar id="button" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
-                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                    </p:calendar>
-
-                                                    <br/>
-                                                    <h:outputLabel value="Finalización"/>
-                                                    <br/>
-                                                    <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
+                            <div aria-hidden="true">
+                                <p:dialog class="form-control" widgetVar="formEdit"
+                                          modal="true"
+                                          position="top"
+                                          resizable="false"
+                                          draggable="true"
+                                          closable="true">
 
 
-                                                </div> 
-                                                <br/>
-                                                <br/>
-                                                <h:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Cerrar
-                                                </button> 
-                                            </h:form>
-                                        </div>
+                                    <div class="modal-header">
+                                        <center><h2 style="font-family: fantasy;">Edición de torneos</h2></center>
 
+                                        <h:form style="font-family: fantasy; font-size: 18px;" id="fEdit">
+
+                                            <h:outputLabel style="visibility:hidden" value="IdTorneo:" for="idTorneo" />
+
+                                            <h:inputText style="visibility:hidden" id="idTorneo" value="#{torneoManagedBean.torneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                            <br/>
+                                            <h:outputLabel  value="Nombre del Torneo"/>
+
+                                            <h:inputText style="font-family: fantasy;" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+
+                                            <h:outputLabel value="Organizador"/>
+
+                                            <h:inputText style="font-family: fantasy;" class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+
+                                            <h:outputLabel value="Contacto del organizador"/>
+
+                                            <h:inputTextarea style="font-family: fantasy;" class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
+
+                                            <h:outputLabel value="Inicio"/>
+                                            <br/>
+
+                                            <p:calendar style="font-family: fantasy;" value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </p:calendar>
+
+                                            <br/>
+                                            <h:outputLabel value="Finalización"/>
+                                            <br/>
+                                            <p:calendar style="font-family: fantasy;" value="#{torneoManagedBean.torneo.fechaFin}"/>
+
+
+                                            <br/>
+                                            <br/>
+
+                                            <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{torneoManagedBean.guardarCambiosTorneo(torneoManagedBean.torneo)}" onclick="PF('formEdit').hide()"/></center>    
+
+                                        </h:form>
 
                                     </div>
 
-                                </div>
+                                </p:dialog>
+
 
                             </div>
+                            <br/>
+                            <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar torneo</a>
 
-                        </div>
-                    </div>
-                </div>
+                            <div aria-hidden="true">
+                                <p:dialog class="form-control" widgetVar="formCreate"
+                                          modal="true"
+                                          position="top"
+                                          resizable="false"
+                                          draggable="true"
+                                          closable="true">
 
+
+                                    <div class="modal-header">
+                                        <center><h2  style="font-family: fantasy;">Registro de torneos</h2></center>
+
+                                        <h:form  style="font-family: fantasy; font-size: 18px;" id="fCreate">
+
+
+                                            <h:outputLabel  value="Nombre del Torneo"/>
+
+                                            <h:inputText style="font-family: fantasy;" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+
+                                            <h:outputLabel value="Organizador"/>
+
+                                            <h:inputText style="font-family: fantasy;" class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+
+                                            <h:outputLabel value="Contacto del organizador"/>
+
+                                            <h:inputTextarea style="font-family: fantasy;" class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
+
+                                            <h:outputLabel value="Inicio"/>
+                                            <br/>
+
+                                            <p:calendar style="font-family: fantasy;" value="#{torneoManagedBean.torneo.fechaInicio}">
+
+                                            </p:calendar>
+
+                                            <br/>
+                                            <h:outputLabel value="Finalización"/>
+                                            <br/>
+                                            <p:calendar style="font-family: fantasy;" value="#{torneoManagedBean.torneo.fechaFin}"/>
+
+                                            <br/>
+                                            <br/>
+                                            <h:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
+
+                                        </h:form> 
+                                    </div> 
+
+                                </p:dialog> 
+
+                            </div>
+                        </div>     
+                        
+
+                 
+
+
+               
                 <script src="js/jquery.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
                 <script src="js/scripts.js"></script>
