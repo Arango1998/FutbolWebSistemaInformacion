@@ -6,11 +6,13 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.SeguimientoFacade;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -18,6 +20,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -31,12 +34,24 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
     List<Seguimiento>lista;
     @EJB
     private SeguimientoFacade segf;
+    @Inject
+    private SessionManagedBean sessionMB;
+    
+    
+
+    public SessionManagedBean getSessionMB() {
+        return sessionMB;
+    }
+
+    public void setSessionMB(SessionManagedBean sessionMB) {
+        this.sessionMB = sessionMB;
+    }
+    
     
     
     private Jugador jugador;
     @EJB
     private JugadorFacade jugadorF;
-    
     
     public SeguimientoManagedBean() {
     }
@@ -82,7 +97,12 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
 
     }
     
-    public void registrarSeguimiento(){
+    public void registrarSeguimiento(Seguimiento s){
+        
+        seguimiento.setIdJugador();
+        seguimiento.setIdEntrenador();
+        Date fecha= new Date();
+        seguimiento.setIdPosicionSeguimiento();
         segf.create(seguimiento);
     }
     
@@ -101,6 +121,10 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
     public String actualizarSeguimiento(Seguimiento se){
         se = seguimiento;
         return "listajugadoresseguimiento.xhtml";
+    }
+    
+    public List<Seguimiento> listarSeguimientoPropio(){
+        return getSessionMB().getUsuarioSesion().getJugador().getSeguimientoList();
     }
 
     @Override
