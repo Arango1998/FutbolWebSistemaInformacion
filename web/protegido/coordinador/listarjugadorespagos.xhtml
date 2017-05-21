@@ -45,7 +45,9 @@
                                     <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
                                 </p:column>
                                 <p:column>
-                                    <p:commandButton ajax="false" value="Ver informe de pagos" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}" ></p:commandButton>
+                                    <h:commandButton style="font-family: fantasy;" class="btn-outline" value="Ver informe de pagos" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}" />
+                               
+                                     
                                 </p:column>
                             </p:dataTable>
                         </h:form>
@@ -56,7 +58,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Pago</a>
+                                <a id="modal-41991" href="#modal-container-41991" style="font-family: fantasy; color: whitesmoke; font-size: 20px;" role="button" class="btn" data-toggle="modal">Registrar Pago</a>
 
                                 <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

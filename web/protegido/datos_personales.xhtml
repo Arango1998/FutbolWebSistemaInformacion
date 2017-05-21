@@ -2,107 +2,115 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+      xmlns:p="http://primefaces.org/ui">
     <body>
 
         <ui:composition template="./../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                 <div id="fh5co-page">
-
-   
-
-      <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
-         <div class="container">
-            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
-               <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
-               <a href="#"></a>
-            </div>
-            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
-               <ul data-offcanvass="yes">
-                  <li class="active"><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                 
-               </ul>
-            </div> 
-           
-         </div>
-      </nav>
-
-      <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/16102013224342258749.jpg); height: auto;">
-      
-         <div class="fh5co-overlay"></div>
-         <div class="fh5co-cover-text">
-            <div class="container">
-               <div class="row">
-                  <div  class="col-md-push-4 col-md-6 full-height js-full-height">
-                     <div class="fh5co-cover-intro">
-                       
+                <div id="fh5co-page">
 
 
-                             <h:form>
-                                 <h1><h:outputText value="Create/Edit"/></h1>
-                                 <h:panelGrid columns="2">
-                                     <h:outputLabel value="IdUsuario:" for="idUsuario" />
-                                     <h:inputText id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                     <h:outputLabel value="Documento:" for="documento" />
-                                     <h:inputText id="documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                                     <h:outputLabel value="PrimerNombre:" for="primerNombre" />
-                                     <h:inputText id="primerNombre" value="#{sessionManagedBean.usuarioSesion.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                                     <h:outputLabel value="SegundoNombre:" for="segundoNombre" />
-                                     <h:inputText id="segundoNombre" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
-                                     <h:outputLabel value="PrimerApellido:" for="primerApellido" />
-                                     <h:inputText id="primerApellido" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-                                     <h:outputLabel value="SegundoApellido:" for="segundoApellido" />
-                                     <h:inputText id="segundoApellido" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
-                                     <h:outputLabel value="Clave:" for="clave" />
-                                     <h:inputText id="clave" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                     <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
-                                     <h:inputText id="fechaDeNacimento" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                         <f:convertDateTime pattern="MM/dd/yyyy" />
-                                     </h:inputText>
-                                     <h:outputLabel value="Genero:" for="genero" />
-                                     <h:inputText id="genero" value="#{sessionManagedBean.usuarioSesion.genero}" title="Genero" />
-                                     <h:outputLabel value="Rh:" for="rh" />
-                                     <h:inputText id="rh" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" />
-                                     <h:outputLabel value="Eps:" for="eps" />
-                                     <h:inputText id="eps" value="#{sessionManagedBean.usuarioSesion.eps}" title="Eps" />
-                                     <h:outputLabel value="Telefono:" for="telefono" />
-                                     <h:inputText id="telefono" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
-                                     <h:outputLabel value="Correo:" for="correo" />
-                                     <h:inputText id="correo" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                                   
-                                     <h:outputLabel value="IdTipoRol:" for="idTipoRol" />
-                                     <h:selectOneMenu id="idTipoRol" value="#{sessionManagedBean.usuarioSesion.idTipoRol}" title="IdTipoRol" required="true" requiredMessage="The IdTipoRol field is required.">
-                                         <!-- TODO: update below reference to list of available items-->
-                                         <f:selectItems value="#{fixme}"/>
-                                     </h:selectOneMenu>
-                                     <h:outputLabel value="IdEstado:" for="idEstado" />
-                                     <h:selectOneMenu id="idEstado" value="#{sessionManagedBean.usuarioSesion.idEstado}" title="IdEstado" required="true" requiredMessage="The IdEstado field is required.">
-                                         <!-- TODO: update below reference to list of available items-->
-                                         <f:selectItems value="#{fixme}"/>
-                                     </h:selectOneMenu>
-                                    
-                                 </h:panelGrid>
-                             </h:form>
-                      
 
-                     </div>
-                  </div>
-               </div>
-            </div>   
-         </div>
-      </div></div>
-             
+                    <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
+                        <div class="container">
+                            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
+                                <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
+                                <a href="#"></a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
+                                <ul data-offcanvass="yes">
+                                    <li class="active"><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
 
-   
+                                </ul>
+                            </div> 
 
-     
-        </ui:define>
+                        </div>
+                    </nav>
 
-    </ui:composition>
+                    <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/16102013224342258749.jpg); height: auto;">
 
-</body>
+                        <div class="fh5co-overlay"></div>
+                        <div class="fh5co-cover-text">
+                            <div class="container">
+                                <div class="row">
+                                    <div  class="col-md-push-4 col-md-6 full-height js-full-height">
+                                        <div class="fh5co-cover-intro">
+
+
+
+                                            <h:form>
+                                                <center><h2 style="font-family: fantasy; color: whitesmoke;">Datos Personales</h2></center>
+
+                                                <h:outputLabel style="visibility: hidden;" value="IdUsuario:" for="idUsuario" />
+                                                <h:inputText  style="visibility: hidden;" id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                                                <br/>
+                                                <h:outputLabel style="font-family: fantasy;  font-size:26px; ;color: whitesmoke;" value="Documento:"/>
+                                                <h:outputText style="font-family: fantasy;" class="form-control" id="documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="PrimerNombre:"/>
+                                                <h:outputText style="font-family: fantasy;" class="form-control" id="primerNombre" value="#{sessionManagedBean.usuarioSesion.primerNombre}" title="PrimerNombre"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="SegundoNombre:"/>
+                                                <h:outputText id="segundoNombre" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="PrimerApellido:"/>
+                                                <h:outputText id="primerApellido" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="SegundoApellido:"/>
+                                                <h:outputText id="segundoApellido" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Clave:"/>
+                                                <h:outputText id="clave" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="FechaDeNacimento:"/>
+                                                <h:outputText id="fechaDeNacimento" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento">
+                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                </h:outputText>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Genero:"/>
+                                                <h:outputText id="genero" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.genero}" title="Genero" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Rh:"/>
+                                                <h:outputText id="rh" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Eps:"/>
+                                                <h:outputText id="eps" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.eps}" title="Eps" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Telefono:"/>
+                                                <h:outputText id="telefono" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Correo:"/>
+                                                <h:outputText id="correo" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Rol:"/>
+                                                <h:outputText id="idRol" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}"/>
+
+                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Estado:" />
+                                                <h:outputText id="idEstado" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}"/>
+
+
+                                            </h:form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
 </html>
