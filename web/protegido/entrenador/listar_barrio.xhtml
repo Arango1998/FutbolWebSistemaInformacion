@@ -47,12 +47,12 @@
                                         </f:facet>
                                         <h:outputText value="#{item.nombreBarrio}"/>
                                     </p:column>
-                                   <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Editar"/>
-                                            </f:facet>
-                                            <center><a class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();" update=":fEdit">Editar</a></center>
-                                        </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                        <center><a class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();" update=":fEdit">Editar</a></center>
+                                    </p:column>
                                 </p:dataTable>
                             </h:form>
                         </f:view>
@@ -74,7 +74,7 @@
 
                                         <h:outputLabel style="visibility:hidden;" value="IdBarrio:"/>
 
-                                        
+
                                         <h:inputText id="idBarrio" style="visibility:hidden" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>
 
                                         <br/>

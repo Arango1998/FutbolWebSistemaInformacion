@@ -13,174 +13,172 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                 <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
-                <div class="container">
-                    <div class="row">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <center>
-                                    <h3 >Registrar Usuario Nuevo</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <center>
+                                        <h3 >Registrar Usuario Nuevo</h3>
 
 
-                                </center>
-                       
-                                
-                                
+                                    </center>
+
+
+
                                     <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            Recuerde al Registrar...
-                                        </h3>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    Recuerde al Registrar...
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul>
+                                                    <hr />
+                                                    <f:view>
+
+
+                                                        <h:form class="form-horizontal">
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="Documento:" for="documento" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:inputText  t:type="number" t:maxlength="10" class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="PrimerNombre:" for="primerNombre" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:inputText  class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="PrimerApellido:" for="primerApellido" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:inputText  class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="Clave:" for="clave" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:inputText  class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="FechaDeNacimento:" for="fechaDeNacimento" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:calendar value="#{usuarioManagedBean.usuario.fechaDeNacimento}"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="Correo:" for="correo" />
+
+                                                                <div class="col-xs-5">
+                                                                    <p:inputText  class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="IdTipoRol:" for="idTipoRol" />
+                                                                <div class="col-xs-5">
+                                                                    <h:selectOneMenu  class="form-control" id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" title="IdTipoRol" required="true" requiredMessage="The IdTipoRol field is required.">
+
+                                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" /><!-- TODO: update below reference to list of available items-->
+                                                                        <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
+                                                                    </h:selectOneMenu>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <h:outputLabel class="col-xs-3 control-label" value="IdEstado:" for="idEstado" />
+                                                                <div class="col-xs-5">
+                                                                    <h:selectOneMenu  class="form-control" id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" title="IdEstado" required="true" requiredMessage="The IdEstado field is required.">
+                                                                        <!-- TODO: update below reference to list of available items-->
+                                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                        <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
+                                                                    </h:selectOneMenu>
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+
+
+
+
+
+                                                            <br/>
+
+
+                                                            <h:commandButton class="btn btn-info btn-lg btn-success" value="Registrar Usuario General" action="#{usuarioManagedBean.creaUsuario()}"/>
+                                                        </h:form>
+                                                    </f:view>
+                                                    <hr />
+
+
+                                                </ul>
+                                            </div>
+
+
+
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <ul>
-                                            <hr />
-                                                   <f:view>
-
-
-                                    <h:form class="form-horizontal">
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="Documento:" for="documento" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  t:type="number" t:maxlength="10" class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="PrimerNombre:" for="primerNombre" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="PrimerApellido:" for="primerApellido" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="Clave:" for="clave" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="FechaDeNacimento:" for="fechaDeNacimento" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                </h:inputText>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="Correo:" for="correo" />
-
-                                            <div class="col-xs-5">
-                                                <h:inputText  class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="IdTipoRol:" for="idTipoRol" />
-                                            <div class="col-xs-5">
-                                                <h:selectOneMenu  class="form-control" id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" title="IdTipoRol" required="true" requiredMessage="The IdTipoRol field is required.">
-
-                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" /><!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
-                                                </h:selectOneMenu>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h:outputLabel class="col-xs-3 control-label" value="IdEstado:" for="idEstado" />
-                                            <div class="col-xs-5">
-                                                <h:selectOneMenu  class="form-control" id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" title="IdEstado" required="true" requiredMessage="The IdEstado field is required.">
-                                                    <!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                    <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
-                                                </h:selectOneMenu>
-                                            </div>
-                                        </div>
-
-
-
-
-
-
-
-
-
-
-                                        <br/>
-
-
-                                        <h:commandButton class="btn btn-info btn-lg btn-success" value="Registrar Usuario General" action="#{usuarioManagedBean.creaUsuario()}"/>
-                                    </h:form>
-                                </f:view>
-                                            <hr />
-
-
-                                        </ul>
-                                    </div>
-
 
 
                                 </div>
-                            </div>
-                                
+                                <br/>
 
-                            </div>
-                            <br/>
-                          
-                            <div class="col-md-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">
-                                            Recuerde al Registrar...
-                                        </h3>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                Recuerde al Registrar...
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <hr />
+                                                <li>1: Tener los nombres del nuevo usuario. </li>
+                                                <hr />
+                                                <li>2: Tener los apellidos del nuevo usuario. </li>
+                                                <hr />
+                                                <li>3: Tener el teléfono del nuevo usuario. </li>
+                                                <hr />
+                                                <li>4: Tener los Documento del nuevo usuario. </li>
+                                                <hr />
+                                                <li>5: Tener el correo del nuevo usuario. </li>
+                                                <hr />
+                                                <li>6: Finalmente registrar al nuevo usuario. </li>
+                                                <hr />
+
+
+                                            </ul>
+                                        </div>
+
+                                        <p><a href="pagina_principal.xhtml" class="btn btn-info btn-lg btn-block" >Pagina Principal</a></p>
+
+
                                     </div>
-                                    <div class="panel-body">
-                                        <ul>
-                                            <hr />
-                                            <li>1: Tener los nombres del nuevo usuario. </li>
-                                            <hr />
-                                            <li>2: Tener los apellidos del nuevo usuario. </li>
-                                            <hr />
-                                            <li>3: Tener el teléfono del nuevo usuario. </li>
-                                            <hr />
-                                            <li>4: Tener los Documento del nuevo usuario. </li>
-                                            <hr />
-                                            <li>5: Tener el correo del nuevo usuario. </li>
-                                            <hr />
-                                            <li>6: Finalmente registrar al nuevo usuario. </li>
-                                            <hr />
-
-
-                                        </ul>
-                                    </div>
-
-                                    <p><a href="pagina_principal.xhtml" class="btn btn-info btn-lg btn-block" >Pagina Principal</a></p>
-
-
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-                         </div>
 
 
             </ui:define>

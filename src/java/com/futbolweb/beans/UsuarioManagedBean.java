@@ -120,6 +120,7 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     
     this.usuario=u;
     }
+    
     public void editarInvitados(){
         try {
             usuario.getIdUsuario();
