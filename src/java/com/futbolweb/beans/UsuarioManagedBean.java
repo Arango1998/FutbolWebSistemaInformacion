@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futbolweb.persistence.facades.UsuarioFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -127,11 +128,29 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         }
     }
     
+        public void eliminarUsuarioInvitadi(Usuario u) {
+        uf.remove(u);
+    
+    }
+    
+        
+          public void redireccionarUsuarioJugadorAcudiente() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registro_jugador.xhtml");
+        } catch (Exception e) {
+        }
+    }
+    
+  
+    
+    
+    
     
       public void redireccionarUsuarioInvitado() {
 
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_invitados.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_usuarios.xhtml");
         } catch (Exception e) {
         }
     }

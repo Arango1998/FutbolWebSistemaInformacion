@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Equipo;
 import com.futbolweb.persistence.facades.EquipoFacade;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -62,6 +63,31 @@ equipo = new Equipo();
 
         }
 
+    }
+    
+    
+       public String redireccionarEquipo(Equipo eq) {
+
+        equipo = eq;
+        return "crear_equipo.xhtml";
+    }
+       
+       
+       
+       
+    public void guardarCambiosEquipo(Equipo eq) throws IOException {
+
+        try {
+            ef.edit(equipo);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Categoria"));
+        } catch (Exception e) {
+        }
+
+    }
+    
+     public void eliminarEquipo(Equipo eq) {
+        ef.remove(eq);
+    
     }
 
 }

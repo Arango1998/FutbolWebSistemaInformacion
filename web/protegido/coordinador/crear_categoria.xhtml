@@ -11,52 +11,109 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-
-                <!-- Sidebar -->
-
-                <!-- /#sidebar-wrapper -->
-
-                <!-- Page Content -->
-
-                <div class="rowContainer">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+                  <div class="rowContainer">
                     <div class="col-lg-1"></div>
-                    <div class="col-lg-10">
-                        <br></br>
+                    <div class="col-lg-10">  
+                     <h:form id="dqw" style="padding-top: 100px;">
+                          <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Categorías Actuales "/></h1>
+                                    <br/>
 
-                        <header>
-                            <h1 class="page-header text-center">Categorías Actuales.</h1>
-                        </header>
-                        <h2>Contamos con ‘contador’ Categorías.</h2>
-                        <p>Recuerde que antes de registrar un ‘Equipo de futbol’ debe crear una categoría. </p>        
+                    <h:commandLink title="Descargar tabla en pdf">
+                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                        <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                    </h:commandLink>
+                    <h:commandLink title="Descargar tabla en Excel">
+                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                        <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                    </h:commandLink>
+                         
 
 
-                        <f:view>
+                           
+                                    <h:dataTable id="tabCat" class="table table-stripped table-bordered" style="background-color: #fff;" value="#{categoriaManagedBean.listCategorias()}" var="item" > 
 
-
-                            <h:form id="dqw">
-                                <p:dataTable id="tabCat" value="#{categoriaManagedBean.listCategorias()}" var="item">
-
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nombre"/>
-                                        </f:facet>
-                                        <center><h:outputText value="#{item.nombreCategoria}"/></center>
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Editar"/>
-                                        </f:facet>
-                                        <center><p:commandButton class="btn-outline" value="editar" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/></center>
-                                    </p:column>
                                      <p:column>
-                                        <f:facet name="header">
+                                         <center>
+                                             <f:facet name="header">
                                             <h:outputText value="Eliminar"/>
                                         </f:facet>
-                                         <center><p:commandButton ajax="false" class="btn-outline" value="eliminar" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/></center>
-                                    </p:column>
-                                </p:dataTable>
+                                         <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="eliminar" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/>
+                                     
+                                         </center>
+                                       </p:column>
+                                    <p:column>
+                                        <center>
+                                           <f:facet name="header">
+                                            <h:outputText value="Nombre"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                      
+                                        </center>
+                                       </p:column>
+                                    <p:column>
+                                        <center>
+                                             <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                        <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+                                    
+                                        </center>
+                                       </p:column>
+                                   
+                                </h:dataTable>
                             </h:form>
-                        </f:view>
+                            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                             <br/>
+                            <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h:form>
+                                                <center><h2><h:outputText value="Registro de Categoria"/></h2></center>
+
+                                                <br/>
+                                                <div class="rowContainer">
+
+
+                                                    <h:outputLabel value="Nombre de la nueva Categoria:" for="nombreCategoria" />
+                                                    <h:inputText id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+
+                                                    <br></br>
+                                                    <center><p:commandButton actionListener="#{categoriaManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar Categoria" action="#{categoriaManagedBean.crearCatagoria()}" /></center>
+
+
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                        
 
                         <br/>
                         <div aria-hidden="true">
@@ -92,53 +149,16 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-1"></div>
-                </div>
-                
-                
-                
-                
-                
-                  <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoría</a>
-
-                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <div class="modal-body">
-                                            <f:view>
-
-
-                                                <h:form>
-                                                    <h1><h:outputText value="Create/Edit"/></h1>
-                                                  
-                                                        <h:outputLabel value="Nombre de la Categoria:" for="nombreCategoria" />
-                                                        <h:inputText class="form-control" id="nombreCategoria" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
-                                                   
-                                                        <br></br>
-                                                        <h:commandButton actionListener="#{categoriaManagedBean.redireccionar()}"  class="btn btn-outline btn-success" value="Registrar" action="#{categoriaManagedBean.crearCatagoria()}" />
-                                               
-                                                </h:form>
-                                            </f:view>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
                     </div>
-                </div>
+                    </div>
+                    <div class="col-lg-1"></div>
                 
                 
-                
+
+
+
+             
+                     
             </ui:define>
 
         </ui:composition>

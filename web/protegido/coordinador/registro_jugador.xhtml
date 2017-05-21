@@ -11,96 +11,85 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
-                  <div class="rowContainer">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">  
+
+                <f:view>
 
 
-             
-                <h:form id="initadi" style="padding-top: 100px;">
-                    
-                     <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Usuarios Invitados"/></h1>
-                                    <br/>
-
-                    <h:commandLink title="Descargar tabla en pdf">
-                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                        <p:dataExporter type="pdf" target="initadi" fileName="ListadoDeInvitados"/>
-                    </h:commandLink>
-                    <h:commandLink title="Descargar tabla en Excel">
-                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                        <p:dataExporter type="xls" target="initadi" fileName="ListadoDeInvitados"/>
-                    </h:commandLink>
-                         
-
-                    <p:dataTable value="#{usuarioManagedBean.invitado}" var="item">
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Eliminar"/>
-                            </f:facet>
-                            <center><p:commandButton  ajax="false" class="btn btn-outline btn-danger" value="eliminar" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}" update=":fEdit"/></center>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Documento"/>
-                            </f:facet>
-                            <h:outputText value="#{item.documento}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nombre"/>
-                            </f:facet>
-                            <h:outputText value="#{item.primerNombre}"/>
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Apellido"/>
-                            </f:facet>
-                            <h:outputText value="#{item.primerApellido}"/>
-                        </p:column>
-
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Fecha Nacimento"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fechaDeNacimento}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Correo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.correo}"/>
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Rol"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idTipoRol.nombreRol}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Estado"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idEstado.nombreEstado}"/>
-                        </p:column>
-
-                        <p:column>
+                    <h:form id="initadi">
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{usuarioManagedBean.jugadores}" var="item">
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Documento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.documento}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerNombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerNombre}"/>
+                            </p:column>
+                           
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrimerApellido"/>
+                                </f:facet>
+                                <h:outputText value="#{item.primerApellido}"/>
+                            </p:column>
+                           
+                        
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaDeNacimento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaDeNacimento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                          
+                          
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Correo"/>
+                                </f:facet>
+                                <h:outputText value="#{item.correo}"/>
+                            </p:column>
+                          
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTipoRol"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idTipoRol.nombreRol}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEstado"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdAcudiente"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idAcudiente.documento}, #{item.idAcudiente.primerNombre} #{item.idAcudiente.primerApellido}"/>
+                            </p:column>
+                          
+                            
+                           <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Editar"/>
                             </f:facet>
                             <p:commandButton class="btn btn-outline btn-warning" onclick="PF('insertar').show()" update=":editinvi" actionListener="#{usuarioManagedBean.verInvitado(item)}" value="Editar"/>
                         </p:column>
-                    </p:dataTable>
-                </h:form>
-
-                <br/>
+                        </p:dataTable>
+                    </h:form>
+                </f:view>
+                
+                
+                  <br/>
                 <div aria-hidden="true">
                     <p:dialog class="form-control"  widgetVar="insertar"
                               modal="true"
@@ -132,7 +121,11 @@
                                 </h:inputText>
                                 <p:outputLabel value="Correo:" for="correo" />
                                 <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                                
+                                 <h:outputLabel value="IdAcudiente:" for="idAcudiente" />
+                            <h:selectOneMenu class="form-control"  id="idAcudiente" value="#{usuarioManagedBean.usuario.idAcudiente}" title="IdAcudiente" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{usuarioManagedBean.activos}" var="acudient" itemLabel="#{acudient.documento}, #{acudient.primerNombre} #{acudient.primerApellido}" />
+                            </h:selectOneMenu>
                                 <center>
                                      <p:outputLabel value="Rol:" for="idTipoRol" />
                                 <h:selectOneMenu class="form-control"  id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
@@ -150,7 +143,7 @@
                                
                                  
                                   <center>
-                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
+                                      <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioJugadorAcudiente()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
                                    
                                   </center>
 
@@ -160,13 +153,6 @@
                         </div>
                     </p:dialog>
                 </div>
-                   </div>
-                    </div>
-                    </div>
-
-
-
-
 
             </ui:define>
 
