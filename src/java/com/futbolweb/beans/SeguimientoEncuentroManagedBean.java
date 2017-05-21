@@ -146,7 +146,7 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
         return "registrarseguimientoencuentro.xhtml";
     }
 
-    public List<SeguimientoEncuentro> listarPropioSeguimiento(){
+    public List<SeguimientoEncuentro> listarPropioSeguimientoEncuentro(){
     
     return getSesionM().getUsuarioSesion().getJugador().getSeguimientoEncuentroList();
     }

@@ -97,14 +97,13 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
 
     }
     
-    public void registrarSeguimiento(Seguimiento s){
+   // public void registrarSeguimiento(Seguimiento s){
         
-        seguimiento.setIdJugador();
-        seguimiento.setIdEntrenador();
-        Date fecha= new Date();
-        seguimiento.setIdPosicionSeguimiento();
-        segf.create(seguimiento);
-    }
+     //   seguimiento.setIdJugador();
+       // seguimiento.setIdEntrenador();
+        //Date fecha= new Date();
+        //seguimiento.setIdPosicionSeguimiento();
+        //segf.create(seguimiento);}
     
     public void eliminarSeguimiento(Seguimiento ser){
         segf.remove(ser);

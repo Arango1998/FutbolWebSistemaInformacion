@@ -13,17 +13,20 @@
                 
            
             <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                <ul class="sidebar-nav">
+                <ul class="sidebar-nav" style="font-family: fantasy;">
                     <br/>
                     <center>  <img  src="#{request.contextPath}/resources/images/usuario/usuario3.jpg" class="img-circle img-responsive"  style="height: 80px;" alt=""/> </center>
                     <br/>
-                    <center><h3 style="color: white;">
+                    <center><h2 style="color: white; font-family: fantasy;">
                             <span>#{sessionManagedBean.usuarioSesion.primerNombre}</span>
                             <span>#{sessionManagedBean.usuarioSesion.primerApellido}</span>
-                        </h3>
+                        </h2>
+                    </center>
+                    <center>
+                        <h3 style="color: white; font-family: fantasy;"><span>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</span></h3>
                     </center>
                     <ul>
-                        <input type="text" id="buscador" placeholder="Buscar"/>
+                        <input style="font-family: fantasy;" type="text" id="buscador" placeholder="Buscar"/>
                     </ul>
 
 
@@ -52,7 +55,7 @@
 
                             </c:if>
                         </c:forEach>
-                        <li ><p:commandLink actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
+                        <li ><p:commandLink style="font-family: fantasy;" actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
 
 
                     </ul>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../..//resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
+
+
+                    <f:view>
+
+                        <h:form style="padding-top: 110px;">
+
+                            <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: whitesmoke" value="Encuentros jugados"/></h1>
+                            <p:dataTable value="#{seguimientoEncuentroManagedBean.listarPropioSeguimientoEncuentro()}" var="item">
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Observacion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.observacion}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Calificacion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.calificacion}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Torneo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idEncuentro.fkIdTorneo.nombreTorneo}"/>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Entrenador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Goles"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.goles}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
