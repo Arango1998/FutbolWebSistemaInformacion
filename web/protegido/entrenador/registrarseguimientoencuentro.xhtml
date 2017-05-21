@@ -104,8 +104,13 @@
                                 <h:inputTextarea style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
 
                                 <h:outputLabel value="Calificación:" for="calificacion" />
-                                <h:inputText style="font-family: fantasy;" class="form-control"  id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" title="Calificacion" required="true" requiredMessage="The Calificacion field is required."/>
-
+                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
+                                    <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
+                                    <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
+                                    <f:selectItem itemValue="Regular" itemLabel="Regular"/>
+                                    <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
+                                </h:selectOneMenu>
+                                
                                 <h:outputLabel  value="Torneo:" for="idEncuentro" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
                                     <!-- TODO: update below reference to list of available items-->
@@ -152,7 +157,7 @@
 
 
                         <div class="modal-header">
-                            <center><h2  style="font-family: fantasy;">Registro de torneos</h2></center>
+                            <center><h2  style="font-family: fantasy;">Calificar jugador</h2></center>
 
                             <h:form  style="font-family: fantasy; font-size: 18px;" id="fCreate">
 
@@ -160,7 +165,12 @@
                                 <h:inputTextarea style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
 
                                 <h:outputLabel value="Calificación:" for="calificacion" />
-                                <h:inputText style="font-family: fantasy;" class="form-control"  id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" title="Calificacion" required="true" requiredMessage="The Calificacion field is required."/>
+                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
+                                    <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
+                                    <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
+                                    <f:selectItem itemValue="Regular" itemLabel="Regular"/>
+                                    <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
+                                </h:selectOneMenu>
 
                                 <h:outputLabel value="Torneo:" for="idEncuentro" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">

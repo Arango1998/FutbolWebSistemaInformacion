@@ -6,6 +6,7 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.SeguimientoEncuentro;
 import com.futbolweb.persistence.facades.SeguimientoEncuentroFacade;
@@ -18,6 +19,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
@@ -38,6 +40,8 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
     private SeguimientoEncuentro seguimientoencuentro;
     @EJB
     private SeguimientoEncuentroFacade segef;
+    @Inject
+    private SessionManagedBean sesionM;
 
     public SeguimientoEncuentroManagedBean() {
     }
@@ -50,14 +54,13 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
         this.lista = lista;
     }
 
-    public BarChartModel getGraf() {
-        return graf;
+    public SessionManagedBean getSesionM() {
+        return sesionM;
     }
 
-    public void setGraf(BarChartModel graf) {
-        this.graf = graf;
+    public void setSesionM(SessionManagedBean sesionM) {
+        this.sesionM = sesionM;
     }
-
     
     
     public SeguimientoEncuentro getSeguimientoencuentro() {
@@ -143,5 +146,9 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
         return "registrarseguimientoencuentro.xhtml";
     }
 
+    public List<SeguimientoEncuentro> listarPropioSeguimiento(){
+    
+    return getSesionM().getUsuarioSesion().getJugador().getSeguimientoEncuentroList();
+    }
 
 }

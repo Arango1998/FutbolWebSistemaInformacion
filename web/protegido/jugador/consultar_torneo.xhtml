@@ -1,14 +1,78 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <body>
 
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                content
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
+
+
+                    <f:view>
+
+
+                        <h:form style="padding-top: 110px;">
+
+                            <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: whitesmoke" value="TORNEOS PROGRAMADOS"/></h1>
+                            <br></br>
+
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                            </h:commandLink>
+
+
+                            <p:dataTable style="font-family: fantasy;" id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombreTorneo}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Organizador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.organizador}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Datos del organizador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.datosContactoOrganizador}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Inicio"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaInicio}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Finalización"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaFin}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
+                </div>
             </ui:define>
 
         </ui:composition>
