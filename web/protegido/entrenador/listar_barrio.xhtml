@@ -51,7 +51,7 @@
                                         <f:facet name="header">
                                             <h:outputText value="Editar"/>
                                         </f:facet>
-                                        <center><a class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();" update=":fEdit">Editar</a></center>
+                                        <p:commandButton class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();"  update=":fEdit"/>
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

@@ -32,10 +32,12 @@ public class EquipoManagedBean implements Serializable, InterfaceController<Equi
 
     public EquipoManagedBean() {
     }
-@PostConstruct
-public void init(){
-equipo = new Equipo();
-}
+
+    @PostConstruct
+    public void init() {
+        equipo = new Equipo();
+    }
+
     @Override
     public Equipo getObjectByKey(Integer key) {
         return ef.find(key);
@@ -48,15 +50,15 @@ equipo = new Equipo();
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
-    
+
     public List<Equipo> listarEquipos() {
         return ef.findAll();
     }
-    
+
     public void createEquipo() {
         try {
 
-           ef.create(equipo);
+            ef.create(equipo);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Torneo registrado con éxito"));
 
         } catch (Exception e) {
@@ -64,17 +66,13 @@ equipo = new Equipo();
         }
 
     }
-    
-    
-       public String redireccionarEquipo(Equipo eq) {
+
+    public String redireccionarEquipo(Equipo eq) {
 
         equipo = eq;
         return "crear_equipo.xhtml";
     }
-       
-       
-       
-       
+
     public void guardarCambiosEquipo(Equipo eq) throws IOException {
 
         try {
@@ -84,10 +82,31 @@ equipo = new Equipo();
         }
 
     }
-    
-     public void eliminarEquipo(Equipo eq) {
+
+    public void eliminarEquipo(Equipo eq) {
         ef.remove(eq);
-    
+
     }
 
+    public List<Equipo> juvenil() {
+        return ef.listarJuvenil();
+
+    }
+
+    public List<Equipo> Prejuvenil() {
+        return ef.listarPreJuvenil();
+
+    }
+
+    public List<Equipo> infantil() {
+        return ef.listarInfantil();
+    }
+
+    public List<Equipo> superior() {
+        return ef.listarSuperior();
+    }
+
+    public List<Equipo> elite() {
+        return ef.listarElite();
+    }
 }

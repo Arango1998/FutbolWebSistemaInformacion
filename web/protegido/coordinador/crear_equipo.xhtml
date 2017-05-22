@@ -23,22 +23,22 @@
                             <f:view>
 
 
-                                <h:form id="dqw" style="padding-top: 150px;">
+                                <h:form id="dqw" style="padding-top: 130px;">
                                     <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="EQUIPOS PROGRAMADOS."/></h1>
                                     <br/>
                                     <p:dataTable  value="#{equipoManagedBean.listarEquipos()}" var="item">
 
-                                         <p:column>
-                                         <center>
-                                             <f:facet name="header">
-                                            <h:outputText value="Eliminar"/>
-                                        </f:facet>
-                                     
-                                         <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="eliminar" action="#{equipoManagedBean.eliminarEquipo(item)}" update=":fEdit"/>
-                                     
-                                         </center>
-                                       </p:column>
-                                       
+                                        <p:column>
+                                            <center>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Eliminar"/>
+                                                </f:facet>
+
+                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="eliminar" action="#{equipoManagedBean.eliminarEquipo(item)}" update=":fEdit"/>
+
+                                            </center>
+                                        </p:column>
+
                                         <p:column>
                                             <f:facet name="header">
                                                 <h:outputText value="Nombre Equipo"/>
@@ -94,17 +94,17 @@
                                             <br/>
                                             <h:outputLabel value="Categoria:" for="fkIdCategoria" />
                                             <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
-                                                  <!-- TODO: update below reference to list of available items-->
+                                                <!-- TODO: update below reference to list of available items-->
                                                 <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                                 <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categoria" itemLabel="#{categoria.nombreCategoria}"/>
                                             </h:selectOneMenu>
                                             <br/>  
                                             <h:outputLabel value="Entrenador:" for="idEntrenador" />
                                             <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                                  <!-- TODO: update below reference to list of available items-->
-                                                   <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                  <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
-                                         
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+
                                             </h:selectOneMenu>
                                             <br/>
 
@@ -156,14 +156,14 @@
                                                                         <h:outputLabel class="form-control" value="Categoria:" for="fkIdCategoria" />
                                                                         <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
                                                                             <!-- TODO: update below reference to list of available items-->
-                                                                          
+
                                                                             <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                                                             <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categpria" itemLabel="#{categpria.nombreCategoria}"/>
                                                                         </h:selectOneMenu>
                                                                         <h:outputLabel class="form-control" value="Entrenador:" for="idEntrenador" />
                                                                         <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
                                                                             <!-- TODO: update below reference to list of available items-->
-                                                                         
+
                                                                             <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                                                             <f:selectItems class="form-control" value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
                                                                         </h:selectOneMenu>
@@ -190,8 +190,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <br/>
+                            <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
 
-
+                            <canvas id="bar-chart" width="3500" height="900"></canvas>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                            <script>
+                                                new Chart(document.getElementById("bar-chart"), {
+                                                    type: 'doughnut',
+                                                    data: {
+                                                        labels: ["Juvenil", "Infantil", "Pre-juvenil", "Élite", "Superior"],
+                                                        datasets: [
+                                                            {
+                                                                label: "Population (millions)",
+                                                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                                                data: [#{equipoManagedBean.juvenil().size()}, #{equipoManagedBean.infantil().size()}, #{equipoManagedBean.Prejuvenil().size()}, #{equipoManagedBean.elite().size()}, #{equipoManagedBean.superior().size()}]
+                                                            }
+                                                        ]
+                                                    },
+                                                    options: {
+                                                        legend: {display: false},
+                                                        title: {
+                                                            display: true,
+                                                        }
+                                                    }
+                                                });
+                            </script>
 
 
                         </div>

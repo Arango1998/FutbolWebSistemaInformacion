@@ -28,16 +28,14 @@ import javax.inject.Inject;
  */
 @Named(value = "seguimientoManagedBean")
 @RequestScoped
-public class SeguimientoManagedBean implements Serializable,InterfaceController<Seguimiento> {
+public class SeguimientoManagedBean implements Serializable, InterfaceController<Seguimiento> {
 
     private Seguimiento seguimiento;
-    List<Seguimiento>lista;
+    List<Seguimiento> lista;
     @EJB
     private SeguimientoFacade segf;
     @Inject
     private SessionManagedBean sessionMB;
-    
-    
 
     public SessionManagedBean getSessionMB() {
         return sessionMB;
@@ -46,13 +44,11 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
     public void setSessionMB(SessionManagedBean sessionMB) {
         this.sessionMB = sessionMB;
     }
-    
-    
-    
+
     private Jugador jugador;
     @EJB
     private JugadorFacade jugadorF;
-    
+
     public SeguimientoManagedBean() {
     }
 
@@ -71,21 +67,22 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
     public void setLista(List<Seguimiento> lista) {
         this.lista = lista;
     }
-    
-    
-    
-    
-    
-    @PostConstruct
-    public void init(){
-        seguimiento = new Seguimiento();
-        lista= new LinkedList<>();
+
+    public List<Seguimiento> list() {
+
+        return segf.findAll();
     }
-    
+
+    @PostConstruct
+    public void init() {
+        seguimiento = new Seguimiento();
+        lista = new LinkedList<>();
+    }
+
     public List<Seguimiento> listarSeguimientoo() {
         return (List<Seguimiento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("seguimientos");
     }
-    
+
     public String solicitarJugador(int idJugador) {
 
         Jugador j = jugadorF.find(idJugador);
@@ -96,33 +93,31 @@ public class SeguimientoManagedBean implements Serializable,InterfaceController<
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
 
     }
-    
-   // public void registrarSeguimiento(Seguimiento s){
-        
-     //   seguimiento.setIdJugador();
-       // seguimiento.setIdEntrenador();
-        //Date fecha= new Date();
-        //seguimiento.setIdPosicionSeguimiento();
-        //segf.create(seguimiento);}
-    
-    public void eliminarSeguimiento(Seguimiento ser){
+
+    // public void registrarSeguimiento(Seguimiento s){
+    //   seguimiento.setIdJugador();
+    // seguimiento.setIdEntrenador();
+    //Date fecha= new Date();
+    //seguimiento.setIdPosicionSeguimiento();
+    //segf.create(seguimiento);}
+    public void eliminarSeguimiento(Seguimiento ser) {
         segf.remove(ser);
     }
-    
-    public void modificarSeguimiento(Seguimiento s){
+
+    public void modificarSeguimiento(Seguimiento s) {
         segf.edit(s);
     }
-    
-    public List<Seguimiento> listarSeguimiento(){
+
+    public List<Seguimiento> listarSeguimiento() {
         return segf.findAll();
     }
-    
-    public String actualizarSeguimiento(Seguimiento se){
+
+    public String actualizarSeguimiento(Seguimiento se) {
         se = seguimiento;
         return "listajugadoresseguimiento.xhtml";
     }
-    
-    public List<Seguimiento> listarSeguimientoPropio(){
+
+    public List<Seguimiento> listarSeguimientoPropio() {
         return getSessionMB().getUsuarioSesion().getJugador().getSeguimientoList();
     }
 

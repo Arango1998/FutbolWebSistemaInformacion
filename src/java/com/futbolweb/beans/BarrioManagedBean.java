@@ -62,8 +62,14 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
         } catch (Exception e) {
         }
     }
-    
-     public void guardarCambiosBarrio(Barrio b) throws IOException {
+
+    public String redireccionarBarrio(Barrio b) {
+
+        barrio = b;
+        return "listar_barrio.xhtml";
+    }
+
+    public void guardarCambiosBarrio(Barrio b) throws IOException {
 
         try {
             bf.edit(barrio);
@@ -71,12 +77,6 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
         } catch (Exception e) {
         }
 
-    }
-
-    public String redireccionarBarrio(Barrio b) {
-
-        barrio = b;
-        return "listar_barrio.xhtml";
     }
 
     @Override

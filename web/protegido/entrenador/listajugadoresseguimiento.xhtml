@@ -11,65 +11,69 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <f:view>
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+
+                    <f:view>
 
 
-                    <h:form>
-                        <h1><center><h:outputText value="Listado seguimiento jugadores"/></center></h1>
-                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoo()}" var="item">
-                            
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="FechaSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaSeguimiento}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="ResultadoSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.resultadoSeguimiento}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Observacion"/>
-                                </f:facet>
-                                <h:outputText value="#{item.observacion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Jugador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Entrenador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="PosicionSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
-                            </p:column>
-                            <p:column>
-                                <p:commandButton ajax="false" value="Eliminar" action="#{seguimientoManagedBean.eliminarSeguimiento(item)}"/>
-
-                            </p:column>
-                        </p:dataTable>
-                        <p:commandButton value="Crear seguimiento"/>
-                    </h:form>
-                </f:view>
+                        <h:form style="padding-top: 150px;">
 
 
-         
+                            <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Resultados de encuentros"/></h1></center>
+                            <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoo()}" var="item">
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="FechaSeguimiento"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaSeguimiento}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ResultadoSeguimiento"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.resultadoSeguimiento}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Observacion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.observacion}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Jugador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Entrenador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="PosicionSeguimiento"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton ajax="false" value="Eliminar" action="#{seguimientoManagedBean.eliminarSeguimiento(item)}"/>
+
+                                </p:column>
+                            </p:dataTable>
+                            <p:commandButton value="Crear seguimiento"/>
+                        </h:form>
+                    </f:view>
+
+                </div>
+
             </ui:define>
-            
-            
+
+
         </ui:composition>
 
     </body>
