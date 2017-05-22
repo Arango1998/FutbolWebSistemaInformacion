@@ -70,20 +70,49 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
         } catch (Exception e) {
         }
     }
-    
-     public String redireccionarEncuentroTorneo(EncuentroTorneo e) {
+
+    public String redireccionarEncuentroTorneo(EncuentroTorneo e) {
 
         encuentroTorneo = e;
         return "listar_encuentro.xhtml";
     }
-     
-      public void guardarCambiosEncuentroTorneo(EncuentroTorneo e) throws IOException {
+
+    public void guardarCambiosEncuentroTorneo(EncuentroTorneo e) throws IOException {
 
         try {
             encuentroejb.edit(encuentroTorneo);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
         } catch (Exception o) {
         }
+
+    }
+
+    public List<EncuentroTorneo> listarEngativa() {
+
+        return encuentroejb.listarEngativa();
+
+    }
+
+    public List<EncuentroTorneo> listarFontibon() {
+
+        return encuentroejb.listarFon();
+    }
+
+    public List<EncuentroTorneo> listarSuba() {
+
+        return encuentroejb.listarsub();
+
+    }
+
+    public List<EncuentroTorneo> listarKened() {
+
+        return encuentroejb.listarKen();
+
+    }
+
+    public List<EncuentroTorneo> listarBosa() {
+
+        return encuentroejb.listarBosa();
 
     }
 }

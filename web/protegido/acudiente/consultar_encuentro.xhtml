@@ -12,7 +12,7 @@
 
             <ui:define name="content">
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/formulario/tacticafutbol.jpg); image-resolution: from-image; height: auto;">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
 
 
                     <f:view>
@@ -67,6 +67,31 @@
                             </p:dataTable>
                         </h:form>
                     </f:view>
+                     <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
+
+                            <canvas id="bar-chart" width="3500" height="900"></canvas>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                            <script>
+                                                new Chart(document.getElementById("bar-chart"), {
+                                                    type: 'pie',
+                                                    data: {
+                                                        labels: ["Suba", "Engativá", "Fontibón", "Kennedy", "Bosa"],
+                                                        datasets: [
+                                                            {
+                                                                label: "Population (millions)",
+                                                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                                                data: [#{encuentroTorneoManagedBean.listarSuba().size()}, #{encuentroTorneoManagedBean.listarEngativa()}, #{encuentroTorneoManagedBean.listarFontibon()}, #{encuentroTorneoManagedBean.listarKened()}, #{encuentroTorneoManagedBean.listarBosa()}]
+                                                            }
+                                                        ]
+                                                    },
+                                                    options: {
+                                                        legend: {display: false},
+                                                        title: {
+                                                            display: true,
+                                                        }
+                                                    }
+                                                });
+                            </script>
                 </div>
             </ui:define>
 

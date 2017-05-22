@@ -40,7 +40,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "EncuentroTorneo.findAll", query = "SELECT e FROM EncuentroTorneo e"),
     @NamedQuery(name = "EncuentroTorneo.findByIdEncuentro", query = "SELECT e FROM EncuentroTorneo e WHERE e.idEncuentro = :idEncuentro"),
-    @NamedQuery(name = "EncuentroTorneo.findByFechaInicio", query = "SELECT e FROM EncuentroTorneo e WHERE e.fechaInicio = :fechaInicio")})
+    @NamedQuery(name = "EncuentroTorneo.findByFechaInicio", query = "SELECT e FROM EncuentroTorneo e WHERE e.fechaInicio = :fechaInicio"),
+    @NamedQuery(name = "EncuentroTorneo.Localidad", query = "SELECT e FROM EncuentroTorneo e WHERE e.fkIdBarrio.fkIdLocalidad.idLocalidad = :fkIdLocalidad")
+})
 public class EncuentroTorneo implements Serializable, IDTO {
 
     private static final long serialVersionUID = 1L;
