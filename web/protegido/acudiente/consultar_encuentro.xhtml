@@ -67,31 +67,31 @@
                             </p:dataTable>
                         </h:form>
                     </f:view>
-                     <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
+                    <br/>
+                    <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
 
-                            <canvas id="bar-chart" width="3500" height="900"></canvas>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-                            <script>
-                                                new Chart(document.getElementById("bar-chart"), {
-                                                    type: 'pie',
-                                                    data: {
-                                                        labels: ["Suba", "Engativá", "Fontibón", "Kennedy", "Bosa"],
-                                                        datasets: [
-                                                            {
-                                                                label: "Population (millions)",
-                                                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                                                                data: [#{encuentroTorneoManagedBean.listarSuba().size()}, #{encuentroTorneoManagedBean.listarEngativa()}, #{encuentroTorneoManagedBean.listarFontibon()}, #{encuentroTorneoManagedBean.listarKened()}, #{encuentroTorneoManagedBean.listarBosa()}]
-                                                            }
-                                                        ]
-                                                    },
-                                                    options: {
-                                                        legend: {display: false},
-                                                        title: {
-                                                            display: true,
-                                                        }
-                                                    }
-                                                });
-                            </script>
+                    <canvas id="bar-chart" width="3500" height="900"></canvas>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                    <script>
+                        new Chart(document.getElementById("bar-chart"), {
+                            type: 'pie',
+                            data: {
+                                labels: ["Suba", "Engativá", "Fontibón", "Kennedy", "Bosa"],
+                                datasets: [
+                                    {
+                                        label: "Population (millions)",
+                                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                        data: [#{encuentroTorneoManagedBean.listarSuba().size()}, #{encuentroTorneoManagedBean.listarEngativa().size()}, #{encuentroTorneoManagedBean.listarFontibon().size()}, #{encuentroTorneoManagedBean.listarKened().size()}, #{encuentroTorneoManagedBean.listarBosa().size()}]
+                                    }
+                                ]
+                            },
+                            options: {
+                                legend: {display: false},
+                                title: {
+                                }
+                            }
+                        });
+                    </script>
                 </div>
             </ui:define>
 
