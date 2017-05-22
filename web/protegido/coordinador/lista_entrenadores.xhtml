@@ -14,38 +14,13 @@
                 
                 
                 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
-                    <div class="rowContainer">
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10">  
+                <f:view>
 
 
-
-                            <h:form id="initadi" style="padding-top: 100px;">
-
-                                <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Usuarios Entrenadores"/></h1>
-                                <br/>
-
-                                <h:commandLink title="Descargar tabla en pdf">
-                                    <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="pdf" target="initadi" fileName="ListadoDeInvitados"/>
-                                </h:commandLink>
-                                <h:commandLink title="Descargar tabla en Excel">
-                                    <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="xls" target="initadi" fileName="ListadoDeInvitados"/>
-                                </h:commandLink>
-
-
-                                
-                                
-                                
-                                   <p:dataTable value="#{usuarioManagedBean.entrenador}" var="item">
-                           <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Eliminar"/>
-                                        </f:facet>
-                                        <center><h:commandButton  class="btn-outline" value="eliminar" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/></center>
-                                    </p:column>
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <p:dataTable value="#{usuarioManagedBean.entrenador}" var="item">
+                          
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Documento"/>
@@ -54,14 +29,14 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Primer Nombre"/>
+                                    <h:outputText value="PrimerNombre"/>
                                 </f:facet>
                                 <h:outputText value="#{item.primerNombre}"/>
                             </p:column>
                            
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Primer Apellido"/>
+                                    <h:outputText value="PrimerApellido"/>
                                 </f:facet>
                                 <h:outputText value="#{item.primerApellido}"/>
                             </p:column>
@@ -69,7 +44,7 @@
                           
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Fecha De Nacimento"/>
+                                    <h:outputText value="FechaDeNacimento"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fechaDeNacimento}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -98,88 +73,12 @@
                             </p:column>
                             
                                <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Editar"/>
-                                        </f:facet>
-                                        <center><a class="btn-outline" action="#{usuarioManagedBean.verInvitado(item)}" onclick="PF('insertar').show();" update=":editinvi">Editar</a></center>
-
-                                    </p:column>
+                                   <h:commandButton value="Ver informe de pagos" action="#{entrenadorManagedBean.seleccionarEntrenadorEspecifico(item.idUsuario)}" ></h:commandButton>
+                            </p:column>
                      
                         </p:dataTable>
-                                
-                                
-                                
-                                
-                                
-                            </h:form>
-
-                            <br/>
-                            <div aria-hidden="true">
-                                <p:dialog class="form-control"  widgetVar="insertar"
-                                          modal="true"
-                                          position="top"
-                                          resizable="false"
-                                          draggable="true"
-                                          closable="true">
-
-
-                                    <div class="modal-header">
-                                        <center><h3>Edición de categorías</h3></center>
-                                        <h:form id="editinvi">
-
-
-                                            <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
-                                            <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                            <br/>
-                                            <p:outputLabel value="Documento:" for="documento" />
-                                            <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                                            <p:outputLabel value="Nombre:" for="primerNombre" />
-                                            <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                                            <p:outputLabel value="Apellido:" for="primerApellido" />
-                                            <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-                                            <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
-                                            <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                            <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
-                                            <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                                            </h:inputText>
-                                            <p:outputLabel value="Correo:" for="correo" />
-                                            <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-
-                                            <center>
-                                                <p:outputLabel value="Rol:" for="idTipoRol" />
-                                                <h:selectOneMenu class="form-control"  id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
-                                                    <!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
-                                                </h:selectOneMenu>
-
-                                                <p:outputLabel  value="Estado:" for="idEstado" />
-                                                <h:selectOneMenu class="form-control"  id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
-                                                    <!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
-                                                </h:selectOneMenu>
-
-                                            </center>
-
-
-                                            <center>
-                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
-
-                                            </center>
-
-
-                                        </h:form>
-
-                                    </div>
-                                </p:dialog>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
+                    </h:form>
+                </f:view>
 
                 
              

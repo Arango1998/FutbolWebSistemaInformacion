@@ -11,14 +11,26 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
-                  <div class="rowContainer">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">  
-                     <h:form id="dqw" style="padding-top: 100px;">
-                          <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Categorías Actuales "/></h1>
-                                    <br/>
 
+                <!-- Sidebar -->
+
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Categorías Actuales.</h1>
+                        </header>
+                        <h2>Contamos con ‘contador’ Categorías.</h2>
+                        <p>Recuerde que antes de registrar un ‘Equipo de futbol’ debe crear una categoría. </p>        
+
+
+                     <h:form id="dqw">
                     <h:commandLink title="Descargar tabla en pdf">
                         <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
                         <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
@@ -31,43 +43,33 @@
 
 
                            
-                                    <p:dataTable id="tabCat"  value="#{categoriaManagedBean.listCategorias()}" var="item" > 
+                                <h:dataTable id="tabCat" value="#{categoriaManagedBean.listCategorias()}" var="item" class="table table-hover" > 
 
                                      <p:column>
-                                         <center>
-                                             <f:facet name="header">
+                                        <f:facet name="header">
                                             <h:outputText value="Eliminar"/>
                                         </f:facet>
                                          <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="eliminar" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/>
-                                     
-                                         </center>
-                                       </p:column>
+                                    </p:column>
                                     <p:column>
-                                        <center>
-                                           <f:facet name="header">
+                                        <f:facet name="header">
                                             <h:outputText value="Nombre"/>
                                         </f:facet>
                                         <h:outputText value="#{item.nombreCategoria}"/>
-                                      
-                                        </center>
-                                       </p:column>
+                                    </p:column>
                                     <p:column>
-                                        <center>
-                                             <f:facet name="header">
+                                        <f:facet name="header">
                                             <h:outputText value="Editar"/>
                                         </f:facet>
                                         <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
-                                    
-                                        </center>
-                                       </p:column>
+                                    </p:column>
                                    
-                                </p:dataTable>
+                                </h:dataTable>
                             </h:form>
                             <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                             <br/>
-                            <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
+                            <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Categoria</a>
 
                             <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -149,16 +151,8 @@
 
                         </div>
                     </div>
-                    </div>
-                    </div>
                     <div class="col-lg-1"></div>
-                
-                
-
-
-
-             
-                     
+                </div>
             </ui:define>
 
         </ui:composition>
