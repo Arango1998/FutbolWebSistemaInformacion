@@ -26,7 +26,7 @@
                                 <h:form id="dqw" style="padding-top: 150px;">
                                     <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="EQUIPOS PROGRAMADOS."/></h1>
                                     <br/>
-                                    <h:dataTable class="table table-stripped table-bordered" style="background-color: #fff;" value="#{equipoManagedBean.listarEquipos()}" var="item">
+                                    <p:dataTable  value="#{equipoManagedBean.listarEquipos()}" var="item">
 
                                          <p:column>
                                          <center>
@@ -38,12 +38,7 @@
                                      
                                          </center>
                                        </p:column>
-                                        <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Categoria"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
-                                        </p:column>
+                                       
                                         <p:column>
                                             <f:facet name="header">
                                                 <h:outputText value="Nombre Equipo"/>
@@ -67,7 +62,7 @@
 
                                             </center>
                                         </p:column>
-                                    </h:dataTable>
+                                    </p:dataTable>
                                 </h:form>
                             </f:view>
 
