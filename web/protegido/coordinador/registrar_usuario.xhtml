@@ -36,7 +36,6 @@
                                                     <div class="panel-heading">
                                                          <f:view>
                             <h:form>
-                                <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
                                   
                                 <div class="form-group float-label-control">
                                     <h:outputLabel value="Documento:" for="documento" />
@@ -102,7 +101,7 @@
                                 
                                 
                                 
-                                <p:commandButton class="btn btn-success btn-lg btn-block"    value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuario()}" update="growl" />
+                                <p:commandButton class="btn btn-success btn-lg btn-block" actionListener="#{usuarioManagedBean.redireccionarUsuarioCordinador()}"   value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuario()}" />
 
 
 

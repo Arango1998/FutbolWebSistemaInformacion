@@ -143,7 +143,13 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         }
     }
     
-  
+      public void redireccionarUsuarioCordinador() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_usuarios.xhtml");
+        } catch (Exception e) {
+        }
+    }
     
     
     
