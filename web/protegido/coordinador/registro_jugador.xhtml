@@ -11,14 +11,16 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+ <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: 100px;">
+                    <div class="rowContainer">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">  
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
 
                     <f:view>
 
 
                         <h:form id="initadi">
-                            <h1><h:outputText value="List"/></h1>
                             <p:dataTable value="#{usuarioManagedBean.jugadores}" var="item">
 
                                 <p:column>
@@ -29,14 +31,14 @@
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="PrimerNombre"/>
+                                        <h:outputText value="Nombre"/>
                                     </f:facet>
                                     <h:outputText value="#{item.primerNombre}"/>
                                 </p:column>
 
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="PrimerApellido"/>
+                                        <h:outputText value="Apellido"/>
                                     </f:facet>
                                     <h:outputText value="#{item.primerApellido}"/>
                                 </p:column>
@@ -44,7 +46,7 @@
 
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="FechaDeNacimento"/>
+                                        <h:outputText value="Fecha De Nacimento"/>
                                     </f:facet>
                                     <h:outputText value="#{item.fechaDeNacimento}">
                                         <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -62,19 +64,19 @@
 
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="IdTipoRol"/>
+                                        <h:outputText value="Rol"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idTipoRol.nombreRol}"/>
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="IdEstado"/>
+                                        <h:outputText value="Estado"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idEstado.nombreEstado}"/>
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="IdAcudiente"/>
+                                        <h:outputText value="Acudiente"/>
                                     </f:facet>
                                     <h:outputText value="#{item.idAcudiente.documento}, #{item.idAcudiente.primerNombre} #{item.idAcudiente.primerApellido}"/>
                                 </p:column>
@@ -123,7 +125,7 @@
                                     </h:inputText>
                                     <p:outputLabel value="Correo:" for="correo" />
                                     <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-                                    <h:outputLabel value="IdAcudiente:" for="idAcudiente" />
+                                    <h:outputLabel value="Acudiente:" for="idAcudiente" />
                                     <h:selectOneMenu class="form-control"  id="idAcudiente" value="#{usuarioManagedBean.usuario.idAcudiente}" title="IdAcudiente" >
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{usuarioManagedBean.activos}" var="acudient" itemLabel="#{acudient.documento}, #{acudient.primerNombre} #{acudient.primerApellido}" />
@@ -157,6 +159,8 @@
                     </div>
 
                 </div>
+                        </div>
+     </div>
 
             </ui:define>
 

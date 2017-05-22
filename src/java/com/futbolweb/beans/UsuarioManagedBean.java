@@ -151,10 +151,40 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
       public void redireccionarUsuarioInvitado() {
 
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_usuarios.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_invitados.xhtml");
         } catch (Exception e) {
         }
     }
+      
+      
+          public void redireccionarUsuarioJugador() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_jugadores.xhtml");
+        } catch (Exception e) {
+        }
+    }
+    
+          
+             
+          public void redireccionarUsuarioEntrenador() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_entrenadores.xhtml");
+        } catch (Exception e) {
+        }
+    }
+          
+          
+                   
+          public void redireccionarUsuarioAcudiente() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("lista_acudientes.xhtml");
+        } catch (Exception e) {
+        }
+    }
+    
     
 
     public void creaUsuario() {

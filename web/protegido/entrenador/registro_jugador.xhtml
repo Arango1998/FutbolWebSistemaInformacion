@@ -14,57 +14,188 @@
 
                 <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
 
+                    
+                    <f:view>
+
+
+                        <h:form>
+                            <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Jugador"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Posicion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.posicion}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Equipo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                                </p:column>
+                               
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
+
+                    
+                    
+                    
+                    <br></br>
+                    
+                    
+                    
                     <center>
 
+                       
+                            <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Recuerde al Registrar el jugador
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                                
+                        <br>
+                            
+                        </br>
+  <br>
+                            
+                        </br>   
                         <f:view>
 
 
                             <h:form style="padding-top: 120px;">
 
 
-                                <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Registro del jugador"/></h1></center>
+                                <center ><h1><h:outputText style="font-family: fantasy; color: black;" value="Registro del jugador Modo 1"/></h1></center>
                                 <h:panelGrid columns="2">
                                     <h:outputLabel value="Jugador:" for="jugador" />
                                     <h:selectOneMenu class="form-control" id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required." >
                                         <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{usuarioManagedBean.jugadores}" var="Juga" itemLabel="#{Juga.primerNombre}"/>
+                                        <f:selectItems value="#{usuarioManagedBean.jugadores}" var="Juga" itemLabel="#{Juga.idUsuario},#{Juga.documento}, #{Juga.primerNombre} #{Juga.primerApellido}"/>
                                     </h:selectOneMenu>
                                     
                                     <h:outputLabel value="Posicion:" for="posicion" />
-                                    <h:inputText class="form-control" id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
-                                    <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
-                                    <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
+ <h:outputLabel value="Posicion:" for="posicion" />
+                                    
+                                    
+                                                                   <h:selectOneMenu class="form-control" id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required.">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItem  itemValue="Defensa" itemLabel="Defensa"/>
+                                                            <f:selectItem  itemValue="Volante" itemLabel="Volante"/>
+                                                            <f:selectItem itemValue="Defensa" itemLabel="Defensa"/>
+                                                            <f:selectItem itemValue="Arquero" itemLabel="Arquero"/>
+
+                                                        </h:selectOneMenu>
+                                    
+                                    <h:outputLabel value="Equipo:" for="fkIdEquipo" />
+                                    <h:selectOneMenu class="form-control" id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="equi" itemLabel="#{equi.nombreEquipo}"/>
                                     </h:selectOneMenu>
-                                    <h:commandButton value="Registrar" action="#{jugadorManagedBean.creaJugador()}"/>
-                                </h:panelGrid>
+                                   </h:panelGrid>
+                                <br/>
+                                <br/>
+                                <h:commandButton value="Registrar Jugador" class="btn btn-info " action="#{jugadorManagedBean.creaJugador()}"/>
+                               
                             </h:form>
                         </f:view>
+                        
+                                    <hr />
+                                
 
+                                </ul>
+                            </div>
+                            
+                            
+                             
 
-
+                        </div>
+                    </div>
+                        
+                        
+                        
+                        
+                     
+                        <br>
+                            
+                        </br>
+  <br>
+                            
+                        </br>
+                        
+                        
+                        
+                        
+                            <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    Recuerde al Registrar...
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                
                         <f:view>
 
 
                             <h:form>
-                                <h1><h:outputText value="Create/Edit"/></h1>
+                                 <center ><h1><h:outputText style="font-family: fantasy; color: black;" value="Registro del jugador Modo 2"/></h1></center>
+                               
                                 <h:panelGrid columns="2">
-                                    <h:outputLabel value="IdJugador:" for="idJugador" />
-                                    <h:inputText id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required."/>
+                                    <h:outputLabel value="Codigo Jugador:" for="idJugador" />
+                                    <h:inputText class="form-control" id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required."/>
                                     <h:outputLabel value="Posicion:" for="posicion" />
-                                    <h:inputText id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
-                                    <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
-                                    <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
+                                    
+                                    
+                                                                   <h:selectOneMenu class="form-control" id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required.">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItem  itemValue="Defensa" itemLabel="Defensa"/>
+                                                            <f:selectItem  itemValue="Volante" itemLabel="Volante"/>
+                                                            <f:selectItem itemValue="Defensa" itemLabel="Defensa"/>
+                                                            <f:selectItem itemValue="Arquero" itemLabel="Arquero"/>
+
+                                                        </h:selectOneMenu>
+                                    
+                                    
+                                    
+                                    
+                                    <h:outputLabel value="Equipo:" for="fkIdEquipo" />
+                                    <h:selectOneMenu class="form-control" id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
                                         <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{equipoManagedBean.listarEquipos()}"/>
+                                        <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="equipo" itemLabel="#{equipo.nombreEquipo}"/>
                                     </h:selectOneMenu>
 
                                 </h:panelGrid>
-                                <h:commandButton value="Registrar" action="#{jugadorManagedBean.creaJugador()}"/>
-
+                                  <br/>
+                                <br/>
+                                <h:commandButton value="Registrar Jugador" class="btn btn-info " action="#{jugadorManagedBean.creaJugador()}"/>
+                               
+                               
                             </h:form>
                         </f:view>
+
+                                    <hr />
+                                
+
+                                </ul>
+                            </div>
+                            
+                             
+
+                        </div>
+                    </div>
+
+
 
 
                     </center>  
