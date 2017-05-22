@@ -77,7 +77,7 @@ public class PagoManagedBean implements InterfaceController<Pago> {
     }
 
     public String solicitarJugador(int idJugador) {
-
+          
         Jugador j = jugadorF.find(idJugador);
         List<Pago> lpago = pagof.listarPagoEspecifico(j);
         lista = lpago;

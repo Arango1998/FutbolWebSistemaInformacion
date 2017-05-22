@@ -11,8 +11,13 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-<!--                <f:view>
+               <f:view>
+            <br></br>
 
+                <header>
+                    <h1 class="page-header text-center">Lista de sus pagos</h1>
+                </header>
+                
                     <h:form id="Pagos">
                         <h:commandLink title="Descargar tabla en pdf">
                             <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
@@ -22,25 +27,25 @@
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                             <p:dataExporter type="xls" target="listaPagos" fileName="ListaDePagos"/>
                         </h:commandLink>
-                        <h1><h:outputText value="Lista de pagos"/></h1>
-                        <p:dataTable value="# {pagoManagedBean.listarPagoPropio()}" var="item" id="listaPagos">
+                        <h1><h:outputText value=""/></h1>
+                        <p:dataTable value="#{pagoManagedBean.listarPagoPropio()}" var="item" id="listaPagos">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Id de Pago"/>
                                 </f:facet>
-                                <h:outputText value=" # {item.idPago}"/>
+                                <h:outputText value=" #{item.idPago}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Motivo de Pago"/>
                                 </f:facet>
-                                <h:outputText value="# {item.motivoPago}"/>
+                                <h:outputText value="#{item.motivoPago}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Fecha de Pago"/>
                                 </f:facet>
-                                <h:outputText value="# {item.fechaPago}">
+                                <h:outputText value="#{item.fechaPago}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
                             </p:column>
@@ -48,19 +53,19 @@
                                 <f:facet name="header">
                                     <h:outputText value="Monto"/>
                                 </f:facet>
-                                <h:outputText value="# {item.monto}"/>
+                                <h:outputText value="#{item.monto}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Estado"/>
                                 </f:facet>
-                                <h:outputText value="# {item.estado}"/>
+                                <h:outputText value="#{item.estado}"/>
                             </p:column>
 
                             
                         </p:dataTable>
                     </h:form>
-                </f:view>-->
+                </f:view>
 
             </ui:define>
 

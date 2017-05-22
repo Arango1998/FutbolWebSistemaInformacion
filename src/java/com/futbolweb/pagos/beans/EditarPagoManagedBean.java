@@ -9,12 +9,14 @@ import com.futbolweb.beans.PagoManagedBean;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.facades.PagoFacade;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -28,8 +30,8 @@ public class EditarPagoManagedBean implements InterfaceController<Pago> {
      
     @EJB 
     private PagoFacade pagof;
-    
-   
+    @Inject
+   private PagoManagedBean pagoM;
     
     @PostConstruct
     public void init(){
@@ -50,12 +52,19 @@ public class EditarPagoManagedBean implements InterfaceController<Pago> {
     
     
     
-     public void modificarPago(){
+     public String modificarPago(Pago p){
+         
     pagof.edit(pago);
+    return pagoM.solicitarJugador(p.getFkIdJugador().getIdJugador());
     }
      public void seleccionarPago(Pago leerPago){
          pago = leerPago;
      }
+     public String redireccionarPago(Pago p) {
+
+        pago = p;
+        return "listapagos.xhtml";
+    }
     /**
      * Creates a new instance of EditarPagoManagedBean
      */
