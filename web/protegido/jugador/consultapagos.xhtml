@@ -29,12 +29,7 @@
                         </h:commandLink>
                         <h1><h:outputText value=""/></h1>
                         <p:dataTable value="#{pagoManagedBean.listarPagoPropio()}" var="item" id="listaPagos">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Id de Pago"/>
-                                </f:facet>
-                                <h:outputText value=" #{item.idPago}"/>
-                            </p:column>
+                            
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Motivo de Pago"/>

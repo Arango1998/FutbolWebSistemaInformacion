@@ -11,29 +11,28 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../..//resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
 
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../..//resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
 
                     <f:view>
 
 
-                         <h:form style="padding-top: 110px;">
+                        <h:form style="padding-top: 110px;">
 
-                            <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: whitesmoke" value="Seguimientos"/></h1>
-                            <p:dataTable value="#{seguimientoManagedBean.lista}" var="item">
+                            <h1><h:outputText style="padding-left: 450px; font-family: fantasy; color: whitesmoke" value="Seguimiento de #{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}"/></h1>
+                            <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoPropio()}" var="item">
 
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="FechaSeguimiento"/>
+                                        <h:outputText value="Fecha del seguimiento"/>
                                     </f:facet>
                                     <h:outputText value="#{item.fechaSeguimiento}">
                                         <f:convertDateTime pattern="MM/dd/yyyy" />
                                     </h:outputText>
                                 </p:column>
-
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Resultado Seguimiento"/>
+                                        <h:outputText value="Calificación"/>
                                     </f:facet>
                                     <h:outputText value="#{item.resultadoSeguimiento}"/>
                                 </p:column>
@@ -43,28 +42,27 @@
                                     </f:facet>
                                     <h:outputText value="#{item.observacion}"/>
                                 </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Jugador"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idJugador}"/>
-                                </p:column>
+                               
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Entrenador"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.idEntrenador}"/>
+                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
                                 </p:column>
                                 <p:column>
                                     <f:facet name="header">
-                                        <h:outputText value="Posicion Seguimiento"/>
+                                        <h:outputText value="Posicion del seguimiento"/>
                                     </f:facet>
-                                    <h:outputText value="#{item.idPosicionSeguimiento}"/>
+                                    <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="Ver seguimiento"></p:commandButton>
                                 </p:column>
                             </p:dataTable>
                         </h:form>
                     </f:view>
                 </div>
+
             </ui:define>
 
 
