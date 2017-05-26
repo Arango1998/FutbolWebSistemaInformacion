@@ -33,12 +33,12 @@
                                 </h:commandLink>
 
 
-                                <p:dataTable style="font-family: fantasy;" value="#{usuarioManagedBean.invitado}" var="item">
+                                <p:dataTable style="font-family: fantasy; font-size: 20px;" value="#{usuarioManagedBean.invitado}" var="item">
                                     <p:column>
                                         <f:facet name="header">
                                             <h:outputText value="Eliminar"/>
                                         </f:facet>
-                                        <center><h:commandButton  class="btn-outline" value="eliminar" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/></center>
+                                        <center><h:commandButton  style="font-family: fantasy; font-size: 20px;" class="btn btn-outline btn-warning" value="eliminar" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/></center>
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">
@@ -95,7 +95,7 @@
                                         <f:facet name="header">
                                             <h:outputText value="Editar"/>
                                         </f:facet>
-                                        <center><a class="btn-outline" action="#{usuarioManagedBean.verInvitado(item)}" onclick="PF('insertar').show();" update=":editinvi">Editar</a></center>
+                                        <p:commandButton class="btn  btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="Editar" onclick="PF('insertar').show();"  update=":editinvi"/>
 
                                     </p:column>
                                 </p:dataTable>
