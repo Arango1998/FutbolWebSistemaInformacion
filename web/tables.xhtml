@@ -7,389 +7,172 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Sistema Fútbol Web</title>
+    <head>
+        <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/index.css" rel="stylesheet" type="text/css"/>
-        
-        <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/computador.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/buscarpagina.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/Botones.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/carrousel.css" rel="stylesheet" type="text/css"/>
-        
-
-        <script src="resources/js/jquery.min.js" type="text/javascript"></script>
-        <script src="resources/js/index.js" type="text/javascript"></script>
-
-
-
-    </h:head>
+        <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
+          <link href="resources/css/torneo.css" rel="stylesheet" type="text/css"/>
+    </head>
     <body>
+        <div class="main" style="padding:2%;margin-top:5%;">        	
+            <div class="col-lg-12">
+                <div class="container">
+
+                  <div class="row text-center">
+                        <div class="col-md-12">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="cover">
+                                                <img src="resources/images/paginainicio/Paginap.jpg"/>
+                                            </div>
+                                            <div class="user">
+                                                <img class="img-circle" src="resources/images/paginainicio/Paginap.jpg"/>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h3 class="name">Nuestras Categorias: </h3>
+                                                    <p class="profession">Estas son nuestras categorias</p>
+                                                    <p class="text-center">1</p>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="rating">
+                                                        <i class="fa fa-mail-forward"></i> Rota Automaticamente
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end front panel -->
+                                        <div class="back">
+                                            <div class="header">
+                                                <h5 class="motto">Categorias Disponibles</h5>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+
+                                                 <h:form>
+                                                <h:inputText id="documento" value="#{loginManagedBean.documento}"/>
+
+                                                <h:inputText p:type="password"  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
+                                                <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
+
+                                              
+                                                <br/>
+                                                <br></br>   
+                                                <a href="pagina_principal.xhtml" class="btn btn-outline btn-success"><span class="fa fa-home"></span>Página principal</a>
+
+                                                <div class="clearfix"></div>
+                                            </h:form>
+
+                                                      
 
 
-        <!--Header-->
-        <header>
-            <nav>
-
-                <input type="search" id="buscador" placeholder="Buscar"/>
-
-                <ul>
-                    <a class="colo" href='#nosotro'><li>Nosotros</li></a>
-                    <a class="colo" href='#jumbotron2'><li>Torneos</li></a>
-                    <a class="colo" href='#jumbotron1'><li>Convocatorias</li></a>
-                    <a class="colo" href='Uniformes.html'><li>Uniformes</li></a>
-                    <a class="colo" href='regitrou.xhtml'><li>Registrase</li></a>
-
-
-                </ul>
-
-                <img id='logo' src='resources/images/paginainicio/Logo.png' width="280" height="280"/>
-
-                <a href="login.xhtml" style="margin: 10px; border-radius: 13px;  " class="btn btn-success boton">Ingresar</a>
-            </nav>
-        </header>
-
-
-        <!--Fin Header-->
-
-       
-        
-         <!--Modal Ingrear-->  
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="panel panel-login">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <a href="#" class="active" id="login-form-link">Ingresar</a>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <a href="#" id="register-form-link">Registrarse</a>
-                                    </div>
-                                </div>
-                                <hr/>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <div class="social-links text-center">
+                                                    <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                                    <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                                    <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end back panel -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end card-container -->
                             </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form class="Form_Contacto" action="#" method="POST" name="usuariologin" id="login-form"  style="display: block;">
-                                            <div class="form-group">
-                                                <label for="email"></label>
-                                                <input id="email" tabindex="1" class="form-control" name="email" type="text" value="" minlength="1" maxlength="30" required="" placeholder="Documento o Correo Electronico" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="password"></label>
-                                                <input id="password" tabindex="2" class="form-control" name="password" type="password" value="" minlength="1"  maxlength="15" required="" placeholder="Ingresar contraseña"/>
-                                            </div>
-                                            <div class="form-group text-center">
-                                                <input type="checkbox" tabindex="3" class="" name="remember" id="remember"/>
-                                                <label for="remember">Recordar Contraseña</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <button class="form-control btn btn-login"  id="button" type="button"  onClick="EnviarUsuario()" value="Iniciar sesión" data-toggle="tooltip" data-placement="right" title="Corrdinador:1018492218, Instructor:99061618968, Jugador:98051354524, Padre:1073239252" >Iniciar Sesión</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="text-center">
-                                                            <a class="forgot-password" href="olvido.html" value="Iniciar sesión">¿Olvidó su contraseña?</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <form id="register-form" action="Formularioprueba.html" method="post" role="form" style="display: none;">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Registrarse ahora"/>
-                                                        <center>
-                                                            <h3>
-                                                                Registrarse como:
 
-                                                            </h3>
-                                                        </center>
+                    
+
+                            <div class="col-md-8 col-sm-6">
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="cover">
+                                                <img src="resources/images/paginainicio/torneo.jpg"/>
+                                            </div>
+                                            <div class="user">
+                                                <img class="img-circle" src="resources/images/carrousel/IMAGEN-10329947-2.jpg"/>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    <h3 class="name">Resultados de Torneos </h3>
+                                                    <p class="profession"></p>
+
+                                                    <p class="text-center">3</p>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="rating">
+                                                        <i class="fa fa-mail-forward"></i> Rotar Automaticamente
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                        </div> <!-- end front panel -->
+                                        <div class="back">
+                                            <div class="header">
+                                                <h4 class="text-center">Torneos</h4>
+                                            </div>
+                                            <div class="content">
+
+                                                <div class="main">
+
+                                                    <f:view>
+
+
+                                                        <h:form>
+                                                            <h:dataTable value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item" class="table table-striped table-bordered table-list">
+
+
+
+
+                                                                <h:column>
+                                                                    <f:facet name="header">
+                                                                        <h:outputText value="Resultado"/>
+                                                                    </f:facet>
+                                                                    <h:outputText value="#{item.fkIdTorneo.nombreTorneo}: #{item.resultado}"/>
+                                                                </h:column>
+
+                                                            </h:dataTable>
+                                                        </h:form>
+                                                    </f:view>
+
+
+
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <div class="social-links text-center">
+                                                    <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                                    <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                                    <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end back panel -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end card-container -->
                             </div>
+
+
+                            <h:messages globalOnly="true" showSummary="true"/>
+
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!--Fin Modal Ingrear-->  
 
 
-        <!--Inicio Particulas-->  
-        <section id='banner'>
-            <div id="particles-js"></div>
-        </section>
-
-        <!--Fin Particulas-->  
-
-        <!-- jumbotron Nosotros-->
-        <div id="jumbotronNosotros" class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <center><h1 class="tituloJumbo">Nosotros</h1></center>
-                <center><p class="tituloJumbo">Historia y valores del Expreso Rojo</p></center>  
-            </div>
-        </div>
-        <section id="body">
-            <section id="nosotro">
-                <div class="nosotros">
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <!-- begin panel group -->
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-
-
-                                <!-- panel 2 -->
-                                <div class="panel panel-default">
-                                    <!--wrap panel heading in span to trigger image change as well as collapse -->
-                                    <span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
-                                        <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <center>  <h4 class="panel-title collapsed">Vision.</h4></center>
-
-                                        </div>
-                                    </span>
-
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            <!-- Tab content goes here -->
-                                            <center><strong>"</strong>Cada año a partir del 15 de febrero de 1991 que fue formado nuestro club expreso rojo con una organización reconocida nacional e internacional como uno de los mayores clubes deportivos de futbol.
-                                                <br/>
-                                                En nuestro club expreso rojo se identificó para la formación de seres humanos, personas más futbolísticas con misión y visión, con los valores humanos a cultivar y practicar".
-                                                <br/>
-                                                <strong>“El principal enemigo del éxito es el temor, en lo que el hombre teme, eso le vendr<strong>"</strong> </strong></center>
-
-                                        </div>
-                                    </div>
-                                </div> 
-                                <!-- / panel 2 -->
-                                <div class="panel panel-default">
-                                    <!--wrap panel heading in span to trigger image change as well as collapse -->
-                                    <span class="side-tab" data-target="#tab2" data-toggle="tab" role="tab" aria-expanded="false">
-                                        <div class="panel-heading" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <center>  <h4 class="panel-title collapsed">Misión.</h4></center>
-
-                                        </div>
-                                    </span>
-
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body">
-                                            <!-- Tab content goes here -->
-                                            <center>
-                                                <p><strong>"</strong>Trabajar con el talento humano idóneo, comprometido y creativo el cual apoyamos brindándoles comodidad y confort en las prácticas deportivas del futbol con recreación y de ocupación con tal de que se obtenga un beneficio de procesos limpios, asegurados y un mejoramiento organizado, clubes deportivos competitivos.<strong>"</strong></p>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--  panel 3 -->
-
-                                <div class="panel panel-default">
-                                    <!--wrap panel heading in span to trigger image change as well as collapse -->
-                                    <span class="side-tab" data-target="#tab3" data-toggle="tab" role="tab" aria-expanded="false">
-                                        <div class="panel-heading" role="tab" id="headingThree"   data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <h4 class="panel-title"><center>Nuestros valores.</center></h4>
-                                        </div>
-                                    </span>
-
-                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                        <div class="panel-body">
-                                            <!-- tab content goes here -->
-                                            <center>
-                                                <p><strong>Los valores que cumplimos en nuestra institución son:</strong>
-                                                    <br/>
-                                                    - Amor y respeto con la naturaleza.
-                                                    <br/>
-                                                    - Comprensión.
-                                                    <br/>
-                                                    - Honestidad.
-                                                    <br/>
-                                                    - Humildad.
-                                                    <br/>
-                                                    - Perdón.
-                                                    <br/>
-                                                    - Sencillez.
-                                                    <br/>
-                                                    - Alegría.
-                                                    <br/>
-                                                    - Equidad.   
-                                                    <br/>                        
-                                                    - Respeto. 
-                                                    <br/>                          
-                                                    - Transparencia. 
-                                                    <br/>                          
-                                                    - Cumplimiento.
-                                                    <br/>                           
-                                                    - Innovación. 
-                                                    <br/>                          
-                                                    - Compromiso.</p>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- / panel-group -->
-
-                        </div> <!-- /col-md-4 -->
-
-                        <div class="col-md-8">
-                            <!-- begin macbook pro mockup -->
-                            <div class="md-macbook-pro md-glare">
-                                <div class="md-lid">
-                                    <div class="md-camera"></div>
-                                    <div class="md-screen">
-                                        <!-- content goes here -->                
-                                        <div class="tab-featured-image">
-                                            <div class="tab-content">
-                                                <div class="tab-pane  in active" id="tab1">
-                                                    <img src="resources/images/carrousel/960.jpg" alt="tab1" class="img img-responsive"/>
-                                                </div>
-                                                <div class="tab-pane " id="tab2">
-
-                                                    <img src="resources/images/carrousel/07.jpg" alt="tab1" class="img img-responsive"/>
-
-                                                </div>
-                                                <div class="tab-pane fade" id="tab3">
-                                                    <img src="resources/images/carrousel/Niemcy_koszulka.JPG" alt="tab1" class="img img-responsive"/>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="md-base"></div>
-                            </div> <!-- end macbook pro mockup -->
-
-
-
-                        </div> 
-                    </div> 
 
                 </div>
 
-            </section>
 
-        </section>
-
-        <!--Fin jumbotron Nosotros-->
-
-        <!-- jumbotron Convocatorias-->
-        <div id="jumbotronConvocatoria" class="jumbotron jumbotron-fluid">
-            <center><h1 class="tituloJumbo">Convocatorias</h1></center>
-            <center><p class="tituloJumbo">Aplica Para Jugadores e Instructores</p></center> 
-
-        </div>
-     
+          
 
 
-        <!-- Fin jumbotron Convocatorias-->
 
-        <!-- jumbotron Torneos-->
-        <div id="jumbotronTorneo" class="jumbotron jumbotron-fluid">
-            <center><h1 class="tituloJumbo">Torneos y Uniformes</h1></center>
-
-        </div>
-        <section id="torneos">
-            <div>
-                <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
-                    <!-- Overlay -->
-                    <div class="overlay"></div>
-
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#bs-carousel" data-slide-to="1"></li>
-                        <li data-target="#bs-carousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item slides active">
-                            <div class="slide-1"></div>
-                            <div class="hero">
-                                <hgroup>
-                                    <h1>Comienza con nosotros</h1>        
-                                    <h3>Comienza con Nosotros</h3>
-                                </hgroup>
-                                <button class="btn btn-hero btn-lg" role="button">See all features</button>
-                            </div>
-                        </div>
-                        <div class="item slides">
-                            <div class="slide-2"></div>
-                            <div class="hero">        
-                                <hgroup>
-                                    <h1>Futbol Web</h1>        
-                                    <h3>Una de las mejores opciones para disfrutar el futbol</h3>
-                                </hgroup>       
-                                <button class="btn btn-hero btn-lg" role="button">Comienza con nosotros</button>
-                            </div>
-                        </div>
-                        <div class="item slides">
-                            <div class="slide-3"></div>
-                            <div class="hero">        
-                                <hgroup>
-                                    <h1>...</h1>        
-                                    <h3>......</h3>
-                                </hgroup>
-
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-
-
-        </section>
-
-        <!--Fin jumbotron Torneos-->
-        
-        
-        
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="resources/js/bootstrap.js" type="text/javascript"></script>
-        <script src="resources/js/particles.js" type="text/javascript"></script>
-        <script src="resources/js/particles2.js" type="text/javascript"></script>
-        <script src="resources/js/registro.js" type="text/javascript"></script>
+   
     </body>
-
-    <footer>
-        <div class="col-md-3">
-            <ul class="social-network social-circle">
-                <li><a  class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a  class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a  class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-            </ul>       
-        </div>
-        <p class="foot">Derechos de autor: <br/> William Moreno, Iesua Ramirez, Adhael Rodriguez, Cristian Suesca.</p>
-        <div>
-
-            <ul class="col-md-3">
-                <li><a class="colo" ><strong>Español</strong></a></li>
-                <li><a class="colo" href="paginaprinipalingles.xhtml">Ingles</a></li>
-            </ul>       
-        </div>
-        <p class="foot">Esta página está autorizada  y contiene información del Club de futbol <strong>"Expreso Rojo"</strong></p>
-    </footer>
-
-
 </html>
