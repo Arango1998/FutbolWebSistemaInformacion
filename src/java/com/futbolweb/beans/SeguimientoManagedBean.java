@@ -12,7 +12,6 @@ import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.SeguimientoFacade;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -31,6 +30,32 @@ import javax.inject.Inject;
 public class SeguimientoManagedBean implements Serializable, InterfaceController<Seguimiento> {
 
     private Seguimiento seguimiento;
+    private String cedula;
+
+    private Jugador js;
+
+    public Jugador getJs() {
+        js.getFkIdEquipo().getIdEntrenador().getExperiencia();
+        return js;
+    }
+
+    public void setJs(Jugador js) {
+        this.js = js;
+    }
+    
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
+    public void buscarJugador(){
+        js = segf.buscar(cedula);
+    }
+    
+    private List<Seguimiento> seguimientoDelJugador;
     List<Seguimiento> lista;
     @EJB
     private SeguimientoFacade segf;
@@ -73,35 +98,56 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
         return segf.findAll();
     }
 
+    public List<Seguimiento> getSeguimientoDelJugador() {
+        return seguimientoDelJugador;
+    }
+
+    public void setSeguimientoDelJugador(List<Seguimiento> seguimientoDelJugador) {
+        this.seguimientoDelJugador = seguimientoDelJugador;
+    }
+
     @PostConstruct
     public void init() {
         seguimiento = new Seguimiento();
+        cedula = new String();
         lista = new LinkedList<>();
+        js = new Jugador();
+        seguimientoDelJugador = getListaJuagador();
     }
 
-    public List<Seguimiento> listarSeguimientoo() {
+    public void listarSeguimientoo() {
+        seguimientoDelJugador = (List<Seguimiento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("seguimientos");
+    }
+
+    public List<Seguimiento> getListaJuagador(){
         return (List<Seguimiento>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("seguimientos");
     }
-
+    
     public String solicitarJugador(int idJugador) {
-
         Jugador j = jugadorF.find(idJugador);
         List<Seguimiento> lseguimiento = segf.listarSeguimientoEspecifico(j);
         lista = lseguimiento;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jugadorSeguimiento", j);
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
-
     }
 
-    // public void registrarSeguimiento(Seguimiento s){
+    
+    public void registrarSeguimiento(){
+        Seguimiento se = this.getListaJuagador().get(this.getListaJuagador().size()-1);
+        seguimientoDelJugador = segf.registrarSeguimiento(se);
+    }
+    
+    //public void registrarSeguimiento(Seguimiento s){
     //   seguimiento.setIdJugador();
     // seguimiento.setIdEntrenador();
     //Date fecha= new Date();
     //seguimiento.setIdPosicionSeguimiento();
     //segf.create(seguimiento);}
-    public void eliminarSeguimiento(Seguimiento ser) {
+    
+    public String eliminarSeguimiento(Seguimiento ser) {
         segf.remove(ser);
+        return solicitarJugador(ser.getIdJugador().getIdJugador());
     }
 
     public void modificarSeguimiento(Seguimiento s) {

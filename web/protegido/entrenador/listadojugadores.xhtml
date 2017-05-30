@@ -15,14 +15,23 @@
                 <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
 
 
+                    
 
                     <f:view>
 
-                        <h:form style="padding-top: 120px;">
-
+                        
+                            <h:form id="initadi" style="padding-top: 100px;">
 
                             <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Jugadores"/></h1></center>
-                            <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" var="item">
+                              <h:commandLink title="Descargar tabla en pdf">
+                                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="pdf" target="listajugar" fileName="ListadoDeTorneos"/>
+                                    </h:commandLink>
+                                    <h:commandLink title="Descargar tabla en Excel">
+                                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="xls" target="listajugar" fileName="ListadoDeJugadores"/>
+                                    </h:commandLink>
+                            <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" id="listajugar" var="item">
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="Jugador"/>
