@@ -64,6 +64,12 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
         }
         
     }
+    
+    public void eliminarTorneo(Torneo t){
+    
+        tf.remove(t);
+    
+    }
 
     public void redireccionar() {
         
@@ -78,7 +84,7 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
 
         try {
             tf.edit(torneo);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se modificó el registro"));
         } catch (Exception e) {
         }
 

@@ -1,63 +1,174 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui">
 
+    <body>
 
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
-    <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+            <ui:define name="content">
 
-        <ui:define name="content">
-            <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+                
+                <!-- Sidebar -->
+
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
 
                 <div class="rowContainer">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                        <f:view>
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Barrios</h1>
+                        </header>
+                        <center>
+                            <p>Registre los barrios en los cuales se disputarán los partiods de los diferentes torneos. </p>        
+                            <br></br>
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess"  data-toggle="modal">Registrar Barrio</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:form id="fCreate">
+                                                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+
+                                                            <center><h1><h:outputText value="Registro de Barrios"/></h1></center>
+
+                                                            <br/>
+                                                            <div class="rowContainer">
 
 
-                            <h:form style="padding-top: 120px;">
+                                                                <h:outputLabel  value="Localidad"/>
+
+                                                                <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <!-- TODO: update below reference to list of available items-->
+                                                                    <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
+                                                                </h:selectOneMenu>
+
+                                                                <h:outputLabel value="Nombre del barrio"/>
+
+                                                                <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
+                                                                <br/>
+                                                                <br/>
+                                                                <h:commandButton class="btn btn-outline btn-success" value="Registrar"  action="#{barrioManagedBean.crearBarrio()}" />
 
 
-                                <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Barrios"/></h1></center>
-                                <br></br>
+                                                            </div>
+                                                        </h:form>
+                                                    </div>
+                                                    <div class="modal-footer">
 
-                                <h:commandLink title="Descargar tabla en pdf">
-                                    <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="pdf" target="listaBarrios" fileName="ListadoDeBarrios"/>
-                                </h:commandLink>
-                                <h:commandLink title="Descargar tabla en Excel">
-                                    <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="xls" target="listaBarrios" fileName="ListadoDeBarrios"/>
-                                </h:commandLink>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
 
-                                <p:dataTable  style="font-family: fantasy;"  id="tablaBarrios" value="#{barrioManagedBean.listar()}" var="item">
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Localidad"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.fkIdLocalidad.nombreLocalidad}" />
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Barrio"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.nombreBarrio}"/>
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Editar"/>
-                                        </f:facet>
-                                        <p:commandButton class="btn-outline" value="editar" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();"  update=":fEdit"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </h:form>
-                        </f:view>
+                                                    </div>
+                                                </div>
 
-                        <div aria-hidden="true">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </center>
+
+                        <h:form id="dqw">
+
+
+
+
+
+
+
+
+
+                            <table id="table-transform"  value="#{barrioManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr >
+                                        <th class="col-md-4"><center><em class="fa fa-cog">Editar/Eliminar</em></center></th>
+
+                                        <th class="hidden-xs">Localidad</th>
+
+                                        <th class="hidden-xs">Barrio</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{barrioManagedBean.listar()}" var="item">
+
+
+                                        <tr>
+                                            <td  class="hidden-xs" align="center">
+                                                <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{barrioManagedBean.redireccionarBarrio(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+
+                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{barrioManagedBean.eliminarBarrio(item)}" update=":fEdit"/>
+                                            </td>
+
+
+                                            <td >#{item.fkIdLocalidad.nombreLocalidad}</td>
+
+                                            <td>#{item.nombreBarrio}</td>
+
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+
+
+
+
+
+                        </h:form>
+
+
+                        <br/>
+                          <div aria-hidden="true">
                             <p:dialog class="form-control" widgetVar="formEdit"
                                       modal="true"
                                       position="top"
@@ -80,7 +191,7 @@
                                         <br/>
                                         <h:outputLabel  value="Localidad"/>
 
-                                        <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                        <h:selectOneMenu  class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
                                             
                                             <!-- TODO: update below reference to list of available items-->
                                             <f:selectItems  value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
@@ -88,7 +199,7 @@
 
                                         <h:outputLabel value="Nombre del barrio"/>
 
-                                        <h:inputText style="font-family: fantasy;" class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
+                                        <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
 
                                         <br/>
                                         <br/>
@@ -103,79 +214,12 @@
 
 
                         </div>
-
-
                     </div>
                     <div class="col-lg-1"></div>
                 </div>
-                <a  style="color: whitesmoke; font-family: fantasy; font-size: 20px; padding-left: 160px;" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar barrio</a>
+            </ui:define>
 
+        </ui:composition>
 
-                <div aria-hidden="true">
-                    <p:dialog class="form-control" widgetVar="formCreate"
-                              modal="true"
-                              position="top"
-                              resizable="false"
-                              draggable="true"
-                              closable="true">
-
-
-                        <div class="modal-header">
-
-                            <h:form id="fCreate" style="font-family: fantasy;">
-                                  <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
-
-                                <center><h1><h:outputText style="font-family: fantasy;" value="Registro de Barrios"/></h1></center>
-
-                                <br/>
-                                <div class="rowContainer">
-
-
-                                    <h:outputLabel  value="Localidad"/>
-
-                                    <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
-                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                        <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
-                                    </h:selectOneMenu>
-
-                                    <h:outputLabel value="Nombre del barrio"/>
-
-                                    <h:inputText style="font-family: fantasy;" class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
-
-
-                                </div> 
-                                <br/>
-                                <br/>
-                                <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{barrioManagedBean.redireccionar()}" action="#{barrioManagedBean.crearBarrio()}" />
-                            </h:form>
-
-
-                            <br/> 
-                            <br/>
-
-                        </div> 
-
-                    </p:dialog> 
-
-                </div>
-            </div>
-            <script src="js/jquery.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/scripts.js"></script>
-
-        </ui:define>
-
-    </ui:composition>
-
-
+    </body>
 </html>
-
-
-
-
-
-
-
-
-

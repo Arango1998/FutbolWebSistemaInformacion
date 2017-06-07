@@ -54,6 +54,10 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
         bf.create(barrio);
 
     }
+    public void eliminarBarrio(Barrio b){
+    
+    bf.remove(b);
+    }
 
     public void redireccionar() {
 
