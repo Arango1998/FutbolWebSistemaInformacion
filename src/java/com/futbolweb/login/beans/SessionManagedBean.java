@@ -7,11 +7,13 @@ package com.futbolweb.login.beans;
 
 import com.futbolweb.persistence.entities.Permiso;
 import com.futbolweb.persistence.entities.Usuario;
+import com.futbolweb.persistence.facades.UsuarioFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 
 /**
@@ -25,6 +27,8 @@ public class SessionManagedBean implements Serializable {
     
     
      private Usuario usuarioSesion;
+     @EJB
+     private UsuarioFacade uf;
 
     public Usuario getUsuarioSesion() {
         return usuarioSesion;
@@ -44,5 +48,10 @@ public class SessionManagedBean implements Serializable {
       public List<Permiso> permisos(){
         return usuarioSesion.getIdTipoRol().getPermisoList();
     }
+      
+      public void capturarUsuarioEditar(){
+      uf.edit(usuarioSesion);
+      
+      }
     
 }

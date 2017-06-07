@@ -12,6 +12,7 @@ import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import com.futbolweb.persistence.facades.PagoFacade;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -113,13 +115,28 @@ public class PagoManagedBean implements InterfaceController<Pago> {
 
     }
 
-    public void redireccionar() {
+    public String redireccionarPago(Pago p) {
+            pago = p;
+        
+            return  "listapagos.xhtml";
+       
+    }
+    
+    
+    public void guardarCambiosPago(Pago p) throws IOException {
 
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("listapagos.xhtml");
+            pagof.edit(pago);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio el Pago"));
         } catch (Exception e) {
         }
     }
+    
+     public String editarEstado(Pago p) {
+       pago.setEstado("Pagado");
+      pagof.edit(pago);
+      return solicitarJugador(p.getFkIdJugador().getIdJugador());
+      }
 
     @Override
     public Pago getObjectByKey(Integer key) {

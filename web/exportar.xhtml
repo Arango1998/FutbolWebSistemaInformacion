@@ -7,18 +7,26 @@
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/formvali.css" rel="stylesheet" />
     </head>
     <body>
 
-        <h1>
-            JSF + Jasper Reports Exports
-        </h1>
-        <h:form>
-            <h:commandButton value="Exportar PDF" action="#{usuarioManagedBean.exportarPDF()}"/>
-            <h:commandButton value="Ver PDF" action="#{usuarioManagedBean.verPDF()}"/>
-            <h:commandButton value="Exportar eCXEL" action="#{usuarioManagedBean.exportarEcxel()}"/>
-            <h:commandButton value="Exportar DOC" action="#{usuarioManagedBean.exportarDOCT()}"/>
-            <h:commandButton value="Exportar PPT" action="#{usuarioManagedBean.exportarPPT()}"/>
-        </h:form>
+     <form class="contact_form">
+         <div>
+             <ul>
+                 <li>
+                     <h2>Contactos</h2>
+                     <span class="required_notification">* Datos requeridos</span> 
+                 </li> <li> 
+                     <label for="name">Nombre:</label>
+                     <input type="text" placeholder="John Doe"   required="true"  /> 
+                       <span class="form_hint">Recuerde escrubir  su nombre</span> 
+                 </li> <li> 
+                     <label for="email">Email:</label> 
+                     <input type="email" name="email" placeholder="info@developerji.com" required="true"  /> 
+                     <span class="form_hint">111111111"</span> </li> <li>
+                         <label for="website">Sitio web:</label> 
+                         <input type="url" name="website" placeholder="http://developerji.com" required="true"  pattern="(http|https)://.+" />
+                         <span class="form_hint">11111111111</span> </li> <li> <label for="message">Mensaje:</label> <textarea name="message" cols="40" rows="6" required="true"></textarea> </li> <li> <button class="submit" type="submit">Enviar mensaje</button> </li> </ul> </div> </form>
     </body>
 </html>

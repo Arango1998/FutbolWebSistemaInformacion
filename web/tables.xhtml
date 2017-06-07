@@ -7,172 +7,140 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
-          <link href="resources/css/torneo.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="resources/css/bootstrap-table.css"/>
+        <link href="resources/css/sidebar.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="resources/css/buscarpaginausuarios.css"/>
+        <link rel="stylesheet" href="resources/css/font-awesome.css"/>
     </head>
     <body>
-        <div class="main" style="padding:2%;margin-top:5%;">        	
-            <div class="col-lg-12">
-                <div class="container">
+        <div id="wrapper">
+            <!-- Sidebar -->
 
-                  <div class="row text-center">
-                        <div class="col-md-12">
-                            <div class="col-md-4 col-sm-6">
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="front">
-                                            <div class="cover">
-                                                <img src="resources/images/paginainicio/Paginap.jpg"/>
-                                            </div>
-                                            <div class="user">
-                                                <img class="img-circle" src="resources/images/paginainicio/Paginap.jpg"/>
-                                            </div>
-                                            <div class="content">
-                                                <div class="main">
-                                                    <h3 class="name">Nuestras Categorias: </h3>
-                                                    <p class="profession">Estas son nuestras categorias</p>
-                                                    <p class="text-center">1</p>
-                                                </div>
-                                                <div class="footer">
-                                                    <div class="rating">
-                                                        <i class="fa fa-mail-forward"></i> Rota Automaticamente
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end front panel -->
-                                        <div class="back">
-                                            <div class="header">
-                                                <h5 class="motto">Categorias Disponibles</h5>
-                                            </div>
-                                            <div class="content">
-                                                <div class="main">
+            <!-- /#sidebar-wrapper -->
 
-                                                 <h:form>
-                                                <h:inputText id="documento" value="#{loginManagedBean.documento}"/>
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p><a href="#menu-toggle" class="btn btn-outline  btn-danger" id="menu-toggle">Cerrar/Mostrar</a></p>
+                            <div class="container">
+                                <header>
+                                    <h1 class="page-header text-center">Usuarios: "Entrenadores"</h1>
+                                </header>
+                                <h2>Base datos entrenadores</h2>
+                                <p>Todos los usuarios "Entrenadores" registrados hasta el momento en el sistema.</p>
 
-                                                <h:inputText p:type="password"  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
-                                                <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
+                               
+                                
+                                
+                                
+                                
+                                
+                                <table id="table-transform" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                    <thead>
 
-                                              
-                                                <br/>
-                                                <br></br>   
-                                                <a href="pagina_principal.xhtml" class="btn btn-outline btn-success"><span class="fa fa-home"></span>Página principal</a>
-
-                                                <div class="clearfix"></div>
-                                            </h:form>
-
-                                                      
+                                        <tr>
+                                            <th>id Categoria</th>
+                                            <th>Nombre Categoria</th>
 
 
-                                                </div>
-                                            </div>
-                                            <div class="footer">
-                                                <div class="social-links text-center">
-                                                    <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                                    <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                                                    <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end back panel -->
-                                    </div> <!-- end card -->
-                                </div> <!-- end card-container -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <ui:repeat  value="#{categoriaManagedBean.listCategorias()}" var="item">
+
+
+                                            <tr>
+                                                <td>#{item.idCategoria}</td>
+                                                <td>#{item.nombreCategoria}</td>
+
+
+
+                                            </tr>
+                                        </ui:repeat>
+
+
+
+
+
+
+
+                                    </tbody>
+                                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
-
-                    
-
-                            <div class="col-md-8 col-sm-6">
-                                <div class="card-container">
-                                    <div class="card">
-                                        <div class="front">
-                                            <div class="cover">
-                                                <img src="resources/images/paginainicio/torneo.jpg"/>
-                                            </div>
-                                            <div class="user">
-                                                <img class="img-circle" src="resources/images/carrousel/IMAGEN-10329947-2.jpg"/>
-                                            </div>
-                                            <div class="content">
-                                                <div class="main">
-                                                    <h3 class="name">Resultados de Torneos </h3>
-                                                    <p class="profession"></p>
-
-                                                    <p class="text-center">3</p>
-                                                </div>
-                                                <div class="footer">
-                                                    <div class="rating">
-                                                        <i class="fa fa-mail-forward"></i> Rotar Automaticamente
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end front panel -->
-                                        <div class="back">
-                                            <div class="header">
-                                                <h4 class="text-center">Torneos</h4>
-                                            </div>
-                                            <div class="content">
-
-                                                <div class="main">
-
-                                                    <f:view>
-
-
-                                                        <h:form>
-                                                            <h:dataTable value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item" class="table table-striped table-bordered table-list">
-
-
-
-
-                                                                <h:column>
-                                                                    <f:facet name="header">
-                                                                        <h:outputText value="Resultado"/>
-                                                                    </f:facet>
-                                                                    <h:outputText value="#{item.fkIdTorneo.nombreTorneo}: #{item.resultado}"/>
-                                                                </h:column>
-
-                                                            </h:dataTable>
-                                                        </h:form>
-                                                    </f:view>
-
-
-
-                                                </div>
-                                            </div>
-                                            <div class="footer">
-                                                <div class="social-links text-center">
-                                                    <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
-                                                    <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
-                                                    <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end back panel -->
-                                    </div> <!-- end card -->
-                                </div> <!-- end card-container -->
-                            </div>
-
-
-                            <h:messages globalOnly="true" showSummary="true"/>
-
-
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
+        </div>
 
 
 
-                </div>
-
-
-          
 
 
 
-   
+
+
+
+
+
+
+        <script src="resources/js/jquery.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/bootstrap-table.js"></script>
+
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
     </body>
 </html>

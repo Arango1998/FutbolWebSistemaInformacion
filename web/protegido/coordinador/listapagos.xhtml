@@ -66,81 +66,54 @@
                                     <p:commandButton ajax="false" value="Eliminar pago" action="#{eliminarPagoManagedBean.eliminarPago(item)}"/>
 
                                 </p:column>
+                                 <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                     <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{pagoManagedBean.redireccionarPago(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+                                    </p:column>
                             </p:dataTable>
                         </h:form>
                     </f:view>
 
                     <br/>
-                    <div aria-hidden="true">
-                        <p:dialog class="form-control" widgetVar="formEdit"
-                                  modal="true"
-                                  position="top"
-                                  resizable="false"
-                                  draggable="true"
-                                  closable="true">
+                   <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
 
 
+                                <div class="modal-header">
+                                    <center><h2>Edición de categorías</h2></center>
 
+                                    <h:form id="fEdit">
 
+                                        
+                                         <p:outputLabel value="IdPago:" for="idPago" style="visibility:hidden" />
+            <p:inputText id="idPago" value="#{pagoManagedBean.pago.idPago}" style="visibility:hidden" title="IdPago" required="true" requiredMessage="The IdPago field is required."/>
+            
+                                        
+                                        
+                                      <h:outputLabel value="MotivoPago:" for="motivoPago" />
+            <h:inputText id="motivoPago" value="#{pagoManagedBean.pago.motivoPago}" title="MotivoPago" required="true" requiredMessage="The MotivoPago field is required."/>
+            
+                                       
+                                        <br/>  
+                                        <br/>
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{pagoManagedBean.guardarCambiosPago(pagoManagedBean.pago)}" onclick="PF('formEdit').hide()"/></center>
 
+                                    </h:form>
 
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Pago</a>
-
-                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            ×
-                                                        </button>
-
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h:form>
-                                                            <h1><h:outputText value="Registro de pago"/></h1>
-                                                            <br/>
-                                                            <div class="rowContainer">
-                                                                <h:outputLabel value="Motivo de Pago:" for="motivoPago" />
-                                                                <h:selectOneMenu class="form-control" id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}"  required="true" requiredMessage="El campo 'Motivo de pago' ">
-                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                    <f:selectItem  itemValue="Matricula" itemLabel="Matricula"/>
-                                                                    <f:selectItem  itemValue="Mensualidad" itemLabel="Mensualidad"/>
-                                                                    <f:selectItem itemValue="Pago de Liga" itemLabel="Pago de Liga"/>
-
-                                                                </h:selectOneMenu>
-                                                                <h:outputLabel value="Monto:" for="monto" />
-                                                                <h:inputText class="form-control" id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="El campo 'Monto' es requerido"/>
-                                                                <h:outputLabel value="Estado del pago:" for="estado" />
-                                                                <h:selectOneMenu class="form-control" id="estado" value="#{registroPagoManagedBean.pago.estado}"  required="true" requiredMessage="El campo 'Estado' es requerido">
-                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                    <f:selectItem  itemValue="Pendiente" itemLabel="Pendiente"/>
-                                                                    <f:selectItem  itemValue="Pagado" itemLabel="Pagado"/>
-                                                                </h:selectOneMenu>
-
-                                                                <br/> 
-                                                                <h:commandButton actionListener="#{pagoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></h:commandButton>
-
-                                                            </div>
-                                                        </h:form>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
                                 </div>
-                            </div>
-                        </p:dialog>
 
-                    </div>
+                            </p:dialog>
+
+
+                        </div>
 
                 </div>
 
@@ -150,3 +123,7 @@
 
     </body>
 </html>
+
+
+
+

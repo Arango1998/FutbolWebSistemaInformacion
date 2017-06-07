@@ -55,8 +55,11 @@
 
                             </c:if>
                         </c:forEach>
-                        <li ><p:commandLink style="font-family: fantasy;" actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
-
+                        <h:form>
+                          <li ><p:commandLink style="font-family: fantasy;" actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
+  
+                        </h:form>
+                        
 
                     </ul>
 

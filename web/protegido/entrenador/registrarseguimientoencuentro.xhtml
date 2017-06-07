@@ -4,6 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
 
@@ -162,10 +164,11 @@
                             <h:form  style="font-family: fantasy; font-size: 18px;" id="fCreate">
 
                                 <h:outputLabel value="Observación:" for="observacion" />
-                                <h:inputTextarea style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
+                                <h:inputTextarea  style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
 
                                 <h:outputLabel value="Calificación:" for="calificacion" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                     <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
                                     <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
                                     <f:selectItem itemValue="Regular" itemLabel="Regular"/>
@@ -174,22 +177,25 @@
 
                                 <h:outputLabel value="Torneo:" for="idEncuentro" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                     <!-- TODO: update below reference to list of available items-->
                                     <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="lisEnc" itemLabel="#{lisEnc.fkIdTorneo.nombreTorneo}"/>
                                 </h:selectOneMenu>
 
                                 <h:outputLabel value="Jugador:" for="idJugador" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                     <!-- TODO: update below reference to list of available items-->
                                     <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="lisJug" itemLabel="#{lisJug.usuario.primerNombre} #{lisJug.usuario.primerApellido}"/>
                                 </h:selectOneMenu>
                                 <h:outputLabel value="Entrenador:" for="idEntrenador" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                   <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                     <!-- TODO: update below reference to list of available items-->
                                     <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
                                 </h:selectOneMenu>
                                 <h:outputLabel value="Goles:" for="goles" />
-                                <h:inputText style="font-family: fantasy;" class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
+                                <h:inputText t:type="number"  style="font-family: fantasy;" class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
 
                                 <br>
                                 </br>

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -51,11 +52,134 @@
             </div>   
          </div>
       </div></div>
-             
-
-   
+                
+                
+                
+                
 
      
+                
+                
+                
+                
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Equipo</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+                                                        <h3 class="panel-title" align="center">Perfil de usuario: #{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</h3>
+
+                                                    </div>
+                                                    <center>
+                                                    </center>
+
+                                                    <div class="modal-body">
+                                                        <div align="center"> <img alt="User Pic" src="../resources/images/usuarios/Avatar anonimo.png" class="img-circle img-responsive" style="height: 110px;"/> </div>
+                                                        <br/>
+                                                        <center>
+                                                            <h:form>
+                                                                
+                                                         
+                                                                <table  class="table table-user-information">
+           
+              <tbody>
+                <tr>
+                  <tr>
+                    <td>Documento:</td>
+                    <td>#{sessionManagedBean.usuarioSesion.documento}</td>
+                  </tr>
+                  <td>Nombres y Apellidos:</td>
+                  <td>#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}</td>
+                </tr>
+                <tr>
+                  <td>Fecha de nacimiento:</td>
+                  <td>10/09/1959</td>
+                </tr>
+                <tr>
+                 <tr>
+                  <td>Genero:</td>
+                  <td>Masculino</td>
+                </tr>   
+                <tr>
+                  <td>RH:</td>
+                  <td>O+</td>
+                </tr>
+                <tr>
+                  <td>EPS:</td>
+                  <td>Sisben</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td><a href="#">luisballén@hotmail.com</a></td>
+                </tr>
+                <td>Teléfono:</td>
+                <td>4670513<br/>
+                  <tr>
+                    <td>Celular:</td> 
+                    <td>310717509</td>
+                  </tr>
+                </td>
+                <tr>
+                  <td>Barrio:</td>
+                  <td>Calera</td>
+                </tr>
+              </tr>
+                
+            </tbody>
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                  
+          </table>
+                                                                   </h:form>
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            
+                
+                                                        </center>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+         
         </ui:define>
 
     </ui:composition>

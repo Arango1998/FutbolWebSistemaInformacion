@@ -81,6 +81,7 @@
                                         <h:outputLabel  value="Localidad"/>
 
                                         <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                            
                                             <!-- TODO: update below reference to list of available items-->
                                             <f:selectItems  value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
                                         </h:selectOneMenu>
@@ -122,6 +123,7 @@
                         <div class="modal-header">
 
                             <h:form id="fCreate" style="font-family: fantasy;">
+                                  <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
 
                                 <center><h1><h:outputText style="font-family: fantasy;" value="Registro de Barrios"/></h1></center>
 
@@ -132,6 +134,7 @@
                                     <h:outputLabel  value="Localidad"/>
 
                                     <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
+                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                         <!-- TODO: update below reference to list of available items-->
                                         <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
                                     </h:selectOneMenu>

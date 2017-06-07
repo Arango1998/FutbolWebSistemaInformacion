@@ -31,7 +31,7 @@
 
 
                             <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Resultado de seguimientos"/></h1></center>
-                            <p:dataTable id="tablaresultado" value="#{session.getAttribute('jugadorSeguimiento').getSeguimientoList()}" var="item">
+                            <p:dataTable id="tablaresultado" value="#{seguimientoManagedBean.listarSeguimiento()}" var="item">
                                 <p:column>
                                     <f:facet name="header">
                                         <h:outputText value="FechaSeguimiento"/>

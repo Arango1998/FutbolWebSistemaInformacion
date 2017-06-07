@@ -7,11 +7,12 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <head>
-        <title>TODO supply a title</title>
+        <title>Inicio Sesión</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+       
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
@@ -29,16 +30,16 @@ and open the template in the editor.
                                     <div class="card">
                                         <div class="front">
                                             <div class="cover">
-                                                <img src="resources/images/paginainicio/Paginap.jpg"/>
+                                                
                                             </div>
                                             <div class="user">
-                                                <img class="img-circle" src="resources/images/paginainicio/Paginap.jpg"/>
+                                                <img class="img-circle" src="resources/images/paginainicio/Logo.png"/>
                                             </div>
                                             <div class="content">
                                                 <div class="main">
-                                                    <h3 class="name">Nuestras Categorias: </h3>
-                                                    <p class="profession">Estas son nuestras categorias</p>
-                                                    <p class="text-center">1</p>
+                                                    <h3 class="name">Observaciones </h3>
+                                                    <p class="profession">Pasos a tener en cuenta antes de <strong>iniciar sesión</strong></p>
+                                                    <p class="text-center"></p>
                                                 </div>
                                                 <div class="footer">
                                                     <div class="rating">
@@ -49,7 +50,7 @@ and open the template in the editor.
                                         </div> <!-- end front panel -->
                                         <div class="back">
                                             <div class="header">
-                                                <h5 class="motto">Pasos para iniciar session</h5>
+                                                <h5 class="motto">Pasos para iniciar sesión</h5>
                                             </div>
                                             <div class="content">
                                                 <div class="main">
@@ -57,15 +58,15 @@ and open the template in the editor.
                                                     <ul>
                                                         <li>1: Hacer los pagos en el club ya sea matriculas o mensualidades.  </li>
                                                         <hr />
-                                                        <li>2: Antes Haberse <a href="registro_usuario.xhtml" class="lnk-success">Registrado</a> en nuestra página oficial y esperar el correo de ´Cambio de rol ó estado´
+                                                        <li>2: Haberse <a href="registro_usuario.xhtml" class="lnk-success">Registrado</a> en nuestra página oficial y esperar el correo de ´Cambio de rol ó estado´
                                                             .</li>
                                                         <hr />
                                                         <li>3: 
-                                                            Recuerda que para iniciar sesión solo te dejara con el <strong>documento de identificación</strong> y <strong>contraseña</strong> al momento del registro.
+                                                            Recuerda que para iniciar sesión solo  necesita el <strong>documento de identificación</strong> y <strong>contraseña</strong> 
                                                         </li>
                                                         <hr />
                                                        
-                                                        <li>6: ------. </li>
+                                                        <li>6: Cualquier duda <a href="registro_usuario.xhtml" class="lnk-success">Comunicarse</a> en nuestra sección de Contacto </li>
                                                         <hr />
 
 
@@ -95,22 +96,22 @@ and open the template in the editor.
 
 
 
-                            <div class="col-md-7 col-sm-6">
+                            <div class="col-md-7 col-sm-8">
                                 <div class="card-container">
                                     <div class="card">
                                         <div class="front">
                                             <div class="cover">
-                                                <img src="resources/images/paginainicio/torneo.jpg"/>
+                                                
                                             </div>
                                             <div class="user">
-                                                <img class="img-circle" src="resources/images/carrousel/IMAGEN-10329947-2.jpg"/>
+                                                <img class="img-circle" src="resources/images/paginainicio/Logo.png"/>
                                             </div>
                                             <div class="content">
                                                 <div class="main">
-                                                    <h3 class="name">Resultados de Torneos </h3>
+                                                    <h3 class="name">Ingresar al sistema </h3>
                                                     <p class="profession"></p>
 
-                                                    <p class="text-center">3</p>
+                                                    <p class="text-center"></p>
                                                 </div>
                                                 <div class="footer">
                                                     <div class="rating">
@@ -121,16 +122,16 @@ and open the template in the editor.
                                         </div> <!-- end front panel -->
                                         <div class="back">
                                             <div class="header">
-                                                <h4 class="text-center">Torneos</h4>
+                                                <h4 class="text-center">Ingresar</h4>
                                             </div>
                                             <div class="content">
 
                                                 <div class="main">
                                                     <h:form>
-                                                        <h:inputText id="documento" value="#{loginManagedBean.documento}"/>
+                                                        <h:inputText maxlength="20" p:placeholder="Documento Ej: 123456789 " id="documento" value="#{loginManagedBean.documento}"/>
 
-                                                        <h:inputText p:type="password"  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
-                                                        <h:commandButton value="Ingresar" action="#{loginManagedBean.iniciarSesion()}"/>
+                                                        <h:inputText maxlength="20" p:type="password" p:placeholder="Contraseña Ej: *********72 "  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
+                                                        <h:commandButton value="Iniciar sesión" action="#{loginManagedBean.iniciarSesion()}"/>
 
 
                                                         <div class="clearfix"></div>

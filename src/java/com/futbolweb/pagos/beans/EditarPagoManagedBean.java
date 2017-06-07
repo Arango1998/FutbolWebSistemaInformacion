@@ -9,6 +9,7 @@ import com.futbolweb.beans.PagoManagedBean;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Pago;
 import com.futbolweb.persistence.facades.PagoFacade;
+import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -64,6 +67,15 @@ public class EditarPagoManagedBean implements InterfaceController<Pago> {
 
         pago = p;
         return "listapagos.xhtml";
+    }
+      public void guardarCambiosPago(Pago p) throws IOException {
+
+        try {
+            pagof.edit(pago);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio el Pago"));
+        } catch (Exception e) {
+        }
+
     }
     /**
      * Creates a new instance of EditarPagoManagedBean

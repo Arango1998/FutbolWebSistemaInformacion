@@ -2,108 +2,238 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+
     <body>
 
         <ui:composition template="./../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div id="fh5co-page">
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <div align="center"> <img alt="User Pic" src="../resources/images/usuarios/Avatar anonimo.png" class="img-circle img-responsive" style="height: 110px;"/> </div>
+                            <br/>
+                            <h3 class="page-header text-center">Usuario: #{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</h3>
+
+                        </header>
+
+                        <p><strong>Recuerde tener todos sus datos registrados en el sistema </strong></p>        
+
+                        <table class="table table-user-information">
+                            <div class=" col-md-9 col-lg-9 ">
+
+                                <h:form>
 
 
 
-                    <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
-                        <div class="container">
-                            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
-                                <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
-                                <a href="#"></a>
-                            </div>
-                            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
-                                <ul data-offcanvass="yes">
-                                    <li class="active"><a href="#"></a></li>
-                                    <li><a href="#"></a></li>
+                                    <tbody>
+                                        <tr>
+                                            <td>Rol del Usuario:</td>
+                                            <td><strong>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estado Actual del Usuario:</td>
+                                            <td>#{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}</td>
+                                        </tr>
 
-                                </ul>
+                                        <tr>
+                                            <tr>
+                                                <td>Documento:</td>
+                                                <td>#{sessionManagedBean.usuarioSesion.documento}</td>
+                                            </tr>
+                                            <td>Nombres y Apellidos:</td>
+                                            <td>#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.segundoNombre} #{sessionManagedBean.usuarioSesion.primerApellido} #{sessionManagedBean.usuarioSesion.segundoApellido}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha de nacimiento:</td>
+                                            <td>Mes: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.month} Dia: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.day} Año: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.year}</td>
+                                        </tr>
+                                        <tr>
+                                            <tr>
+                                                <td>Genero:</td>
+                                                <td>#{sessionManagedBean.usuarioSesion.genero}</td>
+                                            </tr>   
+                                            <tr>
+                                                <td>RH:</td>
+                                                <td>#{sessionManagedBean.usuarioSesion.rh}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>EPS:</td>
+                                                <td>#{sessionManagedBean.usuarioSesion.eps}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td><a>#{sessionManagedBean.usuarioSesion.correo}</a></td>
+                                            </tr>
+                                            <td>Teléfono:</td>
+                                            <td>#{sessionManagedBean.usuarioSesion.telefono}<br/>
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+
+                                    <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{sessionManagedBean.capturarUsuarioEditar()}" id="modal-41991" t:href="#modal-container-41991" t:role="button"  t:data-toggle="modal"/>
+
+                                </h:form>
                             </div> 
-
-                        </div>
-                    </nav>
-
-                    <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/16102013224342258749.jpg); height: auto;">
-
-                        <div class="fh5co-overlay"></div>
-                        <div class="fh5co-cover-text">
-                            <div class="container">
-                                <div class="row">
-                                    <div  class="col-md-push-4 col-md-6 full-height js-full-height">
-                                        <div class="fh5co-cover-intro">
-
-
-
-                                            <h:form>
-                                                <center><h2 style="font-family: fantasy; color: whitesmoke;">Datos Personales</h2></center>
-
-                                                <h:outputLabel style="visibility: hidden;" value="IdUsuario:" for="idUsuario" />
-                                                <h:inputText  style="visibility: hidden;" id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                                <br/>
-                                                <h:outputLabel style="font-family: fantasy;  font-size:26px; ;color: whitesmoke;" value="Documento:"/>
-                                                <h:outputText style="font-family: fantasy;" class="form-control" id="documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="PrimerNombre:"/>
-                                                <h:outputText style="font-family: fantasy;" class="form-control" id="primerNombre" value="#{sessionManagedBean.usuarioSesion.primerNombre}" title="PrimerNombre"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="SegundoNombre:"/>
-                                                <h:outputText id="segundoNombre" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="PrimerApellido:"/>
-                                                <h:outputText id="primerApellido" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="SegundoApellido:"/>
-                                                <h:outputText id="segundoApellido" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Clave:"/>
-                                                <h:outputText id="clave" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="FechaDeNacimento:"/>
-                                                <h:outputText id="fechaDeNacimento" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento">
-                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                </h:outputText>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Genero:"/>
-                                                <h:outputText id="genero" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.genero}" title="Genero" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Rh:"/>
-                                                <h:outputText id="rh" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Eps:"/>
-                                                <h:outputText id="eps" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.eps}" title="Eps" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Telefono:"/>
-                                                <h:outputText id="telefono" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Correo:"/>
-                                                <h:outputText id="correo" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Rol:"/>
-                                                <h:outputText id="idRol" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}"/>
-
-                                                <h:outputLabel  style="font-family: fantasy;  font-size:26px; color: whitesmoke;" value="Estado:" />
-                                                <h:outputText id="idEstado" style="font-family: fantasy;" class="form-control" value="#{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}"/>
-
-
-                                            </h:form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>
-
+                        </table>
                     </div>
                 </div>
 
+
+
+
+
+
+
+                <div aria-hidden="true">
+                    <p:dialog class="form-control" widgetVar="formEdit"
+                              modal="true"
+                              position="top"
+                              resizable="false"
+                              draggable="true"
+
+                              closable="true">
+
+
+
+                        <div class="modal-header">
+                            <center><h2>Edición de Perfil</h2></center>
+
+
+
+                        </div>
+
+                    </p:dialog>
+
+
+                </div>
+
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" >Registrar Equipo</a>
+
+                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                ×
+                                            </button>
+
+                                        </div>
+                                        <center>
+                                            <h1><h:outputText value="Editar Información Usuario"/></h1>
+                                        </center>
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <h:form id="fEdit">
+
+                                                    <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
+                                                    <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                                                    <br/>
+                                                    <p:outputLabel value="Documento:" for="documento" />
+                                                    <h:outputLabel class="form-control" id="documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento"/>
+                                                    <p:outputLabel value="Nombre:" for="primerNombre" />
+                                                    <h:outputLabel class="form-control" id="primerNombre" value="#{sessionManagedBean.usuarioSesion.primerNombre}" title="PrimerNombre" />
+                                                    <h:outputLabel value="Segundo Nombre:" for="segundoNombre" />
+                                                    <h:inputText id="segundoNombre" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
+                                                    <p:outputLabel value="Primer Apellido:" for="primerApellido" />
+                                                    <h:outputLabel class="form-control" id="primerApellido" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido" />
+
+                                                    <h:outputLabel value="Segundo Apellido:" for="segundoApellido" />
+                                                    <h:inputText id="segundoApellido" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
+
+                                                    <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
+                                                    <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                                    <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
+                                                    <h:inputText class="form-control" id="fechaDeNacimento" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </h:inputText>
+                                                    <h:outputLabel value="Genero:" for="genero" />
+                                                    <h:selectOneMenu  class="form-control" id="genero" value="#{sessionManagedBean.usuarioSesion.genero}" title="Genero"  required="true" requiredMessage="El campo 'Motivo de pago' ">
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItem  itemValue="Masculino" itemLabel="Masculino"/>
+                                                                    <f:selectItem  itemValue="Femenino" itemLabel="Femenino"/>
+                                                                    <f:selectItem itemValue="Otro" itemLabel="Otro"/>
+
+                                                                </h:selectOneMenu>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                  
+                                                    <h:outputLabel value="Rh:" for="rh" />
+
+                                                    <h:selectOneMenu class="form-control" id="rh" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" required="true" requiredMessage="El campo 'Motivo de pago' ">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                        <f:selectItem  itemValue="A+" itemLabel="A+"/>
+                                                        <f:selectItem  itemValue="A-" itemLabel="A-"/>
+                                                        <f:selectItem  itemValue="B+" itemLabel="B+"/>
+                                                        <f:selectItem  itemValue="B-" itemLabel="B-"/>
+                                                        <f:selectItem  itemValue="O+" itemLabel="O+"/>
+                                                        <f:selectItem  itemValue="O-" itemLabel="O-"/>
+                                                        <f:selectItem  itemValue="AB+" itemLabel="AB+"/>
+                                                        <f:selectItem  itemValue="AB-" itemLabel="AB-"/>
+
+
+
+                                                    </h:selectOneMenu>
+
+
+
+
+
+
+
+
+
+
+                                                    <h:outputLabel value="Eps:" for="eps" />
+                                                    <h:inputText class="form-control" id="eps" value="#{sessionManagedBean.usuarioSesion.eps}" title="Eps" />
+                                                    <h:outputLabel value="Telefono:" for="telefono" />
+                                                    <h:inputText class="form-control" id="telefono" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
+
+                                                    <p:outputLabel value="Correo:" for="correo" />
+                                                    <h:inputText class="form-control" id="correo" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+
+
+                                                    <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{sessionManagedBean.capturarUsuarioEditar()}" onclick="PF('formEdit').hide()"/></center>
+
+                                                </h:form>
+                                            </center>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                Cerrar
+                                            </button> 
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
 
 

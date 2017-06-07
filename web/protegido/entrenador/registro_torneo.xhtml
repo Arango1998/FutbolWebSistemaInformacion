@@ -36,6 +36,7 @@
 
                                     <p:dataTable style="font-family: fantasy;" id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
 
+                                       
                                         <p:column>
                                             <f:facet name="header">
                                                 <h:outputText value="Nombre"/>
@@ -138,8 +139,13 @@
 
                             </div>
                             <br/>
-                            <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar torneo</a>
+                            <h:form>
+                                 <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar torneo</a>
 
+                            </h:form>
+                                
+                           
+                           
                             <div aria-hidden="true">
                                 <p:dialog class="form-control" widgetVar="formCreate"
                                           modal="true"
@@ -153,19 +159,20 @@
                                         <center><h2  style="font-family: fantasy;">Registro de torneos</h2></center>
 
                                         <h:form  style="font-family: fantasy; font-size: 18px;" id="fCreate">
+                                              <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
 
 
                                             <h:outputLabel  value="Nombre del Torneo"/>
 
-                                            <h:inputText style="font-family: fantasy;" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                            <h:inputText maxlength="23" style="font-family: fantasy;" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
 
                                             <h:outputLabel value="Organizador"/>
 
-                                            <h:inputText style="font-family: fantasy;" class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+                                            <h:inputText maxlength="24" style="font-family: fantasy;" class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
 
                                             <h:outputLabel value="Contacto del organizador"/>
 
-                                            <h:inputTextarea style="font-family: fantasy;" class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
+                                            <h:inputTextarea  style="font-family: fantasy;" class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true"  requiredMessage="The DatosContactoOrganizador field is required."/>
 
                                             <h:outputLabel value="Inicio"/>
                                             <br/>
@@ -181,7 +188,7 @@
 
                                             <br/>
                                             <br/>
-                                            <h:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" />
+                                            <p:commandButton actionListener="#{torneoManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" update="growl" />
 
                                         </h:form> 
                                     </div> 

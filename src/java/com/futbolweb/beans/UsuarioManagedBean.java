@@ -121,6 +121,16 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     this.usuario=u;
     }
     
+      public void editarUsuarioSession(){
+        try {
+            usuario.getIdUsuario();
+            uf.edit(usuario);
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
     public void editarInvitados(){
         try {
             usuario.getIdUsuario();
