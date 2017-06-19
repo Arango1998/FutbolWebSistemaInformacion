@@ -9,64 +9,20 @@
 
     <body>
 
-          <ui:composition template="./../WEB-INF/templates/template.xhtml">
+        <ui:composition template="./../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <f:view>
-
-
-                    <h:form>
-
-
-                        <center ><h1><h:outputText value="Encuentros programados"/></h1></center>
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
                         <br></br>
 
-                        <h:commandLink title="Descargar tabla en pdf">
-                            <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="ListaEncuentros" fileName="ListadoDeEncuentros"/>
-                        </h:commandLink>
-                        <h:commandLink title="Descargar tabla en Excel">
-                            <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="ListaEncuentros" fileName="ListadoDeEncuentros"/>
-                        </h:commandLink>
-                        <p:dataTable id="ListaEncuentros" value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item">
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Fecha de encuentro"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaInicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Descripción"/>
-                                </f:facet>
-                                <h:outputText value="#{item.descripcion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Resultado"/>
-                                </f:facet>
-                                <h:outputText value="#{item.resultado}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="FkIdTorneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdTorneo.nombreTorneo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="FkIdBarrio"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fkIdBarrio.nombreBarrio}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
-
+                        <header>
+                            <h1 class="page-header text-center">Encuentros</h1>
+                        </header>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
             </ui:define>
 
         </ui:composition>

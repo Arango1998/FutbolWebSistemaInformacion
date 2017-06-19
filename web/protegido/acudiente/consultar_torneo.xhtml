@@ -12,67 +12,72 @@
     <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
         <ui:define name="content">
+            <div class="rowContainer">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <br></br>
 
-            <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/formulario/tacticafutbol.jpg); image-resolution: from-image; height: auto;">
+                    <header>
+                        <h1 class="page-header text-center">Torneos</h1>
+                    </header>
+                    <h:form id="dqw">
+
+                        <table id="table-transform"  value="#{barrioManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                            <thead>
+
+                                <tr >
+
+                                    <th class="hidden-xs">Nombre</th>
+
+                                    <th class="hidden-xs">Organizador</th>
+
+                                    <th class="hidden-xs">Datos del organizador</th>
+
+                                    <th class="hidden-xs">Inicio</th>
+
+                                    <th class="hidden-xs">Finalización</th>
 
 
-                <f:view>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <ui:repeat  value="#{torneoManagedBean.listar()}" var="item">
 
 
-                    <h:form style="padding-top: 160px;">
+                                    <tr>
 
-                        <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: whitesmoke" value="TORNEOS PROGRAMADOS"/></h1>
+
+                                        <td >#{item.nombreTorneo}</td>
+
+                                        <td>#{item.organizador}</td>
+
+                                        <td>#{item.datosContactoOrganizador}</td>
+
+                                        <td>Día: #{item.fechaInicio.date} /  Mes:#{item.fechaInicio.month} /  Año:#{item.fechaInicio.year}</td>
+
+                                        <td>#{item.fechaFin}</td>
+
+
+                                    </tr>
+                                </ui:repeat>
+
+                            </tbody>
+                        </table>
                         <br></br>
-
                         <h:commandLink title="Descargar tabla en pdf">
                             <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                            <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
                         </h:commandLink>
                         <h:commandLink title="Descargar tabla en Excel">
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="listaTorneos" fileName="ListadoDeTorneos"/>
+                            <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                         </h:commandLink>
 
 
-                        <p:dataTable style="font-family: fantasy;" id="listaTorneos" value="#{torneoManagedBean.listar()}" var="item">
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nombre"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreTorneo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Organizador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.organizador}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Datos del organizador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.datosContactoOrganizador}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Inicio"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaInicio}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Finalización"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaFin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                        </p:dataTable>
                     </h:form>
-                </f:view>
+                </div>
+                <div class="col-lg-1"></div>
             </div>
         </ui:define>
 

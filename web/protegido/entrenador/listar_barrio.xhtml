@@ -12,7 +12,7 @@
 
             <ui:define name="content">
 
-                
+
                 <!-- Sidebar -->
 
                 <!-- /#sidebar-wrapper -->
@@ -168,52 +168,43 @@
 
 
                         <br/>
-                          <div aria-hidden="true">
-                            <p:dialog class="form-control" widgetVar="formEdit"
-                                      modal="true"
-                                      position="top"
-                                      resizable="false"
-                                      draggable="true"
-                                      closable="true">
+                            <div aria-hidden="true">
+                                <p:dialog class="form-control" widgetVar="formEdit"
+                                          modal="true"
+                                          position="top"
+                                          resizable="false"
+                                          draggable="true"
+                                          closable="true">
+
+                                    <div class="modal-header">
+                                         <center><h1><h:outputText value="Edición de Barrios"/></h1></center>
+
+                                        <h:form id="fEdit">
+
+                                            <h:outputLabel value="IdBarrio:" for="idBarrio" style="visibility:hidden"/>
+                                            <h:inputText style="visibility:hidden"  id="idBarrio" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>                      
+                                            <br/>
+                                            <h:outputLabel value="Nombre:" for="nombreBarrio" />
+                                            <h:inputText class="form-control" id="nombreBarrio" value="#{barrioManagedBean.barrio.nombreBarrio}" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                            <br/>
+                                            <h:outputLabel  value="Localidad:" for="fkIdLocalidad" />
+                                            <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lisvar" itemLabel="#{lisvar.nombreLocalidad}"/>
+                                            </h:selectOneMenu>
+
+                                            <br/>  
+                                            <br/>
+                                            <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{barrioManagedBean.guardarCambiosBarrio(barrioManagedBean.barrio)}" onclick="PF('formEdit').hide()"/></center>
+
+                                        </h:form>
+
+                                    </div>
+
+                                </p:dialog>
 
 
-                                <div class="modal-header">
-                                    <center><h2>Edición de barrios</h2></center>
-
-                                    <h:form id="fEdit" style="font-family: fantasy;">
-
-
-                                        <h:outputLabel style="visibility:hidden;" value="IdBarrio:"/>
-
-
-                                        <h:inputText id="idBarrio" style="visibility:hidden" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>
-
-                                        <br/>
-                                        <h:outputLabel  value="Localidad"/>
-
-                                        <h:selectOneMenu  class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
-                                            
-                                            <!-- TODO: update below reference to list of available items-->
-                                            <f:selectItems  value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
-                                        </h:selectOneMenu>
-
-                                        <h:outputLabel value="Nombre del barrio"/>
-
-                                        <h:inputText class="form-control" id="organizador" value="#{barrioManagedBean.barrio.nombreBarrio}" title="Barrio" required="true" requiredMessage="Campo requerido"/>  
-
-                                        <br/>
-                                        <br/>
-
-                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{barrioManagedBean.guardarCambiosBarrio(barrioManagedBean.barrio)}" onclick="PF('formEdit').hide()"/></center>    
-
-                                    </h:form>
-
-                                </div>
-
-                            </p:dialog>
-
-
-                        </div>
+                            </div>
                     </div>
                     <div class="col-lg-1"></div>
                 </div>

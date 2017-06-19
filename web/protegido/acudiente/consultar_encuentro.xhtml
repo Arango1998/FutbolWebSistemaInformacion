@@ -12,87 +12,101 @@
 
             <ui:define name="content">
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Encuentros</h1>
+                        </header>
+                        <h:form id="dqw">
+
+                            <table id="table-transform"  value="#{encuentroTorneoManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr >
+                                       
+                                        <th class="hidden-xs">Fecha</th>
+
+                                        <th class="hidden-xs">Resultado</th>
+
+                                        <th class="hidden-xs">Descripción</th>
+
+                                        <th class="hidden-xs">Torneo</th>
+
+                                        <th class="hidden-xs">Barrio</th>
 
 
-                    <f:view>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{encuentroTorneoManagedBean.listar()}" var="item">
 
 
-                        <h:form style="padding-top: 140px;">
+                                        <tr>
 
-                            <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: white;" value="Encuentros disputados"/></h1>
+                                            <td >#{item.fechaInicio}</td>
+
+                                            <td>#{item.resultado}</td>
+
+                                            <td>#{item.descripcion}</td>
+
+                                            <td>#{item.fkIdTorneo.nombreTorneo}</td>
+
+                                            <td>#{item.fkIdBarrio.nombreBarrio}, #{item.fkIdBarrio.fkIdLocalidad.nombreLocalidad}</td>
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+                                </tbody>
+                            </table>
                             <br></br>
                             <h:commandLink title="Descargar tabla en pdf">
                                 <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="pdf" target="listaEncuentros" fileName="ListadoDeTorneos"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
                             <h:commandLink title="Descargar tabla en Excel">
                                 <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="xls" target="listaEncuentros" fileName="ListadoDeTorneos"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
-                            <p:dataTable style="font-family: fantasy;" id="listaEncuentros" value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="item">
 
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Fecha del encuentro"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fechaInicio}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Descripción"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.descripcion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Resultado"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.resultado}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Torneo"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fkIdTorneo.nombreTorneo}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Barrio"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fkIdBarrio.nombreBarrio},#{item.fkIdBarrio.fkIdLocalidad.nombreLocalidad}"/>
-                                </p:column>
-                            </p:dataTable>
+
                         </h:form>
-                    </f:view>
-                    <br/>
-                    <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
 
-                    <canvas id="bar-chart" width="3500" height="900"></canvas>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-                    <script>
-                        new Chart(document.getElementById("bar-chart"), {
-                            type: 'pie',
-                            data: {
-                                labels: ["Suba", "Engativá", "Fontibón", "Kennedy", "Bosa"],
-                                datasets: [
-                                    {
-                                        label: "Population (millions)",
-                                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                                        data: [#{encuentroTorneoManagedBean.listarSuba().size()}, #{encuentroTorneoManagedBean.listarEngativa().size()}, #{encuentroTorneoManagedBean.listarFontibon().size()}, #{encuentroTorneoManagedBean.listarKened().size()}, #{encuentroTorneoManagedBean.listarBosa().size()}]
+
+
+                        <center> <h:outputText style="font-size: 20px;" value="Localidades con más torneos"/></center>
+
+                        <canvas id="bar-chart" width="3500" height="900"></canvas>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                        <script>
+                            new Chart(document.getElementById("bar-chart"), {
+                                type: 'pie',
+                                data: {
+                                    labels: ["Suba", "Engativá", "Fontibón", "Kennedy", "Bosa"],
+                                    datasets: [
+                                        {
+                                            label: "Population (millions)",
+                                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                            data: [#{encuentroTorneoManagedBean.listarSuba().size()}, #{encuentroTorneoManagedBean.listarEngativa().size()}, #{encuentroTorneoManagedBean.listarFontibon().size()}, #{encuentroTorneoManagedBean.listarKened().size()}, #{encuentroTorneoManagedBean.listarBosa().size()}]
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    legend: {display: false},
+                                    title: {
                                     }
-                                ]
-                            },
-                            options: {
-                                legend: {display: false},
-                                title: {
                                 }
-                            }
-                        });
-                    </script>
+                            });
+                        </script>
+                    </div>
+
                 </div>
+                <div class="col-lg-1"></div>
             </ui:define>
 
         </ui:composition>

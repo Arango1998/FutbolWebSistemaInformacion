@@ -115,4 +115,16 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
         return encuentroejb.listarBosa();
 
     }
+
+    public List<EncuentroTorneo> listar() {
+
+        return encuentroejb.findAll();
+        
+    }
+    
+    public void eliminar(EncuentroTorneo e){
+        
+    encuentroejb.remove(e);
+    
+    }
 }
