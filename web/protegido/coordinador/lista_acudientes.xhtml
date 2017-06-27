@@ -4,105 +4,129 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
+    
 
     <body>
 
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
- <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
-                    <div class="rowContainer">
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10">  
+                
+
+                <!-- Sidebar -->
+
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Usuario: Acudiente</h1>
+                        </header>
+                         <center>
+                             <p>Recuerde que al momento de cambiar el <b>Rol</b> o <b>Estado</b> del usuario este automáticamente desaparecerá del estado actual <b>En Espera.</b></p>        
+                        <br></br>
+                       
+                         
+
+                        </center>
+                          
+                        <h:form id="dqw">
+                           
 
 
 
-                            <h:form id="initadi" style="padding-top: 100px;">
-
-                                <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Usuarios Invitados"/></h1>
-                                <br/>
-
-                                <h:commandLink title="Descargar tabla en pdf">
-                                    <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="pdf" target="initadi" fileName="ListadoDeInvitados"/>
-                                </h:commandLink>
-                                <h:commandLink title="Descargar tabla en Excel">
-                                    <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                    <p:dataExporter type="xls" target="initadi" fileName="ListadoDeInvitados"/>
-                                </h:commandLink>
 
 
-                                <p:dataTable style="font-family: fantasy;" value="#{usuarioManagedBean.activos}" var="item">
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Eliminar"/>
-                                        </f:facet>
-                                        <center><h:commandButton  class="btn-outline" value="eliminar" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/></center>
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Documento"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.documento}"/>
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nombre"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.primerNombre}"/>
-                                    </p:column>
-
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Apellido"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.primerApellido}"/>
-                                    </p:column>
 
 
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Fecha Nacimento"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.fechaDeNacimento}">
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </h:outputText>
-                                    </p:column>
+
+                            <table id="table-transform" value="#{usuarioManagedBean.activos}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr >
+                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
+                                        <th class="hidden-xs">Option</th>
+                                        <th class="hidden-xs">Documento</th>
+                                         <th class="hidden-xs">Nombre</th>
+                                         <th class="hidden-xs">Apellido</th>
+                                         <th class="hidden-xs">Fecha Nacimiento</th>
+                                         <th class="hidden-xs">Correo</th>
+                                         <th class="hidden-xs">Rol</th>
+                                         <th class="hidden-xs">Estado</th>
+                                           <th class="hidden-xs">Carta</th>
+                                       
 
 
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Correo"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.correo}"/>
-                                    </p:column>
 
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Rol"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.idTipoRol.nombreRol}"/>
-                                    </p:column>
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Estado"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.idEstado.nombreEstado}"/>
-                                    </p:column>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                    <p:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Editar"/>
-                                        </f:facet>
-                                        <center><a class="btn-outline" action="#{usuarioManagedBean.verInvitado(item)}" onclick="PF('insertar').show();" update=":editinvi">Editar</a></center>
+                                    <ui:repeat  value="#{usuarioManagedBean.activos}" var="item">
 
-                                    </p:column>
-                                </p:dataTable>
-                            </h:form>
 
-                            <br/>
-                            <div aria-hidden="true">
+                                        <tr>
+                                            <td class="hidden-xs"><h:inputText t:type="checkbox"></h:inputText></td>
+                                                  <td  class="hidden-xs" align="center">
+                                            <p:commandButton class="btn btn-outline btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="E" onclick="PF('insertar').show();"  update=":editinvi"/>
+                                 <h:commandButton   class="btn btn-outline btn-danger" value="el" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/>
+                                            </td>
+
+                                         
+                                            <td class="hidden-xs">#{item.documento}</td>
+                                            <td class="hidden-xs">#{item.primerNombre}</td>
+                                            <td class="hidden-xs">#{item.primerApellido}</td>
+                                            <td class="hidden-xs">
+                                                <h:outputText value="#{item.fechaDeNacimento}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy">
+                                                        
+                                                    </f:convertDateTime>
+                                                </h:outputText></td>
+                                            <td>#{item.correo}</td>
+                                            <td>#{item.idTipoRol.nombreRol}</td>
+                                            <td>#{item.idEstado.nombreEstado}</td>
+                                            <td><h:commandButton value="carta" class="btn btn-default" action="#{entrenadorManagedBean.seleccionarEntrenadorEspecifico(entrenadorManagedBean.listarEntrenadorEspecifico())}"/></td>
+                                         
+
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                             <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+
+
+
+
+                         
+                        </h:form>
+                          <div aria-hidden="true">
                                 <p:dialog class="form-control"  widgetVar="insertar"
                                           modal="true"
                                           position="top"
@@ -151,7 +175,7 @@
 
 
                                             <center>
-                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioAcudiente()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
+                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
 
                                             </center>
 
@@ -161,10 +185,12 @@
                                     </div>
                                 </p:dialog>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                   
 
+                  
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
             </ui:define>
 
         </ui:composition>

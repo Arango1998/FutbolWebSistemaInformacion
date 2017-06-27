@@ -26,6 +26,7 @@ import javax.faces.context.FacesContext;
 public class EntrenadorManagedBean implements Serializable, InterfaceController<Entrenador>{
 
     private Entrenador entrenador;
+    
     List<Entrenador> lista;
     @EJB
     private EntrenadorFacade enf;
@@ -52,6 +53,8 @@ public class EntrenadorManagedBean implements Serializable, InterfaceController<
     
     
     
+    
+    
     @PostConstruct
     public void init(){
         entrenador = new Entrenador();
@@ -59,7 +62,8 @@ public class EntrenadorManagedBean implements Serializable, InterfaceController<
     }
     
     
-    public void registrarEntrenador(){
+    public void registrarEntrenador(String pathReal){
+        entrenador.setDiploma(pathReal);
         enf.create(entrenador);
     }
     

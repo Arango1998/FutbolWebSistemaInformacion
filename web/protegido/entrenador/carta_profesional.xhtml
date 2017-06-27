@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+
+                <!-- Sidebar -->
+
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Carta Profesional Entrenador: #{sessionManagedBean.usuarioSesion.primerNombre}</h1>
+                        </header>
+                         <center>
+                        <p>Recuerde Tener todos sus datos actualizados</p>        
+                        <br></br>
+                       
+                                 <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess"  data-toggle="modal">Crear/Editar Carta Profesional</a>
+
+                                    <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h:form enctype="multipart/form-data">
+                                                        <center><h2><h:outputText value="Registro de Carta Pofesional"/></h2></center>
+
+                                                        <br/>
+                                                        <div class="rowContainer">
+                                                            
+                                                            
+
+ 
+                                                       
+    
+        
+            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
+             <br/>
+           
+            <h:selectOneMenu class="form-control" id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}"  required="true" requiredMessage="El campo 'Entrenador' es requerido">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItems  value="#{usuarioManagedBean.entrenador}" var="entrenador" itemLabel="Documento: #{entrenador.documento} Entrenador: #{entrenador.primerNombre} #{entrenador.primerApellido}"/>
+
+                                                        </h:selectOneMenu>
+            <br/>
+           
+            <h:outputLabel value="Experiencia:" for="experiencia" />
+            <br/>
+               <br/>
+           
+               <h:inputTextarea class="form-control" rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+             <br/>
+           
+               <h:outputLabel value="Diploma:" for="diploma" />
+                <br/>
+            <br/>
+           
+            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
+            
+        <br/>
+        
+            <br/>
+           
+       
+        <h:commandButton  class="btn btn-outline btn-success" value="registrar"  action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+   
+
+
+                                                        </div>
+                                                    </h:form>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Cerrar
+                                                    </button> 
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        </center>
+                          
+                        <h:form id="dqw">
+                           
+
+
+
+
+
+
+
+
+                            
+                            <br></br>
+                             <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+
+
+
+
+                         
+                        </h:form>
+                   
+
+                        <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
+
+
+                                <div class="modal-header">
+                                    <center><h2>Edición de categorías</h2></center>
+
+                                    <h:form id="fEdit">
+
+                                        <p:outputLabel value="IdCategoria:" for="idCategoria" style="visibility:hidden"/>
+                                        <p:inputText id="idCategoria" style="visibility:hidden" value="#{categoriaManagedBean.categoria.idCategoria}" title="IdCategoria" required="true" requiredMessage="The IdCategoria field is required."/>
+                                        <br/>
+                                        <p:outputLabel value="Nombre:"/>
+                                        <p:inputText class="form-control" id="nombreCategoria" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                        <br/>
+                                        <br/>  
+                                        <br/>
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{categoriaManagedBean.guardarCambiosCategoria(categoriaManagedBean.categoria)}" onclick="PF('formEdit').hide()"/></center>
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

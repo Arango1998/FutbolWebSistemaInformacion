@@ -27,7 +27,7 @@
 
                         <p><strong>Recuerde tener todos sus datos registrados en el sistema </strong></p>        
 
-                        <table class="table table-user-information">
+<!--                        <table class="table table-user-information">
                             <div class=" col-md-9 col-lg-9 ">
 
                                 <h:form>
@@ -77,34 +77,50 @@
                                             <td>#{sessionManagedBean.usuarioSesion.telefono}<br/>
 
                                             </td>
-                                            
 
                                         </tr>
                                     </tbody>
 
                                     <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{sessionManagedBean.capturarUsuarioEditar()}" id="modal-41991" t:href="#modal-container-41991" t:role="button"  t:data-toggle="modal"/>
 
-                                    
-                                    
                                 </h:form>
                             </div> 
-                        </table>
-                        
-                      
-                       
-                        
+                        </table>-->
+
+
+<f:view>
+
+
+    <h:form enctype="multipart/form-data">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="IdEntrenador:" for="idEntrenador" />
+            <h:inputText id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
+            <h:outputLabel value="Experiencia:" for="experiencia" />
+            <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+            <h:outputLabel value="Diploma:" for="diploma" />
+            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
+            
+       
+        </h:panelGrid>
+        <h:commandButton value="registrar" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+    </h:form>
+</f:view>
+
+
+
+
+
+
                     </div>
                 </div>
 
-                
-                
-                
 
 
 
 
 
-
+<!--
                 <div aria-hidden="true">
                     <p:dialog class="form-control" widgetVar="formEdit"
                               modal="true"
@@ -245,27 +261,8 @@
                     </div>
                 </div>
 
-                
-                
-                  <h:form rendered="#{sessionManagedBean.usuarioSesion.idTipoRol.idTipoRol == 2}">
-                                <h:form>
-                                    <h:dataTable value="#{entrenadorManagedBean.listarEntrenador()}" var="item">
-                                      
-                                     
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Diploma"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.diploma}"/>
-                                            <img src="#{request.contextPath}/#{item.diploma}"/>
-                                        </h:column>
-                                       
-                                    </h:dataTable>
-                                </h:form>
 
-                        </h:form>
-
-
+-->
 
             </ui:define>
 
@@ -273,4 +270,3 @@
 
     </body>
 </html>
-    

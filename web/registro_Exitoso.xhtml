@@ -1,17 +1,289 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
     <body>
-        <div>Muy bien SE REGISTRO CON EXITO
-        </div>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+
+                <!-- Sidebar -->
+
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-12">
+                        <br></br>
+
+                        <header>
+                                <center><h1 class="page-header text-center">Formulario de inscripción</h1></center>
+                        </header>
+                        
+                        <br></br>
+                        <center>
+                            
+                     
+                        
+                                 <div class="col-md-4">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">
+                                                        Recuerde al Registrar...
+                                                    </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <ul>
+                                                        <li>1: Tener el documento del nuevo usuario. </li>
+                                                        <hr />
+                                                        <li>2: Tener los nombres del nuevo usuario. </li>
+                                                        <hr />
+                                                        <li>3: Tener el apellidos del nuevo usuario. </li>
+                                                        <hr />
+                                                        <li>4: Tener la Fecha de nacimiento del nuevo usuario. </li>
+                                                        <hr />
+                                                        <li>5: Tener el correo del nuevo usuario. </li>
+                                                        <hr />
+                                                        <li>6: Finalmente registrar al nuevo usuario. </li>
+                                                        <hr />
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                      
+                   
+                        
+                        <div class="container">
+
+		<div class="row" > 
+
+			<div></div>
+			<div class="col-md-8">
+				<form>
+
+					<div class="form-group" >
+
+						<div class="form"></div>
+						<div class="col-md-6"><label for="fNombre" >Primer Nombre</label>
+							<input type="text"  class="form-control" name="fNombre" id="Nombre" placeholder="Juan" /></div>
+
+
+						</div>
+						<div class="form-group" >
+
+						<div class="form"></div>
+						<div class="col-md-6"><label for="fNombre" >Segundo Nombre</label>
+							<input type="text"  class="form-control" name="fNombre" id="Nombre" placeholder="Nombres" /></div>
+
+
+						</div>
+
+
+						<div class="form-group" >
+							<div class="col-md-6"> <label for="fNombre" >Primer Apellido</label>
+								<input type="text"  class="form-control" name="fNombre" id="Nombre" placeholder="Apellido" /></div>
+							</div>
+							<div class="form-group" >
+							<div class="col-md-6"> <label for="fNombre" >Segundo Apellido</label>
+								<input type="text"  class="form-control" name="fNombre" id="Nombre" placeholder="Apellido" /></div>
+							</div>
+						
+
+
+							
+
+
+
+							<div class="form-group" >
+								<div class="col-md-6"> <label for="fNombre" >Documento</label>
+									<input type="number"  class="form-control" name="fNombre" id="Nombre" placeholder="Documento" /></div>
+								</div>
+								<div class="col-md-6" >
+
+									<hr/><label for="fSexo" > Sexo </label>
+									<div class="radio" >  
+
+
+										<label>
+											<input type="radio" class="radio" name="fSexo" >
+											Femenino
+										</input>	
+
+									</label>
+
+									<label>
+										<input type="radio" class="radio" name="fSexo" >
+										Masculino
+									</input>	
+
+								</label>
+
+								<label>
+										<input type="radio" class="radio" name="fSexo" >
+										Otro
+									</input>	
+
+								</label>
+
+
+
+
+							</div>
+
+
+						</div>
+
+							<div class="form-group" >
+								<div class="col-md-6"> <label for="fNombre" > Tipo de Documento </label>
+									<select  type="text"  class="form-control">
+										<option value=""> Cedula de Cuidadania </option>
+										<option value=""> Tarjeta de identidad </option>
+										<option value="" > Cedula de extranjería </option>
+										<option value=""> Otro</option>
+
+									</select>
+
+								</div>
+							</div>
+
+						<div class="form-group" >
+							<div class="col-md-6"> <label for="fNombre" >  Fecha de Nacimiento </label>
+								<input type="date"  class="form-control" name="fNombre" id="Nombre" /></div>
+							</div>
+
+
+
+
+
+							<div class="col-md-12">
+								<label for="fCorreo">Correo Electronico</label>
+								<input type="email" class="form-control"  name="Celectronico" placeholder="ejemplo@sucorreo.com" />
+							</div>
+
+
+
+							<div class="col-md-6">
+								<label for="fCorreo">Teléfono Fijo</label>
+								<input type="email" class="form-control"  name="Fnacimiento" placeholder="Teléfono Fijo " />
+							</div>
+
+							<div class="col-md-6">
+								<label for="tFijo">Móvil</label>
+								<input type="email" class="form-control"  name="Fnacimiento" placeholder="Numero de Móvil"/>
+							</div>
+
+
+							<div class="col-md-12">
+								<label for="fCorreo">Dirección</label>
+								<input type="email" class="form-control"  name="Celectronico" placeholder="Dirección"/>
+                                                                <center>
+                                                                    <hr/><a class="btn btn-primary" href="Completado.html" role="button">Registrarse</a> 
+
+                                                                </center>
+							</div>
+							
+							
+						</form>
+
+					</div>
+					<div class="col-md-2 "></div> 
+
+				</div>
+
+
+
+			</div>
+                
+              
+                       </center>
+                       
+                               
+                          
+                   
+
+                       
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+        
+        
+        
+        
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdUsuario:" for="idUsuario" />
+                    <h:inputText id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                    <h:outputLabel value="Documento:" for="documento" />
+                    <h:inputText id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                    <h:outputLabel value="PrimerNombre:" for="primerNombre" />
+                    <h:inputText id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                    <h:outputLabel value="SegundoNombre:" for="segundoNombre" />
+                    <h:inputText id="segundoNombre" value="#{usuarioManagedBean.usuario.segundoNombre}" title="SegundoNombre" />
+                    <h:outputLabel value="PrimerApellido:" for="primerApellido" />
+                    <h:inputText id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                    <h:outputLabel value="SegundoApellido:" for="segundoApellido" />
+                    <h:inputText id="segundoApellido" value="#{usuarioManagedBean.usuario.segundoApellido}" title="SegundoApellido" />
+                    <h:outputLabel value="Clave:" for="clave" />
+                    <h:inputText id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                    <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                    <h:inputText id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Genero:" for="genero" />
+                    <h:inputText id="genero" value="#{usuarioManagedBean.usuario.genero}" title="Genero" />
+                    <h:outputLabel value="Rh:" for="rh" />
+                    <h:inputText id="rh" value="#{usuarioManagedBean.usuario.rh}" title="Rh" />
+                    <h:outputLabel value="Eps:" for="eps" />
+                    <h:inputText id="eps" value="#{usuarioManagedBean.usuario.eps}" title="Eps" />
+                    <h:outputLabel value="Telefono:" for="telefono" />
+                    <h:inputText id="telefono" value="#{usuarioManagedBean.usuario.telefono}" title="Telefono" />
+                    <h:outputLabel value="Correo:" for="correo" />
+                    <h:inputText id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                    <h:outputLabel value="Jugador:" for="jugador" />
+                    <h:selectOneMenu id="jugador" value="#{usuarioManagedBean.usuario.jugador}" title="Jugador" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="IdTipoRol:" for="idTipoRol" />
+                    <h:selectOneMenu id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" title="IdTipoRol" required="true" requiredMessage="The IdTipoRol field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="IdEstado:" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" title="IdEstado" required="true" requiredMessage="The IdEstado field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="IdAcudiente:" for="idAcudiente" />
+                    <h:selectOneMenu id="idAcudiente" value="#{usuarioManagedBean.usuario.idAcudiente}" title="IdAcudiente" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Entrenador:" for="entrenador" />
+                    <h:selectOneMenu id="entrenador" value="#{usuarioManagedBean.usuario.entrenador}" title="Entrenador" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+
     </body>
 </html>
