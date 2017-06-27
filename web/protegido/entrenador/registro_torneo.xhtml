@@ -13,14 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title>jQuery UI Datepicker - Icon trigger</title>
         <link type="text/css" href="css/ui-darkness/jquery-ui-1.8.23.custom.css" rel="Stylesheet" />
-        <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-        <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
-        <script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
-
-        <script type="text/javascript">
-            $(function () {
-                $("#demo1").datepicker();
-        </script>
+      
     </head>
 
     <body>
@@ -35,11 +28,11 @@
                 <!-- /#sidebar-wrapper -->
 
                 <!-- Page Content -->
-
                 <div class="rowContainer">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
                         <br></br>
+
 
                         <header>
                             <h1 class="page-header text-center">Torneos</h1>
@@ -51,25 +44,24 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess"  data-toggle="modal">Registrar Torneo</a>
+                                        <a role="button" class="btn btn-outline btn-success"  action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar torneo</a>
+                                        <div aria-hidden="true">
+                                            <p:dialog class="form-control" widgetVar="formCreate"
+                                                      modal="true"
+                                                      position="top"
 
-                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
+                                                      >
 
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            ×
-                                                        </button>
+                                                <div class="modal-body">
 
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h:form id="fCreate">
-                                                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+                                                    <h:form id="fCreate">
 
-                                                            <center><h2><h:outputText value="Registro de Torneos"/></h2></center>
+                                                        <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
 
-                                                            <br/>
+                                                        <center><h2><h:outputText value="Registro de Torneos"/></h2></center>
+
+                                                        <br/>
+                                                        <div class="rowContainer">
 
                                                             <h:outputLabel  value="Nombre del Torneo"/>
 
@@ -94,27 +86,21 @@
                                                             <h:outputLabel value="Finalización"/>
                                                             <br/>
                                                             <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
+                                                        </div>
+                                                        <br/>
+                                                        <br/>
+                                                        <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" update="growl" />
+                                                        <input type="text" class="form-control"></input>
+                                                    </h:form>
 
-                                                            <br/>
-                                                            <br/>
-                                                            <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" update="growl" />
-
-                                                        </h:form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                            Cerrar
-                                                        </button> 
-
-                                                    </div>
                                                 </div>
 
-                                            </div>
+                                            </p:dialog>
 
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
 
@@ -162,15 +148,25 @@
                                             </td>
 
 
-                                            <td >#{item.nombreTorneo}</td>
+                                            <td class="hidden-xs" >#{item.nombreTorneo}</td>
 
-                                            <td>#{item.organizador}</td>
+                                            <td class="hidden-xs">#{item.organizador}</td>
 
-                                            <td>#{item.datosContactoOrganizador}</td>
+                                            <td class="hidden-xs">#{item.datosContactoOrganizador}</td>
 
-                                            <td>Día: #{item.fechaInicio.date} /  Mes:#{item.fechaInicio.month} /  Año:#{item.fechaInicio.year}</td>
+                                            <td class="hidden-xs">
+                                                <h:outputText value="#{item.fechaInicio}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy">
 
-                                            <td>#{item.fechaFin}</td>
+                                                    </f:convertDateTime>
+                                                </h:outputText></td>
+
+                                            <td class="hidden-xs">
+                                                <h:outputText value="#{item.fechaInicio}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy">
+
+                                                    </f:convertDateTime>
+                                                </h:outputText></td>
 
 
                                         </tr>
@@ -259,11 +255,19 @@
 
                             </p:dialog>
 
-
                         </div>
                     </div>
-                    <div class="col-lg-1"></div>
                 </div>
+                <div class="col-lg-1"></div>
+
+
+                <script>
+                            $('#sandbox-container input').datepicker({
+                    todayBtn: "linked",
+                            language: "es"
+                            });
+
+                </script>
             </ui:define>
 
         </ui:composition>

@@ -5,56 +5,57 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-       <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-            <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-            <link href="resources/css/iniciopagina.css" rel="stylesheet" type="text/css"/>
-             
-      
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <link rel="stylesheet" href="/resources/demos/style.css"/>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     </head>
     <body>
-     
-    <div class="main" style="padding:2%;margin-top:5%;">        	
-            <div class=" col-sm-12 col-md-6 col-lg-12">
-                <div class="container">
-
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-4">
-                        <div class="row grids text-center">
-                          <center>
-		<ul class="social-network social-circle">
-			<li><a href="#" class="icoLinkedin"><i class="fa fa-linked"> <img src="resources/images/paginainicio/Logo.png" alt="Imagen iconica del sistema"/></i></a></li>
-		</ul>               
-	</center>
-	<div class="espacio"></div>
-	<center>
-		<div class="col-md-2 col-sm-12 text-center fh5co-link-wrap">
-                    <p><a href="pagina_principal.xhtml" class="btn btn-outline  btn-warning">Pagina Principal</a></p>
-		</div>
-            
-		<div class="col-md-2 col-md-push-7 ">
-                    <p><a href="faces/inicio_sesion_usuario.xhtml" class="btn btn-outline  btn-danger">Iniciar Sesion</a></p>
-		</div>
-	</center>
-                        </div>
-                        <!--  </a> -->
-                    </div>
-                </div>
 
 
-            </div>
+        <f:view>
 
 
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdEncuentro:" for="idEncuentro" />
+                    <h:inputText id="idEncuentro" value="#{encuentroTorneoManagedBean.encuentroTorneo.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required."/>
 
-        </div>
-
-
-        
-
-
+                    <h:outputLabel value="FechaInicio:"/>
+                    <h:inputText jsf:id="datepicker" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                    <h:outputLabel value="Resultado:" for="resultado" />
+                    <h:inputTextarea rows="4" cols="30" id="resultado" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
+                    <h:outputLabel value="FkIdTorneo:" for="fkIdTorneo" />
+                    <h:selectOneMenu id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="FkIdBarrio:" for="fkIdBarrio" />
+                    <h:selectOneMenu id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio" required="true" requiredMessage="The FkIdBarrio field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <script>
+                    $(function () {
+                        $("#datepicker").datepicker();
+                    });
+                </script>
+            </h:form>
+        </f:view>
     </body>
 </html>
