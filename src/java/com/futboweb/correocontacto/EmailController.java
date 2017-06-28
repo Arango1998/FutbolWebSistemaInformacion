@@ -8,17 +8,17 @@ package com.futboweb.correocontacto;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futboweb.correocontacto.email.Email;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Cristian Suesca
  */
 @Named(value = "emailController")
-@ViewScoped
+@RequestScoped
 //@ViewScoped
 public class EmailController {
 
