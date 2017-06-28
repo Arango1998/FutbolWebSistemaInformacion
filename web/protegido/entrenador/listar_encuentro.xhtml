@@ -56,7 +56,7 @@
                                                             <br/>
 
                                                             <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
-                                                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
     
 
@@ -89,18 +89,9 @@
 
                                                     
                                                         <script>
-                                                            var disabledDays = [0];
+                                                            
                                                             $("#fechaInicio").datepicker({
-                                                                dateFormat: 'mm/dd/yy',
-                                                                onRenderCell: function (date, cellType) {
-                                                                    if (cellType === 'day') {
-                                                                        var day = date.getDay(),
-                                                                                isDisabled = disabledDays.indexOf(day) !== -1;
-                                                                        return {
-                                                                            disabled: isDisabled
-                                                                        };
-                                                                    }
-                                                                }
+                                                                dateFormat: 'mm/dd/yyyy'                             
                                                             });
                                                         </script>
 

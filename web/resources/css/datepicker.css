@@ -163,8 +163,8 @@
 .datepickers-container {
   position: absolute;
   z-index: 100000;
-  left: 0;
-  top: 0; }
+  left: 290px;
+  top: -25px; }
   @media print {
     .datepickers-container {
       display: none; } }

@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-
-      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <head>
@@ -13,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <title>jQuery UI Datepicker - Icon trigger</title>
         <link type="text/css" href="css/ui-darkness/jquery-ui-1.8.23.custom.css" rel="Stylesheet" />
-      
+
     </head>
 
     <body>
@@ -67,6 +66,22 @@
 
                                                             <h:inputText maxlength="23" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
 
+
+                                                            <h:outputLabel value="Inicio"/>
+                                                            <br/>
+
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                            </h:inputText>
+
+
+                                                            <br/>
+                                                            <h:outputLabel value="Finalización"/>
+                                                            <br/>
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaFin" value="#{torneoManagedBean.torneo.fechaFin}" title="FechaFin" required="true" requiredMessage="The FechaInicio field is required.">
+                                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                            </h:inputText>
+
                                                             <h:outputLabel value="Organizador"/>
 
                                                             <h:inputText maxlength="24" class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
@@ -75,22 +90,20 @@
 
                                                             <h:inputTextarea class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true"  requiredMessage="The DatosContactoOrganizador field is required."/>
 
-                                                            <h:outputLabel value="Inicio"/>
-                                                            <br/>
 
-                                                            <p:calendar  value="#{torneoManagedBean.torneo.fechaInicio}">
-
-                                                            </p:calendar>
-
-                                                            <br/>
-                                                            <h:outputLabel value="Finalización"/>
-                                                            <br/>
-                                                            <p:calendar value="#{torneoManagedBean.torneo.fechaFin}"/>
                                                         </div>
                                                         <br/>
                                                         <br/>
-                                                        <p:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}" update="growl" />
-                                                        <input type="text" class="form-control"></input>
+                                                        <h:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}"/>
+
+                                                        <script>
+                                                            $(function () {
+                                                                $(".calendar").datepicker();
+                                                            });
+                                                        </script>
+
+
+
                                                     </h:form>
 
                                                 </div>
@@ -261,13 +274,7 @@
                 <div class="col-lg-1"></div>
 
 
-                <script>
-                            $('#sandbox-container input').datepicker({
-                    todayBtn: "linked",
-                            language: "es"
-                            });
 
-                </script>
             </ui:define>
 
         </ui:composition>
