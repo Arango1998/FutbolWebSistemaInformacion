@@ -53,7 +53,7 @@
 
                                     <tr >
                                         <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
-
+                                        <th class="hidden-xs">Acciones</th>
                                         <th class="hidden-xs">Documento</th>
                                         <th class="hidden-xs">Jugador</th>
                                         <th class="hidden-xs">Fecha Nacimiento</th>
@@ -61,7 +61,7 @@
                                         <th class="hidden-xs">Rol</th>
                                         <th class="hidden-xs">Estado</th>
                                         <th class="hidden-xs">Acudiente</th>
-                                        <th class="hidden-xs">Acciones</th>
+
 
 
 
@@ -74,6 +74,23 @@
 
 
                                         <tr>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                                        <p:commandButton id="modal-293136" t:href="#modal-container-293136" t:role="button" class="btn" t:data-toggle="modal" actionListener="#{emailController2.setDestinatario(item.idAcudiente.correo)}" value="Correo" rendered="true"/>
+                                                        <li role="separator" class="divider"></li>
+                                                        <li><a href="#">Detalles Acudiente</a></li>
+
+
+
+                                                    </ul>
+                                                </div>
+                                            </td>
 
                                             <td  class="hidden-xs" align="center">
                                                 <p:commandButton class="btn btn-outline btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="E" onclick="PF('insertar').show();"  update=":editinvi"/>
@@ -93,23 +110,7 @@
                                             <td>#{item.idTipoRol.nombreRol}</td>
                                             <td>#{item.idEstado.nombreEstado}</td>
                                             <td>#{item.idAcudiente.documento}, #{item.idAcudiente.primerNombre} #{item.idAcudiente.primerApellido}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                                                        <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                                        <p:commandButton id="modal-293136" t:href="#modal-container-293136" t:role="button" class="btn" t:data-toggle="modal" actionListener="#{emailController.destinatario(item.correo)}" value="asdasd" rendered="true"/>
-                                                        <li role="separator" class="divider"></li>
-                                                        <li><a href="#">Detalles Acudiente</a></li>
-
-
-
-                                                    </ul>
-                                                </div>
-                                            </td>
 
 
 
@@ -162,12 +163,12 @@
                                                 <div class="modal-body">
                                                     <h:form id="form-email">
                                                         <h:outputLabel for="asunto" value="asunto"/>
-                                                        <h:inputText class="form-control" id="asunto" value="#{emailController.asunto}"/><br/>
+                                                        <h:inputText class="form-control" id="asunto" value="#{emailController2.asunto}"/><br/>
                                                         <h:outputLabel for="mensaje" value="mensaje"/>
-                                                        <h:inputTextarea class="form-control" id="mensaje" value="#{emailController.mensaje}"/><br/>
-                                                      
+                                                        <h:inputTextarea class="form-control" id="mensaje" value="#{emailController2.mensaje}"/><br/>
+
                                                         <center>
-                                                            <h:commandButton id="btn-enviar"  class="btn btn-primary" value="enviar" action="#{emailController.enviarCorreo()}"/>
+                                                            <h:commandButton id="btn-enviar"  class="btn btn-primary" value="enviar" action="#{emailController2.enviarCorreo()}"/>
 
                                                         </center>
 

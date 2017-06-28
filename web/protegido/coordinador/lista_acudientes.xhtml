@@ -52,8 +52,8 @@
                                 <thead>
 
                                     <tr >
-                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
-                                        <th class="hidden-xs">Option</th>
+                                           <th class="hidden-xs">Acciones</th>
+                                        <th class="hidden-xs">Editar/Eliminar</th>
                                         <th class="hidden-xs">Documento</th>
                                          <th class="hidden-xs">Nombre</th>
                                          <th class="hidden-xs">Apellido</th>
@@ -61,7 +61,6 @@
                                          <th class="hidden-xs">Correo</th>
                                          <th class="hidden-xs">Rol</th>
                                          <th class="hidden-xs">Estado</th>
-                                           <th class="hidden-xs">Carta</th>
                                        
 
 
@@ -74,7 +73,20 @@
 
 
                                         <tr>
-                                            <td class="hidden-xs"><h:inputText t:type="checkbox"></h:inputText></td>
+                                            <td>
+                                            <div class="dropdown">
+                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <h:commandButton value="Enviar advertencia de pago" class="btn btn-default" action="#{usuarioManagedBean.envioAdvertencia(item)}"/>
+                                             <li role="separator" class="divider"></li>
+                                             <h:commandButton value="Enviar notificación de bloqueo" class="btn btn-default" action="#{usuarioManagedBean.envioBloqueo(item)}"/>
+                                            </ul>
+                                            </div>
+                                            </td>
+
                                                   <td  class="hidden-xs" align="center">
                                             <p:commandButton class="btn btn-outline btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="E" onclick="PF('insertar').show();"  update=":editinvi"/>
                                  <h:commandButton   class="btn btn-outline btn-danger" value="el" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/>
@@ -93,11 +105,7 @@
                                             <td>#{item.correo}</td>
                                             <td>#{item.idTipoRol.nombreRol}</td>
                                             <td>#{item.idEstado.nombreEstado}</td>
-                                            <td><h:commandButton value="carta" class="btn btn-default" action="#{usuarioManagedBean.envioAdvertencia(item)}"/></td>
-                                         
-
-
-
+                                            
                                         </tr>
                                     </ui:repeat>
 

@@ -6,23 +6,22 @@
 package com.futboweb.correocontacto;
 
 import com.futbolweb.persistence.entities.Jugador;
-import com.futbolweb.persistence.entities.Usuario;
 import com.futboweb.correocontacto.email.Email;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author Cristian Suesca
  */
-@Named(value = "emailController")
-@RequestScoped
-//@ViewScoped
-public class EmailController {
+@Named(value = "emailController2")
+@ViewScoped
+public class EmailController2 implements Serializable {
 
-   private String asunto;
+     private String asunto;
    private String mensaje;
    private String destinatario;
 
@@ -50,23 +49,19 @@ public class EmailController {
         this.destinatario = destinatario;
     }
    
-    public EmailController() {
-        
-        
+    /**
+     * Creates a new instance of EmailController2
+     */
+    public EmailController2() {
     }
-    
-    
-    
-    
-    
-    
-    public String enviarCorreo(){
+   
+   
+    public void enviarCorreo(){
     Email e = new Email(asunto, mensaje,destinatario);
-    e.enviarEmail();
+        e.enviarEmail();
         FacesContext fc = FacesContext.getCurrentInstance();
         FacesMessage m = new FacesMessage("envio de mensaje exitos");
         fc.addMessage(null, m);
-        return"";
+        
     }
-    
 }

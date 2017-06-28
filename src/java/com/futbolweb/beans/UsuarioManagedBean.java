@@ -265,5 +265,15 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
             
    
     }
+    public void envioBloqueo(Usuario u){
+        
+              Email envioA;
+    envioA = new Email("Advertencia de bloqueo de acceso", "Señor/a "+u.getPrimerNombre()+" "+u.getPrimerApellido()+", Se le notifica que se le ha bloquado el acceso al club Expreso Rojo por moras en los pagos, se le rehabilitará el acceso cuando realice los pagos pendientes.",u.getCorreo());
+            System.out.println(envioA.toString());
+    envioA.enviarEmail2();  
+            
+   
+    }
+    
 
 }
