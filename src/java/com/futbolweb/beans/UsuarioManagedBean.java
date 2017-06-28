@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futbolweb.persistence.facades.UsuarioFacade;
+import com.futboweb.correocontacto.email.Email;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -253,6 +254,16 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
             FacesContext.getCurrentInstance().getExternalContext().redirect("registro_usuario.xhtml");
         } catch (Exception e) {
         }
+    }
+    
+    public void envioAdvertencia(Usuario u){
+        
+              Email envioA;
+    envioA = new Email("Advertencia de pago", "Señor/a "+u.getPrimerNombre()+" "+u.getPrimerApellido()+", Se advierte que posee un pago en mora  en el club Expreso Rojo, si no realiza el pago oportuno, se procederá a realizar el bloqueo  del acceso a nuestro sistema, para mas información consultar el control de pagos en nuestro sistema.",u.getCorreo());
+            System.out.println(envioA.toString());
+    envioA.enviarEmail2();  
+            
+   
     }
 
 }

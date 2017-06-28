@@ -101,8 +101,7 @@
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                                        <h:commandButton actionListener="#{emailController.seleccionarU(item)}"><li><a id="modal-293136" href="#modal-container-293136" role="button" class="btn" data-toggle="modal" >Enviar Correo Acudiente</a></li></h:commandButton>
-                                                        <h:commandButton id="modal-293136" t:href="#modal-container-293136" role="button" class="btn" t:data-toggle="modal" actionListener="#{emailController.seleccionarU(item)}" value="asdasd" rendered="true"/>
+                                                        <p:commandButton id="modal-293136" t:href="#modal-container-293136" t:role="button" class="btn" t:data-toggle="modal" actionListener="#{emailController.destinatario(item.correo)}" value="asdasd" rendered="true"/>
                                                         <li role="separator" class="divider"></li>
                                                         <li><a href="#">Detalles Acudiente</a></li>
 

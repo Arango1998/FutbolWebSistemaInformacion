@@ -5,19 +5,20 @@
  */
 package com.futboweb.correocontacto;
 
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futboweb.correocontacto.email.Email;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Cristian Suesca
  */
 @Named(value = "emailController")
-@RequestScoped
+@ViewScoped
 //@ViewScoped
 public class EmailController {
 
@@ -63,8 +64,8 @@ public class EmailController {
     
     
     
-    public String enviarCorreo(){
-    Email e = new Email(asunto, mensaje, destinatario);
+    public String enviarCorreo(Jugador j){
+    Email e = new Email(asunto, mensaje,destinatario);
     e.enviarEmail();
         FacesContext fc = FacesContext.getCurrentInstance();
         FacesMessage m = new FacesMessage("envio de mensaje exitos");
