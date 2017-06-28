@@ -8,18 +8,6 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough">
 
 
-    <head>    
-        <title>TODO supply a title</title>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-        <link rel="stylesheet" href="/resources/demos/style.css"/>
-        <h:outputStylesheet  name="css/datepicker.min.css"/>
-        <h:outputScript name="js/datepicker.min.js" />
-        <h:outputScript name="js/datepicker.es.js" />
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>
-
     <body>
 
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
@@ -67,9 +55,10 @@
                                                             <h:outputLabel  value="Fecha del encuentro"/>
                                                             <br/>
 
-                                                            <h:inputText jsf:id="datepicker" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
-                                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                                <f:convertDateTime pattern="MM/dd/yyyy"/>
                                                             </h:inputText>
+    
 
                                                             <br/>
 
@@ -96,21 +85,33 @@
                                                             </h:selectOneMenu>
                                                         </div> 
                                                         <br/>
-                                                        
-                                                        <input type='text' class='datepicker-here' data-language='es' />
                                                         <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" />
-                                                       
-                                                        
+
+                                                    
                                                         <script>
-                                                           $('#fCreate').datepicker([options])
+                                                            var disabledDays = [0];
+                                                            $("#fechaInicio").datepicker({
+                                                                dateFormat: 'mm/dd/yy',
+                                                                onRenderCell: function (date, cellType) {
+                                                                    if (cellType === 'day') {
+                                                                        var day = date.getDay(),
+                                                                                isDisabled = disabledDays.indexOf(day) !== -1;
+                                                                        return {
+                                                                            disabled: isDisabled
+                                                                        };
+                                                                    }
+                                                                }
+                                                            });
                                                         </script>
-                                                        
+
+
                                                     </h:form>
 
                                                     <br/> 
                                                     <br/>
 
                                                 </div> 
+
 
 
                                             </p:dialog> 
@@ -180,6 +181,7 @@
 
                                 </tbody>
                             </table>
+
                             <br></br>
                             <h:commandLink title="Descargar tabla en pdf">
                                 <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
