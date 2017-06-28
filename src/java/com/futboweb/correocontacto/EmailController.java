@@ -5,6 +5,7 @@
  */
 package com.futboweb.correocontacto;
 
+import com.futbolweb.persistence.entities.Usuario;
 import com.futboweb.correocontacto.email.Email;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -17,6 +18,7 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "emailController")
 @RequestScoped
+//@ViewScoped
 public class EmailController {
 
    private String asunto;
@@ -52,6 +54,12 @@ public class EmailController {
         
     }
     
+    
+    
+    public void seleccionarU(Usuario us){
+    destinatario= us.getIdAcudiente().getCorreo();
+        System.out.println(destinatario);
+    }
     
     
     

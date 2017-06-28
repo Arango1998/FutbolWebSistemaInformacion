@@ -96,9 +96,11 @@
                                 <thead>
 
                                     <tr >
-                                           <th class="col-md-4"><center><em class="fa fa-cog">icono</em></center></th>
+                                           <th class="col-md-6"><center><em class="fa fa-cog">icono</em></center></th>
                                       
-                                        <th class="hidden-xs">Nombre Categoria</th>
+                                                   <th class="hidden-xs"><center>
+                                               Nombre Categoria
+                                               </center></th>
                                        
 
 
@@ -111,14 +113,22 @@
 
 
                                         <tr>
-                                                  <td  class="hidden-xs" align="center">
-                                            <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+                                            <td  class="col-md-6">
+                                                <center>
+                                                    <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
                                 
                                                  <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/>
-                                            </td>
+                                           
+                                                </center>
+                                             </td>
 
                                           
-                                            <td>#{item.nombreCategoria}</td>
+                                            <td>
+                                                <center>
+                                                        #{item.nombreCategoria}
+                                                </center>
+                                                
+                                            </td>
                                          
 
 
