@@ -6,6 +6,7 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Usuario;
 import com.futbolweb.persistence.facades.UsuarioFacade;
 import com.futboweb.correocontacto.email.Email;
@@ -37,6 +38,8 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
     private EstadoUsuarioManagedBean estadoUsuarioManagedBean;
     @Inject
     private RolManagedBean rolManagedBean;
+     @Inject
+    private SessionManagedBean sesionM;
 
     public UsuarioManagedBean() {
     }
@@ -92,6 +95,14 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         List<Usuario> lUsuario = uf.listarUsuariosInvitados();
         return listaInvitado = lUsuario;
 
+    }
+
+    public SessionManagedBean getSesionM() {
+        return sesionM;
+    }
+
+    public void setSesionM(SessionManagedBean sesionM) {
+        this.sesionM = sesionM;
     }
     
     
@@ -234,7 +245,11 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
        public List<Usuario> getEntrenador() {
         return this.uf.listaEntrenadores();
     }
-       
+//        public List<Usuario> getJugadoresAcudiente(){
+//                       
+//            
+//          return this.uf.listaJugadoresAcudiente().equals(sesionM.getUsuarioSesion().getIdUsuario());
+//        }
 //          public List<Usuario> getCoordinadores() {
 //        return this.uf.listaCoordinadores();
 //    }
@@ -274,6 +289,6 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
             
    
     }
-    
+   
 
 }

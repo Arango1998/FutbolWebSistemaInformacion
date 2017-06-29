@@ -50,6 +50,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public List<Usuario> listaJugadores() {
         return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 3).getResultList();
     }
+    public List<Usuario> listaJugadoresAcudiente(){
+        return getEntityManager().createNamedQuery("Usuario.IdAcudiente, Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol",3).getResultList();
+    }
 
     public List<Usuario> listaEntrenadores() {
         return getEntityManager().createNamedQuery("Usuario.rolInvitado", Usuario.class).setParameter("idTipoRol", 2).getResultList();

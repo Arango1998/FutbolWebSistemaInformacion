@@ -82,9 +82,10 @@
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                                        <p:commandButton id="modal-293136" t:href="#modal-container-293136" t:role="button" class="btn" t:data-toggle="modal" actionListener="#{emailController2.setDestinatario(item.idAcudiente.correo)}" value="Correo" rendered="true"/>
+                                                        <p:commandButton id="modal-293136" class="btn btn-default" t:href="#modal-container-293136" t:role="button"  t:data-toggle="modal" actionListener="#{emailController2.setDestinatario(item.idAcudiente.correo)}" value="Enviar Correo" />
                                                         <li role="separator" class="divider"></li>
                                                         <li><a href="#">Detalles Acudiente</a></li>
+                                                        
 
 
 
@@ -201,51 +202,54 @@
 
                                 <div class="modal-header">
                                     <center><h3>Edición de categorías</h3></center>
-                                    <h:form id="editinvi">
+                                   <h:form id="editinvi">
 
 
-                                        <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
-                                        <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                        <br/>
-                                        <p:outputLabel value="Documento:" for="documento" />
-                                        <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                                        <p:outputLabel value="Nombre:" for="primerNombre" />
-                                        <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                                        <p:outputLabel value="Apellido:" for="primerApellido" />
-                                        <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-                                        <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
-                                        <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                        <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
-                                        <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </h:inputText>
-                                        <p:outputLabel value="Correo:" for="correo" />
-                                        <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                                    <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
+                                    <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                                    <br/>
+                                    <p:outputLabel value="Documento:" for="documento" />
+                                    <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                    <p:outputLabel value="Nombre:" for="primerNombre" />
+                                    <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                                    <p:outputLabel value="Apellido:" for="primerApellido" />
+                                    <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                                    <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
+                                    <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                    <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
+                                    <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:inputText>
+                                    <p:outputLabel value="Correo:" for="correo" />
+                                    <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                                    <h:outputLabel value="Acudiente:" for="idAcudiente" />
+                                    <h:selectOneMenu class="form-control"  id="idAcudiente" value="#{usuarioManagedBean.usuario.idAcudiente}" title="IdAcudiente" >
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{usuarioManagedBean.activos}" var="acudient" itemLabel="#{acudient.documento}, #{acudient.primerNombre} #{acudient.primerApellido}" />
+                                    </h:selectOneMenu>
+                                    <center>
+                                        <p:outputLabel value="Rol:" for="idTipoRol" />
+                                        <h:selectOneMenu class="form-control"  id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
+                                        </h:selectOneMenu>
 
-                                        <center>
-                                            <p:outputLabel value="Rol:" for="idTipoRol" />
-                                            <h:selectOneMenu class="form-control"  id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
-                                                <!-- TODO: update below reference to list of available items-->
-                                                <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
-                                            </h:selectOneMenu>
+                                        <p:outputLabel  value="Estado:" for="idEstado" />
+                                        <h:selectOneMenu class="form-control"  id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
+                                        </h:selectOneMenu>
 
-                                            <p:outputLabel  value="Estado:" for="idEstado" />
-                                            <h:selectOneMenu class="form-control"  id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
-                                                <!-- TODO: update below reference to list of available items-->
-                                                <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
-                                            </h:selectOneMenu>
-
-                                        </center>
-
-
-                                        <center>
-                                            <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioAcudiente()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
-
-                                        </center>
+                                    </center>
 
 
-                                    </h:form>
+                                    <center>
+                                        <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioJugadorAcudiente()}" class="btn btn-outline btn-success" value="Registrar" action="#{usuarioManagedBean.editarInvitados()}" />
 
+                                    </center>
+
+
+                                </h:form>
                                 </div>
                             </p:dialog>
                         </div>
