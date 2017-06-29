@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+     
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                      <h:outputLabel value="Descripcion:" for="descripcion" />
+                      <h:inputText class="form-control" id="descripcion" value="#{participacionTorneoManagedBean.participacionTorneo.descripcion}" title="Descripcion" />
+                    <h:outputLabel value="IdEquipo:" for="idEquipo" />
+                    <h:selectOneMenu id="idEquipo" value="#{participacionTorneoManagedBean.participacionTorneo.idEquipo}" title="IdEquipo" required="true" requiredMessage="The IdEquipo field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="lis" itemLabel="#{lis.nombreEquipo}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="IdTorneo:" for="idTorneo" />
+                    <h:selectOneMenu id="idTorneo" value="#{participacionTorneoManagedBean.participacionTorneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{torneoManagedBean.listar()}" var="lisTor" itemLabel="#{lisTor.nombreTorneo}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Registrar" action="#{participacionTorneoManagedBean.create()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+
+        
+    </body>
+</html>

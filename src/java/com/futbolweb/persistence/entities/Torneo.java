@@ -45,6 +45,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Torneo.findByFechaFin", query = "SELECT t FROM Torneo t WHERE t.fechaFin = :fechaFin")})
 public class Torneo implements Serializable, IDTO {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTorneo", fetch = FetchType.EAGER)
+    private List<ParticipacionTorneo> participacionesTorneoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -192,6 +195,15 @@ public class Torneo implements Serializable, IDTO {
     @Override
     public String obtenerLlavePrimaria() {
         return idTorneo.toString();
+    }
+
+    @XmlTransient
+    public List<ParticipacionTorneo> getParticipacionesTorneoList() {
+        return participacionesTorneoList;
+    }
+
+    public void setParticipacionesTorneoList(List<ParticipacionTorneo> participacionesTorneoList) {
+        this.participacionesTorneoList = participacionesTorneoList;
     }
 
 }

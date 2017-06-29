@@ -43,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
 })
 public class Equipo implements Serializable, IDTO {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEquipo", fetch = FetchType.EAGER)
+    private List<ParticipacionTorneo> participacionesTorneoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -169,6 +172,15 @@ public class Equipo implements Serializable, IDTO {
     @Override
     public String obtenerLlavePrimaria() {
         return idEquipo.toString();
+    }
+
+    @XmlTransient
+    public List<ParticipacionTorneo> getParticipacionesTorneoList() {
+        return participacionesTorneoList;
+    }
+
+    public void setParticipacionesTorneoList(List<ParticipacionTorneo> participacionesTorneoList) {
+        this.participacionesTorneoList = participacionesTorneoList;
     }
     
 }
