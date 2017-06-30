@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-          
+
       xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
@@ -112,7 +112,7 @@
                                     <f:selectItem itemValue="Regular" itemLabel="Regular"/>
                                     <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
                                 </h:selectOneMenu>
-                                
+
                                 <h:outputLabel  value="Torneo:" for="idEncuentro" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
                                     <!-- TODO: update below reference to list of available items-->
@@ -190,7 +190,7 @@
                                 </h:selectOneMenu>
                                 <h:outputLabel value="Entrenador:" for="idEntrenador" />
                                 <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                   <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
                                     <!-- TODO: update below reference to list of available items-->
                                     <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
                                 </h:selectOneMenu>

@@ -78,7 +78,7 @@
                                                             <br/>
                                                             <h:outputLabel value="Finalización"/>
                                                             <br/>
-                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="end" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="end" value="#{torneoManagedBean.torneo.fechaFin}" title="FechaFin" required="true" requiredMessage="The FechaInicio field is required.">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
 
@@ -97,15 +97,12 @@
                                                         <br/>
                                                         <h:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}"/>
 
-                                                        <script>
+                                                         <script>
                                                             
-                                                            $("#start").datepicker,
-                                                            $("#end").datepicker()({
-                                                                dateFormat: 'mm/dd/yyyy'
+                                                            $("#fechaInicio").datepicker({
+                                                                dateFormat: 'mm/dd/yyyy'                             
                                                             });
                                                         </script>
-
-
 
                                                     </h:form>
 
@@ -178,7 +175,7 @@
                                                 </h:outputText></td>
 
                                             <td class="hidden-xs">
-                                                <h:outputText value="#{item.fechaInicio}">
+                                                <h:outputText value="#{item.fechaFin}">
                                                     <f:convertDateTime pattern="dd-MM-yyyy">
 
                                                     </f:convertDateTime>

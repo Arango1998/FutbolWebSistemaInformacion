@@ -69,46 +69,7 @@
   <br>
                             
                         </br>   
-                        <f:view>
-
-
-                            <h:form style="padding-top: 120px;">
-
-
-                                <center ><h1><h:outputText style="font-family: fantasy; color: black;" value="Registro del jugador Modo 1"/></h1></center>
-                                <h:panelGrid columns="2">
-                                    <h:outputLabel value="Jugador:" for="jugador" />
-                                    <h:selectOneMenu class="form-control" id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required." >
-                                        <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{usuarioManagedBean.jugadores}" var="Juga" itemLabel="#{Juga.idUsuario},#{Juga.documento}, #{Juga.primerNombre} #{Juga.primerApellido}"/>
-                                    </h:selectOneMenu>
-                                    
-                                    <h:outputLabel value="Posicion:" for="posicion" />
- <h:outputLabel value="Posicion:" for="posicion" />
-                                    
-                                    
-                                                                   <h:selectOneMenu class="form-control" id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required.">
-                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                            <f:selectItem  itemValue="Defensa" itemLabel="Defensa"/>
-                                                            <f:selectItem  itemValue="Volante" itemLabel="Volante"/>
-                                                            <f:selectItem itemValue="Defensa" itemLabel="Defensa"/>
-                                                            <f:selectItem itemValue="Arquero" itemLabel="Arquero"/>
-
-                                                        </h:selectOneMenu>
-                                    
-                                    <h:outputLabel value="Equipo:" for="fkIdEquipo" />
-                                    <h:selectOneMenu class="form-control" id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
-                                        <!-- TODO: update below reference to list of available items-->
-                                        <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="equi" itemLabel="#{equi.nombreEquipo}"/>
-                                    </h:selectOneMenu>
-                                   </h:panelGrid>
-                                <br/>
-                                <br/>
-                                <h:commandButton value="Registrar Jugador" class="btn btn-info " action="#{jugadorManagedBean.creaJugador()}"/>
-                               
-                            </h:form>
-                        </f:view>
-                        
+                    
                                     <hr />
                                 
 
@@ -176,7 +137,8 @@
                                     </h:selectOneMenu>
 
                                 </h:panelGrid>
-                                  <br/>
+
+                                 <br/>
                                 <br/>
                                 <h:commandButton value="Registrar Jugador" class="btn btn-info " action="#{jugadorManagedBean.creaJugador()}"/>
                                
@@ -201,9 +163,14 @@
                     </center>  
 
                 </div>
+              
+
             </ui:define>
 
         </ui:composition>
 
     </body>
 </html>
+
+
+

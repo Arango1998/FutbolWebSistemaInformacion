@@ -49,9 +49,9 @@ public class Jugador implements Serializable, IDTO {
     @Size(min = 1, max = 9)
     @Column(name = "posicion")
     private String posicion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJugador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idJugador", fetch = FetchType.EAGER)
     private List<Seguimiento> seguimientoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJugador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idJugador", fetch = FetchType.EAGER)
     private List<SeguimientoEncuentro> seguimientoEncuentroList;
     @JoinColumn(name = "fk_id_equipo", referencedColumnName = "id_equipo")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
@@ -59,9 +59,9 @@ public class Jugador implements Serializable, IDTO {
     @JoinColumn(name = "id_jugador", referencedColumnName = "id_usuario", insertable = false, updatable = false)
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Usuario usuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkIdJugador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "fkIdJugador", fetch = FetchType.EAGER)
     private List<Pago> pagoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idJugador", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "idJugador", fetch = FetchType.EAGER)
     private List<PosicionSeguimiento> posicionSeguimientoList;
 
     public Jugador() {
