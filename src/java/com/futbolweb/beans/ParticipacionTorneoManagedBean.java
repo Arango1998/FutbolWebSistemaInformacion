@@ -6,6 +6,7 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.ParticipacionTorneo;
 import com.futbolweb.persistence.facades.ParticipacionTorneoFacade;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -29,6 +31,16 @@ public class ParticipacionTorneoManagedBean implements Serializable, InterfaceCo
     private ParticipacionTorneo participacionTorneo;
     @EJB
     private ParticipacionTorneoFacade ptfacade;
+    @Inject
+    private SessionManagedBean sesionM;
+
+    public SessionManagedBean getSesionM() {
+        return sesionM;
+    }
+
+    public void setSesionM(SessionManagedBean sesionM) {
+        this.sesionM = sesionM;
+    }
 
     public ParticipacionTorneoManagedBean() {
     }
@@ -86,6 +98,13 @@ public class ParticipacionTorneoManagedBean implements Serializable, InterfaceCo
         participacionTorneo = p;
         return "registro_participacion_torneo.xhtml";
 
+    }
+    
+    public List<ParticipacionTorneo> listarPropiaParticipacionTorneo(){
+    
+    return getSesionM().getUsuarioSesion().getJugador().getFkIdEquipo().getParticipacionesTorneoList();
+            
+    
     }
 
 }

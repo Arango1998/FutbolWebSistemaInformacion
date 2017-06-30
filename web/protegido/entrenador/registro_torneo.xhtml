@@ -70,7 +70,7 @@
                                                             <h:outputLabel value="Inicio"/>
                                                             <br/>
 
-                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="start" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
 
@@ -78,9 +78,10 @@
                                                             <br/>
                                                             <h:outputLabel value="Finalización"/>
                                                             <br/>
-                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaFin" value="#{torneoManagedBean.torneo.fechaFin}" title="FechaFin" required="true" requiredMessage="The FechaInicio field is required.">
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="end" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
+
 
                                                             <h:outputLabel value="Organizador"/>
 
@@ -97,8 +98,10 @@
                                                         <h:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}"/>
 
                                                         <script>
-                                                            $(function () {
-                                                                $(".calendar").datepicker();
+                                                            
+                                                            $("#start").datepicker,
+                                                            $("#end").datepicker()({
+                                                                dateFormat: 'mm/dd/yyyy'
                                                             });
                                                         </script>
 
