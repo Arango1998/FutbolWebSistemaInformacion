@@ -70,7 +70,7 @@
                                                             <h:outputLabel value="Inicio"/>
                                                             <br/>
 
-                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="start" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                            <h:inputText  jsf:data-language='es'  class="form-control datepicker-here" id="start" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
 
@@ -97,10 +97,10 @@
                                                         <br/>
                                                         <h:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}"/>
 
-                                                         <script>
-                                                            
+                                                        <script>
+
                                                             $("#fechaInicio").datepicker({
-                                                                dateFormat: 'mm/dd/yyyy'                             
+                                                                dateFormat: 'mm/dd/yyyy'
                                                             });
                                                         </script>
 
@@ -120,12 +120,6 @@
                         </center>
 
                         <h:form id="dqw">
-
-
-
-
-
-
 
 
 
@@ -157,7 +151,7 @@
                                             <td  class="hidden-xs" align="center">
                                                 <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
 
-                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{torneoManagedBean.eliminarTorneo(item)}" update=":fEdit"/>
+                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{torneoManagedBean.eliminarTorneo(item)}" onclick="javascript:return confirmar()" update=":fEdit"/>
                                             </td>
 
 
@@ -181,15 +175,8 @@
                                                     </f:convertDateTime>
                                                 </h:outputText></td>
 
-
                                         </tr>
                                     </ui:repeat>
-
-
-
-
-
-
 
                                 </tbody>
                             </table>
@@ -203,11 +190,19 @@
                                 <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
 
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
 
-
-
-
-
+                                        return true;
+                                    }
+                                }
+                            </script>
 
                         </h:form>
 
@@ -223,46 +218,51 @@
 
 
                                 <div class="modal-header">
-                                    <center><h2>Edición de barrios</h2></center>
+                                    <center><h2>Modificar torneo</h2></center>
 
-                                    <h:form id="fEdit">
-
-
-                                        <h:outputLabel style="visibility: hidden;" value="IdTorneo:" for="idTorneo" />
-
-                                        <h:inputText style="visibility: hidden;" id="idTorneo" value="#{torneoManagedBean.torneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
-                                        <br/>
-                                        <h:outputLabel  value="Nombre del Torneo"/>
-
-                                        <h:inputText class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
-
-                                        <h:outputLabel value="Organizador"/>
-
-                                        <h:inputText class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
-
-                                        <h:outputLabel value="Contacto del organizador"/>
-
-                                        <h:inputTextarea class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
-
-                                        <h:outputLabel value="Inicio"/>
-                                        <br/>
-
-                                        <p:calendar value="#{torneoManagedBean.torneo.fechaInicio}" showOn="button">
-                                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                                        </p:calendar>
-
-                                        <br/>
-                                        <h:outputLabel value="Finalización"/>
-                                        <br/>
-                                        <p:calendar  value="#{torneoManagedBean.torneo.fechaFin}"/>
+                                    <f:view>
 
 
-                                        <br/>
-                                        <br/>
+                                        <h:form id="fEdit">
 
-                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{torneoManagedBean.guardarCambiosTorneo(torneoManagedBean.torneo)}" onclick="PF('formEdit').hide()"/></center>    
 
-                                    </h:form>
+                                            <h:outputLabel style="visibility:hidden;" value="IdTorneo:" for="idTorneo" />
+                                            <h:inputText style="visibility:hidden;" id="idTorneo" value="#{torneoManagedBean.torneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                            <br/>
+                                            <h:outputLabel   value="Nombre:" for="nombreTorneo" />
+                                            <h:inputText class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="NombreTorneo" required="true" requiredMessage="The NombreTorneo field is required."/>
+                                            <br/>
+                                            <h:outputLabel value="Organizador:" for="organizador" />
+                                            <h:inputText  class="form-control" id="organizador" value="#{torneoManagedBean.torneo.organizador}" title="Organizador" required="true" requiredMessage="The Organizador field is required."/>
+                                            <br/>
+                                            <h:outputLabel value="Datos de contacto:" for="datosContactoOrganizador" />
+                                            <h:inputTextarea  class="form-control" rows="4" cols="30" id="datosContactoOrganizador" value="#{torneoManagedBean.torneo.datosContactoOrganizador}" title="DatosContactoOrganizador" required="true" requiredMessage="The DatosContactoOrganizador field is required."/>
+                                            <br/>
+                                            <h:outputLabel value="Inicio:" for="fechaInicio" />
+                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{torneoManagedBean.torneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:inputText>
+                                            <br/>
+                                            <h:outputLabel value="Finalización:" for="fechaFin" />
+                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaFin" value="#{torneoManagedBean.torneo.fechaFin}" title="FechaFin" required="true" requiredMessage="The FechaFin field is required.">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:inputText>
+                                            <br/>
+                                            <br/>
+                                            <center>
+                                                <h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{torneoManagedBean.guardarCambiosTorneo(torneoManagedBean.torneo)}" onclick="PF('formEdit').hide()"/>
+
+                                            </center>   
+                                            <script>
+
+                                                $("#fechaInicio").datepicker,
+                                                        $("#fechaFin").datepicker({
+                                                    dateFormat: 'mm/dd/yyyy'
+                                                });
+                                            </script>
+                                        </h:form>
+                                    </f:view>
+
 
                                 </div>
 

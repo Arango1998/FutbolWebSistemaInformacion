@@ -46,7 +46,9 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h:form>
+                                                        <h:form id="fCreate">
+                                                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+
                                                             <center><h2><h:outputText value="Asignar torneo a equipo"/></h2></center>
 
 
@@ -95,13 +97,6 @@
                         <h:form id="dqw">
 
 
-
-
-
-
-
-
-
                             <table id="table-transform" value="#{participacionTorneoManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                                 <thead>
 
@@ -134,7 +129,7 @@
                                                 <center>
                                                     <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{participacionTorneoManagedBean.redireccionarParticipacionTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
 
-                                                    <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{participacionTorneoManagedBean.eliminar(item)}" update=":fEdit"/>
+                                                    <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{participacionTorneoManagedBean.eliminar(item)}" onclick="javascript:return confirmar()" update=":fEdit"/>
 
                                                 </center>
                                             </td>
@@ -166,11 +161,6 @@
                                     </ui:repeat>
 
 
-
-
-
-
-
                                 </tbody>
                             </table>
                             <br></br>
@@ -184,9 +174,19 @@
                             </h:commandLink>
 
 
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
 
-
-
+                                        return true;
+                                    }
+                                }
+                            </script>
 
 
                         </h:form>
@@ -203,13 +203,14 @@
 
 
                                 <div class="modal-header">
-                                    <center><h2>Edición de categorías</h2></center>
+
                                     <h:form id="fEdit">
+
                                         <center><h2><h:outputText value="Asignar torneo a equipo"/></h2></center>
-                                       
+
                                         <h:outputLabel style="visibility: hidden;" value="IdParticipacionTorneo:" for="idParticipacionTorneo" />
                                         <h:inputText style="visibility:hidden; " id="idParticipacionTorneo" value="#{participacionTorneoManagedBean.participacionTorneo.idParticipacionTorneo}" title="IdParticipacionTorneo" required="true" requiredMessage="The IdParticipacionTorneo field is required."/>
-
+                                        <br/>
                                         <h:outputLabel value="Descripcion:" for="descripcion" />
                                         <h:inputText class="form-control" id="descripcion" value="#{participacionTorneoManagedBean.participacionTorneo.descripcion}" title="Descripcion" />
                                         <br/>

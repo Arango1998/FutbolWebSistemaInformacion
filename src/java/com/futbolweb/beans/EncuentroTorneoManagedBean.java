@@ -54,7 +54,12 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
 
     public void crear() {
 
-        encuentroejb.create(encuentroTorneo);
+        try {
+            encuentroejb.create(encuentroTorneo);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Encuentro registrado con éxito"));
+
+        } catch (Exception e) {
+        }
 
     }
 
@@ -81,7 +86,7 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
 
         try {
             encuentroejb.edit(encuentroTorneo);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se modificó el registro"));
         } catch (Exception o) {
         }
 
@@ -119,12 +124,17 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
     public List<EncuentroTorneo> listar() {
 
         return encuentroejb.findAll();
-        
+
     }
-    
-    public void eliminar(EncuentroTorneo e){
-        
-    encuentroejb.remove(e);
-    
+
+    public void eliminar(EncuentroTorneo e) {
+
+        try {
+            encuentroejb.remove(e);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Registro eliminado"));
+
+        } catch (Exception o) {
+        }
+
     }
 }

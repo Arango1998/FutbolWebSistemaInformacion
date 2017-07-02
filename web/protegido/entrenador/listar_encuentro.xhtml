@@ -47,6 +47,8 @@
                                                 <div class="modal-body">
 
                                                     <h:form id="fCreate">
+                                                        <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+
                                                         <center><h1><h:outputText value="Registro de Encuentros"/></h1></center>
 
                                                         <br/>
@@ -58,7 +60,7 @@
                                                             <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
-    
+
 
                                                             <br/>
 
@@ -85,13 +87,13 @@
                                                             </h:selectOneMenu>
                                                         </div> 
                                                         <br/>
-                                                        <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" />
+                                                        <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" jsf:update="growl" />
 
-                                                    
+
                                                         <script>
-                                                            
+
                                                             $("#fechaInicio").datepicker({
-                                                                dateFormat: 'mm/dd/yyyy'                             
+                                                                dateFormat: 'mm/dd/yyyy'
                                                             });
                                                         </script>
 
@@ -115,7 +117,7 @@
 
                         </center>
 
-                        <h:form id="dqw">
+                        <h:form id="dqw" jsf:name="formulario">
 
 
                             <table id="table-transform"  value="#{encuentroTorneoManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
@@ -146,7 +148,7 @@
                                             <td  class="hidden-xs" align="center">
                                                 <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{encuentroTorneoManagedBean.redireccionarEncuentroTorneo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
 
-                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{encuentroTorneoManagedBean.eliminar(item)}" update=":fEdit"/>
+                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{encuentroTorneoManagedBean.eliminar(item)}" onclick="javascript:return confirmar()" update=":fEdit"/>
                                             </td>
 
 
@@ -183,6 +185,19 @@
                                 <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
 
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
 
                         </h:form>
 
@@ -208,8 +223,9 @@
                                         <br/>
                                         <h:outputLabel  value="Fecha del encuentro"/>
                                         <br/>
-                                        <p:calendar id="button" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}"/>
-
+                                        <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fecha" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:inputText>
                                         <br/>
 
                                         <h:outputLabel value="Descripción"/>
@@ -236,7 +252,13 @@
 
                                         <br/>
 
-                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{encuentroTorneoManagedBean.guardarCambiosEncuentroTorneo(encuentroTorneoManagedBean.encuentroTorneo)}" onclick="PF('formEdit').hide()"/></center>    
+                                        <center><h:commandButton  class="btn btn-outline btn-success" value="Guardar cambios" action="#{encuentroTorneoManagedBean.guardarCambiosEncuentroTorneo(encuentroTorneoManagedBean.encuentroTorneo)}" onclick="PF('formEdit').hide()"/></center>    
+                                        <script>
+
+                                            $("#fecha").datepicker({
+                                                dateFormat: 'mm/dd/yyyy'
+                                            });
+                                        </script>
 
                                     </h:form>
                                 </div> 

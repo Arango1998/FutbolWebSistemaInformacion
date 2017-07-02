@@ -51,12 +51,27 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
     }
 
     public void crearBarrio() {
-        bf.create(barrio);
+        try {
+
+            bf.create(barrio);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Barrio registrado con éxito"));
+
+        } catch (Exception e) {
+
+        }
 
     }
-    public void eliminarBarrio(Barrio b){
-    
-    bf.remove(b);
+
+    public void eliminarBarrio(Barrio b) {
+
+        try {
+            bf.remove(b);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Registro eliminado"));
+
+        } catch (Exception e) {
+
+        }
+
     }
 
     public void redireccionar() {
@@ -77,7 +92,7 @@ public class BarrioManagedBean implements Serializable, InterfaceController<Barr
 
         try {
             bf.edit(barrio);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se modificó el registro"));
         } catch (Exception e) {
         }
 

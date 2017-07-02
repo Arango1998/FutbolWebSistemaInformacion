@@ -75,20 +75,30 @@ public class ParticipacionTorneoManagedBean implements Serializable, InterfaceCo
 
     public void create() {
 
-        ptfacade.create(participacionTorneo);
+        try {
+            ptfacade.create(participacionTorneo);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Equipo inscrito"));
+
+        } catch (Exception e) {
+        }
 
     }
 
     public void eliminar(ParticipacionTorneo p) {
 
-        ptfacade.remove(p);
+        try {
+            ptfacade.remove(p);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Registro eliminado"));
+
+        } catch (Exception e) {
+        }
 
     }
 
     public void guardarCambiosParticipacion(ParticipacionTorneo p) throws IOException {
         try {
             ptfacade.edit(participacionTorneo);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se modificó el registro"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se modificó el registro"));
         } catch (Exception e) {
         }
     }
@@ -99,12 +109,11 @@ public class ParticipacionTorneoManagedBean implements Serializable, InterfaceCo
         return "registro_participacion_torneo.xhtml";
 
     }
-    
-    public List<ParticipacionTorneo> listarPropiaParticipacionTorneo(){
-    
-    return getSesionM().getUsuarioSesion().getJugador().getFkIdEquipo().getParticipacionesTorneoList();
-            
-    
+
+    public List<ParticipacionTorneo> listarPropiaParticipacionTorneo() {
+
+        return getSesionM().getUsuarioSesion().getJugador().getFkIdEquipo().getParticipacionesTorneoList();
+
     }
 
 }
