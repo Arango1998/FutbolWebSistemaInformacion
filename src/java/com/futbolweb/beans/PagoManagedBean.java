@@ -121,7 +121,10 @@ public class PagoManagedBean implements InterfaceController<Pago> {
             return  "listapagos.xhtml";
        
     }
+    public void verPago(Pago p){
     
+    this.pago=p;
+    }
     
     public void guardarCambiosPago(Pago p) throws IOException {
 

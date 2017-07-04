@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -11,48 +12,93 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
+                 <!-- Sidebar -->
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
+                <!-- /#sidebar-wrapper -->
 
-                    <br></br>
+                <!-- Page Content -->
+                
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <br></br>
 
-                    <header>
-                        <h1 class="page-header text-center" style="font-family: fantasy; color: whitesmoke;">Lista de Jugadores</h1>
-                    </header>
-                    <p style="font-family: fantasy; color: whitesmoke;">Elija al jugador al que desee consultar sus registros de pagos </p>
+                        <header>
+                            <h1 class="page-header text-center">Lista de jugadores</h1>
+                        </header>
+                         <center>
+                             <p>Elija al jugador al que desee consultar sus registros de pagos </p>        
+                        <br></br>
+                       
+                         
 
-                    <f:view>
+                        </center>
+                    
 
 
                         <h:form>
-                            <p:dataTable style="font-family: fantasy;" value="#{jugadorManagedBean.listarJugadores()}" var="item">
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Jugador"/>
-                                    </f:facet>
-                                    <h:outputText value="Doc:#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Posicion"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.posicion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Equipo"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
-                                </p:column>
-                                <p:column>
-                                    <h:commandButton style="font-family: fantasy;" class="btn-outline" value="Ver informe de pagos" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}" />
-                               
-                                     
-                                </p:column>
-                            </p:dataTable>
-                        </h:form>
-                    </f:view>
+                           <table id="table-transform" value="#{jugadorManagedBean.listarJugadores()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
 
+                                    <tr >
+                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
+                                        <th class="hidden-xs">Jugador</th>
+                                        <th class="hidden-xs">Nombre</th>
+                                        <th class="hidden-xs">Apellido</th>
+                                        <th class="hidden-xs">Posición</th>
+                                         <th class="hidden-xs">Equipo</th>
+                                         <th class="hidden-xs">Informe de Pagos</th>
+                                         
+                                       
+
+
+
+                                    </tr>
+                                </thead>
+                                  <tbody>
+
+                                    <ui:repeat  value="#{jugadorManagedBean.listarJugadores()}" var="item">
+
+
+                                        <tr>
+                                           
+                                                  
+
+                                         
+                                            <td class="hidden-xs">#{item.usuario.documento}</td>
+                                            <td class="hidden-xs">#{item.usuario.primerNombre}</td>
+                                            <td class="hidden-xs">#{item.usuario.primerApellido}</td>
+                                            <td class="hidden-xs">#{item.posicion}</td>
+                                            <td class="hidden-xs">#{item.fkIdEquipo.nombreEquipo}</td>
+                                            
+                                            
+                                            <td><h:commandButton value="Ver informe de pagos" class="btn btn-default" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}"/></td>
+                                         
+
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                             <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                    
+                        </h:form>
 
 
                     <div class="container-fluid">
@@ -118,7 +164,7 @@
                     </div>
 
                 </div>
-
+                </div>
             </ui:define>
 
         </ui:composition>
