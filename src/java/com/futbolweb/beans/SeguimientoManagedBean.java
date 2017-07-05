@@ -9,9 +9,12 @@ import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Seguimiento;
+import com.futbolweb.persistence.facades.EntrenadorFacade;
 import com.futbolweb.persistence.facades.JugadorFacade;
+import com.futbolweb.persistence.facades.PosicionSeguimientoFacade;
 import com.futbolweb.persistence.facades.SeguimientoFacade;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -33,6 +36,8 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
     private String cedula;
 
     private Jugador js;
+    
+    
 
     public Jugador getJs() {
         js.getFkIdEquipo().getIdEntrenador().getExperiencia();
@@ -51,9 +56,7 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
         this.cedula = cedula;
     }
     
-    public void buscarJugador(){
-        js = segf.buscar(cedula);
-    }
+   
     
     private List<Seguimiento> seguimientoDelJugador;
     List<Seguimiento> lista;
@@ -73,6 +76,26 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
     private Jugador jugador;
     @EJB
     private JugadorFacade jugadorF;
+    @EJB
+    private PosicionSeguimientoFacade psef;
+    @EJB
+    private EntrenadorFacade ef;
+
+    public EntrenadorFacade getEf() {
+        return ef;
+    }
+
+    public void setEf(EntrenadorFacade ef) {
+        this.ef = ef;
+    }
+
+    public PosicionSeguimientoFacade getPsef() {
+        return psef;
+    }
+
+    public void setPsef(PosicionSeguimientoFacade psef) {
+        this.psef = psef;
+    }
 
     public SeguimientoManagedBean() {
     }
@@ -128,22 +151,24 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
         List<Seguimiento> lseguimiento = segf.listarSeguimientoEspecifico(j);
         lista = lseguimiento;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jugadorSeguimiento", j);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jseg", j);
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
     }
 
     
-    public void registrarSeguimiento(){
-        Seguimiento se = this.getListaJuagador().get(this.getListaJuagador().size()-1);
-        seguimientoDelJugador = segf.registrarSeguimiento(se);
-    }
+   // public void registrarSeguimiento(){
+       // Seguimiento se = this.getListaJuagador().get(this.getListaJuagador().size()-1);
+  //      seguimientoDelJugador = segf.registrarSeguimiento(se);
+    //}
     
-    //public void registrarSeguimiento(Seguimiento s){
-    //   seguimiento.setIdJugador();
-    // seguimiento.setIdEntrenador();
-    //Date fecha= new Date();
-    //seguimiento.setIdPosicionSeguimiento();
-    //segf.create(seguimiento);}
+    public void registrarSeguimiento(Seguimiento s){
+    Jugador ju =  (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jseg");
+    seguimiento.setIdJugador(ju);
+    seguimiento.setFechaSeguimiento(new Date());
+    seguimiento.setIdEntrenador(ef.obtenerIdEntrenador());
+    seguimiento.setIdPosicionSeguimiento(psef.obtenerIdPosicion());
+    
+    segf.create(seguimiento);}
     
     public String eliminarSeguimiento(Seguimiento ser) {
         segf.remove(ser);

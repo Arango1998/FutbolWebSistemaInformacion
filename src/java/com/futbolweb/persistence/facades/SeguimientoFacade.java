@@ -45,26 +45,8 @@ public class SeguimientoFacade extends AbstractFacade<Seguimiento> {
         return lista;
     }
 
-    public List<Seguimiento> registrarSeguimiento(Seguimiento s) {
-        try {
-            s.setFechaSeguimiento(new Date());
-            Usuario u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-            
-            Query query = getEntityManager().createQuery("SELECT e FROM Entrenador e WHERE e.usuario.idUsuario = :id")
-                    .setParameter("id", u.getIdUsuario());
-            Entrenador e = (Entrenador) query.getResultList().get(0);
-            s.setIdEntrenador(e);
-            getEntityManager().persist(s);
-            return this.listarSeguimientoEspecifico(s.getIdJugador());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return new ArrayList<>();
-    }
     
-    public Jugador buscar(String cedula) {
-        return (Jugador) getEntityManager().createQuery("SELECT j FROM Jugador j WHERE j.idJugador = :d")
-                .setParameter("d", Integer.valueOf(cedula))
-                .getResultList().get(0);
-    }
+    
+    
+   
 }

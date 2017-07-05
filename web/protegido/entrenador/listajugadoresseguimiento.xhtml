@@ -11,78 +11,57 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
-                    
+                
+                
+                <f:view>
+
+
                     <h:form>
-                        <h:inputText value="#{seguimientoManagedBean.cedula}"/>
-                        <h:commandButton value="buscar" actionListener="#{seguimientoManagedBean.buscarJugador()}">
-                            <f:ajax execute="@this" render="infoJugador"/>
-                        </h:commandButton>
+                        <h1><h:outputText value="Listado Seguimientos"/></h1>
+                        <p:dataTable value="#{listaSeguimientosJugador.listaSeguimientoJugador}" var="item">
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FechaSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaSeguimiento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdJugador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idJugador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdEntrenador"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idEntrenador}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPosicionSeguimiento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPosicionSeguimiento}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandButton ajax="false" value="Eliminar" action="#{seguimientoManagedBean.eliminarSeguimiento(item)}"/>
+                            </p:column>
+                            <p:column>
+                                
+                            </p:column>
+                        </p:dataTable>
+                        <p:commandButton value="Crear Seguimiento" action="#{seguimientoManagedBean.registrarSeguimiento(s)}"/>
                     </h:form>
-                    
-                    <h:form id="infoJugador">
-                        <h:outputText style="color:white" value="#{session.getAttribute('jugadorSeguimiento').fkIdEquipo.nombreEquipo}"/>
-                        <h:outputText style="color:white" value="#{session.getAttribute('jugadorSeguimiento').fkIdEquipo.idEntrenador.experiencia}"/>
-                    </h:form>
-                    <f:view>
+                </f:view>
 
+                
 
-                        <h:form style="padding-top: 150px;">
+                   
 
-
-                            <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Resultado de seguimientos"/></h1></center>
-                            <p:dataTable id="tablaresultado" value="#{seguimientoManagedBean.listarSeguimiento()}" var="item">
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="FechaSeguimiento"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fechaSeguimiento}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ResultadoSeguimiento"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.resultadoSeguimiento}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Observacion"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.observacion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Jugador"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idJugador.usuario.primerNombre}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Entrenador"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="PosicionSeguimiento"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton ajax="false" value="Eliminar" action="#{seguimientoManagedBean.eliminarSeguimiento(item)}"/>
-
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton value="Valoracion desempeños"/>
-                                </p:column>
-                            </p:dataTable>
-                            <p:commandButton value="Crear seguimiento" actionListener="#{seguimientoManagedBean.registrarSeguimiento()}" update="tablaresultado"/>
-                        </h:form>
-                    </f:view>
-
-                </div>
 
             </ui:define>
 

@@ -6,8 +6,10 @@
 package com.futbolweb.persistence.facades;
 
 import com.futbolweb.persistence.entities.Entrenador;
+import com.futbolweb.persistence.entities.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -39,5 +41,15 @@ public class EntrenadorFacade extends AbstractFacade<Entrenador> {
     lista = query.getResultList();
     return lista;
     }
+    
+    public Entrenador obtenerIdEntrenador(){
+        Usuario u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            
+            Query query = em.createQuery("SELECT e FROM Entrenador e WHERE e.usuario.idUsuario = :id")
+                    .setParameter("id", u.getIdUsuario());
+            Entrenador e = (Entrenador) query.getResultList().get(0);
+            return e;
+    }
+    
     
 }

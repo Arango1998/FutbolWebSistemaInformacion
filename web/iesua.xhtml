@@ -1,43 +1,70 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+      xmlns:p="http://primefaces.org/ui">
+
     <body>
-     
-        <f:view>
+
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
 
 
-            <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <h:panelGrid columns="2">
-                      <h:outputLabel value="Descripcion:" for="descripcion" />
-                      <h:inputText class="form-control" id="descripcion" value="#{participacionTorneoManagedBean.participacionTorneo.descripcion}" title="Descripcion" />
-                    <h:outputLabel value="IdEquipo:" for="idEquipo" />
-                    <h:selectOneMenu id="idEquipo" value="#{participacionTorneoManagedBean.participacionTorneo.idEquipo}" title="IdEquipo" required="true" requiredMessage="The IdEquipo field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="lis" itemLabel="#{lis.nombreEquipo}"/>
-                    </h:selectOneMenu>
-                    <h:outputLabel value="IdTorneo:" for="idTorneo" />
-                    <h:selectOneMenu id="idTorneo" value="#{participacionTorneoManagedBean.participacionTorneo.idTorneo}" title="IdTorneo" required="true" requiredMessage="The IdTorneo field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{torneoManagedBean.listar()}" var="lisTor" itemLabel="#{lisTor.nombreTorneo}"/>
-                    </h:selectOneMenu>
-                    <h:commandButton value="Registrar" action="#{participacionTorneoManagedBean.create()}"/>
-                </h:panelGrid>
-            </h:form>
-        </f:view>
+                    
+
+                    <f:view>
+
+                        
+                            <h:form id="initadi" style="padding-top: 100px;">
+
+                            <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Jugadores"/></h1></center>
+                              <h:commandLink title="Descargar tabla en pdf">
+                                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="pdf" target="listajugar" fileName="ListadoDeTorneos"/>
+                                    </h:commandLink>
+                                    <h:commandLink title="Descargar tabla en Excel">
+                                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                        <p:dataExporter type="xls" target="listajugar" fileName="ListadoDeJugadores"/>
+                                    </h:commandLink>
+                            <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" id="listajugar" var="item">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Jugador"/>
+                                    </f:facet>
+                                    <h:outputText value="Doc:#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Posicion"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.posicion}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Equipo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton ajax="false" value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.idJugador)}" ></p:commandButton>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
 
 
-        
+                </div>
+
+
+            </ui:define>
+
+        </ui:composition>
+
     </body>
 </html>
