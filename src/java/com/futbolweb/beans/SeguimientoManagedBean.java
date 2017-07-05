@@ -161,14 +161,20 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
   //      seguimientoDelJugador = segf.registrarSeguimiento(se);
     //}
     
-    public void registrarSeguimiento(Seguimiento s){
+    public String registrarSeguimiento(){
+        
     Jugador ju =  (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jseg");
     seguimiento.setIdJugador(ju);
+        System.out.println(seguimiento.getIdJugador());
     seguimiento.setFechaSeguimiento(new Date());
+        System.out.println(seguimiento.getFechaSeguimiento());
     seguimiento.setIdEntrenador(ef.obtenerIdEntrenador());
+        System.out.println(seguimiento.getIdEntrenador());
     seguimiento.setIdPosicionSeguimiento(psef.obtenerIdPosicion());
-    
-    segf.create(seguimiento);}
+        System.out.println(seguimiento.getIdPosicionSeguimiento());
+    segf.create(seguimiento);
+    return solicitarJugador(seguimiento.getIdJugador().getIdJugador());
+    }
     
     public String eliminarSeguimiento(Seguimiento ser) {
         segf.remove(ser);

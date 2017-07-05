@@ -33,7 +33,7 @@ public class PosicionSeguimientoFacade extends AbstractFacade<PosicionSeguimient
     }
     
     public PosicionSeguimiento obtenerIdPosicion(){
-        int idps; 
+      
         PosicionSeguimiento pseg= (PosicionSeguimiento) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jseg");
         Query query = em.createQuery("SELECT p.idPosicionSeguimiento FROM PosicionSeguimiento p WHERE p.idJugador = ?1 ORDER BY p.idPosicionSeguimiento DESC");
         query.setParameter(1, pseg);
