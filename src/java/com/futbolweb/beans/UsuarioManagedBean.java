@@ -120,11 +120,28 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
             usuario.setIdEstado(getEstadoUsuarioManagedBean().getObjectByKey(1));
             usuario.setIdTipoRol(getRolManagedBean().getObjectByKey(5));
             uf.create(usuario);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario registrado con éxito"));
-
+            if (usuario != null) {
+                
+            Email envioU;
+            envioU = new Email("Registro de usuario exitoso", "Apreciado usuario "+usuario.getPrimerNombre()+" "+usuario.getPrimerApellido()+", Se ha realizado con exito su registro en el sistema Futbol Web."
+                    + ""+" Gracias por registrarse en nuestro sistema, se le informa que su rol actual es: '"+usuario.getIdTipoRol().getNombreRol()+"' y su estado actual es:'"+usuario.getIdEstado().getNombreEstado()+"' hasta que el coordinador verifique y actualice sus datos."
+                    + ""+" Accederá con su documento:'"+usuario.getDocumento()+"'"
+                    + " y su contraseña:'"+usuario.getClave()+"",usuario.getCorreo());
+            System.out.println(envioU.toString());
+            envioU.enviarEmail2();
+            }
         } catch (Exception e) {
         }
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario registrado con éxito"));
 
+    }
+    
+       public void redireccionarUsuariosatisfatorio() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registro_satisfactorio.xhtml");
+        } catch (Exception e) {
+        }
     }
     
     
@@ -221,6 +238,16 @@ public class UsuarioManagedBean implements Serializable, InterfaceController<Usu
         try {
 
             uf.create(usuario);
+            if (usuario != null) {
+                
+            Email envioU;
+            envioU = new Email("Registro de usuario exitoso", "Apreciado usuario "+usuario.getPrimerNombre()+" "+usuario.getPrimerApellido()+", Se ha realizado con exito su registro en el sistema Futbol Web."
+                    + ""+" Gracias por registrarse en nuestro sistema, se le informa que su rol actual es: '"+usuario.getIdTipoRol().getNombreRol()+"' y su estado actual es:'"+usuario.getIdEstado().getNombreEstado()+"'."
+                    + ""+" Accederá con su documento:'"+usuario.getDocumento()+"'"
+                    + " y su contraseña:'"+usuario.getClave()+"",usuario.getCorreo());
+            System.out.println(envioU.toString());
+            envioU.enviarEmail2();
+            }
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Usuario registrado con éxito"));
 
         } catch (Exception e) {

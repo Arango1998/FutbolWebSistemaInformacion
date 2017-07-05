@@ -1,109 +1,283 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Registrar usuario</title>
-         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
-        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
 
-    </h:head>
-    <h:body>
-
-        <div class="container">
-            <div class="row">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <center>
-                            <h3 class="page-header">Registrar Usuario Nuevo</h3>
+        <script src="resources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="resources/js/index.js" type="text/javascript"></script>
+        <script src="resources/js/formulario.js" type="text/javascript"></script>
+        
 
 
-                        </center>
-                        <f:view>
-                            <h:form>
-                                <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
-                                  
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="Documento:" for="documento" />
-                                    <h:inputText  class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                                </div>
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="PrimerNombre:" for="primerNombre" />
-                                    <h:inputText  class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                                </div>
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="PrimerApellido:" for="primerApellido" />
-                                    <h:inputText  class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-                                </div>
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="Clave:" for="clave" />
-                                    <h:inputSecret  class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                </div>
-                               
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
-                                    <h:inputText  class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:inputText>
-                                </div>
+    </head>
+    <body>
+        <style>
+            /*custom font*/
+            @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
+            /*basic reset*/
+            * {margin: 0; padding: 0;}
 
-                                <div class="form-group float-label-control">
-                                    <h:outputLabel value="Correo:" for="correo" />
-                                    <h:inputText  class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+            html {
+                
+                /*Image only BG fallback*/
+                background: url('resources/images/PicsArt_06-29-06.28.05.jpg');
+                background-attachment: fixed;
+                background-repeat:no-repeat; 
+                /*background = gradient + image pattern combo*/
+               
+            }
 
-
-                                </div>
-                                <p:commandButton class="btn btn-success btn-lg btn-block"    value="Registrar Usuario" action="#{usuarioManagedBean.creaUsuarioInvitado()}" update="growl" />
-
-
-
-                            </h:form>
-                        </f:view>
-                    </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <div class="col-sm-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    Recuerde al Registrar...
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul>
-                                    <li>1: Hacer los pagos en el club. </li>
-                                    <hr />
-                                    <li>2: Tener los nombres y apellidos del nuevo usuario. </li>
-                                    <hr />
-                                    <li>3: Tener el Feha nacimiento del nuevo usuario. </li>
-                                    <hr />
-                                    <li>4: Tener los Documento del nuevo usuario. </li>
-                                    <hr />
-                                    <li>5: Tener el correo del nuevo usuario. </li>
-                                    <hr />
-                                    <li>6: Finalmente registrar al nuevo usuario. </li>
-                                    <hr />
-                                
-
-                                </ul>
-                            </div>
-                            
-                            <p><a href="pagina_principal.xhtml" class="btn btn-info btn-lg btn-block" >Pagina Principal</a></p>
-                             
-
-                        </div>
-                    </div>
+            body {
+                font-family: montserrat, arial, verdana;
+                height: 100%;
                     
-                </div>
-            </div>
-        </div>
-        <script src="../resources/inicio.js" type="text/javascript"></script>
-    </h:body>
-</html>
+            }
+            /*form styles*/
+            #msform {
+                width: 900px;
+                margin: 25px auto;
+                text-align: center;
+                position: relative;
+            }
+            #msform fieldset {
+                background: white;
+                border: 0 none;
+                border-radius: 3px;
+                box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+                padding: 20px 30px;
 
+                box-sizing: border-box;
+                width: 80%;
+                margin: 0 10%;
+
+                /*stacking fieldsets above each other*/
+                position: absolute;
+            }
+            /*Hide all except first fieldset*/
+            #msform fieldset:not(:first-of-type) {
+                display: none;
+            }
+            /*inputs*/
+            #msform input, #msform textarea {
+                padding: 15px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                margin-bottom: 10px;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: montserrat;
+                color: #2C3E50;
+                font-size: 13px;
+            }
+            /*buttons*/
+            #msform .action-button {
+                width: 100px;
+                background: #27AE60;
+                font-weight: bold;
+                color: white;
+                border: 0 none;
+                border-radius: 1px;
+                cursor: pointer;
+                padding: 10px 5px;
+                margin: 10px 5px;
+            }
+            #msform .action-button:hover, #msform .action-button:focus {
+                box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+            }
+            /*headings*/
+            .fs-title {
+                font-size: 15px;
+                text-transform: uppercase;
+                color: #2C3E50;
+                margin-bottom: 10px;
+            }
+            .fs-subtitle {
+                font-weight: normal;
+                font-size: 13px;
+                color: #666;
+                margin-bottom: 20px;
+            }
+            /*progressbar*/
+            #progressbar {
+                margin-bottom: 30px;
+                overflow: hidden;
+                /*CSS counters to number the steps*/
+                counter-reset: step;
+            }
+            #progressbar li {
+                list-style-type: none;
+                color: white;
+                text-transform: uppercase;
+                font-size: 9px;
+                width: 33.33%;
+                float: left;
+                position: relative;
+            }
+            #progressbar li:before {
+                content: counter(step);
+                counter-increment: step;
+                width: 20px;
+                line-height: 20px;
+                display: block;
+                font-size: 10px;
+                color: #333;
+                background: white;
+                border-radius: 3px;
+                margin: 0 auto 5px auto;
+            }
+            /*progressbar connectors*/
+            #progressbar li:after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                background: white;
+                position: absolute;
+                left: -50%;
+                top: 9px;
+                z-index: -1; /*put it behind the numbers*/
+            }
+            #progressbar li:first-child:after {
+                /*connector not needed before the first step*/
+                content: none; 
+            }
+            /*marking active/completed steps green*/
+            /*The number of the step and the connector before it = green*/
+            #progressbar li.active:before,  #progressbar li.active:after{
+                background: #27AE60;
+                color: white;
+            }
+
+        </style>
+        <!-- multistep form -->
+        <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Terminos de registo</li>
+                <li>Nueva cuenta de usuario</li>
+                <li>Datos Usuaruario</li>
+            </ul>
+            <!-- fieldsets -->
+            <f:view>
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+
+                    <fieldset>
+                        <h2 class="fs-title">Buen día querido usuario: Invitado</h2>
+                        <h3 class="fs-subtitle"><center>
+                                Gracias por estar en nuestro sistema, a continuación le daremos los pasos para tener un registro exitoso.
+                            </center></h3>
+
+
+
+
+                        <H2 class="fs-subtitle">
+                            1- Hacer los pagos de matrícula en el club Expreso Rojo.
+                            <br/>
+                            <br/>
+                            2- Saber o disponer de  los datos  del <strong>Acudiente</strong> y <strong>Jugador</strong>.
+                            <br/>
+                            <br/>
+                            3- Diligenciar los datos correctamente y actuales del usuario en el formulario de registro.
+                            <br/>
+                            <br/>
+                            4- Estar al tanto del correo que diligencia y así recibir la notificación de que su registro fue exitoso.
+                            <br/>
+                            <br/>
+                            5- Una vez reciba e correo de que <strong>activación</strong> de usuario podrá <a href="inicio_sesion_usuario.xhtml" class="lnk-success"> Ingresar al sistema.</a>
+                            <br/>
+                            <br/>
+
+                            Gracias por su atención y cualquier inquietud no dude en <a href="inicio_sesion_usuario.xhtml" class="lnk-success">Contactarse </a>  con <strong> Futbol Web</strong>
+                        </H2>
+
+
+                       
+                        <input type="button" name="next" class="next action-button" value="Continuar" />
+                            <p><a href="pagina_principal.xhtml" class="btn btn-default">Pagina Principal</a></p>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">
+                            Nuevo Documento y clave del Usuario.
+                        </h2>
+                        <h3 class="fs-subtitle"><center>
+                                Recuerde que  con el <strong>Documento</strong> y <strong>Clave</strong> será con quien podrá iniciar sesión. 
+                            </center></h3>
+
+
+
+                        <h:outputLabel value="Documento:" for="documento" />
+                        <br/>
+                        <h:inputText maxlength="20"  t:type="number" t:placeholder="Ejemplo del Documento: 00000000000001"  id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                        <br/>
+                        <h:outputLabel value="Clave:" for="clave" />
+                        <br/>              
+                        <h:inputSecret t:placeholder="Ejemplo de la clave: ************* 72" maxlength="50" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                        <br/>
+                        <h:outputLabel value="Confirmar Clave:" for="clave2" />
+                        <br/>
+                        <h:inputSecret t:placeholder="Ejemplo de la clave: ************* 72" maxlength="50" id="clave2" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+
+                        <br/>
+
+
+
+
+
+
+                        <input type="button" name="previous" class="previous action-button" value="Anterior" />
+                        <input type="button" name="next" class="next action-button" value="Continuar" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Datos personales del nuevo Usuario: Invitado.</h2>
+                        <h3 class="fs-subtitle">Solicitamos que por favor ingrese sus datos actualizados y <strong> Correctamente </strong> escritos. </h3>
+
+
+                        <h:outputLabel value="Correo Electrónico:" for="correo" />
+                        <h:inputText  id="correo" t:type="email" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+
+                        <h:outputLabel value="Primer Nombre:" for="primerNombre" />
+                        <h:inputText  id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                        <h:outputLabel value="Primer Apellido:" for="primerApellido" />
+                        <h:inputText  id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                        <h:outputLabel value="Fecha de nacimento:" for="fechaDeNacimento" />
+                        <h:inputText  id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <input type="button" name="previous"  style="background-color: #ccc; color: black;" class="previous action-button" value="Anterior" />
+                        <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuariosatisfatorio()}"   style="width: 300px;" class="btn btn-success"  value="Registrar Usuario"  action="#{usuarioManagedBean.creaUsuarioInvitado()}" p:update="growl"/>
+
+
+
+
+
+
+ 
+                    </fieldset>
+
+                </h:form>
+            </f:view>
+            
+        </form>
+
+
+        <script src="resources/js/jquery.min.js" type="text/javascript"></script>
+
+        <script src="resources/js/jquery.easing.1.3.js" type="text/javascript"></script>
+
+        <script src="resources/js/usuario_nuevo.js" type="text/javascript"></script>
+    </body>
+</html>

@@ -57,6 +57,7 @@ public class JugadorManagedBean implements Serializable, InterfaceController<Jug
         try {
             jugadorEJB.create(jugador);
         } catch (Exception e) {
+          
         }
     }
     

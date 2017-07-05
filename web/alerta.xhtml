@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <link href="resources/alertas/sweetalert.css" rel="stylesheet" type="text/css"/>
+       
+    </head>
+    <body>
+       
+        <input type="text" id="username" required="true" placeholder="username"/>
+    <br/>
+    <br/>
+    <input type="password" id="password" required="true" placeholder="password"/>
+    <br/>
+  <br/>
+    <button onclick="validation();">login</button>
+      <script src="resources/alertas/sweetalert.min.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+  function validation()
+  {
+
+ var username = 'anga';
+    var password = '123456';
+    var userName = document.getElementById('username').value;
+    var passWord = document.getElementById('password').value;
+
+    if ((username == userName)  (password ==  passWord)) {
+      swal("Good job!", "You clicked the button!", "success");
+    }else{
+      sweetAlert("Oops...", "Something went wrong!", "error");
+    }
+
+
+  }
+</script>
+    </body>
+</html>

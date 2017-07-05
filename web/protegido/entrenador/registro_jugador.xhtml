@@ -46,22 +46,28 @@
 
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h:form>
-                                                        <center><h2><h:outputText value="Registro de Categoria"/></h2></center>
-
-                                                        <br/>
-                                                        <div class="rowContainer">
+                                                    <f:view>
 
 
-                                                            <h:outputLabel value="Nombre de la nueva Categoria:" for="nombreCategoria" />
-                                                            <h:inputText id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                                        <h:form>
+                                                            <h1><h:outputText value="Create/Edit"/></h1>
+                                                            <h:panelGrid columns="2">
+                                                                <h:outputLabel value="IdJugador:" for="idJugador" />
+                                                                <h:inputText id="idJugador" value="#{jugadorManagedBean.jugador.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required."/>
+                                                                <h:outputLabel value="Posicion:" for="posicion" />
+                                                                <h:inputText id="posicion" value="#{jugadorManagedBean.jugador.posicion}" title="Posicion" required="true" requiredMessage="The Posicion field is required."/>
+                                                                <h:outputLabel value="FkIdEquipo:" for="fkIdEquipo" />
+                                                                <h:selectOneMenu id="fkIdEquipo" value="#{jugadorManagedBean.jugador.fkIdEquipo}" title="FkIdEquipo" required="true" requiredMessage="The FkIdEquipo field is required.">
+                                                                    <!-- TODO: update below reference to list of available items-->
+                                                                    <f:selectItems value="#{equipoManagedBean.listarEquipos()}"/>
+                                                                </h:selectOneMenu>
+                                                                <h:commandButton value="regi" action="#{jugadorManagedBean.creaJugador()}"/>
+                                                            </h:panelGrid>
+                                                            
+                                                        </h:form>
+                                                    </f:view>
 
-                                                            <br></br>
-                                                            <center><p:commandButton actionListener="#{categoriaManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar Categoria" action="#{categoriaManagedBean.crearCatagoria()}" /></center>
-
-
-                                                        </div>
-                                                    </h:form>
+                                 
                                                 </div>
                                                 <div class="modal-footer">
 

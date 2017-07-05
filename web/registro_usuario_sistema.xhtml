@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+         <link href="resources/css/estilos.css" rel="stylesheet" type="text/css"/>
+         
+    </head>
+    <body>
+
+       	<div class="contenedor-formulario col-md-8">
+
+            <div class="wrap">
+                <form action="" class="formulario" name="formulario_registro" method="get">
+                    <h:form>
+
+
+
+
+                        <div>
+                            <div class="input-group">
+                                <h:outputLabel value="Documento:" for="documento" />
+                                <h:inputText  class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+
+
+                            </div>
+                            <div class="input-group">
+                                <h:outputLabel value="PrimerNombre:" for="primerNombre" />
+                                <h:inputText  class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+
+                            </div>
+                            <div class="input-group">
+                                <h:outputLabel value="PrimerApellido:" for="primerApellido" />
+                                <h:inputText  class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+
+
+                            </div>
+                            <div class="input-group">
+                                <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                                <h:inputText  class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:inputText>
+
+
+                            </div>
+                            <div class="input-group">
+                                <h:outputLabel value="Correo:" for="correo" />
+                                <h:inputText  class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+
+
+                            </div>
+                            <div class="input-group">
+						<input type="password" id="pass" name="pass"/>
+						<label class="label" for="pass">Contraseña:</label>
+					</div>
+					<div class="input-group">
+						<input type="password" id="pass2" name="pass2"/>
+						<label class="label" for="pass2">Repetir Contraseña:</label>
+					</div>
+
+                        </div>
+                    </h:form>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

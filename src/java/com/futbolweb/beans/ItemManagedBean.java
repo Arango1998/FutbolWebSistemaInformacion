@@ -47,7 +47,11 @@ public class ItemManagedBean implements Serializable, InterfaceController<Item> 
     
     
     public void registrarItem(){
-        itf.create(item);
+        try {
+            itf.create(item);
+        } catch (Exception e) {
+            throw e;
+        }
     }
     
     public void eliminarItem(){
@@ -69,7 +73,7 @@ public class ItemManagedBean implements Serializable, InterfaceController<Item> 
 
     @Override
     public Item getObjectByKey(Integer key) {
-        return itf.find(itf);
+        return itf.find(key);
     }
     
 }

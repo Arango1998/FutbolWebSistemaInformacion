@@ -193,12 +193,12 @@
                             <script language="JavaScript">
                                 function confirmar()
                                 {
-                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    if (swal("Good job!", "You clicked the button!", "warning"))
                                     {
                                         return false;
                                     } else
                                     {
-
+                                        
                                         return true;
                                     }
                                 }
