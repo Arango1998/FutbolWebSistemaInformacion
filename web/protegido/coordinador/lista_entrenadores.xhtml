@@ -16,184 +16,250 @@
             <ui:define name="content">
                 
 
-                <!-- Sidebar -->
+                            <div id="wrapper">
 
-                <!-- /#sidebar-wrapper -->
-
-                <!-- Page Content -->
-
-                <div class="rowContainer">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
-                        <br></br>
-
-                        <header>
-                            <h1 class="page-header text-center">Usuario: Entrenadores</h1>
-                        </header>
-                         <center>
-                             <p>Recuerde que al momento de cambiar el <b>Rol</b> o <b>Estado</b> del usuario este automáticamente desaparecerá del estado actual <b>En Espera.</b></p>        
-                        <br></br>
-                       
-                         
-
-                        </center>
-                          
-                        <h:form id="dqw">
-                           
-
-
-
-
-
-
+     
+        <div id="page-wrapper">
+            <div class="row">
+               <br/>
+               <br/>
+               <br/>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    
+                    
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Jugadores Actuales</center>
+                            <div class="pull-right">
+                            
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                 <f:view>
 
 
-                            <table id="table-transform" value="#{usuarioManagedBean.entrenador}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
-                                <thead>
-
-                                    <tr >
-                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
-                                        <th class="hidden-xs">Option</th>
-                                        <th class="hidden-xs">Documento</th>
-                                         <th class="hidden-xs">Nombre</th>
-                                         <th class="hidden-xs">Apellido</th>
-                                         <th class="hidden-xs">Fecha Nacimiento</th>
-                                         <th class="hidden-xs">Correo</th>
-                                         <th class="hidden-xs">Rol</th>
-                                         <th class="hidden-xs">Estado</th>
-                                           <th class="hidden-xs">Carta</th>
-                                       
-
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <ui:repeat  value="#{usuarioManagedBean.entrenador}" var="item">
-
-
-                                        <tr>
-                                            <td class="hidden-xs"><h:inputText t:type="checkbox"></h:inputText></td>
-                                                  <td  class="hidden-xs" align="center">
-                                            <p:commandButton class="btn btn-outline btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="E" onclick="PF('insertar').show();"  update=":editinvi"/>
-                                 <h:commandButton   class="btn btn-outline btn-danger" value="el" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/>
-                                            </td>
-
-                                         
-                                            <td class="hidden-xs">#{item.documento}</td>
-                                            <td class="hidden-xs">#{item.primerNombre}</td>
-                                            <td class="hidden-xs">#{item.primerApellido}</td>
-                                            <td class="hidden-xs">
-                                                <h:outputText value="#{item.fechaDeNacimento}">
-                                                    <f:convertDateTime pattern="dd-MM-yyyy">
-                                                        
-                                                    </f:convertDateTime>
-                                                </h:outputText></td>
-                                            <td>#{item.correo}</td>
-                                            <td>#{item.idTipoRol.nombreRol}</td>
-                                            <td>#{item.idEstado.nombreEstado}</td>
-                                            <td style="height: 130px;" class="col-md-4">
-                                           
-                                               <img class="weer" style="width: 120px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
+                                    <h:form>
                                         
-                                            </td>
+                                        <h:dataTable class="table table-bordered table-hover table-striped" value="#{usuarioManagedBean.entrenador}" var="item">
+                                           
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Codigo Entrenador"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.idUsuario}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Documento"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.documento}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Nombre"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.primerNombre} #{item.primerApellido}"/>
+                                            </h:column>
+                                           <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Correo"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.correo}"/>
+                                            </h:column>
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Experiencia"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.entrenador.experiencia}"/>
+                                            </h:column>
+                                            <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Diploma"/>
+                                            </f:facet>
+                                               <h:outputText />
+                                               <img class="weer" style="width: 170px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
+                                        </h:column>
+                                       
+                                         
+                                           
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Estado Usuario"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                                            </h:column>
+                                           
+                                           
+                                        </h:dataTable>
+                                    </h:form>
+                                </f:view>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                                      <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a  id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Registrar Jugador</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+
+                                                    </div>
+                                                    <center>
+                                                        <h1><h:outputText value="Registro Jugador"/></h1>
+                                                    </center>
+
+                                                    <div class="modal-body">
+                                                        <center>
+                                                         
+<f:view>
 
 
+    <h:form enctype="multipart/form-data">
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
+            <h:inputText id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
+            <h:outputLabel value="Experiencia:" for="experiencia" />
+            <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+            <h:outputLabel value="Diploma:" for="diploma" />
+            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
+            
+       
+        </h:panelGrid>
+        <h:commandButton value="registrar" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+    </h:form>
+</f:view>
 
-                                        </tr>
-                                    </ui:repeat>
+                                                        </center>
+                                                    </div>
+                                                    <div class="modal-footer">
 
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
 
+                                                    </div>
+                                                </div>
 
+                                            </div>
 
-
-
-
-                                </tbody>
-                            </table>
-                            <br></br>
-                             <h:commandLink title="Descargar tabla en pdf">
-                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
-                            </h:commandLink>
-                            <h:commandLink title="Descargar tabla en Excel">
-                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
-                            </h:commandLink>
-
-
-
-
-
-
-                         
-                        </h:form>
-                          <div aria-hidden="true">
-                                <p:dialog class="form-control"  widgetVar="insertar"
-                                          modal="true"
-                                          position="top"
-                                          resizable="false"
-                                          draggable="true"
-                                          closable="true">
-
-
-                                    <div class="modal-header">
-                                        <center><h3>Edición de categorías</h3></center>
-                                        <h:form id="editinvi">
-
-
-                                            <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
-                                            <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{usuarioManagedBean.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                            <br/>
-                                            <p:outputLabel value="Documento:" for="documento" />
-                                            <h:inputText class="form-control" id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
-                                            <p:outputLabel value="Nombre:" for="primerNombre" />
-                                            <h:inputText class="form-control" id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
-                                            <p:outputLabel value="Apellido:" for="primerApellido" />
-                                            <h:inputText class="form-control" id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
-                                            <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
-                                            <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                            <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
-                                            <h:inputText class="form-control" id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                                            </h:inputText>
-                                            <p:outputLabel value="Correo:" for="correo" />
-                                            <h:inputText class="form-control" id="correo" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-
-                                            <center>
-                                                <p:outputLabel value="Rol:" for="idTipoRol" />
-                                                <h:selectOneMenu class="form-control"  id="idTipoRol" value="#{usuarioManagedBean.usuario.idTipoRol}" required="true" requiredMessage="The IdTipoRol field is required.">
-                                                    <!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItems value="#{rolManagedBean.listarRolUsuario()}" var="rol" itemLabel="#{rol.nombreRol}"/>
-                                                </h:selectOneMenu>
-
-                                                <p:outputLabel  value="Estado:" for="idEstado" />
-                                                <h:selectOneMenu class="form-control"  id="idEstado" value="#{usuarioManagedBean.usuario.idEstado}" required="true" requiredMessage="The IdEstado field is required.">
-                                                    <!-- TODO: update below reference to list of available items-->
-                                                    <f:selectItems value="#{estadoUsuarioManagedBean.listarEstadoUsuario()}" var="estado" itemLabel="#{estado.nombreEstado}"/>
-                                                </h:selectOneMenu>
-
-                                            </center>
-
-
-                                            <center>
-                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioEntrenador()}" class="btn btn-outline btn-success" value="Guardar Cambios" action="#{usuarioManagedBean.editarInvitados()}" />
-
-                                            </center>
-
-
-                                        </h:form>
+                                        </div>
 
                                     </div>
-                                </p:dialog>
+                                </div>
                             </div>
-                   
-
-                  
+                             
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
                     </div>
-                    <div class="col-lg-1"></div>
+                    <!-- /.panel -->
+                    
+                    <!-- /.panel -->
                 </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <f:view>
+
+
+                                <h:form>
+                                   
+                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
+                                       
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre Equipo"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.nombreEquipo}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Categoria"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Entrenador"/>
+                                            </f:facet>
+                                            <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+                            </f:view>
+                             
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class=" fa-fw"></i><center>
+                                Categorias Actuales
+                            </center> 
+                        </div>
+                        <div class="panel-body">
+                                             <f:view>
+
+
+                            <h:form>
+                                
+                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Numero de Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idCategoria}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </f:view>
+                           
+                        </div>
+    
+                    </div>
+                    <!-- /.panel -->
+                   
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
             </ui:define>
 
         </ui:composition>

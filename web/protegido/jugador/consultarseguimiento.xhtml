@@ -12,57 +12,105 @@
 
             <ui:define name="content">
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../..//resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
 
-                    <f:view>
+                        <header>
+                            <h1 class="page-header text-center">Seguimiento de #{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}</h1>
+                        </header>
+                        <center>
+                            <p>Revisa tus seguimientos</p>        
+                            <br></br>
+
+                        </center>
+
+                        <h:form id="dqw">
 
 
-                        <h:form style="padding-top: 110px;">
+                            <table id="table-transform"  value="#{seguimientoManagedBean.listarSeguimientoPropio()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
 
-                            <h1><h:outputText style="padding-left: 450px; font-family: fantasy; color: whitesmoke" value="Seguimiento de #{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}"/></h1>
-                            <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoPropio()}" var="item">
+                                    <tr >
 
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Fecha del seguimiento"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fechaSeguimiento}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Calificación"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.resultadoSeguimiento}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Observación"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.observacion}"/>
-                                </p:column>
-                               
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Entrenador"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Posicion del seguimiento"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idPosicionSeguimiento.posicion}"/>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton value="Ver seguimiento"></p:commandButton>
-                                </p:column>
-                            </p:dataTable>
+                                        <th class="hidden-xs">Fecha</th>
+
+                                        <th class="hidden-xs">Calificación</th>
+
+                                        <th class="hidden-xs">Observación</th>
+
+                                        <th class="hidden-xs">Entrenador</th>
+
+                                        <th class="hidden-xs">Posición</th> 
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{seguimientoManagedBean.listarSeguimientoPropio()}" var="item">
+
+                                        <tr>
+
+                                          <td class="hidden-xs">
+                                              <h:outputText value="#{item.fechaSeguimiento}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy">
+
+                                                    </f:convertDateTime>
+                                                </h:outputText></td>
+
+
+                                        <td>#{item.resultadoSeguimiento}</td>
+
+                                        <td>#{item.observacion}</td>
+
+                                        <td >Doc:#{item.idEntrenador.usuario.documento}, #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}</td>
+
+
+                                        <td>#{item.idPosicionSeguimiento.posicion}</td>
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
+
+
                         </h:form>
-                    </f:view>
-                </div>
 
+
+                        <br/>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
             </ui:define>
 
 

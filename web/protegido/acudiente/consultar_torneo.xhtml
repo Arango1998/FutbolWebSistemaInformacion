@@ -18,11 +18,18 @@
                     <br></br>
 
                     <header>
-                        <h1 class="page-header text-center">Torneos</h1>
+                        <h1 class="page-header text-center">Torneos de la temporada</h1>
                     </header>
+                    <center>
+                        <p>Estos son los torneos disponibles para esta temporada</p>        
+                        <br></br>
+
+                    </center>
+
                     <h:form id="dqw">
 
-                        <table id="table-transform"  value="#{barrioManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+
+                        <table id="table-transform"  value="#{torneoManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                             <thead>
 
                                 <tr >
@@ -35,7 +42,7 @@
 
                                     <th class="hidden-xs">Inicio</th>
 
-                                    <th class="hidden-xs">Finalización</th>
+                                    <th class="hidden-xs">Finalizacion</th> 
 
 
                                 </tr>
@@ -44,23 +51,30 @@
 
                                 <ui:repeat  value="#{torneoManagedBean.listar()}" var="item">
 
-
                                     <tr>
 
+                                        <td class="hidden-xs" >#{item.nombreTorneo}</td>
 
-                                        <td >#{item.nombreTorneo}</td>
+                                        <td class="hidden-xs">#{item.organizador}</td>
 
-                                        <td>#{item.organizador}</td>
+                                        <td class="hidden-xs">#{item.datosContactoOrganizador}</td>
 
-                                        <td>#{item.datosContactoOrganizador}</td>
+                                        <td class="hidden-xs">
+                                            <h:outputText value="#{item.fechaInicio}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy">
 
-                                        <td>Día: #{item.fechaInicio.date} /  Mes:#{item.fechaInicio.month} /  Año:#{item.fechaInicio.year}</td>
+                                                </f:convertDateTime>
+                                            </h:outputText></td>
 
-                                        <td>#{item.fechaFin}</td>
+                                        <td class="hidden-xs">
+                                            <h:outputText value="#{item.fechaFin}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy">
 
-
+                                                </f:convertDateTime>
+                                            </h:outputText></td>
                                     </tr>
                                 </ui:repeat>
+
 
                             </tbody>
                         </table>
@@ -74,8 +88,11 @@
                             <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                         </h:commandLink>
 
-
                     </h:form>
+
+
+                    <br/>
+
                 </div>
                 <div class="col-lg-1"></div>
             </div>

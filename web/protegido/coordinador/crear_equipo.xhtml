@@ -12,122 +12,46 @@
 
             <ui:define name="content">
 
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/futbol.jpg); image-resolution: from-image; height: auto;">
-                    <div class="rowContainer">
-                        <div class="col-lg-1"></div>
-                        <div class="col-lg-10">
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
 
-
-
-
-                            <f:view>
-
-
-                                <h:form id="dqw" style="padding-top: 30px;">
-                                    <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="EQUIPOS PROGRAMADOS."/></h1>
-                                    <br/>
-                                    <p:dataTable  value="#{equipoManagedBean.listarEquipos()}" var="item">
-
-                                        <p:column>
-                                            <center>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Eliminar"/>
-                                                </f:facet>
-
-                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="eliminar" action="#{equipoManagedBean.eliminarEquipo(item)}" update=":fEdit"/>
-
-                                            </center>
-                                        </p:column>
-
-                                        <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Nombre Equipo"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.nombreEquipo}"/>
-                                        </p:column>
-
-                                        <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Entrenador"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.idEntrenador.usuario.documento}, #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                                        </p:column>
-                                        <p:column>
-                                            <center>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Editar"/>
-                                                </f:facet>
-                                                <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{equipoManagedBean.redireccionarEquipo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
-
-
-                                            </center>
-                                        </p:column>
-                                    </p:dataTable>
-                                </h:form>
-                            </f:view>
-
-
-                            <div aria-hidden="true">
-                                <p:dialog class="form-control" widgetVar="formEdit"
-                                          modal="true"
-                                          position="top"
-                                          resizable="false"
-                                          draggable="true"
-                                          closable="true">
-
-
-                                    <div class="modal-header">
-                                        <center><h2>Edición de Equipos</h2></center>
-
-                                        <h:form id="fEdit">
-
-                                            <h:outputLabel  value="IdEquipo:" for="idEquipo" style="visibility:hidden" />
-                                            <h:inputText class="form-control" id="idEquipo" style="visibility:hidden" value="#{equipoManagedBean.equipo.idEquipo}" title="IdEquipo" required="true" requiredMessage="The IdEquipo field is required."/>
-
-
-
-
-                                            <br/>
-                                            <h:outputLabel value="Nombre Equipo:" for="nombreEquipo" />
-                                            <h:inputText class="form-control" id="nombreEquipo" value="#{equipoManagedBean.equipo.nombreEquipo}" title="NombreEquipo" required="true" requiredMessage="The NombreEquipo field is required."/>
-
-                                            <br/>
-                                            <h:outputLabel value="Categoria:" for="fkIdCategoria" />
-                                            <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
-                                                <!-- TODO: update below reference to list of available items-->
-                                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categoria" itemLabel="#{categoria.nombreCategoria}"/>
-                                            </h:selectOneMenu>
-                                            <br/>  
-                                            <h:outputLabel value="Entrenador:" for="idEntrenador" />
-                                            <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                                <!-- TODO: update below reference to list of available items-->
-                                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
-
-                                            </h:selectOneMenu>
-                                            <br/>
-
-                                            <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{equipoManagedBean.guardarCambiosEquipo(equipoManagedBean.equipo)}" onclick="PF('formEdit').hide()"/></center>
-
-                                        </h:form>
-
-                                    </div>
-
-                                </p:dialog>
-
-
-                            </div>
-
-
-
-
-
+                        <header>
+                            <h1 class="page-header text-center">Equipos programados</h1>
+                        </header>
+                      
+                        <canvas id="bar-chart" width="3500" height="900"></canvas>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                        <script>
+                            new Chart(document.getElementById("bar-chart"), {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ["Juvenil", "Infantil", "Pre-juvenil", "Élite", "Superior"],
+                                    datasets: [
+                                        {
+                                            label: "Population (millions)",
+                                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                            data: [#{equipoManagedBean.juvenil().size()}, #{equipoManagedBean.infantil().size()}, #{equipoManagedBean.Prejuvenil().size()}, #{equipoManagedBean.elite().size()}, #{equipoManagedBean.superior().size()}]
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    legend: {display: false},
+                                    title: {
+                                        display: true,
+                                    }
+                                }
+                            });
+                        </script>
+                        <center>
+                               
+                            <br></br>
 
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" id="modal-41991" href="#modal-container-41991" role="button" class="btn" data-toggle="modal">Registrar Equipo</a>
+                                        <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-success"  data-toggle="modal">Registrar equipo</a>
 
                                         <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -139,40 +63,38 @@
                                                         </button>
 
                                                     </div>
-                                                    <center>
-                                                        <h1><h:outputText value="Crear Euipo"/></h1>
-                                                    </center>
-
                                                     <div class="modal-body">
-                                                        <center>
-                                                            <f:view>
+                                                        <h:form id="fCreate">
+                                                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
 
+                                                            <center><h1><h:outputText value="Registro de equipos"/></h1></center>
 
-                                                                <h:form>
+                                                            <br/>
+                                                            <div class="rowContainer">
 
-                                                                    <h:panelGrid columns="2">
-                                                                        <h:outputLabel class="form-control" value="Nombre Equipo:" for="nombreEquipo" />
-                                                                        <h:inputText class="form-control" id="nombreEquipo" value="#{equipoManagedBean.equipo.nombreEquipo}" title="NombreEquipo" required="true" requiredMessage="The NombreEquipo field is required."/>
-                                                                        <h:outputLabel class="form-control" value="Categoria:" for="fkIdCategoria" />
-                                                                        <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
-                                                                            <!-- TODO: update below reference to list of available items-->
+                                                                <h:outputLabel class="form-control" value="Nombre Equipo:" for="nombreEquipo" />
+                                                                <h:inputText class="form-control" id="nombreEquipo" value="#{equipoManagedBean.equipo.nombreEquipo}" title="NombreEquipo" required="true" requiredMessage="The NombreEquipo field is required."/>
+                                                                <h:outputLabel class="form-control" value="Categoria:" for="fkIdCategoria" />
+                                                                <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
+                                                                    <!-- TODO: update below reference to list of available items-->
 
-                                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                            <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categpria" itemLabel="#{categpria.nombreCategoria}"/>
-                                                                        </h:selectOneMenu>
-                                                                        <h:outputLabel class="form-control" value="Entrenador:" for="idEntrenador" />
-                                                                        <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                                                            <!-- TODO: update below reference to list of available items-->
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categpria" itemLabel="#{categpria.nombreCategoria}"/>
+                                                                </h:selectOneMenu>
+                                                                <h:outputLabel class="form-control" value="Entrenador:" for="idEntrenador" />
+                                                                <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                                                    <!-- TODO: update below reference to list of available items-->
 
-                                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                            <f:selectItems class="form-control" value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
-                                                                        </h:selectOneMenu>
-                                                                    </h:panelGrid>
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItems class="form-control" value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+                                                                </h:selectOneMenu>
 
-                                                                    <h:commandButton value="Registrar Equipo" action="#{equipoManagedBean.createEquipo()}"/>
-                                                                </h:form>
-                                                            </f:view>
-                                                        </center>
+                                                                <br/>
+                                                                <br/>
+                                                                <h:commandButton class="btn btn-outline btn-success" value="Registrar Equipo" action="#{equipoManagedBean.createEquipo()}"/>
+
+                                                            </div>
+                                                        </h:form>
                                                     </div>
                                                     <div class="modal-footer">
 
@@ -190,45 +112,138 @@
                                     </div>
                                 </div>
                             </div>
-                            <br/>
-                            <center> <h:outputText style="font-family: fantasy; color: whitesmoke; font-size: 20px;" value="Cantidad de equipos por categoria"/></center>
 
-                            <canvas id="bar-chart" width="3500" height="900"></canvas>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-                            <script>
-                                                new Chart(document.getElementById("bar-chart"), {
-                                                    type: 'doughnut',
-                                                    data: {
-                                                        labels: ["Juvenil", "Infantil", "Pre-juvenil", "Élite", "Superior"],
-                                                        datasets: [
-                                                            {
-                                                                label: "Population (millions)",
-                                                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                                                                data: [#{equipoManagedBean.juvenil().size()}, #{equipoManagedBean.infantil().size()}, #{equipoManagedBean.Prejuvenil().size()}, #{equipoManagedBean.elite().size()}, #{equipoManagedBean.superior().size()}]
-                                                            }
-                                                        ]
-                                                    },
-                                                    options: {
-                                                        legend: {display: false},
-                                                        title: {
-                                                            display: true,
-                                                        }
-                                                    }
-                                                });
+                        </center>
+
+                        <h:form id="dqw">
+
+
+
+                            <table id="table-transform"  value="#{equipoManagedBean.listarEquipos()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
+
+                                    <tr >
+                                        <th class="col-md-4"><center><em class="fa fa-cog">Editar/Eliminar</em></center></th>
+
+                                        <th class="hidden-xs">Nombre</th>
+
+                                        <th class="hidden-xs">Entrenador</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{equipoManagedBean.listarEquipos()}" var="item">
+
+
+                                        <tr>
+                                            <td  class="hidden-xs" align="center">
+                                                <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{equipoManagedBean.redireccionarEquipo(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+
+                                                <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{equipoManagedBean.eliminarEquipo(item)}" onclick="javascript:return confirmar()"  update=":fEdit"/>
+                                            </td>
+
+
+                                            <td >#{item.nombreEquipo}</td>
+
+                                            <td>#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}</td>
+
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
                             </script>
+
+
+                        </h:form>
+
+
+                        <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
+
+                                <div class="modal-header">
+                                    <center><h1><h:outputText value="Edición de equipos"/></h1></center>
+
+                                    <h:form id="fEdit">
+
+                                        <h:outputLabel  value="IdEquipo:" for="idEquipo" style="visibility:hidden" />
+                                        <h:inputText class="form-control" id="idEquipo" style="visibility:hidden" value="#{equipoManagedBean.equipo.idEquipo}" title="IdEquipo" required="true" requiredMessage="The IdEquipo field is required."/>
+
+
+                                        <br/>
+                                        <h:outputLabel value="Nombre Equipo:" for="nombreEquipo" />
+                                        <h:inputText class="form-control" id="nombreEquipo" value="#{equipoManagedBean.equipo.nombreEquipo}" title="NombreEquipo" required="true" requiredMessage="The NombreEquipo field is required."/>
+
+                                        <br/>
+                                        <h:outputLabel value="Categoria:" for="fkIdCategoria" />
+                                        <h:selectOneMenu class="form-control" id="fkIdCategoria" value="#{equipoManagedBean.equipo.fkIdCategoria}" title="FkIdCategoria" required="true" requiredMessage="The FkIdCategoria field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                            <f:selectItems value="#{categoriaManagedBean.listCategorias()}" var="categoria" itemLabel="#{categoria.nombreCategoria}"/>
+                                        </h:selectOneMenu>
+                                        <br/>  
+                                        <h:outputLabel value="Entrenador:" for="idEntrenador" />
+                                        <h:selectOneMenu class="form-control" id="idEntrenador" value="#{equipoManagedBean.equipo.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                            <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="entrenador" itemLabel="#{entrenador.usuario.documento}, #{entrenador.usuario.primerNombre} #{entrenador.usuario.primerApellido}"/>
+
+                                        </h:selectOneMenu>
+                                        <br/>
+
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{equipoManagedBean.guardarCambiosEquipo(equipoManagedBean.equipo)}" onclick="PF('formEdit').hide()"/></center>
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
 
 
                         </div>
                     </div>
+                    <div class="col-lg-1"></div>
                 </div>
-
-
-
-
-
-
-
-
 
 
 

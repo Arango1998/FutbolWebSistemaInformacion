@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -12,12 +12,12 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                 <!-- Sidebar -->
+                <!-- Sidebar -->
 
                 <!-- /#sidebar-wrapper -->
 
                 <!-- Page Content -->
-                
+
                 <div class="rowContainer">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -26,53 +26,115 @@
                         <header>
                             <h1 class="page-header text-center">Lista de jugadores</h1>
                         </header>
-                         <center>
-                             <p>Elija al jugador al que desee consultar sus registros de pagos </p>        
-                        <br></br>
-                       
-                         
+                        <center>
+                            <p>Elija al jugador al que desee consultar sus registros de pagos </p>        
+                            <br></br>
+
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a  id="modal-41991" href="#modal-container-41991"  role="button" class="btn btn-outline btn-success"  data-toggle="modal">Registrar Pago</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h:form>
+                                                            <h1><h:outputText value="Registro de pago"/></h1>
+                                                            <br/>
+                                                            <div class="rowContainer">
+                                                                <h:outputLabel value="Motivo de Pago:" for="motivoPago" />
+                                                                <h:selectOneMenu class="form-control" id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}"  required="true" requiredMessage="El campo 'Motivo de pago' ">
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItem  itemValue="Matricula" itemLabel="Matricula"/>
+                                                                    <f:selectItem  itemValue="Mensualidad" itemLabel="Mensualidad"/>
+                                                                    <f:selectItem itemValue="Pago de Liga" itemLabel="Pago de Liga"/>
+
+                                                                </h:selectOneMenu>
+
+                                                                <h:outputLabel value="Monto:" for="monto" />
+                                                                <h:inputText class="form-control" id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="El campo 'Monto' es requerido"/>
+                                                                <h:outputLabel value="Estado del pago:" for="estado" />
+                                                                <h:selectOneMenu class="form-control" id="estado" value="#{registroPagoManagedBean.pago.estado}"  required="true" requiredMessage="El campo 'Estado' es requerido">
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItem  itemValue="Pendiente" itemLabel="Pendiente"/>
+                                                                    <f:selectItem  itemValue="Pagado" itemLabel="Pagado"/>
+                                                                </h:selectOneMenu>
+                                                                <h:outputLabel value="Jugador:" for="fkIdJugador" />
+                                                                <h:selectOneMenu class="form-control" id="fkIdJugador" value="#{registroPagoManagedBean.pago.fkIdJugador}"  required="true" requiredMessage="El campo 'Jugador' es requerido">
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItems  value="#{jugadorManagedBean.listarJugadores()}" var="jugador" itemLabel="Documento: #{jugador.usuario.documento}, Jugador: #{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}"/>
+
+                                                                </h:selectOneMenu>
+
+                                                                <br/> 
+                                                                <h:commandButton   value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></h:commandButton>
+
+                                                            </div>
+                                                        </h:form>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </center>
-                    
+
 
 
                         <h:form>
-                           <table id="table-transform" value="#{jugadorManagedBean.listarJugadores()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                            <table id="table-transform" value="#{jugadorManagedBean.listarJugadores()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                                 <thead>
 
                                     <tr >
-                                           <th class="hidden-xs">Documento</th>
+                                        <th class="hidden-xs">Documento</th>
                                         <th class="hidden-xs">Nombre</th>
                                         <th class="hidden-xs">Apellido</th>
                                         <th class="hidden-xs">Posición</th>
-                                         <th class="hidden-xs">Equipo</th>
-                                         <th class="hidden-xs">Informe de Pagos</th>
-                                         
-                                       
+                                        <th class="hidden-xs">Equipo</th>
+                                        <th class="hidden-xs">Informe de Pagos</th>
+
+
 
 
 
                                     </tr>
                                 </thead>
-                                  <tbody>
+                                <tbody>
 
                                     <ui:repeat  value="#{jugadorManagedBean.listarJugadores()}" var="item">
 
 
                                         <tr>
-                                           
-                                                  
 
-                                         
+
+
+
                                             <td class="hidden-xs">#{item.usuario.documento}</td>
                                             <td class="hidden-xs">#{item.usuario.primerNombre}</td>
                                             <td class="hidden-xs">#{item.usuario.primerApellido}</td>
                                             <td class="hidden-xs">#{item.posicion}</td>
                                             <td class="hidden-xs">#{item.fkIdEquipo.nombreEquipo}</td>
-                                            
-                                            
-                                            <td><h:commandButton value="Ver informe de pagos" class="btn btn-default" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}"/></td>
-                                         
+
+
+                                            <td><h:commandButton value="Ver informe de pagos" class="btn btn-outline btn-suceess" action="#{pagoManagedBean.solicitarJugador(item.idJugador)}"/></td>
+
 
 
 
@@ -88,74 +150,12 @@
                                 </tbody>
                             </table>
                             <br></br>
-                             
-                    
+
+
                         </h:form>
 
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a id="modal-41991" href="#modal-container-41991" style="font-family: fantasy;  font-size: 20px;" role="button" class="btn" data-toggle="modal">Registrar Pago</a>
-
-                                <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                    ×
-                                                </button>
-
-                                            </div>
-                                            <div class="modal-body">
-                                                <h:form>
-                                                    <h1><h:outputText value="Registro de pago"/></h1>
-                                                    <br/>
-                                                    <div class="rowContainer">
-                                                        <h:outputLabel value="Motivo de Pago:" for="motivoPago" />
-                                                        <h:selectOneMenu class="form-control" id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}"  required="true" requiredMessage="El campo 'Motivo de pago' ">
-                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                            <f:selectItem  itemValue="Matricula" itemLabel="Matricula"/>
-                                                            <f:selectItem  itemValue="Mensualidad" itemLabel="Mensualidad"/>
-                                                            <f:selectItem itemValue="Pago de Liga" itemLabel="Pago de Liga"/>
-
-                                                        </h:selectOneMenu>
-
-                                                        <h:outputLabel value="Monto:" for="monto" />
-                                                        <h:inputText class="form-control" id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="El campo 'Monto' es requerido"/>
-                                                        <h:outputLabel value="Estado del pago:" for="estado" />
-                                                        <h:selectOneMenu class="form-control" id="estado" value="#{registroPagoManagedBean.pago.estado}"  required="true" requiredMessage="El campo 'Estado' es requerido">
-                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                            <f:selectItem  itemValue="Pendiente" itemLabel="Pendiente"/>
-                                                            <f:selectItem  itemValue="Pagado" itemLabel="Pagado"/>
-                                                        </h:selectOneMenu>
-                                                        <h:outputLabel value="Jugador:" for="fkIdJugador" />
-                                                        <h:selectOneMenu class="form-control" id="fkIdJugador" value="#{registroPagoManagedBean.pago.fkIdJugador}"  required="true" requiredMessage="El campo 'Jugador' es requerido">
-                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                            <f:selectItems  value="#{jugadorManagedBean.listarJugadores()}" var="jugador" itemLabel="Documento: #{jugador.usuario.documento}, Jugador: #{jugador.usuario.primerNombre} #{jugador.usuario.primerApellido}"/>
-
-                                                        </h:selectOneMenu>
-
-                                                        <br/> 
-                                                        <h:commandButton   value="Registrar" action="#{registroPagoManagedBean.registrarPago()}"></h:commandButton>
-
-                                                    </div>
-                                                </h:form>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
-
-                </div>
                 </div>
             </ui:define>
 

@@ -13,249 +13,177 @@
 
             <ui:define name="content">
 
-                 <div id="wrapper">
+                <div id="wrapper">
 
-     
-        <div id="page-wrapper">
-            <div class="row">
-               <br/>
-               <br/>
-               <br/>
-                <!-- /.col-lg-12 -->
-            </div>
-           
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    
-                    
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Jugadores Actuales</center>
-                            <div class="pull-right">
-                            
-                            </div>
+
+                    <div id="page-wrapper">
+                        <div class="row">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <!-- /.col-lg-12 -->
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                 <f:view>
+
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-8">
 
 
-                                    <h:form>
-                                        
-                                        <h:dataTable class="table table-bordered table-hover table-striped" value="#{usuarioManagedBean.entrenador}" var="item">
-                                           
-                                             <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Codigo Entrenador"/>
-                                                </f:facet>
-                                                 <h:outputText value="#{item.idUsuario}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Documento"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.documento}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Nombre"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.primerNombre} #{item.primerApellido}"/>
-                                            </h:column>
-                                           <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Correo"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.correo}"/>
-                                            </h:column>
-                                             <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Experiencia"/>
-                                                </f:facet>
-                                                 <h:outputText value="#{item.entrenador.experiencia}"/>
-                                            </h:column>
-                                            <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Diploma"/>
-                                            </f:facet>
-                                               <h:outputText />
-                                               <img class="weer" style="width: 170px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
-                                        </h:column>
-                                       
-                                         
-                                           
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Estado Usuario"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
-                                            </h:column>
-                                           
-                                           
-                                        </h:dataTable>
-                                    </h:form>
-                                </f:view>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                                
-                                      <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a  id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Registrar Jugador</a>
-
-                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            ×
-                                                        </button>
-
-                                                    </div>
-                                                    <center>
-                                                        <h1><h:outputText value="Registro Jugador"/></h1>
-                                                    </center>
-
-                                                    <div class="modal-body">
-                                                        <center>
-                                                         
-<f:view>
-
-
-    <h:form enctype="multipart/form-data">
-        <h:panelGrid columns="2">
-            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
-            <h:inputText id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
-            <h:outputLabel value="Experiencia:" for="experiencia" />
-            <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
-            <h:outputLabel value="Diploma:" for="diploma" />
-            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
-            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
-            
-       
-        </h:panelGrid>
-        <h:commandButton value="registrar" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
-    </h:form>
-</f:view>
-
-                                                        </center>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                            Cerrar
-                                                        </button> 
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                <!-- /.panel -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Entrenadores</center>
+                                        <div class="pull-right">
 
                                         </div>
+                                    </div>
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <f:view>
+
+
+                                                <h:form>
+
+                                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{entrenadorManagedBean.listarEntrenador()}" var="item">
+
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Codigo Entrenador"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.idUsuario}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Documento"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.usuario.documento}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Nombre"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Correo"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.usuario.correo}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Experiencia"/>
+                                                            </f:facet>
+                                                            <h:outputText value="#{item.usuario.entrenador.experiencia}"/>
+                                                        </h:column>
+                                                        <h:column>
+                                                            <f:facet name="header">
+                                                                <h:outputText value="Diploma"/>
+                                                            </f:facet>
+                                                            <h:outputText />
+                                                            <img class="weer" style="width: 170px; height: 120px;" src="#{request.contextPath}/#{item.diploma}"/>
+                                                        </h:column>
+
+                                                    </h:dataTable>
+                                                </h:form>
+                                            </f:view>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-8 -->
+                            <div class="col-lg-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
+                                    </div>
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <f:view>
+
+
+                                            <h:form>
+
+                                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
+
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Nombre Equipo"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.nombreEquipo}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Categoria"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Entrenador"/>
+                                                        </f:facet>
+                                                        <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </h:form>
+                                        </f:view>
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class=" fa-fw"></i><center>
+                                            Categorias Actuales
+                                        </center> 
+                                    </div>
+                                    <div class="panel-body">
+                                        <f:view>
+
+
+                                            <h:form>
+
+                                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Numero de Categoria"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.idCategoria}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Nombre Categoria"/>
+                                                        </f:facet>
+                                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </h:form>
+                                        </f:view>
 
                                     </div>
+
                                 </div>
+                                <!-- /.panel -->
+
+                                <!-- /.panel .chat-panel -->
                             </div>
-                             
-                            </div>
-                            <!-- /.row -->
+                            <!-- /.col-lg-4 -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.row -->
                     </div>
-                    <!-- /.panel -->
-                    
-                    <!-- /.panel -->
+                    <!-- /#page-wrapper -->
+
                 </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <f:view>
-
-
-                                <h:form>
-                                   
-                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
-                                       
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Nombre Equipo"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.nombreEquipo}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Categoria"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Entrenador"/>
-                                            </f:facet>
-                                            <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                                        </h:column>
-                                    </h:dataTable>
-                                </h:form>
-                            </f:view>
-                             
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class=" fa-fw"></i><center>
-                                Categorias Actuales
-                            </center> 
-                        </div>
-                        <div class="panel-body">
-                                             <f:view>
-
-
-                            <h:form>
-                                
-                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Numero de Categoria"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.idCategoria}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nombre Categoria"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.nombreCategoria}"/>
-                                    </h:column>
-                                </h:dataTable>
-                            </h:form>
-                        </f:view>
-                           
-                        </div>
-    
-                    </div>
-                    <!-- /.panel -->
-                   
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
 
             </ui:define>
 

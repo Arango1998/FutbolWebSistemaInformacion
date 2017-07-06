@@ -11,58 +11,86 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../..//resources/images/paginainicio/convocatoria.jpg); image-resolution: from-image; height: auto;">
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Encuentros jugados</h1>
+                        </header>
+                        <center>
+                            <p>Estos son los partidos que has disputado con nosotros</p>        
+                            <br></br>
+
+                        </center>
+
+                        <h:form id="dqw">
 
 
-                    <f:view>
+                            <table id="table-transform"  value="#{seguimientoEncuentroManagedBean.listarPropioSeguimientoEncuentro()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
 
-                        <h:form style="padding-top: 110px;">
+                                    <tr >
 
-                            <h1><h:outputText style="padding-left: 570px; font-family: fantasy; color: whitesmoke" value="Encuentros jugados"/></h1>
-                            <p:dataTable value="#{seguimientoEncuentroManagedBean.listarPropioSeguimientoEncuentro()}" var="item">
+                                        <th class="hidden-xs">Nombre</th>
 
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Observacion"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.observacion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Calificacion"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.calificacion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Torneo"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idEncuentro.fkIdTorneo.nombreTorneo}"/>
-                                </p:column>
+                                        <th class="hidden-xs">Observación</th>
 
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Entrenador"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Goles"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.goles}"/>
-                                </p:column>
-                            </p:dataTable>
+                                        <th class="hidden-xs">Calificación</th>
+
+                                        <th class="hidden-xs">Torneo</th>
+
+                                        <th class="hidden-xs">Entrenador</th> 
+
+                                        <th class="hidden-xs">Goles</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{seguimientoEncuentroManagedBean.listarPropioSeguimientoEncuentro()}" var="item">
+
+                                        <tr>
+
+                                            <td class="hidden-xs" >#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}</td>
+
+                                            <td class="hidden-xs">#{item.observacion}</td>
+
+                                            <td class="hidden-xs">#{item.calificacion}</td>
+
+                                            <td class="hidden-xs">#{item.idEncuentro.fkIdTorneo.nombreTorneo}</td>
+
+                                            <td class="hidden-xs" >#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}</td>
+
+                                            <td class="hidden-xs">#{item.goles}</td>
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
                         </h:form>
-                    </f:view>
-                </div>
 
+
+                        <br/>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
             </ui:define>
 
         </ui:composition>

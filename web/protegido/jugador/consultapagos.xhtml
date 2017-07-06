@@ -16,7 +16,7 @@
                 <!-- /#sidebar-wrapper -->
 
                 <!-- Page Content -->
-                
+
                 <div class="rowContainer">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -25,70 +25,52 @@
                         <header>
                             <h1 class="page-header text-center">Lista de sus pagos</h1>
                         </header>
-                         <center>
-                             <p>Aquí puede encontrar el registro de sus pagos </p>        
-                        <br></br>
-                       
-                         
+                        <center>
+                            <p>Aquí puede encontrar el registro de sus pagos </p>        
+                            <br></br>
+
 
                         </center>
-                    
 
 
                         <h:form>
-                           <table id="table-transform" value="#{pagoManagedBean.listarPagoPropio()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                            <table id="table-transform" value="#{pagoManagedBean.listarPagoPropio()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                                 <thead>
 
                                     <tr >
-                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
+                                        <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
                                         <th class="hidden-xs">Motivo de pago</th>
                                         <th class="hidden-xs">Fecha de pago</th>
-                                         <th class="hidden-xs">Monto</th>
-                                         <th class="hidden-xs">Estado</th>
-                                         
-                                       
-
-
+                                        <th class="hidden-xs">Monto</th>
+                                        <th class="hidden-xs">Estado</th>
 
                                     </tr>
                                 </thead>
-                                  <tbody>
+                                <tbody>
 
                                     <ui:repeat  value="#{pagoManagedBean.listarPagoPropio()}" var="item">
 
 
                                         <tr>
-                                           
-                                                  
 
-                                         
+
                                             <td class="hidden-xs">#{item.motivoPago}</td>
                                             <td class="hidden-xs"> <h:outputText value="#{item.fechaPago}">
                                                     <f:convertDateTime pattern="dd-MM-yyyy">
-                                                        
+
                                                     </f:convertDateTime>
                                                 </h:outputText></td>
                                             <td class="hidden-xs">#{item.monto}</td>
                                             <td class="hidden-xs">#{item.estado}</td>
-                                            
-                                            
-                                         
-
 
 
                                         </tr>
                                     </ui:repeat>
 
-
-
-
-
-
-
                                 </tbody>
                             </table>
                             <br></br>
-                             <h:commandLink title="Descargar tabla en pdf">
+                            <h:commandLink title="Descargar tabla en pdf">
                                 <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
                                 <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
@@ -96,11 +78,14 @@
                                 <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                                 <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
-                    
-                        </h:form>
-                        </div>
-                        </div>
 
+                        </h:form>
+
+                        <br/>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
             </ui:define>
 
         </ui:composition>

@@ -47,7 +47,12 @@
 
                                         <tr>
 
-                                            <td >#{item.fechaInicio}</td>
+                                             <td class="hidden-xs">
+                                            <h:outputText value="#{item.fechaInicio}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy">
+
+                                                </f:convertDateTime>
+                                            </h:outputText></td>
 
                                             <td>#{item.resultado}</td>
 
@@ -76,7 +81,6 @@
 
 
                         </h:form>
-
 
 
                         <center> <h:outputText style="font-size: 20px;" value="Localidades con más torneos"/></center>
