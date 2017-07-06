@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -38,12 +37,12 @@
                     
 
 
-                        <h:form>
+                        <h:form id="pagos">
                            <table id="table-transform" value="#{pagoManagedBean.listarPago()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200, 300, 400, 500, 1000]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                                 <thead>
 
                                     <tr >
-                                           <th class="hidden-xs"><center><em class="fa fa-cog">icono</em></center></th>
+                                           <th class="hidden-xs"><em class="fa fa-cog">Acciones</em></th>
                                         <th class="hidden-xs">Motivo de pago</th>
                                         <th class="hidden-xs">Fecha de pago</th>
                                          <th class="hidden-xs">Monto</th>
@@ -62,7 +61,7 @@
 
                                         <tr>
                                                   <td  class="hidden-xs" align="center">
-                                                      <p:commandButton class="btn btn-outline btn-warning" action="#{pagoManagedBean.verPago(item)}" value="E" onclick="PF('insertar').show();"  update=":formEdit"/>
+                                                      <p:commandButton class="btn btn-outline btn-warning" action="#{pagoManagedBean.verPago(item)}" value="E" onclick="PF('formEdit').show();"  update=":fEdit"/>
                                                       <p:commandButton  ajax="false" class="btn btn-outline btn-danger" value="el" action="#{eliminarPagoManagedBean.eliminarPago(item)}"/>
                                             </td>
                                                   
@@ -96,11 +95,11 @@
                             <br></br>
                              <h:commandLink title="Descargar tabla en pdf">
                                 <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDePagos"/>
                             </h:commandLink>
                             <h:commandLink title="Descargar tabla en Excel">
                                 <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDePagos"/>
                             </h:commandLink>
                     
                         </h:form>
@@ -127,8 +126,18 @@
             
                                         
                                         
-                                      <h:outputLabel value="MotivoPago:" for="motivoPago" />
+                                      <p:outputLabel value="MotivoPago:" for="motivoPago" />
             <h:inputText id="motivoPago" value="#{pagoManagedBean.pago.motivoPago}" title="MotivoPago" required="true" requiredMessage="The MotivoPago field is required."/>
+            
+                                      <p:outputLabel value="FechaPago:" for="fechaPago" style="visibility:hidden"/>
+                                      <h:inputText id="fechaPago" value="#{pagoManagedBean.pago.fechaPago}" style="visibility: hidden" title="MotivoPago" required="false" requiredMessage="The MotivoPago field is required."/>
+            
+            
+                                      <p:outputLabel value="Monto:" for="monto" />
+                                      <h:inputText id="monto" value="#{pagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="The MotivoPago field is required."/>
+            
+                                      <p:outputLabel value="Estado:" for="estado" />
+                                      <h:inputText id="estado" value="#{pagoManagedBean.pago.estado}" title="Estado" required="true" requiredMessage="The MotivoPago field is required."/>
             
                                        
                                         <br/>  
@@ -144,6 +153,7 @@
 
                         </div>
 
+                </div>
                 </div>
 
             </ui:define>

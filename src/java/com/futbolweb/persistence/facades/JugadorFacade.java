@@ -9,6 +9,7 @@ import com.futbolweb.persistence.entities.Jugador;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +29,5 @@ public class JugadorFacade extends AbstractFacade<Jugador> {
     public JugadorFacade() {
         super(Jugador.class);
     }
-    
+     
 }

@@ -147,7 +147,7 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
     }
     
     public String solicitarJugador(int idJugador) {
-        Jugador j = jugadorF.find(idJugador);
+         Jugador j = jugadorF.find(idJugador);
         List<Seguimiento> lseguimiento = segf.listarSeguimientoEspecifico(j);
         lista = lseguimiento;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
