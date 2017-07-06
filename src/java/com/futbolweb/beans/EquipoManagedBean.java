@@ -82,6 +82,15 @@ public class EquipoManagedBean implements Serializable, InterfaceController<Equi
         }
 
     }
+    
+    
+      public void redireccionar() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("crear_equipo.xhtml");
+        } catch (Exception e) {
+        }
+    }
 
     public void eliminarEquipo(Equipo eq) {
         ef.remove(eq);

@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/templates/template.xhtml">
+
+            <ui:define name="content">
+
+                 <div id="wrapper">
+
+     
+        <div id="page-wrapper">
+            <div class="row">
+               <br/>
+               <br/>
+               <br/>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    
+                    
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Jugadores Actuales</center>
+                            <div class="pull-right">
+                            
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                 <f:view>
+
+
+                                    <h:form>
+                                        
+                                        <h:dataTable class="table table-bordered table-hover table-striped" value="#{usuarioManagedBean.entrenador}" var="item">
+                                           
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Codigo"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.idUsuario}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Documento"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.documento}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Nombre"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.primerNombre} #{item.primerApellido}"/>
+                                            </h:column>
+                                           <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Correo"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.correo}"/>
+                                            </h:column>
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Experiencia"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.entrenador.experiencia}"/>
+                                            </h:column>
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Posicion"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.jugador.posicion}"/>
+                                            </h:column>
+                                         
+                                           
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Estado Usuario"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                                            </h:column>
+                                           
+                                           
+                                        </h:dataTable>
+                                    </h:form>
+                                </f:view>
+                                
+                                      <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a  id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Registrar Jugador</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+
+                                                    </div>
+                                                    <center>
+                                                        <h1><h:outputText value="Registro Jugador"/></h1>
+                                                    </center>
+
+                                                    <div class="modal-body">
+                                                        <center>
+                                                                      <h:form enctype="multipart/form-data">
+                                                        <center><h2><h:outputText value="Registro de Carta Pofesional"/></h2></center>
+
+                                                        <br/>
+                                                        <div class="rowContainer">
+                                                            
+                                                            
+
+ 
+                                                       
+    
+        
+            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
+             <br/>
+           
+            <h:selectOneMenu class="form-control" id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}"  required="true" requiredMessage="El campo 'Entrenador' es requerido">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItems  value="#{usuarioManagedBean.entrenador}" var="entrenador" itemLabel="Documento: #{entrenador.documento} Entrenador: #{entrenador.primerNombre} #{entrenador.primerApellido}"/>
+
+                                                        </h:selectOneMenu>
+            <br/>
+           
+            <h:outputLabel value="Experiencia:" for="experiencia" />
+            <br/>
+               <br/>
+           
+               <h:inputTextarea class="form-control" rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+             <br/>
+           
+               <h:outputLabel value="Diploma:" for="diploma" />
+                <br/>
+            <br/>
+           
+            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
+            
+        <br/>
+        
+            <br/>
+           
+       
+        <h:commandButton  class="btn btn-outline btn-success" value="registrar"  action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+   
+
+
+                                                        </div>
+                                                    </h:form>
+                                                        </center>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                             
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <f:view>
+
+
+                                <h:form>
+                                   
+                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
+                                       
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre Equipo"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.nombreEquipo}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Categoria"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Entrenador"/>
+                                            </f:facet>
+                                            <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+                            </f:view>
+                             
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class=" fa-fw"></i><center>
+                                Categorias Actuales
+                            </center> 
+                        </div>
+                        <div class="panel-body">
+                                             <f:view>
+
+
+                            <h:form>
+                                
+                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Numero de Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idCategoria}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </f:view>
+                           
+                        </div>
+    
+                    </div>
+                    <!-- /.panel -->
+                   
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

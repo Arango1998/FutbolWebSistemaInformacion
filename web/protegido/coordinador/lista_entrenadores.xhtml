@@ -24,7 +24,7 @@
 
                 <div class="rowContainer">
                     <div class="col-lg-1"></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
                         <br></br>
 
                         <header>
@@ -93,8 +93,11 @@
                                             <td>#{item.correo}</td>
                                             <td>#{item.idTipoRol.nombreRol}</td>
                                             <td>#{item.idEstado.nombreEstado}</td>
-                                            <td><h:commandButton value="carta" class="btn btn-default" action="#{entrenadorManagedBean.seleccionarEntrenadorEspecifico(entrenadorManagedBean.listarEntrenadorEspecifico())}"/></td>
-                                         
+                                            <td style="height: 130px;" class="col-md-4">
+                                           
+                                               <img class="weer" style="width: 120px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
+                                        
+                                            </td>
 
 
 

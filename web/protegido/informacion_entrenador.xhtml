@@ -13,87 +13,124 @@
 
             <ui:define name="content">
 
-                <div class="rowContainer">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">
-                        <br></br>
+                 <div id="wrapper">
 
-                        <header>
-                            <div align="center"> <img alt="User Pic" src="../resources/images/usuarios/Avatar anonimo.png" class="img-circle img-responsive" style="height: 110px;"/> </div>
-                            <br/>
-                            <h3 class="page-header text-center">Usuario: #{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</h3>
-
-                        </header>
-
-                        <p><strong>Recuerde tener todos sus datos registrados en el sistema </strong></p>        
-
-<!--                        <table class="table table-user-information">
-                            <div class=" col-md-9 col-lg-9 ">
-
-                                <h:form>
-
-
-
-                                    <tbody>
-                                        <tr>
-                                            <td>Rol del Usuario:</td>
-                                            <td><strong>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Estado Actual del Usuario:</td>
-                                            <td>#{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <tr>
-                                                <td>Documento:</td>
-                                                <td>#{sessionManagedBean.usuarioSesion.documento}</td>
-                                            </tr>
-                                            <td>Nombres y Apellidos:</td>
-                                            <td>#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.segundoNombre} #{sessionManagedBean.usuarioSesion.primerApellido} #{sessionManagedBean.usuarioSesion.segundoApellido}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fecha de nacimiento:</td>
-                                            <td>Mes: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.month} Dia: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.day} Año: #{sessionManagedBean.usuarioSesion.fechaDeNacimento.year}</td>
-                                        </tr>
-                                        <tr>
-                                            <tr>
-                                                <td>Genero:</td>
-                                                <td>#{sessionManagedBean.usuarioSesion.genero}</td>
-                                            </tr>   
-                                            <tr>
-                                                <td>RH:</td>
-                                                <td>#{sessionManagedBean.usuarioSesion.rh}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>EPS:</td>
-                                                <td>#{sessionManagedBean.usuarioSesion.eps}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email:</td>
-                                                <td><a>#{sessionManagedBean.usuarioSesion.correo}</a></td>
-                                            </tr>
-                                            <td>Teléfono:</td>
-                                            <td>#{sessionManagedBean.usuarioSesion.telefono}<br/>
-
-                                            </td>
-
-                                        </tr>
-                                    </tbody>
-
-                                    <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{sessionManagedBean.capturarUsuarioEditar()}" id="modal-41991" t:href="#modal-container-41991" t:role="button"  t:data-toggle="modal"/>
-
-                                </h:form>
-                            </div> 
-                        </table>-->
+     
+        <div id="page-wrapper">
+            <div class="row">
+               <br/>
+               <br/>
+               <br/>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    
+                    
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Jugadores Actuales</center>
+                            <div class="pull-right">
+                            
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                 <f:view>
 
 
+                                    <h:form>
+                                        
+                                        <h:dataTable class="table table-bordered table-hover table-striped" value="#{usuarioManagedBean.entrenador}" var="item">
+                                           
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Codigo Entrenador"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.idUsuario}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Documento"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.documento}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Nombre"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.primerNombre} #{item.primerApellido}"/>
+                                            </h:column>
+                                           <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Correo"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.correo}"/>
+                                            </h:column>
+                                             <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Experiencia"/>
+                                                </f:facet>
+                                                 <h:outputText value="#{item.entrenador.experiencia}"/>
+                                            </h:column>
+                                            <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Diploma"/>
+                                            </f:facet>
+                                               <h:outputText />
+                                               <img class="weer" style="width: 170px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
+                                        </h:column>
+                                       
+                                         
+                                           
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Estado Usuario"/>
+                                                </f:facet>
+                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                                            </h:column>
+                                           
+                                           
+                                        </h:dataTable>
+                                    </h:form>
+                                </f:view>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                                      <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a  id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Registrar Jugador</a>
+
+                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                            ×
+                                                        </button>
+
+                                                    </div>
+                                                    <center>
+                                                        <h1><h:outputText value="Registro Jugador"/></h1>
+                                                    </center>
+
+                                                    <div class="modal-body">
+                                                        <center>
+                                                         
 <f:view>
 
 
     <h:form enctype="multipart/form-data">
         <h:panelGrid columns="2">
-            <h:outputLabel value="IdEntrenador:" for="idEntrenador" />
+            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
             <h:inputText id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
             <h:outputLabel value="Experiencia:" for="experiencia" />
             <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
@@ -107,162 +144,118 @@
     </h:form>
 </f:view>
 
+                                                        </center>
+                                                    </div>
+                                                    <div class="modal-footer">
 
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                            Cerrar
+                                                        </button> 
 
+                                                    </div>
+                                                </div>
 
-
-
-                    </div>
-                </div>
-
-
-
-
-
-
-<!--
-                <div aria-hidden="true">
-                    <p:dialog class="form-control" widgetVar="formEdit"
-                              modal="true"
-                              position="top"
-                              resizable="false"
-                              draggable="true"
-
-                              closable="true">
-
-
-
-                        <div class="modal-header">
-                            <center><h2>Edición de Perfil</h2></center>
-
-
-
-                        </div>
-
-                    </p:dialog>
-
-
-                </div>
-
-
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" >Registrar Equipo</a>
-
-                            <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                ×
-                                            </button>
+                                            </div>
 
                                         </div>
-                                        <center>
-                                            <h1><h:outputText value="Editar Información Usuario"/></h1>
-                                        </center>
 
-                                        <div class="modal-body">
-                                            <center>
-                                                <h:form id="fEdit">
-
-                                                    <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
-                                                    <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
-                                                    <br/>
-                                                    <p:outputLabel value="Documento:" for="documento" />
-                                                    <h:outputLabel class="form-control" id="documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento"/>
-                                                    <p:outputLabel value="Nombre:" for="primerNombre" />
-                                                    <h:outputLabel class="form-control" id="primerNombre" value="#{sessionManagedBean.usuarioSesion.primerNombre}" title="PrimerNombre" />
-                                                    <h:outputLabel value="Segundo Nombre:" for="segundoNombre" />
-                                                    <h:inputText id="segundoNombre" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
-                                                    <p:outputLabel value="Primer Apellido:" for="primerApellido" />
-                                                    <h:outputLabel class="form-control" id="primerApellido" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido" />
-
-                                                    <h:outputLabel value="Segundo Apellido:" for="segundoApellido" />
-                                                    <h:inputText id="segundoApellido" class="form-control" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
-
-                                                    <p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
-                                                    <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
-                                                    <p:outputLabel value="Fecha Nacimento:" for="fechaDeNacimento" />
-                                                    <h:inputText class="form-control" id="fechaDeNacimento" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
-                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                    </h:inputText>
-                                                    <h:outputLabel value="Genero:" for="genero" />
-                                                    <h:selectOneMenu  class="form-control" id="genero" value="#{sessionManagedBean.usuarioSesion.genero}" title="Genero"  required="true" requiredMessage="El campo 'Motivo de pago' ">
-                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                    <f:selectItem  itemValue="Masculino" itemLabel="Masculino"/>
-                                                                    <f:selectItem  itemValue="Femenino" itemLabel="Femenino"/>
-                                                                    <f:selectItem itemValue="Otro" itemLabel="Otro"/>
-
-                                                                </h:selectOneMenu>
-                                                    
-                                                    
-                                                    
-                                                    
-                                                  
-                                                    <h:outputLabel value="Rh:" for="rh" />
-
-                                                    <h:selectOneMenu class="form-control" id="rh" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" required="true" requiredMessage="El campo 'Motivo de pago' ">
-                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                        <f:selectItem  itemValue="A+" itemLabel="A+"/>
-                                                        <f:selectItem  itemValue="A-" itemLabel="A-"/>
-                                                        <f:selectItem  itemValue="B+" itemLabel="B+"/>
-                                                        <f:selectItem  itemValue="B-" itemLabel="B-"/>
-                                                        <f:selectItem  itemValue="O+" itemLabel="O+"/>
-                                                        <f:selectItem  itemValue="O-" itemLabel="O-"/>
-                                                        <f:selectItem  itemValue="AB+" itemLabel="AB+"/>
-                                                        <f:selectItem  itemValue="AB-" itemLabel="AB-"/>
-
-
-
-                                                    </h:selectOneMenu>
-
-
-
-
-
-
-
-
-
-
-                                                    <h:outputLabel value="Eps:" for="eps" />
-                                                    <h:inputText class="form-control" id="eps" value="#{sessionManagedBean.usuarioSesion.eps}" title="Eps" />
-                                                    <h:outputLabel value="Telefono:" for="telefono" />
-                                                    <h:inputText class="form-control" id="telefono" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
-
-                                                    <p:outputLabel value="Correo:" for="correo" />
-                                                    <h:inputText class="form-control" id="correo" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
-
-
-
-                                                    <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{sessionManagedBean.capturarUsuarioEditar()}" onclick="PF('formEdit').hide()"/></center>
-
-                                                </h:form>
-                                            </center>
-                                        </div>
-                                        <div class="modal-footer">
-
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                Cerrar
-                                            </button> 
-
-                                        </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
+                             
+                            </div>
+                            <!-- /.row -->
                         </div>
+                        <!-- /.panel-body -->
                     </div>
+                    <!-- /.panel -->
+                    
+                    <!-- /.panel -->
                 </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <f:view>
 
 
--->
+                                <h:form>
+                                   
+                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
+                                       
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre Equipo"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.nombreEquipo}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Categoria"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Entrenador"/>
+                                            </f:facet>
+                                            <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:form>
+                            </f:view>
+                             
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class=" fa-fw"></i><center>
+                                Categorias Actuales
+                            </center> 
+                        </div>
+                        <div class="panel-body">
+                                             <f:view>
+
+
+                            <h:form>
+                                
+                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Numero de Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idCategoria}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre Categoria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombreCategoria}"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </f:view>
+                           
+                        </div>
+    
+                    </div>
+                    <!-- /.panel -->
+                   
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
 
             </ui:define>
 

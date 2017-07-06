@@ -140,6 +140,13 @@ public class PagoManagedBean implements InterfaceController<Pago> {
       pagof.edit(pago);
       return solicitarJugador(p.getFkIdJugador().getIdJugador());
       }
+       public void redireccionarPagoCor() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listarjugadorespagos.xhtml");
+        } catch (Exception e) {
+        }
+    }
 
     @Override
     public Pago getObjectByKey(Integer key) {

@@ -19,7 +19,7 @@
                         <br></br>
 
                         <header>
-                            <div align="center"> <img alt="User Pic" src="../resources/images/usuarios/Avatar anonimo.png" class="img-circle img-responsive" style="height: 110px;"/> </div>
+                            <div align="center"> <img alt="User Pic" src="../resources/images/usuario/usuario2.png" class="img-circle img-responsive" style="height: 110px;"/> </div>
                             <br/>
                             <h3 class="page-header text-center">Usuario: #{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</h3>
 
@@ -82,7 +82,7 @@
                                         </tr>
                                     </tbody>
 
-                                    <p:commandButton class="btn btn-outline btn-warning" value="editar" action="#{sessionManagedBean.capturarUsuarioEditar()}" id="modal-41991" t:href="#modal-container-41991" t:role="button"  t:data-toggle="modal"/>
+                                    <p:commandButton class="btn btn-outline btn-warning" value="Informacion" action="#{sessionManagedBean.capturarUsuarioEditar()}" id="modal-41991" t:href="#modal-container-41991" t:role="button"  t:data-toggle="modal"/>
 
                                     
                                     
@@ -151,7 +151,7 @@
 
                                         <div class="modal-body">
                                             <center>
-                                                <h:form id="fEdit">
+<!--                                                <h:form id="fEdit">
 
                                                     <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
                                                     <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
@@ -225,7 +225,203 @@
 
                                                     <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{sessionManagedBean.capturarUsuarioEditar()}" onclick="PF('formEdit').hide()"/></center>
 
-                                                </h:form>
+                                                </h:form>-->
+<div class="col-md-12">
+    
+
+
+ <form class="contact_form">
+                                            <h:form id="fEdit">
+
+                                                <!-- Inicio Pn -->
+
+
+
+
+
+
+                                                <div class="form-group" >
+                                                    
+
+                                                     <p:outputLabel value="IdUsuario:" for="idUsuario" style="visibility:hidden" />
+                                                    <p:inputText  style="visibility:hidden"  id="idUsuario" value="#{sessionManagedBean.usuarioSesion.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required."/>
+                                                    
+                                                    <div class="col-md-6">
+                                                        
+                                                        
+
+
+                                                        <h:outputLabel value="Primer Nombre:" for="name" />
+                                                        <h:outputLabel  id="name"  value="#{sessionManagedBean.usuarioSesion.primerNombre}" t:placeholder="Nombres" title="PrimerNombre" class="form-control" t:type="text"    /> 
+                                                    </div>
+
+
+                                                </div>
+                                                <!-- Fin pn -->
+                                                <div class="form-group" >
+
+                                                    <div class="form"></div>
+                                                    <div class="col-md-6">  <h:outputLabel value="Segundo Nombre:" for="segundoNombre" />
+                                                        <h:inputText maxlength="14" id="segundoNombre" class="form-control" t:placeholder="Nombres" value="#{sessionManagedBean.usuarioSesion.segundoNombre}" title="SegundoNombre" />
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" >
+                                                    <div class="col-md-6">  <h:outputLabel value="Prime Aperllido:" for="primerApellido" />
+                                                        <h:outputLabel id="primerApellido" t:placeholder="Apellido"  class="form-control" value="#{sessionManagedBean.usuarioSesion.primerApellido}" title="PrimerApellido" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <div class="col-md-6">  <h:outputLabel value="Segundo Apellido:" for="segundoApellido" />
+                                                        <h:inputText maxlength="20"  class="form-control" t:placeholder="Apellido"  id="segundoApellido" value="#{sessionManagedBean.usuarioSesion.segundoApellido}" title="SegundoApellido" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <div class="col-md-6">   <h:outputLabel value="Documento:" for="documento" />
+                                                        <h:outputLabel t:type="number" id="documento" class="form-control" t:placeholder="Documento" value="#{sessionManagedBean.usuarioSesion.documento}" title="Documento" />
+
+                                                    </div>
+                                                </div>
+                                                                          <div class="form-group" >
+                                                    <div class="col-md-6">   <h:outputLabel value="EPS:" for="eps" />
+                                                        <h:inputText maxlength="20"  class="form-control" t:placeholder="EPS: Futbol Web"  id="EPS" value="#{sessionManagedBean.usuarioSesion.eps}" title="EPS" />
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="col-md-6" >
+                                                    <h:outputLabel value="Genero:" for="genero" />
+
+
+                                                    
+                                                    <h:selectOneRadio  class="divisor" id="genero" value="#{sessionManagedBean.usuarioSesion.genero}"  title="Genero">
+
+                                                        <f:selectItem  itemValue="Masculino" itemLabel="Masculino "/>
+                                                        
+                                                        <f:selectItem  itemValue="Femenino" itemLabel="Femenino "/>
+                                                        
+
+                                                    </h:selectOneRadio>
+
+
+
+                                                </div>
+                                                
+                                                <div class="form-group" >
+                                                    <div class="col-md-6">    <h:outputLabel value="Tipo de Rh:" for="rh" />
+                                                        <h:selectOneMenu  class="form-control" id="rh" value="#{sessionManagedBean.usuarioSesion.rh}" title="Rh" required="true" requiredMessage="El campo 'Motivo de pago' ">
+                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                            <f:selectItem  itemValue="A+" itemLabel="A+"/>
+                                                            <f:selectItem  itemValue="A-" itemLabel="A-"/>
+                                                            <f:selectItem  itemValue="B+" itemLabel="B+"/>
+                                                            <f:selectItem  itemValue="B-" itemLabel="B-"/>
+                                                            <f:selectItem  itemValue="O+" itemLabel="O+"/>
+                                                            <f:selectItem  itemValue="O-" itemLabel="O-"/>
+                                                            <f:selectItem  itemValue="AB+" itemLabel="AB+"/>
+                                                            <f:selectItem  itemValue="AB-" itemLabel="AB-"/>
+
+
+
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                </div>
+
+
+                                                <!--                                                <div class="form-group" >
+                                                                                                    <div class="col-md-6">  <h:outputLabel value="FechaDeNacimento:" for="fechaDeNacimento" />
+                                                                                                        <h:inputText t:type="date"  class="form-control" id="fechaDeNacimento" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                                                                                                        <f:convertDateTime pattern="dd/MM//yyyy" />
+                                                                                                        </h:inputText>
+                                                                                                    </div>
+                                                                                                </div>-->
+                                                <div class="col-md-6">
+                                                    <h:outputLabel value="Fecha De Nacimento:" for="fechaDeNacimento" />
+                                                    <h:outputLabel  class="form-control" id="fechaDeNacimento" value="#{sessionManagedBean.usuarioSesion.fechaDeNacimento}" title="FechaDeNacimento">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </h:outputLabel>
+                                                </div>
+
+
+                                                <div class="col-md-12">
+                                                    <h:outputLabel value="Correo:" for="correo" />
+
+                                                    <h:inputText t:type="email" t:placeholder="ejemplo@sucorreo.com" class="form-control" id="correo" value="#{sessionManagedBean.usuarioSesion.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+
+
+
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                     <h:outputLabel value="Telefono:" for="telefono" />
+                                                    <h:inputText class="form-control" id="telefono" value="#{sessionManagedBean.usuarioSesion.telefono}" title="Telefono" />
+
+
+                                                </div>
+
+
+
+
+
+
+
+
+                                                <div class="col-md-6">
+                                                    <h:outputLabel  value="Estado Usuario:" for="idEstado" />
+                                                    <h:outputLabel class="form-control" id="idEstado" value="#{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}" title="Estado" />
+
+                                                   
+
+
+                                                </div>
+<div class="form-group float-label-control">
+<p:outputLabel style="visibility:hidden" value="Clave:" for="clave" />
+                                                    <h:inputText  style="visibility:hidden" class="form-control" id="clave" value="#{sessionManagedBean.usuarioSesion.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                                                                                                    </div>
+
+
+
+
+                                                <div class="form-group float-label-control">
+
+                                                </div>
+
+
+
+                                                <div class="form-group float-label-control">
+
+
+
+                                                </div>
+
+
+
+                                                <div class="form-group float-label-control">
+
+                                                </div>
+
+
+
+
+
+
+
+  <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{sessionManagedBean.capturarUsuarioEditar()}" onclick="PF('formEdit').hide()"/></center>
+
+
+                                            </h:form>
+                                        </form>
+    </div>
                                             </center>
                                         </div>
                                         <div class="modal-footer">
