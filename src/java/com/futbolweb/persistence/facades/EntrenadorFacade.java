@@ -45,7 +45,7 @@ public class EntrenadorFacade extends AbstractFacade<Entrenador> {
     public Entrenador obtenerIdEntrenador(){
         Usuario u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
             
-            Query query = em.createQuery("SELECT e FROM Entrenador e WHERE e.usuario.idUsuario = :id")
+            Query query = em.createQuery("FROM Entrenador e WHERE e.usuario.idUsuario = :id")
                     .setParameter("id", u.getIdUsuario());
             Entrenador e = (Entrenador) query.getResultList().get(0);
             return e;

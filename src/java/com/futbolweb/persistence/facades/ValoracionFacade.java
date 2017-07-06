@@ -29,4 +29,5 @@ public class ValoracionFacade extends AbstractFacade<Valoracion> {
         super(Valoracion.class);
     }
     
+   
 }

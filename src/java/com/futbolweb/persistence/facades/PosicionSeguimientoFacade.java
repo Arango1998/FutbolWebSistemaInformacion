@@ -35,9 +35,10 @@ public class PosicionSeguimientoFacade extends AbstractFacade<PosicionSeguimient
     
     public PosicionSeguimiento obtenerIdPosicion(Jugador j){
       
-        Query query = em.createQuery("SELECT p.idPosicionSeguimiento FROM PosicionSeguimiento p WHERE p.idJugador = ?1 ORDER BY p.idPosicionSeguimiento DESC");
-        query.setParameter(1, j);
-        PosicionSeguimiento psefo = (PosicionSeguimiento) query.getResultList().get(0);
+        Query query = em.createNativeQuery("SELECT p.* FROM posicion_seguimiento p WHERE p.id_jugador = ? ORDER BY p.id_posicion_seguimiento DESC LIMIT 1",PosicionSeguimiento.class);
+        query.setParameter(1, j.getIdJugador());
+        List<PosicionSeguimiento> lista = query.getResultList();
+        PosicionSeguimiento psefo = lista.get(0);
         return  psefo;
     }
     

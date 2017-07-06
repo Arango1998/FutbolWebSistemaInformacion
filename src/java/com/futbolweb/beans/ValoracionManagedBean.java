@@ -6,7 +6,9 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.entities.Valoracion;
+import com.futbolweb.persistence.facades.SeguimientoFacade;
 import com.futbolweb.persistence.facades.ValoracionFacade;
 import java.io.Serializable;
 import java.util.List;
@@ -24,8 +26,11 @@ import javax.enterprise.context.RequestScoped;
 public class ValoracionManagedBean implements Serializable, InterfaceController<Valoracion> {
 
     private Valoracion valoracion;
+    private Seguimiento seguimiento;
     @EJB
     private ValoracionFacade valf;
+    @EJB
+    private SeguimientoFacade seguimientof;
     
     
     public ValoracionManagedBean() {
@@ -43,10 +48,12 @@ public class ValoracionManagedBean implements Serializable, InterfaceController<
     @PostConstruct
     public void init(){
         valoracion = new Valoracion();
+        seguimiento = new Seguimiento();
     }
     
     
     public void registrarValoracion(){
+        valoracion.setIdSeguimiento(seguimiento);
         valf.create(valoracion);
     }
     

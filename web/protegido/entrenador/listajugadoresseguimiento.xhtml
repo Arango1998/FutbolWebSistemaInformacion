@@ -18,7 +18,7 @@
 
                     <h:form>
                         <h1><h:outputText value="Listado Seguimientos"/></h1>
-                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimiento}" var="item">
+                        <p:dataTable value="#{seguimientoManagedBean.listarSeguimientoo()}" var="item">
                             
                             <p:column>
                                 <f:facet name="header">
@@ -51,10 +51,58 @@
                                 <p:commandButton ajax="false" value="Eliminar" action="#{seguimientoManagedBean.eliminarSeguimiento(item)}"/>
                             </p:column>
                             <p:column>
-                                
+                                       <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Valorar Seguimiento</a>
+
+                                    <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                        ×
+                                                    </button>
+
+                                                </div>
+                                                <div class="modal-body">
+
+
+                                                    <h:form>
+                                                        <h1><h:outputText value="Crear Valoración Seguimiento"/></h1>
+                                                        <h:panelGrid columns="2">
+                                                            <h:outputLabel value="Nota:" for="nota" />
+                                                            <h:inputText id="nota" value="#{valoracionManagedBean.valoracion.nota}" title="Nota" required="true" requiredMessage="The Nota field is required."/>
+                                                            <h:outputLabel value="IdItem:" for="idItem" />
+                                                            <h:selectOneMenu id="idItem" value="#{valoracionManagedBean.valoracion.idItem}" required="true" requiredMessage="The IdItem field is required.">
+                                                                <!-- TODO: update below reference to list of available items-->
+                                                                <f:selectItems value="#{itemManagedBean.listarItem()}" var="ite" itemLabel="#{ite.descripcion}"/>
+                                                            </h:selectOneMenu>
+                                                        </h:panelGrid>
+                                                        <p:commandButton value="Registrar" action="#{valoracionManagedBean.registrarValoracion()}" />
+                                                    </h:form>
+
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Cerrar
+                                                    </button> 
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                             </p:column>
                         </p:dataTable>
-                        <p:commandButton value="Crear Seguimiento" action="#{seguimientoManagedBean.registrarSeguimiento()}"/>
+                        <p:commandButton value="Crear Seguimiento" actionListener="#{seguimientoManagedBean.redireccionarSeguimiento()}" action="#{seguimientoManagedBean.registrarSeguimiento()}"/>
                     </h:form>
                 </f:view>
 

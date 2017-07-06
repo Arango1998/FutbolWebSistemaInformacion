@@ -37,9 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Entrenador.findByIdEntrenador", query = "SELECT e FROM Entrenador e WHERE e.idEntrenador = :idEntrenador")})
 public class Entrenador implements Serializable, IDTO {
 
-    @Basic(optional = false)
-    @Column(name = "id_usuario")
-    private int idUsuario;
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -161,12 +159,5 @@ public class Entrenador implements Serializable, IDTO {
         return idEntrenador.toString();
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
     
 }

@@ -12,61 +12,19 @@
 
             <ui:define name="content">
 
-                
-                <f:view>
-
-
-                    <h:form>
-                        <h1><h:outputText value="Registrar valoración"/></h1>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Nota:" for="nota" />
-                            <p:inputText id="nota" value="#{valoracionManagedBean.valoracion.nota}" title="Nota" required="true" requiredMessage="The Nota field is required."/>
-                            <p:outputLabel value="IdSeguimiento:" for="idSeguimiento" />
-                            <p:selectOneMenu id="idSeguimiento" value="#{valoracionManagedBean.valoracion.idSeguimiento}" required="true" requiredMessage="The IdSeguimiento field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{seguimientoManagedBean.listarSeguimiento()}" var="seguimiento" itemLabel="#{seguimiento.idSeguimiento}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="IdItem:" for="idItem" />
-                            <p:selectOneMenu id="idItem" value="#{valoracionManagedBean.valoracion.idItem}" required="true" requiredMessage="The IdItem field is required.">
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{itemManagedBean.listarItem()}"/>
-                            </p:selectOneMenu>
-                        </p:panelGrid>
-                        <p:commandButton value="Registrar" action="#{valoracionManagedBean.registrarValoracion()}"/>
-                    </h:form>
-                </f:view>
-                
-                
-                <f:view>
-
-
-                    <h:form>
-                        <h1><h:outputText value="Listado valoraciones"/></h1>
-                        <p:dataTable value="#{valoracionManagedBean.listarValoracion()}" var="item">
-                            
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Nota"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nota}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdSeguimiento"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idSeguimiento}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="IdItem"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idItem}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
-
-                
+               <h:form>
+                                                        <h1><h:outputText value="Crear Valoración Seguimiento"/></h1>
+                                                        <h:panelGrid columns="2">
+                                                            <h:outputLabel value="Nota:" for="nota" />
+                                                            <h:inputText id="nota" value="#{valoracionManagedBean.valoracion.nota}" title="Nota" required="true" requiredMessage="The Nota field is required."/>
+                                                            <h:outputLabel value="IdItem:" for="idItem" />
+                                                            <h:selectOneMenu id="idItem" value="#{valoracionManagedBean.valoracion.idItem}" required="true" requiredMessage="The IdItem field is required.">
+                                                                <!-- TODO: update below reference to list of available items-->
+                                                                <f:selectItems value="#{itemManagedBean.listarItem()}" var="ite" itemLabel="#{ite.descripcion}"/>
+                                                            </h:selectOneMenu>
+                                                        </h:panelGrid>
+                                                        <p:commandButton value="Registrar" action="#{valoracionManagedBean.registrarValoracion()}" />
+                                                    </h:form>
 
                     
             </ui:define>
