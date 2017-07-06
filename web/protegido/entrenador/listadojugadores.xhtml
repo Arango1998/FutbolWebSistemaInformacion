@@ -12,55 +12,141 @@
         <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
-                <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Jugadores</h1>
+                        </header>
+                        <center>
+                            <p>Registre los barrios en los cuales se disputarán los partiods de los diferentes torneos. </p>        
+                            <br></br>
+
+                        </center>
+
+                        <h:form id="dqw">
 
 
-                    
+                            <table id="table-transform"  value="#{jugadorManagedBean.listarJugadores()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                <thead>
 
-                    <f:view>
+                                    <tr >
 
-                        
-                            <h:form id="initadi" style="padding-top: 100px;">
+                                        <th class="hidden-xs">Seguimiento</th>
 
-                            <center ><h1><h:outputText style="font-family: fantasy; color: whitesmoke;" value="Jugadores"/></h1></center>
-                              <h:commandLink title="Descargar tabla en pdf">
-                                        <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                                        <p:dataExporter type="pdf" target="listajugar" fileName="ListadoDeTorneos"/>
-                                    </h:commandLink>
-                                    <h:commandLink title="Descargar tabla en Excel">
-                                        <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                                        <p:dataExporter type="xls" target="listajugar" fileName="ListadoDeJugadores"/>
-                                    </h:commandLink>
-                            <p:dataTable value="#{jugadorManagedBean.listarJugadores()}" id="listajugar" var="item">
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Jugador"/>
-                                    </f:facet>
-                                    <h:outputText value="Doc:#{item.usuario.documento}, #{item.usuario.primerNombre} #{item.usuario.primerApellido}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Posicion"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.posicion}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Equipo"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.fkIdEquipo.nombreEquipo}"/>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton ajax="false" value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.idJugador)}" ></p:commandButton>
-                                </p:column>
+                                        <th class="hidden-xs">Jugador</th>
 
-                            </p:dataTable>
+                                        <th class="hidden-xs">Posición</th>
+
+                                        <th class="hidden-xs">Equipo</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <ui:repeat  value="#{jugadorManagedBean.listarJugadores()}" var="item">
+
+
+                                        <tr>
+                                            <td  class="hidden-xs" align="center">
+                               
+                                                <p:commandButton class="btn btn-outline btn-success" ajax="false" value="Seguimiento" action="#{seguimientoManagedBean.solicitarJugador(item.idJugador)}" ></p:commandButton>
+                               
+                                              </td>
+
+
+                                            <td >Doc:#{item.usuario.documento}, #{item.usuario.primerNombre}, #{item.usuario.primerApellido}</td>
+
+                                            <td>#{item.posicion}</td>
+
+                                            <td>#{item.fkIdEquipo.nombreEquipo}</td>
+
+
+                                        </tr>
+                                    </ui:repeat>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <h:commandLink title="Descargar tabla en pdf">
+                                <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+                            <h:commandLink title="Descargar tabla en Excel">
+                                <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                            </h:commandLink>
+
+
+                            <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
+
+
                         </h:form>
-                    </f:view>
 
 
+                        <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
+
+                                <div class="modal-header">
+                                    <center><h1><h:outputText value="Edición de Barrios"/></h1></center>
+
+                                    <h:form id="fEdit">
+
+                                        <h:outputLabel value="IdBarrio:" for="idBarrio" style="visibility:hidden"/>
+                                        <h:inputText style="visibility:hidden"  id="idBarrio" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>                      
+                                        <br/>
+                                        <h:outputLabel value="Nombre:" for="nombreBarrio" />
+                                        <h:inputText class="form-control" id="nombreBarrio" value="#{barrioManagedBean.barrio.nombreBarrio}" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                        <br/>
+                                        <h:outputLabel  value="Localidad:" for="fkIdLocalidad" />
+                                        <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lisvar" itemLabel="#{lisvar.nombreLocalidad}"/>
+                                        </h:selectOneMenu>
+
+                                        <br/>  
+                                        <br/>
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{barrioManagedBean.guardarCambiosBarrio(barrioManagedBean.barrio)}" onclick="PF('formEdit').hide()"/></center>
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
                 </div>
-
 
             </ui:define>
 
