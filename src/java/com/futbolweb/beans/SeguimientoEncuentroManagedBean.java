@@ -134,7 +134,7 @@ public class SeguimientoEncuentroManagedBean implements Serializable, InterfaceC
 
         try {
             segef.edit(seguimientoencuentro);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se cambio Barrio"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Se modificó el registro"));
         } catch (Exception e) {
         }
 

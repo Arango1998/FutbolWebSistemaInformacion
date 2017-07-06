@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-
-      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
 
@@ -14,205 +13,243 @@
     <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
         <ui:define name="content">
-            <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../../resources/images/paginainicio/nosotros.jpg); image-resolution: from-image; height: auto;">
+            <div class="rowContainer">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <br></br>
 
 
-
-                <f:view>
-
-
-                    <h:form style="padding-top: 150px;">
-
-                        <h1><h:outputText style="padding-left: 300px; font-family: fantasy; color: whitesmoke" value="Calificación del jugador"/></h1>
+                    <header>
+                        <h1 class="page-header text-center">Calificación del jugador</h1>
+                    </header>
+                    <center>
+                        <p>Califique a los jugadores según su desempeño</p>        
                         <br></br>
 
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a role="button" class="btn btn-outline btn-success"  action="#{seguimientoEncuentroManagedBean.redireccionarEncuentro(item)}" onclick="PF('formCreate').show();" update=":fCreate">Calificar jugador</a>
+                                    <div aria-hidden="true">
+                                        <p:dialog class="form-control" widgetVar="formCreate"
+                                                  modal="true"
+                                                  position="top"
+
+                                                  >
+
+                                            <div class="modal-body">
+
+                                                <h:form id="fCreate">
+
+                                                    <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+
+                                                    <center><h2><h:outputText value="Calificación del jugador"/></h2></center>
+
+                                                    <br/>
+                                                    <h:outputLabel value="Observación:" for="observacion" />
+                                                    <h:inputTextarea   class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
+
+                                                    <h:outputLabel value="Calificación:" for="calificacion" />
+                                                    <h:selectOneMenu  class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                        <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
+                                                        <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
+                                                        <f:selectItem itemValue="Regular" itemLabel="Regular"/>
+                                                        <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
+                                                    </h:selectOneMenu>
+
+                                                    <h:outputLabel value="Torneo:" for="idEncuentro" />
+                                                    <h:selectOneMenu  class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="lisEnc" itemLabel="#{lisEnc.fkIdTorneo.nombreTorneo}"/>
+                                                    </h:selectOneMenu>
+
+                                                    <h:outputLabel value="Jugador:" for="idJugador" />
+                                                    <h:selectOneMenu  class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="lisJug" itemLabel="#{lisJug.usuario.primerNombre} #{lisJug.usuario.primerApellido}"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputLabel value="Entrenador:" for="idEntrenador" />
+                                                    <h:selectOneMenu  class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                        <!-- TODO: update below reference to list of available items-->
+                                                        <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputLabel value="Goles:" for="goles" />
+                                                    <h:inputText jsf:type="number"   class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
+                                                    <br/>
+                                                    <br/>
+                                                    <h:commandButton actionListener="#{seguimientoEncuentroManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{seguimientoEncuentroManagedBean.registrarSeguimientoEncuentro()}" />
+
+
+                                                </h:form>
+
+                                            </div>
+
+                                        </p:dialog>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </center>
+
+                    <h:form id="dqw">
+
+
+
+                        <table id="table-transform"  value="#{seguimientoEncuentroManagedBean.listarSeguimientoEncuentro()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                            <thead>
+
+                                <tr >
+                                    <th class="col-md-4"><center><em class="fa fa-cog">Editar/Eliminar</em></center></th>
+
+                                    <th class="hidden-xs">Observación</th>
+
+                                    <th class="hidden-xs">Calificación</th>
+
+                                    <th class="hidden-xs">Torneo</th>
+
+                                    <th class="hidden-xs">Jugador</th>
+
+                                    <th class="hidden-xs">Entrenador</th>
+
+                                    <th class="hidden-xs">Goles</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <ui:repeat  value="#{seguimientoEncuentroManagedBean.listarSeguimientoEncuentro()}" var="item">
+
+
+                                    <tr>
+                                        <td  class="hidden-xs" align="center">
+                                            <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{seguimientoEncuentroManagedBean.redireccionarEncuentro(item)}" onclick="PF('formEdit').show();" update=":fEdit"/>
+
+                                            <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{seguimientoEncuentroManagedBean.eliminarSeguimientoEncuentro(item)}" onclick="javascript:return confirmar()" update=":fEdit"/>
+                                        </td>
+
+
+                                        <td class="hidden-xs" >#{item.observacion}</td>
+
+                                        <td class="hidden-xs">#{item.calificacion}</td>
+
+                                        <td class="hidden-xs">#{item.idEncuentro.fkIdTorneo.nombreTorneo}</td>
+
+                                        <td class="hidden-xs">#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}</td>
+
+                                        <td class="hidden-xs">#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}</td>
+
+                                        <td class="hidden-xs">#{item.goles}</td>
+
+                                    </tr>
+                                </ui:repeat>
+
+                            </tbody>
+                        </table>
+                        <br></br>
                         <h:commandLink title="Descargar tabla en pdf">
                             <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="pdf" target="ListaJug" fileName="ListaJug"/>
+                            <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
                         </h:commandLink>
                         <h:commandLink title="Descargar tabla en Excel">
                             <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
-                            <p:dataExporter type="xls" target="ListaJug" fileName="ListaJug"/>
+                            <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                         </h:commandLink>
-                        <p:dataTable style="font-family: fantasy;" id="ListaJug" value="#{seguimientoEncuentroManagedBean.listarSeguimientoEncuentro()}" var="item">
 
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Observación"/>
-                                </f:facet>
-                                <h:outputText value="#{item.observacion}"/>
-                            </p:column>
+                        <script language="JavaScript">
+                            function confirmar()
+                            {
+                                if (!confirm("¿Deseas eliminar este registro?"))
+                                {
+                                    return false;
+                                } else
+                                {
 
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Calificación"/>
-                                </f:facet>
-                                <h:outputText value="#{item.calificacion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Torneo"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEncuentro.fkIdTorneo.nombreTorneo}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Jugador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idJugador.usuario.primerNombre} #{item.idJugador.usuario.primerApellido}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Entrenador"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Goles"/>
-                                </f:facet>
-                                <h:outputText value="#{item.goles}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Editar"/>
-                                </f:facet>
-                                <center><a class="btn-outline" action="#{seguimientoEncuentroManagedBean.redireccionarEncuentro(item)}" onclick="PF('formEdit').show();" update=":fEdit">Editar</a></center>
-                            </p:column>
-                        </p:dataTable>
+                                    return true;
+                                }
+                            }
+                        </script>
+
                     </h:form>
-                </f:view>
 
 
-                <div aria-hidden="true">
-                    <p:dialog class="form-control" widgetVar="formEdit"
-                              modal="true"
-                              position="top"
-                              resizable="false"
-                              draggable="true"
-                              closable="true">
+                    <br/>
+                    <div aria-hidden="true">
+                        <p:dialog class="form-control" widgetVar="formEdit"
+                                  modal="true"
+                                  position="top"
+                                  resizable="false"
+                                  draggable="true"
+                                  closable="true">
 
 
-                        <div class="modal-header">
-                            <center><h2 style="font-family: fantasy;">Edición de seguimiento</h2></center>
+                            <div class="modal-header">
+                                <center><h2>Modificar torneo</h2></center>
 
-                            <h:form style="font-family: fantasy;" id="fEdit">
-
-                                <h:outputLabel style="visibility:hidden" value="IdSeguimientoEncuentro:" for="idSeguimientoEncuentro" />
-                                <h:inputText id="idSeguimientoEncuentro" style="visibility:hidden" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idSeguimientoEncuentro}" title="IdSeguimientoEncuentro" required="true" requiredMessage="The IdSeguimientoEncuentro field is required."/>
-
-                                <br/>
-                                <h:outputLabel value="Observación:" for="observacion" />
-                                <h:inputTextarea style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
-
-                                <h:outputLabel value="Calificación:" for="calificacion" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
-                                    <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
-                                    <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
-                                    <f:selectItem itemValue="Regular" itemLabel="Regular"/>
-                                    <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
-                                </h:selectOneMenu>
-
-                                <h:outputLabel  value="Torneo:" for="idEncuentro" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="lisEnc" itemLabel="#{lisEnc.fkIdTorneo.nombreTorneo}"/>
-                                </h:selectOneMenu>
-
-                                <h:outputLabel value="Jugador:" for="idJugador" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="lisJug" itemLabel="#{lisJug.usuario.primerNombre} #{lisJug.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="Entrenador:" for="idEntrenador" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="Goles:" for="goles" />
-                                <h:inputText style="font-family: fantasy;" class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
+                                <f:view>
 
 
-                                <br/>
-                                <br/>
+                                    <h:form id="fEdit">
 
-                                <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{seguimientoEncuentroManagedBean.guardarCambiosEncuentro(seguimientoEncuentroManagedBean.seguimientoencuentro)}" onclick="PF('formEdit').hide()"/></center>    
+                                        <h:outputLabel style="visibility:hidden" value="IdSeguimientoEncuentro:" for="idSeguimientoEncuentro" />
+                                        <h:inputText id="idSeguimientoEncuentro" style="visibility:hidden" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idSeguimientoEncuentro}" title="IdSeguimientoEncuentro" required="true" requiredMessage="The IdSeguimientoEncuentro field is required."/>
 
-                            </h:form>
+                                        <br/>
+                                        <h:outputLabel value="Observación:" for="observacion" />
+                                        <h:inputTextarea  class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
 
-                        </div>
+                                        <h:outputLabel value="Calificación:" for="calificacion" />
+                                        <h:selectOneMenu  class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
+                                            <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
+                                            <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
+                                            <f:selectItem itemValue="Regular" itemLabel="Regular"/>
+                                            <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
+                                        </h:selectOneMenu>
 
-                    </p:dialog>
+                                        <h:outputLabel  value="Torneo:" for="idEncuentro" />
+                                        <h:selectOneMenu  class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="lisEnc" itemLabel="#{lisEnc.fkIdTorneo.nombreTorneo}"/>
+                                        </h:selectOneMenu>
+
+                                        <h:outputLabel value="Jugador:" for="idJugador" />
+                                        <h:selectOneMenu  class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="lisJug" itemLabel="#{lisJug.usuario.primerNombre} #{lisJug.usuario.primerApellido}"/>
+                                        </h:selectOneMenu>
+                                        <h:outputLabel value="Entrenador:" for="idEntrenador" />
+                                        <h:selectOneMenu  class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
+                                        </h:selectOneMenu>
+                                        <h:outputLabel value="Goles:" for="goles" />
+                                        <h:inputText  class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
+                                        <br/>
+                                        <br/>
+                                        <center>
+                                            <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{seguimientoEncuentroManagedBean.guardarCambiosEncuentro(seguimientoEncuentroManagedBean.seguimientoencuentro)}" onclick="PF('formEdit').hide()"/></center>    
+
+                                        </center>   
+
+                                    </h:form>
+                                </f:view>
 
 
+                            </div>
+
+                        </p:dialog>
+
+                    </div>
                 </div>
-                <br/>
-                <a  style="color: whitesmoke; font-family: fantasy; font-size: 26px; padding-left: 160px;" action="#{torneoManagedBean.redireccionarTorneo(item)}" onclick="PF('formCreate').show();" update=":fCreate">Registrar calificación</a>
-
-                <div aria-hidden="true">
-                    <p:dialog class="form-control" widgetVar="formCreate"
-                              modal="true"
-                              position="top"
-                              resizable="false"
-                              draggable="true"
-                              closable="true">
-
-
-                        <div class="modal-header">
-                            <center><h2  style="font-family: fantasy;">Calificar jugador</h2></center>
-
-                            <h:form  style="font-family: fantasy; font-size: 18px;" id="fCreate">
-
-                                <h:outputLabel value="Observación:" for="observacion" />
-                                <h:inputTextarea  style="font-family: fantasy;" class="form-control"  rows="4" cols="30" id="observacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.observacion}" title="Observacion" required="true" requiredMessage="The Observacion field is required."/>
-
-                                <h:outputLabel value="Calificación:" for="calificacion" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="calificacion" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.calificacion}" required="true" requiredMessage="El campo 'Motivo de pago'">
-                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                    <f:selectItem  itemValue="Excelente" itemLabel="Excelente"/>
-                                    <f:selectItem  itemValue="Bueno" itemLabel="Bueno"/>
-                                    <f:selectItem itemValue="Regular" itemLabel="Regular"/>
-                                    <f:selectItem itemValue="Deficiente" itemLabel="Deficiente"/>
-                                </h:selectOneMenu>
-
-                                <h:outputLabel value="Torneo:" for="idEncuentro" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEncuentro" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEncuentro}" title="IdEncuentro" required="true" requiredMessage="The IdEncuentro field is required.">
-                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{encuentroTorneoManagedBean.listarEncuentro()}" var="lisEnc" itemLabel="#{lisEnc.fkIdTorneo.nombreTorneo}"/>
-                                </h:selectOneMenu>
-
-                                <h:outputLabel value="Jugador:" for="idJugador" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idJugador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idJugador}" title="IdJugador" required="true" requiredMessage="The IdJugador field is required.">
-                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{jugadorManagedBean.listarJugadores()}" var="lisJug" itemLabel="#{lisJug.usuario.primerNombre} #{lisJug.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="Entrenador:" for="idEntrenador" />
-                                <h:selectOneMenu style="font-family: fantasy;" class="form-control" id="idEntrenador" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required.">
-                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                    <!-- TODO: update below reference to list of available items-->
-                                    <f:selectItems value="#{entrenadorManagedBean.listarEntrenador()}" var="lisEnt" itemLabel="#{lisEnt.usuario.primerNombre} #{lisEnt.usuario.primerApellido}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="Goles:" for="goles" />
-                                <h:inputText t:type="number"  style="font-family: fantasy;" class="form-control" id="goles" value="#{seguimientoEncuentroManagedBean.seguimientoencuentro.goles}" title="Goles" required="true" requiredMessage="The Goles field is required."/>
-
-                                <br>
-                                </br>
-                                <h:commandButton actionListener="#{seguimientoEncuentroManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar" action="#{seguimientoEncuentroManagedBean.registrarSeguimientoEncuentro()}" />
-
-
-                            </h:form> 
-
-                        </div> 
-
-                    </p:dialog> 
-
-
-                </div>
-
             </div>
-
+            <div class="col-lg-1"></div>
 
 
 

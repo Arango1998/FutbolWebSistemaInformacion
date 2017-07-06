@@ -49,6 +49,10 @@ public class TorneoManagedBean implements Serializable, InterfaceController<Torn
     public List<Torneo> listar() {
         return tf.findAll();
     }
+    
+    
+    
+
 
     public void create() {
         try {
