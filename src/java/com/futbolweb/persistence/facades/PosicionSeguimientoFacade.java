@@ -5,6 +5,7 @@
  */
 package com.futbolweb.persistence.facades;
 
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.PosicionSeguimiento;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -32,11 +33,10 @@ public class PosicionSeguimientoFacade extends AbstractFacade<PosicionSeguimient
         super(PosicionSeguimiento.class);
     }
     
-    public PosicionSeguimiento obtenerIdPosicion(){
+    public PosicionSeguimiento obtenerIdPosicion(Jugador j){
       
-        PosicionSeguimiento pseg= (PosicionSeguimiento) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jseg");
         Query query = em.createQuery("SELECT p.idPosicionSeguimiento FROM PosicionSeguimiento p WHERE p.idJugador = ?1 ORDER BY p.idPosicionSeguimiento DESC");
-        query.setParameter(1, pseg);
+        query.setParameter(1, j);
         PosicionSeguimiento psefo = (PosicionSeguimiento) query.getResultList().get(0);
         return  psefo;
     }

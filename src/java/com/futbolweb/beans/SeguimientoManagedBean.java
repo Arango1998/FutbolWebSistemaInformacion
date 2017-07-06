@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
+import com.futbolweb.persistence.entities.PosicionSeguimiento;
 import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.facades.EntrenadorFacade;
 import com.futbolweb.persistence.facades.JugadorFacade;
@@ -149,9 +150,11 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
     public String solicitarJugador(int idJugador) {
          Jugador j = jugadorF.find(idJugador);
         List<Seguimiento> lseguimiento = segf.listarSeguimientoEspecifico(j);
+        PosicionSeguimiento pseo = psef.obtenerIdPosicion(j);
         lista = lseguimiento;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jseg", j);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jpi", pseo);
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
     }
 
@@ -164,13 +167,14 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
     public String registrarSeguimiento(){
         
     Jugador ju =  (Jugador) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jseg");
+     PosicionSeguimiento pseo=(PosicionSeguimiento) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("jpi");
     seguimiento.setIdJugador(ju);
         System.out.println(seguimiento.getIdJugador());
     seguimiento.setFechaSeguimiento(new Date());
         System.out.println(seguimiento.getFechaSeguimiento());
     seguimiento.setIdEntrenador(ef.obtenerIdEntrenador());
         System.out.println(seguimiento.getIdEntrenador());
-    seguimiento.setIdPosicionSeguimiento(psef.obtenerIdPosicion());
+    seguimiento.setIdPosicionSeguimiento(pseo);
         System.out.println(seguimiento.getIdPosicionSeguimiento());
     segf.create(seguimiento);
     return solicitarJugador(seguimiento.getIdJugador().getIdJugador());
