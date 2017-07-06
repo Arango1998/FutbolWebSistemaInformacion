@@ -141,7 +141,7 @@
                                                                     <!-- TODO: update below reference to list of available items-->
                                                                     <f:selectItems value="#{equipoManagedBean.listarEquipos()}" var="equipo" itemLabel="Equipo: #{equipo.nombreEquipo} Categoria: #{equipo.fkIdCategoria.nombreCategoria}"/>
                                                                 </h:selectOneMenu>
-                                                                <h:commandButton value="regi" action="#{jugadorManagedBean.creaJugador()}"/>
+                                                                <h:commandButton value="Registrar Jugador" action="#{jugadorManagedBean.creaJugador()}"/>
                                                             
                                                         </h:form>
                                                     </f:view>
