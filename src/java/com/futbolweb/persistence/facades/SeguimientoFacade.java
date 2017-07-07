@@ -5,15 +5,10 @@
  */
 package com.futbolweb.persistence.facades;
 
-import com.futbolweb.persistence.entities.Entrenador;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Seguimiento;
-import com.futbolweb.persistence.entities.Usuario;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;

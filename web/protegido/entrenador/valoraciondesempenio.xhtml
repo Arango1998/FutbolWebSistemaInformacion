@@ -12,20 +12,45 @@
 
             <ui:define name="content">
 
-               <h:form>
-                                                        <h1><h:outputText value="Crear Valoración Seguimiento"/></h1>
-                                                        <h:panelGrid columns="2">
-                                                            <h:outputLabel value="Nota:" for="nota" />
-                                                            <h:inputText id="nota" value="#{valoracionManagedBean.valoracion.nota}" title="Nota" required="true" requiredMessage="The Nota field is required."/>
-                                                            <h:outputLabel value="IdItem:" for="idItem" />
-                                                            <h:selectOneMenu id="idItem" value="#{valoracionManagedBean.valoracion.idItem}" required="true" requiredMessage="The IdItem field is required.">
-                                                                <!-- TODO: update below reference to list of available items-->
-                                                                <f:selectItems value="#{itemManagedBean.listarItem()}" var="ite" itemLabel="#{ite.descripcion}"/>
-                                                            </h:selectOneMenu>
-                                                        </h:panelGrid>
-                                                        <p:commandButton value="Registrar" action="#{valoracionManagedBean.registrarValoracion()}" />
-                                                    </h:form>
+               
+                   <f:view>
 
+
+                       <h:form id="formValoracion">
+                           <h:panelGroup id="tabla" layout="block">
+                           <h1><h:outputText value="List"/></h1>
+                           <p:dataTable value="#{valoracionManagedBean.listarValoracion2()}" var="item">
+                              
+                               <p:column>
+                                   <f:facet name="header">
+                                       <h:outputText value="Item"/>
+                                   </f:facet>
+                                   <h:outputText value="#{item.idItem.descripcion}"/>
+                               </p:column>
+                               <p:column>
+                                   <f:facet name="header">
+                                       <h:outputText value="Nota"/>
+                                   </f:facet>
+                                   <h:outputText value="#{item.nota}"/>
+                               </p:column>
+                              
+                               <p:column>
+                                   <h:selectOneMenu class="form-control" id="nota" value="#{valoracionManagedBean.nota}" required="true" requiredMessage="El campo 'Estado' es requerido">
+                                       <f:selectItem itemDisabled="" itemLabel="Seleccione"/>
+                                       <f:selectItem itemValue="1" itemLabel="1"/>
+                                       <f:selectItem itemValue="2" itemLabel="2"/>
+                                       <f:selectItem itemValue="3" itemLabel="3"/>
+                                       <f:selectItem itemValue="4" itemLabel="4"/>
+                                       <f:selectItem itemValue="5" itemLabel="5"/>
+                                       <f:ajax event="change" listener="#{valoracionManagedBean.modificarValoracion(item)}" execute="@this" render="formValoracion:tabla"/>
+                                   </h:selectOneMenu>
+                               </p:column>
+                           </p:dataTable>
+                           </h:panelGroup>
+                       </h:form>
+                   </f:view>
+
+                
                     
             </ui:define>
 
