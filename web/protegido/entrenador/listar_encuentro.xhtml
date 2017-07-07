@@ -54,6 +54,14 @@
                                                         <br/>
                                                         <div class="rowContainer">
 
+                                                            <h:outputLabel value="Torneo"/>
+
+                                                            <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
+                                                                <!-- TODO: update below reference to list of available items-->
+                                                                <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
+                                                            </h:selectOneMenu>
+
+
                                                             <h:outputLabel  value="Fecha del encuentro"/>
                                                             <br/>
 
@@ -72,12 +80,6 @@
 
                                                             <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
 
-                                                            <h:outputLabel value="Torneo"/>
-
-                                                            <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
-                                                                <!-- TODO: update below reference to list of available items-->
-                                                                <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
-                                                            </h:selectOneMenu>
 
                                                             <h:outputLabel value="Barrio"/>
 
