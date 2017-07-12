@@ -59,7 +59,7 @@
                                                                 <h:outputLabel  value="Localidad"/>
 
                                                                 <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" title="Localidad" required="true" requiredMessage="Campo requerido">
-                                                                    <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
+                                                                    <f:selectItem itemValue="#{null}" itemLabel="--seleccione--" />
                                                                     <!-- TODO: update below reference to list of available items-->
                                                                     <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lis" itemLabel="#{lis.nombreLocalidad}"/>
                                                                 </h:selectOneMenu>

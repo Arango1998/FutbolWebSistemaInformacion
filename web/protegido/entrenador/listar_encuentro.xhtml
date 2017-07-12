@@ -53,10 +53,18 @@
 
                                                         <br/>
                                                         <div class="rowContainer">
+                                                            <h:outputLabel value="Barrio"/>
+
+                                                            <h:selectOneMenu class="form-control" id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio"  required="true" requiredMessage="Campo requerido">
+                                                                <f:selectItem itemValue="#{null}" itemLabel="--seleccione--" />
+                                                                <!-- TODO: update below reference to list of available items-->
+                                                                <f:selectItems value="#{barrioManagedBean.listar()}" var="lisbar" itemLabel="#{lisbar.nombreBarrio}"/>
+                                                            </h:selectOneMenu>
 
                                                             <h:outputLabel value="Torneo"/>
 
-                                                            <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="The FkIdTorneo field is required.">
+                                                            <h:selectOneMenu class="form-control" id="fkIdTorneo" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdTorneo}" title="FkIdTorneo" required="true" requiredMessage="Campo requerido">
+                                                                 <f:selectItem itemValue="#{null}" itemLabel="--seleccione--" />
                                                                 <!-- TODO: update below reference to list of available items-->
                                                                 <f:selectItems value="#{torneoManagedBean.listar()}" var="listor" itemLabel="#{listor.nombreTorneo}"/>
                                                             </h:selectOneMenu>
@@ -65,31 +73,26 @@
                                                             <h:outputLabel  value="Fecha del encuentro"/>
                                                             <br/>
 
-                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                                            <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fechaInicio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="Campo requerido">
                                                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                                                             </h:inputText>
 
 
                                                             <br/>
 
-                                                            <h:outputLabel value="Descripción"/>
+                                                            <h:outputLabel value="Equipo rival"/>
 
-                                                            <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                                                            <h:inputText  class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="Campo requerido"/>
 
                                                             <h:outputLabel value="Resultado"/>
 
-                                                            <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
+                                                            <h:inputText jsf:placeholder="0-0" onkeypress="return validar(event)"  class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="Campo requerido"/>
 
 
-                                                            <h:outputLabel value="Barrio"/>
 
-                                                            <h:selectOneMenu class="form-control" id="fkIdBarrio" value="#{encuentroTorneoManagedBean.encuentroTorneo.fkIdBarrio}" title="FkIdBarrio" required="true" requiredMessage="The FkIdBarrio field is required.">
-                                                                <!-- TODO: update below reference to list of available items-->
-                                                                <f:selectItems value="#{barrioManagedBean.listar()}" var="lisbar" itemLabel="#{lisbar.nombreBarrio}"/>
-                                                            </h:selectOneMenu>
                                                         </div> 
                                                         <br/>
-                                                        <h:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" jsf:update="growl" />
+                                                        <p:commandButton class="btn btn-outline btn-success" value="Registrar" actionListener="#{encuentroTorneoManagedBean.crear()}" action="#{encuentroTorneoManagedBean.redireccionar()}" update="growl" />
 
 
                                                         <script>
@@ -97,6 +100,16 @@
                                                             $("#fechaInicio").datepicker({
                                                                 dateFormat: 'mm/dd/yyyy'
                                                             });
+                                                        </script>
+                                                        <script type="text/javascript">
+                                                            function validar(e) { // 1
+                                                                tecla = (document.all) ? e.keyCode : e.which; // 2
+                                                                if (tecla == 8)
+                                                                    return true; // 3
+                                                                patron = /[1234567890-]/; // 4
+                                                                te = String.fromCharCode(tecla); // 5
+                                                                return patron.test(te); // 6
+                                                            }
                                                         </script>
 
 
@@ -131,8 +144,8 @@
                                         <th class="hidden-xs">Fecha</th>
 
                                         <th class="hidden-xs">Resultado</th>
-
-                                        <th class="hidden-xs">Descripción</th>
+                                        
+                                        <th class="hidden-xs">Equipo rival</th>
 
                                         <th class="hidden-xs">Torneo</th>
 
@@ -221,22 +234,22 @@
 
                                         <h:outputLabel style="visibility:hidden;" value="IdEncuentro:"/>
 
-                                        <h:inputText id="idEncuentro" style="visibility:hidden" value="#{encuentroTorneoManagedBean.encuentroTorneo.idEncuentro}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>
+                                        <h:inputText id="idEncuentro" style="visibility:hidden" value="#{encuentroTorneoManagedBean.encuentroTorneo.idEncuentro}" title="IdBarrio" required="true" requiredMessage="Campo requerido"/>
                                         <br/>
                                         <h:outputLabel  value="Fecha del encuentro"/>
                                         <br/>
-                                        <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fecha" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="The FechaInicio field is required.">
+                                        <h:inputText jsf:data-language='es'  class="form-control datepicker-here" id="fecha" value="#{encuentroTorneoManagedBean.encuentroTorneo.fechaInicio}" title="FechaInicio" required="true" requiredMessage="Campo requerido">
                                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                                         </h:inputText>
                                         <br/>
 
-                                        <h:outputLabel value="Descripción"/>
+                                        <h:outputLabel value="Equipo rival"/>
 
-                                        <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
+                                        <h:inputText class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.descripcion}" title="Descripcion" required="true" requiredMessage="Campo requerido"/>
 
                                         <h:outputLabel value="Resultado"/>
 
-                                        <h:inputTextarea class="form-control" rows="4" cols="30" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="The Resultado field is required."/>
+                                        <h:inputText jsf:placeholder="0-0" onkeypress="return validarEd(event)"  class="form-control" value="#{encuentroTorneoManagedBean.encuentroTorneo.resultado}" title="Resultado" required="true" requiredMessage="Campo requerido"/>
 
                                         <h:outputLabel value="Torneo"/>
 
@@ -255,6 +268,16 @@
                                         <br/>
 
                                         <center><h:commandButton  class="btn btn-outline btn-success" value="Guardar cambios" action="#{encuentroTorneoManagedBean.guardarCambiosEncuentroTorneo(encuentroTorneoManagedBean.encuentroTorneo)}" onclick="PF('formEdit').hide()"/></center>    
+                                        <script type="text/javascript">
+                                            function validarEd(e) { // 1
+                                                tecla = (document.all) ? e.keyCode : e.which; // 2
+                                                if (tecla == 8)
+                                                    return true; // 3
+                                                patron = /[1234567890-]/; // 4
+                                                te = String.fromCharCode(tecla); // 5
+                                                return patron.test(te); // 6
+                                            }
+                                        </script>
                                         <script>
 
                                             $("#fecha").datepicker({

@@ -8,6 +8,7 @@ package com.futbolweb.beans;
 import com.futbolweb.converters.InterfaceController;
 import com.futbolweb.persistence.entities.EncuentroTorneo;
 import com.futbolweb.persistence.facades.EncuentroTorneoFacade;
+import static com.sun.faces.facelets.util.Path.context;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import static net.bootsfaces.component.ComponentsEnum.message;
 
 /**
  *
@@ -55,8 +57,9 @@ public class EncuentroTorneoManagedBean implements Serializable, InterfaceContro
     public void crear() {
 
         try {
+            FacesContext context = FacesContext.getCurrentInstance();   
             encuentroejb.create(encuentroTorneo);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Encuentro registrado con éxito"));
+            context.addMessage(null, new FacesMessage("Successful", "Your message: " + message));
 
         } catch (Exception e) {
         }
