@@ -9,7 +9,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <ui:include src="../templates/header.xhtml"/>
-        <f:event type="preRenderView" listener="#{plantillaController.verificarSession()}"/>
+        <!--<f:event type="preRenderView" listener="# {plantillaController.verificarSession()}"/>-->
+        <f:event type="preRenderView" listener="#{seguridadManagedBean.verificarSesion()}"/>
     </h:head>
     
     

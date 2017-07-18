@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -54,7 +55,7 @@
 
 
                                                             <h:outputLabel value="Nombre de la nueva Categoria:" for="nombreCategoria" />
-                                                            <h:inputText id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                                            <h:inputText maxlength="20" t:placeholder="Ejemplo: Infantil, Elite, Sub-21 ó Superior " id="nombreCategoria" class="form-control" value="#{categoriaManagedBean.categoria.nombreCategoria}" title="NombreCategoria" required="true" requiredMessage="The NombreCategoria field is required."/>
 
                                                             <br></br>
                                                             <center><p:commandButton actionListener="#{categoriaManagedBean.redireccionar()}" class="btn btn-outline btn-success" value="Registrar Categoria" action="#{categoriaManagedBean.crearCatagoria()}" /></center>
@@ -117,7 +118,7 @@
                                                 <center>
                                                     <p:commandButton class="btn btn-outline btn-warning" value="e" action="#{categoriaManagedBean.redireccionarCategoria(item)}" onclick="PF('formEdit').show();" update=":fEdit"><span class="fa fa-user"></span></p:commandButton>
                                 
-                                                 <p:commandButton class="btn btn-outline btn-danger" ajax="false"  value="e" action="#{categoriaManagedBean.eliminarCategoria(item)}" update=":fEdit"/>
+                                                    <p:commandButton class="btn btn-outline btn-danger" ajax="false"  title="Eliminar" value="e" action="#{categoriaManagedBean.eliminarCategoria(item)}" onclick="javascript:return confirmar()" update=":fEdit"/>
                                            
                                                 </center>
                                              </td>
@@ -153,6 +154,23 @@
                                 <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
                                 <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
                             </h:commandLink>
+                            
+                            
+                            
+                            
+                             <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
 
 
 

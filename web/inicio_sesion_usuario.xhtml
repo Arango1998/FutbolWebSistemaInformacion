@@ -128,9 +128,24 @@ and open the template in the editor.
 
                                                 <div class="main">
                                                     <h:form>
-                                                        <h:inputText maxlength="20" p:placeholder="Documento Ej: 123456789 " id="documento" value="#{loginManagedBean.documento}"/>
+                                                                                 <script>
+                                function valida(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
 
-                                                        <h:inputText maxlength="20" p:type="password" p:placeholder="Contraseña Ej: *********72 "  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>
+                                                        <h:inputText   maxlength="11"  onkeypress="return valida(event)" p:placeholder="Documento Ej: 123456789 " id="documento" value="#{loginManagedBean.documento}"/>
+
+                                                        <h:inputText maxlength="50" p:type="password" p:placeholder="Contraseña Ej: *********72 "  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
                                                         <h:commandButton value="Iniciar sesión" action="#{loginManagedBean.iniciarSesion()}"/>
 
 

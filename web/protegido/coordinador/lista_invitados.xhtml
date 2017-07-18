@@ -76,7 +76,7 @@
                                             <td><h:inputText t:type="checkbox"></h:inputText></td>
                                                   <td  class="hidden-xs" align="center">
                                             <p:commandButton class="btn btn-outline btn-warning" action="#{usuarioManagedBean.verInvitado(item)}" value="E" onclick="PF('insertar').show();"  update=":editinvi"/>
-                                 <h:commandButton   class="btn btn-outline btn-danger" value="el" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/>
+                                            <h:commandButton   class="btn btn-outline btn-danger" value="el" title="Eliminar" onclick="javascript:return confirmar()" action="#{usuarioManagedBean.eliminarUsuarioInvitadi(item)}"/>
                                             </td>
 
                                          
@@ -119,6 +119,34 @@
 
 
 
+
+                                <script language="JavaScript">
+                                function confirmar()
+                                {
+                                    if (!confirm("¿Deseas eliminar este registro?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
+                            
+                                  <script language="JavaScript">
+                                function confirmar2()
+                                {
+                                    if (!confirm("¿Deseas Cambiar de Rol y Estado a este usuario?"))
+                                    {
+                                        return false;
+                                    } else
+                                    {
+
+                                        return true;
+                                    }
+                                }
+                            </script>
 
 
 
@@ -174,7 +202,7 @@
 
                                             <center>
                                                 <br/>
-                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" class="btn btn-outline btn-success" value="Activar usuario" action="#{usuarioManagedBean.editarInvitados()}" />
+                                                <h:commandButton actionListener="#{usuarioManagedBean.redireccionarUsuarioInvitado()}" onclick="javascript:return confirmar2()"  class="btn btn-outline btn-success" value="Activar usuario" action="#{usuarioManagedBean.editarInvitados()}" />
 
                                             </center>
 
