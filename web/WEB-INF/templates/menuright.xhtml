@@ -10,68 +10,68 @@
         <ui:composition>
             <!-- Sidebar -->
             <center>
-                
-           
-            <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                <ul class="sidebar-nav">
-                    <br/>
-                    <center>  <img  src="#{request.contextPath}/resources/images/usuario/usuario3.jpg" class="img-circle img-responsive"  style="height: 80px;" alt=""/> </center>
-                    <br/>
-                    <center><h5 style="color: white;">
-                            <span>#{sessionManagedBean.usuarioSesion.primerNombre}</span>
-                            <span>#{sessionManagedBean.usuarioSesion.primerApellido}</span>
-                        </h5>
-                    </center>
-                    <center>
-                        <h5 style="color: white;"><span>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</span></h5>
-                    </center>
-<!--                    <ul>
-                        <input style="font-family: fantasy;" type="text" id="buscador" placeholder="Buscar"/>
-                    </ul>
 
 
-                    <br/>-->
-
-                    <ul class="nav">
-                        <c:forEach items="#{loginManagedBean.rol.permisoList}" var="permiso">
-                            <c:if test="#{empty permiso.permisoPadre and empty permiso.permisoList}">
-                                <li><h:link outcome="#{permiso.url}"><i class="#{permiso.icon}"/><p>#{permiso.nombrePermiso}</p></h:link></li>
-
-                            </c:if>
-
-                            <c:if test="#{empty permiso.permisoPadre and not empty permiso.permisoList}">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#{permiso.url}"><i class="#{permiso.icon}"/> <p>#{permiso.nombrePermiso}</p></a>
-                                    <ul  class="dropdown-menu" role="menu">
-                                        <c:forEach items="#{permiso.permisoList}" var="subItem">
-                                            <c:forEach items="#{loginManagedBean.rol.permisoList}" var="p">
-                                                <c:if test="#{subItem.equals(p)}">
-                                                    <li><h:link outcome="#{subItem.url}"><p>#{subItem.nombrePermiso}</p></h:link></li>
-                                                </c:if>
-                                            </c:forEach>
-                                        </c:forEach>
-                                    </ul>
-                                </li>
-
-                            </c:if>
-                        </c:forEach>
-                        <h:form>
-                          <li ><p:commandLink  actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
-  
-                        </h:form>
+                <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                    <ul class="sidebar-nav">
+                        <br/>
+                        <center>  <img  src="#{request.contextPath}/resources/images/usuario/usuario3.jpg" class="img-circle img-responsive"  style="height: 80px;" alt=""/> </center>
+                        <br/>
+                        <center><h5 style="color: white;">
+                                <span>#{sessionManagedBean.usuarioSesion.primerNombre}</span>
+                                <span>#{sessionManagedBean.usuarioSesion.primerApellido}</span>
+                            </h5>
+                        </center>
+                        <center>
+                            <h5 style="color: white;"><span>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</span></h5>
+                        </center>
+                        <!--                    <ul>
+                                                <input style="font-family: fantasy;" type="text" id="buscador" placeholder="Buscar"/>
+                                            </ul>
                         
+                        
+                                            <br/>-->
+
+                        <ul class="nav">
+                            <c:forEach items="#{loginManagedBean.rol.permisoList}" var="permiso">
+                                <c:if test="#{empty permiso.permisoPadre and empty permiso.permisoList}">
+                                    <li><h:link outcome="#{permiso.url}"><i class="#{permiso.icon}"/><p>#{permiso.nombrePermiso}</p></h:link></li>
+
+                                </c:if>
+
+                                <c:if test="#{empty permiso.permisoPadre and not empty permiso.permisoList}">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#{permiso.url}"><i class="#{permiso.icon}"/> <p>#{permiso.nombrePermiso}</p></a>
+                                        <ul  class="dropdown-menu" role="menu">
+                                            <c:forEach items="#{permiso.permisoList}" var="subItem">
+                                                <c:forEach items="#{loginManagedBean.rol.permisoList}" var="p">
+                                                    <c:if test="#{subItem.equals(p)}">
+                                                        <li><h:link outcome="#{subItem.url}"><p>#{subItem.nombrePermiso}</p></h:link></li>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+
+                                </c:if>
+                            </c:forEach>
+                            <h:form>
+                                <li ><p:commandLink  actionListener="#{seguridadManagedBean.cerrarSesion()}" value="Cerrar Sesión" action="/pagina_principal.xhtml?faces-redirect=true"/></li>
+
+                            </h:form>
+
+
+                        </ul>
+
+
+                        <br/>
+                        <br/>
+                        <br/>
 
                     </ul>
-
-
-  <br/>
-    <br/>
-      <br/>
-
-                </ul>
-            </nav>
-            <!-- /#sidebar-wrapper -->
- </center>
+                </nav>
+                <!-- /#sidebar-wrapper -->
+            </center>
         </ui:composition>
     </h:body>
 </html>
