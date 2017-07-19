@@ -12,7 +12,7 @@ and open the template in the editor.
       xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
     <head>
-        <title>TODO supply a title</title>
+        <title>Registro Nuevo Usuario</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/datepicker.css" rel="stylesheet" type="text/css"/>
@@ -222,11 +222,26 @@ and open the template in the editor.
 
                         <h:outputLabel value="Documento:" for="documento" />
                         <br/>
-                        <h:inputText maxlength="20"   jsf:placeholder="Ejemplo del Documento: 00000000000001"  id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                         <script>
+                                function valida(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>
+                        <h:inputText maxlength="11"  onkeypress="return valida(event)"  jsf:placeholder="Ejemplo del Documento: 00000000000001"  id="documento" value="#{usuarioManagedBean.usuario.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
                         <br/>
                         <h:outputLabel value="Clave:" for="clave" />
                         <br/>              
-                        <h:inputSecret jsf:placeholder="Ejemplo de la clave: ************* 72" maxlength="50" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
+                        <h:inputSecret  jsf:placeholder="Ejemplo de la clave: ************* 72" maxlength="50" id="clave" value="#{usuarioManagedBean.usuario.clave}" title="Clave" required="true" requiredMessage="The Clave field is required."/>
                         <br/>
 
 
@@ -243,15 +258,61 @@ and open the template in the editor.
 
 
                         <h:outputLabel value="Correo Electrónico:" for="correo" />
-                        <h:inputText  id="correo" jsf:type="email" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
+                           
+                        <h:inputText  id="correo" maxlength="120"  jsf:type="email" value="#{usuarioManagedBean.usuario.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
 
 
                         <h:outputLabel value="Primer Nombre:" for="primerNombre" />
-                        <h:inputText  id="primerNombre" value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
+                        <script>
+                                function validaa(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[a-z A-Z]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>
+                        <h:inputText  id="primerNombre" maxlength="15" onkeypress="return validaa(event)"  value="#{usuarioManagedBean.usuario.primerNombre}" title="PrimerNombre" required="true" requiredMessage="The PrimerNombre field is required."/>
                         <h:outputLabel value="Primer Apellido:" for="primerApellido" />
-                        <h:inputText  id="primerApellido" value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
+                        <script>
+                                function validaaa(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[a-z A-Z]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>
+                        <h:inputText  id="primerApellido" maxlength="15" onkeypress="return validaaa(event)"  value="#{usuarioManagedBean.usuario.primerApellido}" title="PrimerApellido" required="true" requiredMessage="The PrimerApellido field is required."/>
                         <h:outputLabel value="Fecha de nacimento:" for="fechaDeNacimento" />
-                        <h:inputText jsf:data-language='es' class="form-control datepicker-here"  id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
+                       <script>
+                                function valida3(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[0-9 / ]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>
+                        <h:inputText jsf:data-language='es'  maxlength="10" onkeypress="return valida3(event)"  class="form-control datepicker-here"  id="fechaDeNacimento" value="#{usuarioManagedBean.usuario.fechaDeNacimento}" title="FechaDeNacimento" required="true" requiredMessage="The FechaDeNacimento field is required.">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:inputText>
                         <input type="button" name="previous"  style="background-color: #ccc; color: black;" class="previous action-button" value="Anterior" />
