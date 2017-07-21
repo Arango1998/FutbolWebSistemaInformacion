@@ -67,7 +67,7 @@
 
                                                             <h:outputLabel  value="Nombre del Torneo"/>
 
-                                                            <h:inputText  maxlength="23" jsf:name="nombre" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
+                                                            <h:inputText  maxlength="23" class="form-control" id="nombreTorneo" value="#{torneoManagedBean.torneo.nombreTorneo}" title="Nombre delTorneo" required="true" requiredMessage="The IdTorneo field is required."/>
 
 
                                                             <h:outputLabel value="Inicio"/>
@@ -101,28 +101,7 @@
                                                         <h:commandButton class="btn btn-outline btn-success" value="Registrar" action="#{torneoManagedBean.create()}"/>
 
 
-                                                        <script>
-
-                                                            function validarFormulario() {
-
-                                                                var txtNombre = document.getElementById('nombreTorneo').value;
-
-
-
-                                                                if (txtNombre === null || txtNombre.length === 0 || /^\s+$/.test(txtNombre)) {
-                                                                    alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-                                                                    return false;
-                                                                }
-
-
-                                                                }
-
-                                                                return true;
-
-                                                            }
-
-                                                        </script>
-
+                                                       
                                                         <script>
 
                                                             $("#fechaInicio").datepicker({
