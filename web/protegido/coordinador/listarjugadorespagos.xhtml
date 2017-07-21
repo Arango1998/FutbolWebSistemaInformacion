@@ -52,16 +52,10 @@
                                                             <br/>
                                                             <div class="rowContainer">
                                                                 <h:outputLabel value="Motivo de Pago:" for="motivoPago" />
-                                                                <h:selectOneMenu class="form-control" id="motivoPago" value="#{registroPagoManagedBean.pago.motivoPago}"  required="true" requiredMessage="El campo 'Motivo de pago' ">
+                                                                <h:selectOneMenu class="form-control" id="motivoPago" value="#{registroPagoManagedBean.pago.fkMotivoPago}"  required="true" requiredMessage="El campo 'Motivo de pago' ">
                                                                     <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                                    <f:selectItem  itemValue="Matricula" itemLabel="Matricula"/>
-                                                                    <f:selectItem  itemValue="Mensualidad" itemLabel="Mensualidad"/>
-                                                                    <f:selectItem itemValue="Pago de Liga" itemLabel="Pago de Liga"/>
-
+                                                                    <f:selectItems value="#{motivoPagoManagedBean.listarTodo}" var="motivo" itemLabel="#{motivo.nombre}"/>
                                                                 </h:selectOneMenu>
-
-                                                                <h:outputLabel value="Monto:" for="monto" />
-                                                                <h:inputText class="form-control" id="monto" value="#{registroPagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="El campo 'Monto' es requerido"/>
                                                                 <h:outputLabel value="Estado del pago:" for="estado" />
                                                                 <h:selectOneMenu class="form-control" id="estado" value="#{registroPagoManagedBean.pago.estado}"  required="true" requiredMessage="El campo 'Estado' es requerido">
                                                                     <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />

@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pago.findByEstado", query = "SELECT p FROM Pago p WHERE p.estado = :estado")})
 public class Pago implements Serializable, IDTO {
 
+    @JoinColumn(name = "fk_motivo_pago", referencedColumnName = "id_motivo_pago")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private MotivoPago fkMotivoPago;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -162,6 +166,14 @@ public class Pago implements Serializable, IDTO {
     @Override
     public String obtenerLlavePrimaria() {
         return idPago.toString();
+    }
+
+    public MotivoPago getFkMotivoPago() {
+        return fkMotivoPago;
+    }
+
+    public void setFkMotivoPago(MotivoPago fkMotivoPago) {
+        this.fkMotivoPago = fkMotivoPago;
     }
     
 }
