@@ -161,7 +161,7 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
     }
 
-    
+  
    // public void registrarSeguimiento(){
        // Seguimiento se = this.getListaJuagador().get(this.getListaJuagador().size()-1);
   //      seguimientoDelJugador = segf.registrarSeguimiento(se);
