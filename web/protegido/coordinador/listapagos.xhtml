@@ -61,19 +61,18 @@
 
                                         <tr>
                                                   <td  class="hidden-xs" align="center">
-                                                      <p:commandButton class="btn btn-outline btn-warning" action="#{pagoManagedBean.verPago(item)}" value="E" onclick="PF('formEdit').show();"  update=":fEdit"/>
                                                       <p:commandButton  ajax="false" class="btn btn-outline btn-danger" value="el" action="#{eliminarPagoManagedBean.eliminarPago(item)}"/>
                                             </td>
                                                   
 
                                          
-                                            <td class="hidden-xs">#{item.motivoPago}</td>
+                                            <td class="hidden-xs">#{item.fkMotivoPago.nombre}</td>
                                             <td class="hidden-xs"> <h:outputText value="#{item.fechaPago}">
                                                     <f:convertDateTime pattern="dd-MM-yyyy">
                                                         
                                                     </f:convertDateTime>
                                                 </h:outputText></td>
-                                            <td class="hidden-xs">#{item.monto}</td>
+                                            <td class="hidden-xs">#{item.fkMotivoPago.monto}</td>
                                             <td class="hidden-xs">#{item.estado}</td>
                                             
                                             
@@ -115,38 +114,7 @@
                                       closable="true">
 
 
-                                <div class="modal-header">
-                                    <center><h2>Edición de Pagos</h2></center>
-
-                                    <h:form id="fEdit">
-
-                                        
-                                         <p:outputLabel value="IdPago:" for="idPago" style="visibility:hidden" />
-            <p:inputText id="idPago" value="#{pagoManagedBean.pago.idPago}" style="visibility:hidden" title="IdPago" required="true" requiredMessage="The IdPago field is required."/>
-            
-                                        
-                                        
-                                      <p:outputLabel value="MotivoPago:" for="motivoPago" />
-            <h:inputText id="motivoPago" value="#{pagoManagedBean.pago.motivoPago}" title="MotivoPago" required="true" requiredMessage="The MotivoPago field is required."/>
-            
-                                      <p:outputLabel value="FechaPago:" for="fechaPago" style="visibility:hidden"/>
-                                      <h:inputText id="fechaPago" value="#{pagoManagedBean.pago.fechaPago}" style="visibility: hidden" title="MotivoPago" required="false" requiredMessage="The MotivoPago field is required."/>
-            
-            
-                                      <p:outputLabel value="Monto:" for="monto" />
-                                      <h:inputText id="monto" value="#{pagoManagedBean.pago.monto}" title="Monto" required="true" requiredMessage="The MotivoPago field is required."/>
-            
-                                      <p:outputLabel value="Estado:" for="estado" />
-                                      <h:inputText id="estado" value="#{pagoManagedBean.pago.estado}" title="Estado" required="true" requiredMessage="The MotivoPago field is required."/>
-            
-                                       
-                                        <br/>  
-                                        <br/>
-                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{pagoManagedBean.guardarCambiosPago(pagoManagedBean.pago)}" onclick="PF('formEdit').hide()"/></center>
-
-                                    </h:form>
-
-                                </div>
+                                
 
                             </p:dialog>
 
