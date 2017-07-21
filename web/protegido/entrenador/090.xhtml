@@ -3,281 +3,149 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
-        <ui:composition template="./../WEB-INF/templates/template.xhtml">
+        <ui:composition template="./../../WEB-INF/templates/template.xhtml">
 
             <ui:define name="content">
 
-                 <div id="wrapper">
-
-     
-        <div id="page-wrapper">
-            <div class="row">
-               <br/>
-               <br/>
-               <br/>
-                <!-- /.col-lg-12 -->
-            </div>
-           
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    
-                    
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Jugadores Actuales</center>
-                            <div class="pull-right">
-                            
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                 <f:view>
+               
+                   <f:view>
 
 
-                                    <h:form>
-                                        
-                                        <h:dataTable class="table table-bordered table-hover table-striped" value="#{usuarioManagedBean.entrenador}" var="item">
-                                           
-                                             <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Codigo"/>
-                                                </f:facet>
-                                                 <h:outputText value="#{item.idUsuario}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Documento"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.documento}"/>
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Nombre"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.primerNombre} #{item.primerApellido}"/>
-                                            </h:column>
-                                           <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Correo"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.correo}"/>
-                                            </h:column>
-                                             <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Experiencia"/>
-                                                </f:facet>
-                                                 <h:outputText value="#{item.entrenador.experiencia}"/>
-                                            </h:column>
-                                             <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Posicion"/>
-                                                </f:facet>
-                                                 <h:outputText value="#{item.jugador.posicion}"/>
-                                            </h:column>
-                                         
-                                           
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Estado Usuario"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
-                                            </h:column>
-                                           
-                                           
-                                        </h:dataTable>
-                                    </h:form>
-                                </f:view>
-                                
-                                      <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a  id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-suceess btn btn-default btn-block"  data-toggle="modal">Registrar Jugador</a>
+                       <h:form id="formValoracion">
+                           <h:panelGroup id="tabla" layout="block">
+                           <h1><h:outputText value="List"/></h1>
+                           <p:dataTable value="#{valoracionManagedBean.listarValoracion2()}" var="item">
+                              
+                               <p:column>
+                                   <f:facet name="header">
+                                       <h:outputText value="Item"/>
+                                   </f:facet>
+                                   <h:outputText value="#{item.idItem.descripcion}"/>
+                               </p:column>
+                               <p:column>
+                                   <f:facet name="header">
+                                       <h:outputText value="Nota"/>
+                                   </f:facet>
+                                   <h:outputText value="#{item.nota}"/>
+                               </p:column>
+                              
+                               <p:column>
+                                   <h:selectOneMenu class="form-control" id="nota" value="#{valoracionManagedBean.nota}" required="true" requiredMessage="El campo 'Estado' es requerido">
+                                       <f:selectItem itemDisabled="" itemLabel="Seleccione"/>
+                                       <f:selectItem itemValue="1" itemLabel="1"/>
+                                       <f:selectItem itemValue="2" itemLabel="2"/>
+                                       <f:selectItem itemValue="3" itemLabel="3"/>
+                                       <f:selectItem itemValue="4" itemLabel="4"/>
+                                       <f:selectItem itemValue="5" itemLabel="5"/>
+                                       <f:ajax event="change" listener="#{valoracionManagedBean.modificarValoracion(item)}" execute="@this" render="formValoracion:tabla"/>
+                                   </h:selectOneMenu>
+                               </p:column>
+                           </p:dataTable>
+                           </h:panelGroup>
+                       </h:form>
+                   </f:view>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <style>
+	.tasks{
+	background-color: #F6F8F8;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+.tasks span{
+	font-weight: bold;
+}
+.tasks input{
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.tasks a{
+	color: #000;
+	text-decoration: none;
+	border:none;
+}
+.tasks a:hover{
+	border-bottom: dashed 1px #0088cc;
+}
+.tasks label{
+	display: block;
+	text-align: center;
+}
+</style>
 
-                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            ×
-                                                        </button>
-
-                                                    </div>
-                                                    <center>
-                                                        <h1><h:outputText value="Registro Jugador"/></h1>
-                                                    </center>
-
-                                                    <div class="modal-body">
-                                                        <center>
-                                                                      <h:form enctype="multipart/form-data">
-                                                        <center><h2><h:outputText value="Registro de Carta Pofesional"/></h2></center>
-
-                                                        <br/>
-                                                        <div class="rowContainer">
-                                                            
-                                                            
-
- 
-                                                       
-    
-        
-            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
-             <br/>
-           
-            <h:selectOneMenu class="form-control" id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}"  required="true" requiredMessage="El campo 'Entrenador' es requerido">
-                                                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione" />
-                                                            <f:selectItems  value="#{usuarioManagedBean.entrenador}" var="entrenador" itemLabel="Documento: #{entrenador.documento} Entrenador: #{entrenador.primerNombre} #{entrenador.primerApellido}"/>
-
-                                                        </h:selectOneMenu>
-            <br/>
-           
-            <h:outputLabel value="Experiencia:" for="experiencia" />
-            <br/>
-               <br/>
-           
-               <h:inputTextarea class="form-control" rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
-             <br/>
-           
-               <h:outputLabel value="Diploma:" for="diploma" />
-                <br/>
-            <br/>
-           
-            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
-            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
-            
-        <br/>
-        
-            <br/>
-           
-       
-        <h:commandButton  class="btn btn-outline btn-success" value="registrar"  action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
-   
-
-
-                                                        </div>
-                                                    </h:form>
-                                                        </center>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                            Cerrar
-                                                        </button> 
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                             
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"><center>Equipos actuales</center></i> 
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <f:view>
-
-
-                                <h:form>
-                                   
-                                    <h:dataTable class="table table-bordered table-hover table-striped" value="#{equipoManagedBean.listarEquipos()}" var="item">
-                                       
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Nombre Equipo"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.nombreEquipo}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Categoria"/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.fkIdCategoria.nombreCategoria}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="Entrenador"/>
-                                            </f:facet>
-                                            <h:outputText value="Documento: #{item.idEntrenador.usuario.documento} Nombres: #{item.idEntrenador.usuario.primerNombre} #{item.idEntrenador.usuario.primerApellido}"/>
-                                        </h:column>
-                                    </h:dataTable>
-                                </h:form>
-                            </f:view>
-                             
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class=" fa-fw"></i><center>
-                                Categorias Actuales
-                            </center> 
-                        </div>
-                        <div class="panel-body">
-                                             <f:view>
-
-
-                            <h:form>
-                                
-                                <h:dataTable class="table table-bordered table-hover table-striped" value="#{categoriaManagedBean.listCategorias()}" var="item">
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Numero de Categoria"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.idCategoria}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nombre Categoria"/>
-                                        </f:facet>
-                                        <h:outputText value="#{item.nombreCategoria}"/>
-                                    </h:column>
-                                </h:dataTable>
-                            </h:form>
-                        </f:view>
-                           
-                        </div>
-    
-                    </div>
-                    <!-- /.panel -->
-                   
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+<div class="progress progress-striped active">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
+<div class="row tasks">
+        <div class="col-md-6">
+          <p><span>Identify your campaign audience.</span>Who are we talking to here? Understand your buyer persona before launching into a campaign, so you can target them correctly.</p>
+        </div>
+        <div class="col-md-2">
+          <label>2014-01-29</label>
+        </div>
+        <div class="col-md-2">
+          <input name="progress" class="progress" type="checkbox" value="30"/>
+        </div>
+        <div class="col-md-2">
+          <input name="done" class="done" type="checkbox" value="20"/>
+        </div>
+      </div><!-- tasks -->
 
+<div class="row tasks">
+        <div class="col-md-6">
+          <p><span>Set your goals + benchmarks</span>Having SMART goals can help you be
+sure that you’ll have tangible results to share with the world (or your
+boss) at the end of your campaign.</p>
+        </div>
+        <div class="col-md-2">
+          <label>2014-01-25</label>
+        </div>
+        <div class="col-md-2">
+          <input name="progress" class="progress" type="checkbox" value="30"/>
+        </div>
+        <div class="col-md-2">
+          <input name="done" class="done" type="checkbox" value="40"/>
+        </div>
+      </div><!-- tasks -->
+
+<script>
+	$('input').on('click', function(){
+  var valeur = 0;
+  $('input:checked').each(function(){
+       if ( $(this).attr('value') > valeur )
+       {
+           valeur =  $(this).attr('value');
+       }
+  });
+  $('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);    
+});
+</script>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+                    
             </ui:define>
 
         </ui:composition>

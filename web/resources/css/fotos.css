@@ -1,7 +1,7 @@
 
 
 img.weer {
-    position: absolute;
+  
   
     margin: 10px 10px 10px 10px;
     -webkit-transform: scale(1, 1);
@@ -13,10 +13,10 @@ img.weer {
 
 img.weer:hover {
 	cursor: pointer;
-    position: absolute;
-	-webkit-transform: scale(4, 4);
-    -ms-transform: scale(4, 4);
-    transform: scale(4, 4);
+    
+	-webkit-transform: scale(2, 2);
+    -ms-transform: scale(2, 2);
+    transform: scale(2, 2);
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s; /* Safari */
     box-shadow: 10px 10px 5px #0f0f0f;

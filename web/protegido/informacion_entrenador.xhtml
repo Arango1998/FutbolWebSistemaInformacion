@@ -32,6 +32,75 @@
                                 <!-- /.panel -->
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i> <center>Carta Profesional de Entrenadores</center>
+                                        <div class="pull-right">
+
+                                        </div>
+                                    </div>
+                                    <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <center>
+                                                  <f:view>
+                                                      
+                                                      
+                                                      <p><strong>Codigo Entrenador:</strong></p> <h1 style="color: red;">#{sessionManagedBean.usuarioSesion.idUsuario}</h1>
+     
+                                                           <script>
+                                function valida(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>                                  
+
+    <h:form enctype="multipart/form-data">
+        <h:panelGrid columns="3">
+            <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
+                           
+            <h:inputText class="form-control" maxlength="4" onkeypress="return valida(event)" t:placeholder="Codigo Ej: 0001 " id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
+            <br/>
+            <br/>
+            <h:outputLabel value="Experiencia:" for="experiencia" />
+            <h:inputTextarea t:placeholder="Experiencia: 34 años en el club deportibo Expreso Rojo. Amplio en las ramas de fisica y conocimientos en tactica deportiva."  class="form-control"   rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+            <br/>
+            <br/>
+            <h:outputLabel value="Diploma:" for="diploma" />
+            <h:inputFile class="form-control"  id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
+            
+       <br/>
+            <br/>
+        </h:panelGrid>
+        
+        <br/>
+            <br/>
+        <h:commandButton class="btn btn-outline btn-success"  value="Agregar Carta Profesional" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+    </h:form>
+</f:view>
+
+
+                                            </center>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                    <!-- /.panel -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
                                         <i class="fa fa-bar-chart-o fa-fw"></i> <center>Lista de Entrenadores</center>
                                         <div class="pull-right">
 
@@ -47,18 +116,8 @@
 
                                                     <h:dataTable class="table table-bordered table-hover table-striped" value="#{entrenadorManagedBean.listarEntrenador()}" var="item">
 
-                                                        <h:column>
-                                                            <f:facet name="header">
-                                                                <h:outputText value="Codigo Entrenador"/>
-                                                            </f:facet>
-                                                            <h:outputText value="#{item.idEntrenador}"/>
-                                                        </h:column>
-                                                        <h:column>
-                                                            <f:facet name="header">
-                                                                <h:outputText value="Documento"/>
-                                                            </f:facet>
-                                                            <h:outputText value="#{item.usuario.documento}"/>
-                                                        </h:column>
+                                                     
+                                                       
                                                         <h:column>
                                                             <f:facet name="header">
                                                                 <h:outputText value="Nombre"/>
@@ -78,92 +137,74 @@
                                                             <h:outputText value="#{item.usuario.entrenador.experiencia}"/>
                                                         </h:column>
                                                         <h:column>
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
+
+
+
+
+
+
+
                                                             <f:facet name="header">
                                                                 <h:outputText value="Diploma"/>
                                                             </f:facet>
-                                                            
-                                                            
-                                                            
-                                                            <h:outputText />
-                                                            
-                                                            
-                                 <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-success"  data-toggle="modal">Diploma</a>
-
-                                    <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                        ×
-                                                    </button>
-
-                                                </div>
-                                                <div class="modal-body">
-
-
-                                                    <h:form>
-                                                        <h1><h:outputText value="List"/></h1>
-                                                        <h:dataTable value="#{entrenadorManagedBean.lista}" var="item">
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="IdEntrenador"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.idEntrenador}"/>
-                                                            </h:column>
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="Experiencia"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.experiencia}"/>
-                                                            </h:column>
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="Diploma"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.diploma}"/>
-                                                            </h:column>
-                                                            <h:column>
-                                                                <f:facet name="header">
-                                                                    <h:outputText value="Usuario"/>
-                                                                </f:facet>
-                                                                <h:outputText value="#{item.usuario}"/>
-                                                            </h:column>
-                                                        </h:dataTable>
-                                                    </h:form>
-
-                                                </div>
-                                                <div class="modal-footer">
-
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Cerrar
-                                                    </button> 
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                                                            
-                                                            
-                                                            
-                                                            
                                                            
+
+
+                                                            <h:outputText />
+
+
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <a id="modal-41991" href="#modal-container-41991" role="button" class="btn btn-outline btn-success"  data-toggle="modal">Diploma</a>
+
+                                                                        <div class="modal fade" id="modal-container-41991" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                                            ×
+                                                                                        </button>
+
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        
+                                                                                       
+                                                                                       
+                                                                                      
+                                                                                            
+                                                                                        <img class="weer"  src="#{request.contextPath}/#{sessionManagedBean.usuarioSesion.entrenador.diploma}"/>
+
+                                                                                           
+                                                                                       
+                                                                                      
+                                                                                        
+
+
+
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+
+                                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                                                            Cerrar
+                                                                                        </button> 
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+
+
                                                         </h:column>
 
                                                     </h:dataTable>

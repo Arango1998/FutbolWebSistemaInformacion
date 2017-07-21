@@ -11,8 +11,8 @@ and open the template in the editor.
     <head>
         <title>Inicio Sesión</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-         <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
-       
+        <link rel="shortcut icon" href="resources/images/paginainicio/logourl.jpg" type="image/x-icon"/>
+
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/login.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/cards.css" rel="stylesheet" type="text/css"/>
@@ -30,7 +30,7 @@ and open the template in the editor.
                                     <div class="card">
                                         <div class="front">
                                             <div class="cover">
-                                                
+
                                             </div>
                                             <div class="user">
                                                 <img class="img-circle" src="resources/images/paginainicio/Logo.png"/>
@@ -61,12 +61,11 @@ and open the template in the editor.
                                                         <li>2: Haberse <a href="registro_usuario.xhtml" class="lnk-success">Registrado</a> en nuestra página oficial y esperar el correo de ´Cambio de rol ó estado´
                                                             .</li>
                                                         <hr />
-                                                        <li>3: 
-                                                            Recuerda que para iniciar sesión solo  necesita el <strong>documento de identificación</strong> y <strong>contraseña</strong> 
+                                                        <li>3: Recuerda que para iniciar sesión solo  necesita el <strong>documento de identificación</strong> y <strong>contraseña</strong> 
                                                         </li>
                                                         <hr />
-                                                       
-                                                        <li>6: Cualquier duda <a href="registro_usuario.xhtml" class="lnk-success">Comunicarse</a> en nuestra sección de Contacto </li>
+
+                                                        <li>4: Cualquier duda <a href="registro_usuario.xhtml" class="lnk-success">Comunicarse</a> en nuestra sección de Contacto </li>
                                                         <hr />
 
 
@@ -101,7 +100,7 @@ and open the template in the editor.
                                     <div class="card">
                                         <div class="front">
                                             <div class="cover">
-                                                
+
                                             </div>
                                             <div class="user">
                                                 <img class="img-circle" src="resources/images/paginainicio/Logo.png"/>
@@ -128,21 +127,21 @@ and open the template in the editor.
 
                                                 <div class="main">
                                                     <h:form>
-                                                                                 <script>
-                                function valida(e) {
-                                    tecla = (document.all) ? e.keyCode : e.which;
+                                                        <script>
+                                                            function valida(e) {
+                                                                tecla = (document.all) ? e.keyCode : e.which;
 
-                                    //Tecla de retroceso para borrar, siempre la permite
-                                    if (tecla == 8) {
-                                        return true;
-                                    }
+                                                                //Tecla de retroceso para borrar, siempre la permite
+                                                                if (tecla == 8) {
+                                                                    return true;
+                                                                }
 
-                                    // Patron de entrada, en este caso solo acepta numeros
-                                    patron = /[0-9]/;
-                                    tecla_final = String.fromCharCode(tecla);
-                                    return patron.test(tecla_final);
-                                }
-                            </script>
+                                                                // Patron de entrada, en este caso solo acepta numeros
+                                                                patron = /[0-9]/;
+                                                                tecla_final = String.fromCharCode(tecla);
+                                                                return patron.test(tecla_final);
+                                                            }
+                                                        </script>
                                                         <h:inputText   maxlength="11"  onkeypress="return valida(event)" p:placeholder="Documento Ej: 123456789 " id="documento" value="#{loginManagedBean.documento}"/>
 
                                                         <h:inputText maxlength="50" p:type="password" p:placeholder="Contraseña Ej: *********72 "  id="clave" value="#{loginManagedBean.clave}" title="Clave" />
@@ -176,16 +175,6 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
-
-
-
-
-    </body>
+</body>
 </html>

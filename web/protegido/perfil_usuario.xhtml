@@ -13,45 +13,72 @@
 
    
 
-      <nav class="fh5co-nav-style-1" role="navigation" data-offcanvass-position="fh5co-offcanvass-left">
-         <div class="container">
-            <div class="col-md-3 col-sm-3 col-xs-12 fh5co-logo">
-               <a href="#" class="js-fh5co-mobile-toggle fh5co-nav-toggle"><i></i></a>
-               <a href="#"></a>
-            </div>
-            <div class="col-md-6 col-sm-6 text-center fh5co-link-wrap">
-               <ul data-offcanvass="yes">
-                  <li class="active"><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                 
-               </ul>
-            </div> 
-           
-         </div>
-      </nav>
+     
 
-      <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/imageninicio.jpg); height: auto;">
-      
-         <div class="fh5co-overlay"></div>
+      <div class="fh5co-cover fh5co-cover-style-2 js-full-height" data-next="yes" style="background-image: url(../resources/images/paginainicio/imageninicio.jpg); height: 100%;">
+           
+        
          <div class="fh5co-cover-text">
             <div class="container">
-               <div class="row">
-                  <div  class="col-md-push-4 col-md-6 full-height js-full-height">
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+                <br/>
+                  <div  class="col-md-push-4 col-md-6 ">
                      <div class="fh5co-cover-intro">
-                         <h4 class="cover-text-lead">Bienvenido: #{loginManagedBean.rol.nombreRol}</h4>
+                         <center>
+                             <img style="width: 150px; height: 150px;" src="../resources/images/usuario/usuario3.jpg" alt=""/>
+                         </center>
+                         <br/>
+                         <br/>
+                         <br/>
+                            <br/>
+                            <h4 class="cover-text-lead"><strong>#{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</strong> #{sessionManagedBean.usuarioSesion.primerNombre}  #{sessionManagedBean.usuarioSesion.primerApellido}  </h4>
+                      
+                       <div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-md-4"><h4 style="color:white;">Correo: #{sessionManagedBean.usuarioSesion.correo}</h4></div>
+        <div class="col-md-4 col-md-offset-4"><h4 style="color:white;">Codigo Usuario:</h4> <h1 style="color: red;">#{sessionManagedBean.usuarioSesion.idUsuario}</h1></div>
+    
+         </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3"><h4 style="color:white;"> Rol: #{sessionManagedBean.usuarioSesion.idTipoRol.nombreRol}</h4></div>
+        <div class="col-md-2 col-md-offset-4"><h4 style="color:white;">Estado: #{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3"><h4 style="color:white;">EPS: #{sessionManagedBean.usuarioSesion.eps}</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+          <h4 style="color:white;">Telefono: #{sessionManagedBean.usuarioSesion.telefono}</h4>
+        <div class="row">
+          <div class="col-8 col-sm-6">
+              <h4 style="color:white;"> RH: #{sessionManagedBean.usuarioSesion.rh}</h4>
+          </div>
+          <div class="col-4 col-sm-6">
+              <h4 style="color:white;">Genero: #{sessionManagedBean.usuarioSesion.genero}</h4>
+              <div class="col-md-3 col-md-offset-4"><h4 style="color:white;">Documento: #{sessionManagedBean.usuarioSesion.documento}</h4></div>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
                        
-                        <h4 class="cover-text-lead">#{sessionManagedBean.usuarioSesion.primerNombre} #{sessionManagedBean.usuarioSesion.primerApellido}  </h4>
-                        <h4 class="cover-text-lead">#{sessionManagedBean.usuarioSesion.documento} #{sessionManagedBean.usuarioSesion.correo}  </h4>
-                        <h4 class="cover-text-lead">#{sessionManagedBean.usuarioSesion.genero} #{sessionManagedBean.usuarioSesion.idEstado.nombreEstado}  </h4>
-                        
                         <center> <h2 class="cover-text-sublead">En el apartado Izquierdo encontrara todas las opciones que puede ejecutar con su rol.</h2>
                        </center>
                      </div>
                   </div>
-               </div>
+           
             </div>   
          </div>
       </div></div>
+                
+                
              
 
    

@@ -85,17 +85,12 @@
                                                 <h:outputText value="Diploma"/>
                                             </f:facet>
                                                <h:outputText />
-                                               <img class="weer" style="width: 170px; height: 120px;" src="#{request.contextPath}/#{item.entrenador.diploma}"/>
+                                               #{item.entrenador.diploma}
                                         </h:column>
                                        
                                          
                                            
-                                            <h:column>
-                                                <f:facet name="header">
-                                                    <h:outputText value="Estado Usuario"/>
-                                                </f:facet>
-                                                <h:outputText value="#{item.idEstado.nombreEstado}"/>
-                                            </h:column>
+                                      
                                            
                                            
                                         </h:dataTable>
@@ -128,24 +123,46 @@
                                                     <div class="modal-body">
                                                         <center>
                                                          
-<f:view>
 
+                                                           <script>
+                                function valida(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patron de entrada, en este caso solo acepta numeros
+                                    patron = /[0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                            </script>                                  
 
     <h:form enctype="multipart/form-data">
-        <h:panelGrid columns="2">
+        <h:panelGrid columns="3">
             <h:outputLabel value="Codigo Entrenador:" for="idEntrenador" />
-            <h:inputText id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
+                           
+            <h:inputText class="form-control" maxlength="4" onkeypress="return valida(event)" t:placeholder="Codigo Ej: 0001 " id="idEntrenador" value="#{uploadFileDiplomaManagedBean.entrenador.idEntrenador}" title="IdEntrenador" required="true" requiredMessage="The IdEntrenador field is required."/>
+            <br/>
+            <br/>
             <h:outputLabel value="Experiencia:" for="experiencia" />
-            <h:inputTextarea rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+            <h:inputTextarea t:placeholder="Experiencia: 34 años en el club deportibo Expreso Rojo. Amplio en las ramas de fisica y conocimientos en tactica deportiva."  class="form-control"   rows="4" cols="30" id="experiencia" value="#{uploadFileDiplomaManagedBean.entrenador.experiencia}" title="Experiencia" />
+            <br/>
+            <br/>
             <h:outputLabel value="Diploma:" for="diploma" />
-            <h:inputFile id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
+            <h:inputFile class="form-control"  id="diploma" value="#{uploadFileDiplomaManagedBean.file}"></h:inputFile>
             <!--<h:inputTextarea rows="4" cols="30" id="diploma" value="#{uploadFileDiplomaManagedBean.entrenador.diploma}" title="Diploma" />-->
             
-       
+       <br/>
+            <br/>
         </h:panelGrid>
-        <h:commandButton value="registrar" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
+        
+        <br/>
+            <br/>
+        <h:commandButton class="btn btn-outline btn-success"  value="Agregar Carta Profesional" action="#{uploadFileDiplomaManagedBean.uploadFileDiploma()}"/>
     </h:form>
-</f:view>
 
                                                         </center>
                                                     </div>

@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+
       xmlns:p="http://primefaces.org/ui">
 
     <body>
@@ -12,140 +13,173 @@
 
             <ui:define name="content">
 
-               
-                   <f:view>
+                <div class="rowContainer">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <br></br>
+
+                        <header>
+                            <h1 class="page-header text-center">Valoracion de Desempeño</h1>
+                        </header>
+
+                        <h:form id="formValoracion">
+                            <h:panelGroup id="tabla" layout="block">
+
+                                <center>
+                                    <li><a  href="../entrenador/listajugadoresseguimiento.xhtml" class="icoLinkedin"><i class="fa fa-linked"> <img style="width: 200px; height: 200px;" src="../../resources/images/usuario/mm.png" title="Regresar a todos los seguimientos del jugador" alt="Imagen iconica del sistema"/></i></a></li>
+                                    <p>Seguimiento mas detallado del jugador</p>
+                                </center>
+                                <table id="table-transform"  value="#{valoracionManagedBean.listarValoracion2()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
+                                    <thead>
+
+                                        <tr >
+
+                                            <th class="hidden-xs">Item</th>
+
+                                            <th class="hidden-xs">Nota</th>
+
+                                            <th class="hidden-xs">Valoraciones <small>(0-5)</small></th>
 
 
-                       <h:form id="formValoracion">
-                           <h:panelGroup id="tabla" layout="block">
-                           <h1><h:outputText value="List"/></h1>
-                           <p:dataTable value="#{valoracionManagedBean.listarValoracion2()}" var="item">
-                              
-                               <p:column>
-                                   <f:facet name="header">
-                                       <h:outputText value="Item"/>
-                                   </f:facet>
-                                   <h:outputText value="#{item.idItem.descripcion}"/>
-                               </p:column>
-                               <p:column>
-                                   <f:facet name="header">
-                                       <h:outputText value="Nota"/>
-                                   </f:facet>
-                                   <h:outputText value="#{item.nota}"/>
-                               </p:column>
-                              
-                               <p:column>
-                                   <h:selectOneMenu class="form-control" id="nota" value="#{valoracionManagedBean.nota}" required="true" requiredMessage="El campo 'Estado' es requerido">
-                                       <f:selectItem itemDisabled="" itemLabel="Seleccione"/>
-                                       <f:selectItem itemValue="1" itemLabel="1"/>
-                                       <f:selectItem itemValue="2" itemLabel="2"/>
-                                       <f:selectItem itemValue="3" itemLabel="3"/>
-                                       <f:selectItem itemValue="4" itemLabel="4"/>
-                                       <f:selectItem itemValue="5" itemLabel="5"/>
-                                       <f:ajax event="change" listener="#{valoracionManagedBean.modificarValoracion(item)}" execute="@this" render="formValoracion:tabla"/>
-                                   </h:selectOneMenu>
-                               </p:column>
-                           </p:dataTable>
-                           </h:panelGroup>
-                       </h:form>
-                   </f:view>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <style>
-	.tasks{
-	background-color: #F6F8F8;
-	padding: 10px;
-	border-radius: 5px;
-	margin-top: 10px;
-}
-.tasks span{
-	font-weight: bold;
-}
-.tasks input{
-	display: block;
-	margin: 0 auto;
-	margin-top: 10px;
-}
-.tasks a{
-	color: #000;
-	text-decoration: none;
-	border:none;
-}
-.tasks a:hover{
-	border-bottom: dashed 1px #0088cc;
-}
-.tasks label{
-	display: block;
-	text-align: center;
-}
-</style>
 
-<div class="progress progress-striped active">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-        </div>
-    </div>
-<div class="row tasks">
-        <div class="col-md-6">
-          <p><span>Identify your campaign audience.</span>Who are we talking to here? Understand your buyer persona before launching into a campaign, so you can target them correctly.</p>
-        </div>
-        <div class="col-md-2">
-          <label>2014-01-29</label>
-        </div>
-        <div class="col-md-2">
-            <input name="progress" class="progress" type="radio" value="30"/>
-        </div>
-        <div class="col-md-2">
-            <input name="done" class="done" type="radio " value="20"/>
-        </div>
-      </div><!-- tasks -->
 
-<div class="row tasks">
-        <div class="col-md-6">
-          <p><span>Set your goals + benchmarks</span>Having SMART goals can help you be
-sure that you’ll have tangible results to share with the world (or your
-boss) at the end of your campaign.</p>
-        </div>
-        <div class="col-md-2">
-          <label>2014-01-25</label>
-        </div>
-        <div class="col-md-2">
-          <input name="progress" class="progress" type="checkbox" value="30"/>
-        </div>
-        <div class="col-md-2">
-          <input name="done" class="done" type="checkbox" value="40"/>
-        </div>
-      </div><!-- tasks -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-<script>
-	$('input').on('click', function(){
-  var valeur = 0;
-  $('input:checked').each(function(){
-       if ( $(this).attr('value') > valeur )
-       {
-           valeur =  $(this).attr('value');
-       }
-  });
-  $('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);    
-});
-</script>
-                
-                
-                
-                
-                
-                
-                
-                
+                                        <ui:repeat  value="#{valoracionManagedBean.listarValoracion2()}" var="item">
 
+
+                                            <tr>
+                                                <td  class="hidden-xs" align="center">
+
+                                                    <h:outputText value="#{item.idItem.descripcion}"/>
+                                                </td>
+
+
+                                                <td >
+
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="#{item.nota}" aria-valuemin="0" aria-valuemax="10">#{item.nota}%</div>
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+                                                    <h:selectOneMenu class="form-control" id="nota" value="#{valoracionManagedBean.nota}" required="true" requiredMessage="El campo 'Estado' es requerido">
+                                                        <f:selectItem itemDisabled="" itemLabel="Seleccione"/>
+                                                        <f:selectItem  itemValue="1" itemLabel="1"/>
+                                                        <f:selectItem itemValue="2" itemLabel="2"/>
+                                                        <f:selectItem itemValue="3" itemLabel="3"/>
+                                                        <f:selectItem itemValue="4" itemLabel="4"/>
+                                                        <f:selectItem itemValue="5" itemLabel="5"/>
+                                                        <f:ajax event="change" listener="#{valoracionManagedBean.modificarValoracion(item)}" execute="@this" render="formValoracion:tabla"/>
+                                                    </h:selectOneMenu>
+                                                </td>
+
+
+
+                                            </tr>
+                                        </ui:repeat>
+
+
+
+
+
+
+
+                                    </tbody>
+                                </table>
+                                
+                                 
                 
-                    
+                
+    
+                
+                
+                
+                                
+                                
+                                <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+                                <br/>
+
+                                Desempeño:
+                                <progress id="myProgress" value="#{item.nota}" max="5">
+                                </progress>
+
+                                <p>La nota es: "#{item.nota}".</p>
+
+                                <button onclick="myFunction()">Try it</button>
+
+                                <script>
+                                    function myFunction() {
+                                        document.getElementById("myProgress").value = "#{item.nota}";
+                                    }
+                                </script>
+                                <br></br>
+                                <h:commandLink title="Descargar tabla en pdf">
+                                    <img  src="../../resources/images/pdf/pdf.png" alt="Descargar en Pdf" style="width: 55px; height: 55px;"/>
+                                    <p:dataExporter type="pdf" target="tabCat" fileName="ListadoDeCategorias"/>
+                                </h:commandLink>
+                                <h:commandLink title="Descargar tabla en Excel">
+                                    <img  src="../../resources/images/pdf/excel.png" alt="Descargar en Ecxel" style="width: 55px; height: 55px;"/>
+                                    <p:dataExporter type="xls" target="tabCat" fileName="ListadoDeCategorias"/>
+                                </h:commandLink>
+
+
+
+
+                            </h:panelGroup>
+                        </h:form>
+
+
+                        <br/>
+                        <div aria-hidden="true">
+                            <p:dialog class="form-control" widgetVar="formEdit"
+                                      modal="true"
+                                      position="top"
+                                      resizable="false"
+                                      draggable="true"
+                                      closable="true">
+
+                                <div class="modal-header">
+                                    <center><h1><h:outputText value="Edición de Barrios"/></h1></center>
+
+                                    <h:form id="fEdit">
+
+                                        <h:outputLabel value="IdBarrio:" for="idBarrio" style="visibility:hidden"/>
+                                        <h:inputText style="visibility:hidden"  id="idBarrio" value="#{barrioManagedBean.barrio.idBarrio}" title="IdBarrio" required="true" requiredMessage="The IdBarrio field is required."/>                      
+                                        <br/>
+                                        <h:outputLabel value="Nombre:" for="nombreBarrio" />
+                                        <h:inputText class="form-control" id="nombreBarrio" value="#{barrioManagedBean.barrio.nombreBarrio}" required="true" requiredMessage="The NombreCategoria field is required."/>
+                                        <br/>
+                                        <h:outputLabel  value="Localidad:" for="fkIdLocalidad" />
+                                        <h:selectOneMenu class="form-control" id="fkIdLocalidad" value="#{barrioManagedBean.barrio.fkIdLocalidad}" required="true" requiredMessage="The FkIdLocalidad field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{localidadManagedBean.listarLocalidad()}" var="lisvar" itemLabel="#{lisvar.nombreLocalidad}"/>
+                                        </h:selectOneMenu>
+
+                                        <br/>  
+                                        <br/>
+                                        <center><h:commandButton class="btn btn-outline btn-success" value="Guardar cambios" action="#{barrioManagedBean.guardarCambiosBarrio(barrioManagedBean.barrio)}" onclick="PF('formEdit').hide()"/></center>
+
+                                    </h:form>
+
+                                </div>
+
+                            </p:dialog>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+
+
             </ui:define>
 
         </ui:composition>
