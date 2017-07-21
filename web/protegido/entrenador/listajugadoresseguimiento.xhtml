@@ -22,11 +22,7 @@
                         <h1 class="page-header text-center">Listado de seguimientos</h1>
                     </header>
                     <center>
-                          <center>
-                              <li><a  href="../entrenador/listadojugadores.xhtml" class="icoLinkedin"><i class="fa fa-linked"> <img style="width: 200px; height: 200px;" src="../../resources/images/usuario/matricula.png" title="Regresar a todos los jugadores" alt="Imagen iconica del sistema"/></i></a></li>
-                                
-                                </center>
-                        <p>Registre los seguimientos de los jugadores. </p>        
+                        <p>Registre los seguimientos de los jugadores</p>        
                         <br></br>
 
 
@@ -37,11 +33,15 @@
                     <h:form id="dqw" jsf:name="formulario">
 
 
+                        <center>
+                            <li><a  href="../entrenador/listadojugadores.xhtml" class="icoLinkedin"><i class="fa fa-linked"> <img style="width: 200px; height: 200px;" src="../../resources/images/usuario/matricula.png" title="Regresar a todos los seguimientos del jugador" alt="Imagen iconica del sistema"/></i></a></li>
+                            <p>Seguimiento mas detallado del jugador</p>
+                        </center>
                         <table id="table-transform"  value="#{encuentroTorneoManagedBean.listar()}" var="item" class="table table-hover" data-toggle="table" data-short-name="fechaRegistro" data-short-order="desc" data-show-toogle="true" data-show-columns="true" data-side-pagination="client" data-page-list="[5, 10, 20, 50, 100, 200]" data-row-style="rowStyle" data-pagination="true" data-search="true" >
                             <thead>
 
                                 <tr >
-                                    <th class="col-md-4"><em class="fa fa-cog">Eliminar</em></th>
+                                    <th class="col-md-2"><em class="fa fa-cog">Eliminar</em></th>                                   
 
                                     <th class="hidden-xs">Fecha</th>
 
@@ -52,6 +52,8 @@
                                     <th class="hidden-xs">Posición</th>
 
                                     <th class="hidden-xs">Valorar seguimiento</th>
+
+                                    <th class="hidden-xs">Gráficas</th>
 
 
                                 </tr>
@@ -84,6 +86,9 @@
                                         <td class="hidden-xs"><p:commandButton ajax="false" class="btn btn-outline btn-success" value="Valorar Seguimiento" action="#{valoracionManagedBean.solicitarSeguimiento(item)}"/>
                                         </td>
 
+                                        <td class="hidden-xs"><p:commandButton ajax="false" class="btn btn-outline btn-success" value="Ver" action="#{valoracionManagedBean.solicitarSeguimiValor(item)}"/>
+
+                                        </td>
 
                                     </tr>
                                 </ui:repeat>
@@ -121,7 +126,7 @@
                     <br/>               
                 </div>
             </div>
-           
+
         </ui:define>
 
 

@@ -6,6 +6,7 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
 import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.facades.JugadorFacade;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -22,22 +24,25 @@ import javax.faces.context.FacesContext;
  */
 @Named(value = "jugadorManagedBean")
 @RequestScoped
-public class JugadorManagedBean implements Serializable, InterfaceController<Jugador>{
-    
-     private Jugador jugador;
-  @EJB
-  private JugadorFacade jugadorEJB;
+public class JugadorManagedBean implements Serializable, InterfaceController<Jugador> {
+
+    private Jugador jugador;
+    @EJB
+    private JugadorFacade jugadorEJB;
+    @Inject
+    private SessionManagedBean sessionMB;
+
     public JugadorManagedBean() {
     }
-    
-       @PostConstruct
-    public void init(){
+
+    @PostConstruct
+    public void init() {
         jugador = new Jugador();
     }
 
-     @Override
+    @Override
     public Jugador getObjectByKey(Integer key) {
-    return jugadorEJB.find(key);
+        return jugadorEJB.find(key);
     }
 
     public Jugador getJugador() {
@@ -47,34 +52,35 @@ public class JugadorManagedBean implements Serializable, InterfaceController<Jug
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
-    
-    public List<Jugador> listarJugadores(){
+
+    public SessionManagedBean getSessionMB() {
+        return sessionMB;
+    }
+
+    public void setSessionMB(SessionManagedBean sessionMB) {
+        this.sessionMB = sessionMB;
+    }
+
+
+
+    public List<Jugador> listarJugadores() {
         return jugadorEJB.findAll();
     }
-      
-       
-    public void creaJugador(){
+
+    public void creaJugador() {
         try {
             jugadorEJB.create(jugador);
         } catch (Exception e) {
-          
+
         }
     }
-    
-    
-               
-                public void redireccionarJugador(){
-    
+
+    public void redireccionarJugador() {
+
         try {
-              FacesContext.getCurrentInstance().getExternalContext().redirect("registro_jugador.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("registro_jugador.xhtml");
         } catch (Exception e) {
         }
     }
 
-
-
- 
-    
-    
-    
 }

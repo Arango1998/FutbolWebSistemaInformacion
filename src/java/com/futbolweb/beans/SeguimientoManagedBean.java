@@ -157,7 +157,7 @@ public class SeguimientoManagedBean implements Serializable, InterfaceController
         jugador = j;
         //lista = lseguimiento;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("seguimientos", lista);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jseg", j);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jval", j);
         return "/protegido/entrenador/listajugadoresseguimiento.xhtml?faces-redirect=true";
     }
 

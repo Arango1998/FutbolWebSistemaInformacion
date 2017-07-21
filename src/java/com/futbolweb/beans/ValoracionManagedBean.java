@@ -6,6 +6,8 @@
 package com.futbolweb.beans;
 
 import com.futbolweb.converters.InterfaceController;
+import com.futbolweb.login.beans.SessionManagedBean;
+import com.futbolweb.persistence.entities.Jugador;
 import com.futbolweb.persistence.entities.Seguimiento;
 import com.futbolweb.persistence.entities.Valoracion;
 import com.futbolweb.persistence.facades.SeguimientoFacade;
@@ -18,6 +20,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -35,9 +38,22 @@ public class ValoracionManagedBean implements Serializable, InterfaceController<
     private ValoracionFacade valf;
     @EJB
     private SeguimientoFacade seguimientof;
-    
-    
+    @Inject
+    private SessionManagedBean sessionMB;
+
+    private Jugador jugador;
+
+    private List<Valoracion> valoracionDelJugador;
+
     public ValoracionManagedBean() {
+    }
+
+    public SessionManagedBean getSessionMB() {
+        return sessionMB;
+    }
+
+    public void setSessionMB(SessionManagedBean sessionMB) {
+        this.sessionMB = sessionMB;
     }
 
     public Valoracion getValoracion() {
@@ -55,40 +71,80 @@ public class ValoracionManagedBean implements Serializable, InterfaceController<
     public void setNota(int nota) {
         this.nota = nota;
     }
-    
+
+    public List<Valoracion> getValoracionDelJugador() {
+        return valoracionDelJugador;
+    }
+
+    public void setValoracionDelJugador(List<Valoracion> valoracionDelJugador) {
+        this.valoracionDelJugador = valoracionDelJugador;
+    }
+
+    public List<Valoracion> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Valoracion> lista) {
+        this.lista = lista;
+    }
+
     @PostConstruct
-    public void init(){
+    public void init() {
         valoracion = new Valoracion();
         seguimiento = new Seguimiento();
         lista = new LinkedList<>();
+        valoracionDelJugador = getListaJugador();
+        jugador = new Jugador();
     }
+
+    public List<Valoracion> getListaJugador() {
+        return (List<Valoracion>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("valoraciones");
+    }
+
     public List<Valoracion> listarValoracion2() {
         return valf.listarSeguimientoEspecifico(seguimiento);
     }
+
     public String solicitarSeguimiento(Seguimiento s) {
         seguimiento = s;
         return "/protegido/entrenador/valoraciondesempenio.xhtml?faces-redirect=true";
     }
-    
-    public void registrarValoracion(){
+
+    public String solicitarSeguimiValor(Seguimiento s) {
+        seguimiento = s;
+        return "/protegido/charts.xhtml?faces-redirect=true";
+    }
+
+    public void registrarValoracion() {
         valf.create(valoracion);
     }
-    
-    public void eliminarValoracion(){
+
+    public void eliminarValoracion() {
         valf.remove(valoracion);
     }
-    
-    public void modificarValoracion(Valoracion v){
+
+  
+
+    public void modificarValoracion(Valoracion v) {
         v.setNota(nota);
         valf.edit(v);
-        nota=0;
+        nota = 0;
     }
-    
-    public List<Valoracion> listarValoracion(){
+
+    public String solicitarJugador(Jugador j) {
+        jugador = j;
+        //lista = lseguimiento;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("valoraciones", lista);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("jseg", j);
+        System.out.println(valoracion.getIdSeguimiento().getIdJugador());
+        return "/protegido/entrenador/graficas.xhtml?faces-redirect=true";
+    }
+
+    public List<Valoracion> listarValoracion() {
         return valf.findAll();
     }
-    
-    public String actualizarValoracion(Valoracion val){
+
+    public String actualizarValoracion(Valoracion val) {
         val = valoracion;
         return "";
     }
@@ -97,5 +153,5 @@ public class ValoracionManagedBean implements Serializable, InterfaceController<
     public Valoracion getObjectByKey(Integer key) {
         return valf.find(key);
     }
-    
+
 }
